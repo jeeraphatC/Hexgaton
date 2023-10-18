@@ -50,6 +50,30 @@ public class FreelanceController {
         return null; // Handle error case, e.g., freelance not found
     }
 
+    @PatchMapping("/{id}")
+    public Freelance patchFreelance(@PathVariable String id, @RequestBody Freelance patchedFreelance) {
+        Freelance existingFreelance = freelanceRepository.findById(id).orElse(null);
+
+        if (existingFreelance != null) {
+            if (patchedFreelance.getName() != null) {
+                existingFreelance.setName(patchedFreelance.getName());
+            }
+            if (patchedFreelance.getPrice() != null) {
+                existingFreelance.setPrice(patchedFreelance.getPrice());
+            }
+            if (patchedFreelance.getTime() != null) {
+                existingFreelance.setTime(patchedFreelance.getTime());
+            }
+            if (patchedFreelance.getDescription() != null) {
+                existingFreelance.setDescription(patchedFreelance.getDescription());
+            }
+
+            return freelanceRepository.save(existingFreelance);
+        }
+
+        return null;
+    }
+
     // Example: DELETE a freelance by ID
     @DeleteMapping("/{id}")
     public void deleteFreelance(@PathVariable String id) {

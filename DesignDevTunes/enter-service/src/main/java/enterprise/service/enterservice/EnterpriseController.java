@@ -42,6 +42,30 @@ public class EnterpriseController {
 
         return null;
     }
+    @PatchMapping("/{id}")
+    public Enterprise patchEnterprise(@PathVariable String id, @RequestBody Enterprise patchedEnterprise) {
+        Enterprise existingEnterprise = enterpriseRepository.findById(id).orElse(null);
+
+        if (existingEnterprise != null) {
+            // ตรวจสอบและทำการปรับปรุงข้อมูลที่ต้องการ
+            if (patchedEnterprise.getName() != null) {
+                existingEnterprise.setName(patchedEnterprise.getName());
+            }
+            if (patchedEnterprise.getPrice() != null) {
+                existingEnterprise.setPrice(patchedEnterprise.getPrice());
+            }
+            if (patchedEnterprise.getTime() != null) {
+                existingEnterprise.setTime(patchedEnterprise.getTime());
+            }
+            if (patchedEnterprise.getDescription() != null) {
+                existingEnterprise.setDescription(patchedEnterprise.getDescription());
+            }
+
+            return enterpriseRepository.save(existingEnterprise);
+        }
+
+        return null;
+    }
 
     @DeleteMapping("/{id}")
     public void deleteEnterprise(@PathVariable String id) {
