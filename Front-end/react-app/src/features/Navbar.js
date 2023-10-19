@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect  } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
 
 function Navbar({ className }) {
   const [developmentHovered, setDevelopmentHovered] = useState(false);
   const [graphicHovered, setGraphicHovered] = useState(false);
   const [musicHovered, setMusicHovered] = useState(false);
+  const [nameAccount, setNameAccount] = useState('');
   const handleDevelopmentMouseEnter = () => {
     setDevelopmentHovered(true);
   };
@@ -29,6 +32,33 @@ function Navbar({ className }) {
     setMusicHovered(false);
   };
 
+  const location = useLocation();
+  const { email } = location.state ;
+
+  useEffect(() => {
+    // Fetch the list of accounts
+    axios.get('http://localhost:8085/api/v1/accounts/list')
+      .then((response) => {
+        // Assuming the response data is an array of accounts
+        const accounts = response.data;
+        
+        // Find the account with accountid 5
+        const accountWithId5 = accounts.find((account) => account.email ===  email );
+
+        if (accountWithId5) {
+          // If the account exists, set its nameaccount to the state
+          setNameAccount(accountWithId5.accountname);
+        } else {
+          // Handle the case where the account with accountid 5 is not found
+          setNameAccount('Guest'); // or any other default value
+        }
+      })
+      .catch((error) => {
+        console.error('Error fetching accounts:', error);
+      });
+  }, [email]);
+
+
   return (
     <header className={className}>
       <Link to="/home" className="text">Logo</Link>
@@ -45,7 +75,7 @@ function Navbar({ className }) {
           </div>
         )}
       </div>
-      
+
       <div
         onMouseEnter={handleGraphicMouseEnter}
         onMouseLeave={handleGraphicMouseLeave}
@@ -59,7 +89,7 @@ function Navbar({ className }) {
             <Link to="/draw-cartoon">Draw cartoons</Link>
             <Link to="/3d-models">3D Models</Link>
             <Link to="/banner">Banner advertising design</Link>
-            
+
           </div>
         )}
       </div>
@@ -72,18 +102,19 @@ function Navbar({ className }) {
         {musicHovered && (
           <div className="submenu">
             <Link to="/beat">Beat</Link>
-            
-            
+
+
           </div>
         )}
       </div>
-      
+
       <Link className="picture">pic</Link>
       <Link className="picture1">pic</Link>
       <Link to="/register" className="text1">Sign-up</Link>
-      <Link to="/" className="text">Login</Link>
+      
+      <Link to="/" className="text">{nameAccount || 'Guest'}</Link>
     </header>
- 
+
   );
 }
 

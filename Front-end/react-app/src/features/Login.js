@@ -21,7 +21,7 @@ function Login() {
           alert("Email not exits");
         }
         else if (res.data.message === "Login Success") {
-          navigate('/home');
+          navigate('/home' , { state: { email } } );
         }
         else {
           alert("Incorrect Email and Password not match");
