@@ -8,10 +8,10 @@
 		<version>2.4.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>freelance.service</groupId>
-	<artifactId>freelance-service</artifactId>
+	<groupId>enter.service</groupId>
+	<artifactId>enter-service</artifactId>
 	<version>1.0</version>
-	<name>freelance-service</name>
+	<name>enter-service</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

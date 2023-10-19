@@ -27,6 +27,7 @@ public class Account {
     @Column(name = "number_card", length = 13)
     private String numberCard;
 
+
    
     public Account() {
     }
