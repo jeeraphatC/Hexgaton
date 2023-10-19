@@ -22,8 +22,9 @@
 
 
 	<modules>
-		<module>freelance-service</module>
 		<module>enter-service</module>
+		<module>freelance-service</module>
+		<module>RegisandLogin</module>
 	</modules>
 
 	<dependencies>
