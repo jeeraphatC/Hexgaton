@@ -1,4 +1,4 @@
-import React, { useState,useEffect  } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -9,7 +9,9 @@ function Navbar({ className }) {
   const [developmentHovered, setDevelopmentHovered] = useState(false);
   const [graphicHovered, setGraphicHovered] = useState(false);
   const [musicHovered, setMusicHovered] = useState(false);
-  const [nameAccount, setNameAccount] = useState('');
+  const [nameAccount, setNameAccount] = useState('Guest');
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
+
   const handleDevelopmentMouseEnter = () => {
     setDevelopmentHovered(true);
   };
@@ -33,31 +35,33 @@ function Navbar({ className }) {
   };
 
   const location = useLocation();
-  const { email } = location.state ;
+  const email = location.state?.email || 'Guest';
 
   useEffect(() => {
-    // Fetch the list of accounts
-    axios.get('http://localhost:8085/api/v1/accounts/list')
-      .then((response) => {
-        // Assuming the response data is an array of accounts
-        const accounts = response.data;
-        
-        // Find the account with accountid 5
-        const accountWithId5 = accounts.find((account) => account.email ===  email );
+    if (email !== 'Guest') {
+      // Fetch the list of accounts
+      axios.get('http://localhost:8085/api/v1/accounts/list')
+        .then((response) => {
+          // Assuming the response data is an array of accounts
+          const accounts = response.data;
 
-        if (accountWithId5) {
-          // If the account exists, set its nameaccount to the state
-          setNameAccount(accountWithId5.accountname);
-        } else {
-          // Handle the case where the account with accountid 5 is not found
-          setNameAccount('Guest'); // or any other default value
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching accounts:', error);
-      });
+          // Find the account with the specified email
+          const accountWithMatchingEmail = accounts.find((account) => account.email === email);
+
+          if (accountWithMatchingEmail) {
+            // If the account exists, set its accountname to the state
+            setNameAccount(accountWithMatchingEmail.accountname);
+            setIsLoggedIn(true); // Set login status to true
+          } else {
+            // Handle the case where no matching account is found
+            setNameAccount('Guest');
+          }
+        })
+        .catch((error) => {
+          console.error('Error fetching accounts:', error);
+        });
+    }
   }, [email]);
-
 
   return (
     <header className={className}>
@@ -66,7 +70,8 @@ function Navbar({ className }) {
         onMouseEnter={handleDevelopmentMouseEnter}
         onMouseLeave={handleDevelopmentMouseLeave}
         className={`text ${developmentHovered ? 'hovered' : ''}`}
-      > <Link to="/develop">Development</Link>
+      >
+        <Link to="/develop">Development</Link>
         {developmentHovered && (
           <div className="submenu">
             <Link to="/web">Web</Link>
@@ -80,7 +85,8 @@ function Navbar({ className }) {
         onMouseEnter={handleGraphicMouseEnter}
         onMouseLeave={handleGraphicMouseLeave}
         className={`text ${graphicHovered ? 'hovered' : ''}`}
-      > <Link to="/graphic" >Graphic</Link>
+      >
+        <Link to="/graphic">Graphic</Link>
         {graphicHovered && (
           <div className="submenu">
             <Link to="/logo">Logo Design</Link>
@@ -89,7 +95,6 @@ function Navbar({ className }) {
             <Link to="/draw-cartoon">Draw cartoons</Link>
             <Link to="/3d-models">3D Models</Link>
             <Link to="/banner">Banner advertising design</Link>
-
           </div>
         )}
       </div>
@@ -98,23 +103,23 @@ function Navbar({ className }) {
         onMouseEnter={handleMusicMouseEnter}
         onMouseLeave={handleMusicMouseLeave}
         className={`text ${musicHovered ? 'hovered' : ''}`}
-      > <Link to="/music" >Music</Link>
+      >
+        <Link to="/music">Music</Link>
         {musicHovered && (
           <div className="submenu">
             <Link to="/beat">Beat</Link>
-
-
           </div>
         )}
       </div>
 
       <Link className="picture">pic</Link>
       <Link className="picture1">pic</Link>
-      <Link to="/register" className="text1">Sign-up</Link>
-      
-      <Link to="/" className="text">{nameAccount || 'Guest'}</Link>
+      {isLoggedIn ? ( // Conditionally render "Sign-up" link
+        <Link  className="text">{nameAccount}</Link>
+      ) : (
+        <Link to="/register" className="text1">Sign-up</Link>
+      )}
     </header>
-
   );
 }
 
