@@ -8,6 +8,7 @@ import Login from './features/Login';
 import Develop from './features/features-navbar/develop';
 import Register from './features/Regis';
 import FindFreelance from './features/Findfreelances';
+import FindJob from './features/FindJob';
 function App() {
   const location = useLocation();
 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/develop" element={<Develop />} />
             <Route path="/findfreelance" element={<FindFreelance />} />
+            <Route path="/findjob" element={<FindJob />} />
           </Routes>
         </Container>
       

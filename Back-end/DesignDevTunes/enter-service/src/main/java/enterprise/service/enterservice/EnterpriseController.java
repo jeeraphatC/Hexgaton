@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/enterprises")
 public class EnterpriseController {
@@ -42,6 +43,7 @@ public class EnterpriseController {
 
         return null;
     }
+
     @PatchMapping("/{id}")
     public Enterprise patchEnterprise(@PathVariable String id, @RequestBody Enterprise patchedEnterprise) {
         Enterprise existingEnterprise = enterpriseRepository.findById(id).orElse(null);
