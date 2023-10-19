@@ -5,15 +5,17 @@ public class AccountDTO {
     private String accountname;
     private String email;
     private String password;
+    private String numberCard;
 
     public AccountDTO() {
     }
 
-    public AccountDTO(int accountid, String accountname, String email, String password) {
+    public AccountDTO(int accountid, String accountname, String email,String numberCard,String password) {
         this.accountid = accountid;
         this.accountname = accountname;
         this.email = email;
         this.password = password;
+        this.numberCard=numberCard;
     }
 
     public int getAccountid() {
@@ -48,10 +50,20 @@ public class AccountDTO {
         this.password = password;
     }
 
-    @Override
+  
+
+    public String getNumberCard() {
+        return numberCard;
+    }
+
+    public void setNumberCard(String numberCard) {
+        this.numberCard = numberCard;
+    }
+
+      @Override
     public String toString() {
-        return "AccountDTO [accountid=" + accountid + ", accountname=" + accountname + ", email=" + email
+        return "AccountDTO [accountid=" + accountid + ", accountname=" + accountname + ", email=" + email 
                 + ", password=" + password + "]";
     }
-    
+
 }

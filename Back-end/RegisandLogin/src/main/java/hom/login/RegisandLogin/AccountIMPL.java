@@ -24,7 +24,7 @@ public class AccountIMPL implements AccountService{
 
     @Override
     public String addAccount(AccountDTO accountDTO) {
-    Account account = new Account(accountDTO.getAccountid(), accountDTO.getAccountname(), accountDTO.getEmail(),this.passwordEncoder.encode(accountDTO.getPassword()) );
+    Account account=new Account(accountDTO.getAccountid(), accountDTO.getAccountname(), accountDTO.getEmail(), accountDTO.getNumberCard(), this.passwordEncoder.encode(accountDTO.getPassword()));
     accountRepository.save(account);
     return account.getAccountname();
 
