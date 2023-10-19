@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,5 +50,16 @@ public class AccountController {
         List<Account> accounts = accountRepository.findAll();
         return new ResponseEntity<>(accounts, HttpStatus.OK);
     }
+
+    @DeleteMapping("/list/{id}")
+    public ResponseEntity<String> delete(@PathVariable int id) { 
+        if (!accountRepository.existsById(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }    
+        accountRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+    }
+
 
 }
