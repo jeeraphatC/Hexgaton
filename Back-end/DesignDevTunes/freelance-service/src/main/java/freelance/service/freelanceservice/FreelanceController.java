@@ -5,38 +5,30 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
 @RestController
-@RequestMapping("/freelances")
-public class FreelanceController {
+@RequestMapping("/freelances") // เปลี่ยน path จาก "/api/enterprises" เป็น "/api/freelances"
+public class FreelanceController { // เปลี่ยนชื่อ class จาก EnterpriseController เป็น FreelanceController
 
     @Autowired
-    private FreelanceRepository freelanceRepository;
+    private FreelanceRepository freelanceRepository; // เปลี่ยนชื่อ repository จาก enterpriseRepository เป็น freelanceRepository
 
-    // Define methods to handle HTTP requests
-    // For example: GET, POST, PUT, DELETE
-
-    // Example: GET all freelances
     @GetMapping
-    public List<Freelance> getAllFreelances() {
+    public List<Freelance> getAllFreelances() { // เปลี่ยนชื่อเมทอดจาก getAllEnterprises เป็น getAllFreelances
         return freelanceRepository.findAll();
     }
 
-    // Example: GET a specific freelance by ID
     @GetMapping("/{id}")
-    public Freelance getFreelanceById(@PathVariable String id) {
+    public Freelance getFreelanceById(@PathVariable Long id) { // เปลี่ยนชื่อเมทอดจาก getEnterpriseById เป็น getFreelanceById
         return freelanceRepository.findById(id).orElse(null);
     }
 
-    // Example: CREATE a new freelance
     @PostMapping
-    public Freelance createFreelance(@RequestBody Freelance freelance) {
+    public Freelance createFreelance(@RequestBody Freelance freelance) { // เปลี่ยนชื่อเมทอดจาก createEnterprise เป็น createFreelance
         return freelanceRepository.save(freelance);
     }
 
-    // Example: UPDATE an existing freelance
     @PutMapping("/{id}")
-    public Freelance updateFreelance(@PathVariable String id, @RequestBody Freelance updatedFreelance) {
+    public Freelance updateFreelance(@PathVariable Long id, @RequestBody Freelance updatedFreelance) { // เปลี่ยนชื่อเมทอดจาก updateEnterprise เป็น updateFreelance
         Freelance existingFreelance = freelanceRepository.findById(id).orElse(null);
 
         if (existingFreelance != null) {
@@ -48,36 +40,35 @@ public class FreelanceController {
             return freelanceRepository.save(existingFreelance);
         }
 
-        return null; // Handle error case, e.g., freelance not found
-    }
-
-    @PatchMapping("/{id}")
-    public Freelance patchFreelance(@PathVariable String id, @RequestBody Freelance patchedFreelance) {
-        Freelance existingFreelance = freelanceRepository.findById(id).orElse(null);
-
-        if (existingFreelance != null) {
-            if (patchedFreelance.getName() != null) {
-                existingFreelance.setName(patchedFreelance.getName());
-            }
-            if (patchedFreelance.getPrice() != null) {
-                existingFreelance.setPrice(patchedFreelance.getPrice());
-            }
-            if (patchedFreelance.getTime() != null) {
-                existingFreelance.setTime(patchedFreelance.getTime());
-            }
-            if (patchedFreelance.getDescription() != null) {
-                existingFreelance.setDescription(patchedFreelance.getDescription());
-            }
-
-            return freelanceRepository.save(existingFreelance);
-        }
-
         return null;
     }
 
-    // Example: DELETE a freelance by ID
     @DeleteMapping("/{id}")
-    public void deleteFreelance(@PathVariable String id) {
+    public void deleteFreelance(@PathVariable Long id) { // เปลี่ยนชื่อเมทอดจาก deleteEnterprise เป็น deleteFreelance
         freelanceRepository.deleteById(id);
     }
+    @PatchMapping("/{id}")
+public Freelance patchFreelance(@PathVariable Long id, @RequestBody Freelance patchedFreelance) {
+    Freelance existingFreelance = freelanceRepository.findById(id).orElse(null);
+
+    if (existingFreelance != null) {
+        if (patchedFreelance.getName() != null) {
+            existingFreelance.setName(patchedFreelance.getName());
+        }
+        if (patchedFreelance.getPrice() != null) {
+            existingFreelance.setPrice(patchedFreelance.getPrice());
+        }
+        if (patchedFreelance.getTime() != null) {
+            existingFreelance.setTime(patchedFreelance.getTime());
+        }
+        if (patchedFreelance.getDescription() != null) {
+            existingFreelance.setDescription(patchedFreelance.getDescription());
+        }
+
+        return freelanceRepository.save(existingFreelance);
+    }
+
+    return null;
+}
+
 }
