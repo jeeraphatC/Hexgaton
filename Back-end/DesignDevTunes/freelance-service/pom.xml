@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>freelance.service</groupId>
 	<artifactId>freelance-service</artifactId>
-	<version>1.0</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>freelance-service</name>
 	<description>Demo project for Spring Boot</description>
 

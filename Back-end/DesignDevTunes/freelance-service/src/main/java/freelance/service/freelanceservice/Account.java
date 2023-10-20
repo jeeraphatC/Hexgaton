@@ -1,4 +1,4 @@
-package hom.login.RegisandLogin;
+package freelance.service.freelanceservice;
 
 import javax.persistence.*;
 
@@ -27,7 +27,9 @@ public class Account {
     @Column(name = "number_card", length = 13)
     private String numberCard;
 
-
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "freelance_id", referencedColumnName = "id")
+    private Freelance freelance;
    
     public Account() {
     }
@@ -39,6 +41,16 @@ public class Account {
 
         this.password = password;
         this.numberCard = numberCard;
+    }
+
+        public Account(int accountid, String accountname, String email, String numberCard, String password,Freelance freelance) {
+        this.accountid = accountid;
+        this.accountname = accountname;
+        this.email = email;
+
+        this.password = password;
+        this.numberCard = numberCard;
+        this.freelance = freelance;
     }
 
     public int getAccountid() {
@@ -81,4 +93,13 @@ public class Account {
         this.numberCard = numberCard;
     }
 
+    public Freelance getFreelance() {
+        return freelance;
+    }
+
+    public void setFreelance(Freelance freelance) {
+        this.freelance = freelance;
+    }
+
+    
 }

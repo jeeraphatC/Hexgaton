@@ -1,7 +1,6 @@
 package hom.login.RegisandLogin;
 
-
-
+import freelance.service.freelanceservice.AccountDTO;
 
 public interface AccountService {
     
