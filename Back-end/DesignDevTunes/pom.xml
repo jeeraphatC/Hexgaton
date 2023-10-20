@@ -26,6 +26,7 @@
 		<module>freelance-service</module>
 		<module>RegisandLogin</module>
 		<module>enter-service</module>
+		<module>chat-service</module>
 	</modules>
 
 	<dependencies>
