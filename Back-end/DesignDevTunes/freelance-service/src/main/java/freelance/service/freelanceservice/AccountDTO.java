@@ -1,4 +1,4 @@
-package hom.login.RegisandLogin;
+package freelance.service.freelanceservice;
 
 public class AccountDTO {
     private int accountid;
@@ -7,15 +7,17 @@ public class AccountDTO {
     private String password;
     private String numberCard;
 
+    private Freelance freelance;
+
     public AccountDTO() {
     }
 
-    public AccountDTO(int accountid, String accountname, String email,String numberCard,String password) {
+    public AccountDTO(int accountid, String accountname, String email, String numberCard, String password) {
         this.accountid = accountid;
         this.accountname = accountname;
         this.email = email;
         this.password = password;
-        this.numberCard=numberCard;
+        this.numberCard = numberCard;
     }
 
     public int getAccountid() {
@@ -50,8 +52,6 @@ public class AccountDTO {
         this.password = password;
     }
 
-  
-
     public String getNumberCard() {
         return numberCard;
     }
@@ -60,10 +60,18 @@ public class AccountDTO {
         this.numberCard = numberCard;
     }
 
-      @Override
+    @Override
     public String toString() {
-        return "AccountDTO [accountid=" + accountid + ", accountname=" + accountname + ", email=" + email 
+        return "AccountDTO [accountid=" + accountid + ", accountname=" + accountname + ", email=" + email
                 + ", password=" + password + "]";
+    }
+
+    public Freelance getFreelance() {
+        return freelance;
+    }
+
+    public void setFreelance(Freelance freelance) {
+        this.freelance = freelance;
     }
 
 }

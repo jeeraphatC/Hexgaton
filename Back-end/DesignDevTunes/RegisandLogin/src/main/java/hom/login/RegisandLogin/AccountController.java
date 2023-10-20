@@ -1,6 +1,7 @@
 package hom.login.RegisandLogin;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,11 +9,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import freelance.service.freelanceservice.Account;
+import freelance.service.freelanceservice.AccountDTO;
 
 @RestController
 @CrossOrigin
@@ -34,7 +39,7 @@ public class AccountController {
         if (accountRepository.existsByAccountname(accountDTO.getAccountname())) {
             return ResponseEntity.badRequest().body("Account name is already in use.");
         }
-        
+
         String id = accountService.addAccount(accountDTO);
         return ResponseEntity.ok(id);
     }
@@ -52,14 +57,37 @@ public class AccountController {
     }
 
     @DeleteMapping("/list/{id}")
-    public ResponseEntity<String> delete(@PathVariable int id) { 
+    public ResponseEntity<String> delete(@PathVariable int id) {
         if (!accountRepository.existsById(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }    
+        }
         accountRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
     }
 
+    @PatchMapping("/list/{id}")
+    public ResponseEntity<String> updateAccount(@PathVariable int id, @RequestBody AccountDTO updatedAccountDTO) {
+        Optional<Account> optionalAccount = accountRepository.findById(id);
+
+        if (optionalAccount.isPresent()) {
+            Account existingAccount = optionalAccount.get();
+
+            // Update the account fields as needed
+            if (updatedAccountDTO.getEmail() != null) {
+                existingAccount.setEmail(updatedAccountDTO.getEmail());
+            }
+            if (updatedAccountDTO.getAccountname() != null) {
+                existingAccount.setAccountname(updatedAccountDTO.getAccountname());
+            }
+
+            // Save the updated account
+            accountRepository.save(existingAccount);
+
+            return new ResponseEntity<>("Account updated successfully", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Account not found", HttpStatus.NOT_FOUND);
+        }
+    }
 
 }

@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 
 
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
-// @EntityScan(basePackages = {"freelance/service/freelanceservice"})
+@EntityScan(basePackages = {"freelance/service/freelanceservice"})
 public class RegisandLoginApplication {
 
 	public static void main(String[] args) {
