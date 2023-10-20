@@ -10,6 +10,7 @@ import Register from './features/Regis';
 import FindFreelance from './features/Findfreelances';
 import FindJob from './features/FindJob';
 import ChatRoom from './features/ChatClient/component/chatRoom';
+import FreelanceForm from './features/Postfreelance';
 function App() {
   const location = useLocation();
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/develop" element={<Develop />} />
             <Route path="/findfreelance" element={<FindFreelance />} />
             <Route path="/findjob" element={<FindJob />} />
+            <Route path="/FreelanceForm" element={<FreelanceForm />} />
             <Route path="/chatroom" element={<ChatRoom /> }>testChat</Route>
           </Routes>
         </Container>
