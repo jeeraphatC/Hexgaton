@@ -57,7 +57,7 @@ public class AccountController {
     }
 
     @DeleteMapping("/list/{id}")
-    public ResponseEntity<String> delete(@PathVariable int id) {
+    public ResponseEntity<String> delete(@PathVariable long id) {
         if (!accountRepository.existsById(id)) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -67,7 +67,7 @@ public class AccountController {
     }
 
     @PatchMapping("/list/{id}")
-    public ResponseEntity<String> updateAccount(@PathVariable int id, @RequestBody AccountDTO updatedAccountDTO) {
+    public ResponseEntity<String> updateAccount(@PathVariable long id, @RequestBody AccountDTO updatedAccountDTO) {
         Optional<Account> optionalAccount = accountRepository.findById(id);
 
         if (optionalAccount.isPresent()) {
@@ -80,7 +80,17 @@ public class AccountController {
             if (updatedAccountDTO.getAccountname() != null) {
                 existingAccount.setAccountname(updatedAccountDTO.getAccountname());
             }
+            if (updatedAccountDTO.getNumberCard() != null) {
+                existingAccount.setNumberCard(updatedAccountDTO.getNumberCard());
+            }
 
+            if (updatedAccountDTO.getPassword() != null) {
+                existingAccount.setPassword(updatedAccountDTO.getPassword());
+            }
+
+            if (updatedAccountDTO.getFreelance() != null) {
+                existingAccount.setFreelance(updatedAccountDTO.getFreelance());
+            }
             // Save the updated account
             accountRepository.save(existingAccount);
 
@@ -89,5 +99,4 @@ public class AccountController {
             return new ResponseEntity<>("Account not found", HttpStatus.NOT_FOUND);
         }
     }
-
 }

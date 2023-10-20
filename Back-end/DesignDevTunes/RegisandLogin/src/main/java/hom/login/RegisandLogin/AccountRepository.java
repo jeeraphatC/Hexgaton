@@ -12,7 +12,7 @@ import freelance.service.freelanceservice.Account;
 
 @EnableJpaRepositories
 @Repository
-public interface AccountRepository extends CrudRepository<Account, Integer> {
+public interface AccountRepository extends CrudRepository<Account, Long> {
     Optional<Account> findOneByEmailAndPassword(String email, String password);
     List<Account>   findAll();
     Account findByEmail(String email);

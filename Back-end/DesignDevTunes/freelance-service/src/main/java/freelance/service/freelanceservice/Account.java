@@ -9,8 +9,8 @@ import javax.validation.constraints.NotEmpty;
 public class Account {
     @Id
     @Column(name = "account_id", length = 45)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int accountid;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long accountid;
 
     @Column(name = "account_name", length = 255)
     @NotEmpty
@@ -27,14 +27,14 @@ public class Account {
     @Column(name = "number_card", length = 13)
     private String numberCard;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "freelance_id", referencedColumnName = "id")
     private Freelance freelance;
-   
+
     public Account() {
     }
 
-    public Account(int accountid, String accountname, String email, String numberCard, String password) {
+    public Account(Long accountid, String accountname, String email, String numberCard, String password) {
         this.accountid = accountid;
         this.accountname = accountname;
         this.email = email;
@@ -43,7 +43,8 @@ public class Account {
         this.numberCard = numberCard;
     }
 
-        public Account(int accountid, String accountname, String email, String numberCard, String password,Freelance freelance) {
+    public Account(Long accountid, String accountname, String email, String numberCard, String password,
+            Freelance freelance) {
         this.accountid = accountid;
         this.accountname = accountname;
         this.email = email;
@@ -53,11 +54,11 @@ public class Account {
         this.freelance = freelance;
     }
 
-    public int getAccountid() {
+    public Long getAccountid() {
         return accountid;
     }
 
-    public void setAccountid(int accountid) {
+    public void setAccountid(Long accountid) {
         this.accountid = accountid;
     }
 
@@ -101,5 +102,4 @@ public class Account {
         this.freelance = freelance;
     }
 
-    
 }

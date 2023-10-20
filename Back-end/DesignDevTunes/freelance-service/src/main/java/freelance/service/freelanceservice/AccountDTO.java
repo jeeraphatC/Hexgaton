@@ -1,7 +1,7 @@
 package freelance.service.freelanceservice;
 
 public class AccountDTO {
-    private int accountid;
+    private Long accountid;
     private String accountname;
     private String email;
     private String password;
@@ -12,7 +12,7 @@ public class AccountDTO {
     public AccountDTO() {
     }
 
-    public AccountDTO(int accountid, String accountname, String email, String numberCard, String password) {
+    public AccountDTO(Long accountid, String accountname, String email, String numberCard, String password) {
         this.accountid = accountid;
         this.accountname = accountname;
         this.email = email;
@@ -20,11 +20,11 @@ public class AccountDTO {
         this.numberCard = numberCard;
     }
 
-    public int getAccountid() {
+    public Long getAccountid() {
         return accountid;
     }
 
-    public void setAccountid(int accountid) {
+    public void setAccountid(Long accountid) {
         this.accountid = accountid;
     }
 
@@ -60,18 +60,18 @@ public class AccountDTO {
         this.numberCard = numberCard;
     }
 
-    @Override
-    public String toString() {
-        return "AccountDTO [accountid=" + accountid + ", accountname=" + accountname + ", email=" + email
-                + ", password=" + password + "]";
-    }
-
     public Freelance getFreelance() {
         return freelance;
     }
 
     public void setFreelance(Freelance freelance) {
         this.freelance = freelance;
+    }
+
+    @Override
+    public String toString() {
+        return "AccountDTO [accountid=" + accountid + ", accountname=" + accountname + ", email=" + email
+                + ", password=" + password + "]";
     }
 
 }
