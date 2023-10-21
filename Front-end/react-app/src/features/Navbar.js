@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-
+import mlogo from './pic/mini_logo.png'
 function Navbar({ className }) {
   const [developmentHovered, setDevelopmentHovered] = useState(false);
   const [graphicHovered, setGraphicHovered] = useState(false);
@@ -65,7 +65,7 @@ function Navbar({ className }) {
 
   return (
     <header className={className}>
-      <Link to="/home" className="text">Logo</Link>
+      <Link to="/home" > <img src={mlogo} alt="โลโก้" className="min-logo" /></Link>
       <div
         onMouseEnter={handleDevelopmentMouseEnter}
         onMouseLeave={handleDevelopmentMouseLeave}
@@ -142,6 +142,11 @@ export default styled(Navbar)`
   justify-content: space-between;
   font-weight: bold;
 
+  .min-logo{
+    max-width:100px;
+    top: 0;
+    margin-top: -5px;
+  }
   .text {
     color: black;
     text-decoration: none;

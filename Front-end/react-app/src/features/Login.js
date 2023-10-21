@@ -101,13 +101,14 @@ Login.propTypes = {
 export default styled(Login)`
   max-width: 500px;
   margin: 0 auto;
-  padding: 4rem 0;
+ 
   justify-content: center;
   align-items: center;
 
  .container{
-  width:auto;
-  position: absolute;
+  display: flex;
+    justify-content: center;
+    padding:20px;
  }
 
 

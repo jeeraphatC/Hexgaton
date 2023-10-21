@@ -54,29 +54,7 @@ const GlobalStyle = createGlobalStyle`
     
   }
 
-  form button {
-    font-size: 1rem;
-    line-height: 1.5;
-
-    padding: 0.5rem 0.7rem;
-
-    cursor: pointer;
-    float: right;
-
-    color: #ffffff;
-    background-color: #28a745;
-
-    border-radius: 0.25rem;
-    border: none;
-  }
-
-  .UpdateForm__delete-button {
-    background: none;
-    color: #ea4f3e;
-
-    float: left;
-    padding: 0;
-  }
+ 
 
   
   
@@ -92,7 +70,7 @@ const GlobalStyle = createGlobalStyle`
   .containermt-4{
     display: flex;
     justify-content: center;
-    padding:100px;
+    padding:20px;
   }
   .card{
     width: 600px;
@@ -163,7 +141,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .svg5{
     margin-top: 300px;
-    margin-left: 1830px;
+    margin-left: 1420px;
   }
   .svg6{
     margin-top: 550px;
