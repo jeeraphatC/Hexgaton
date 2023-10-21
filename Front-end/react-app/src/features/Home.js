@@ -7,7 +7,7 @@ function Home({ className }) {
     <div className={className}>
       <h1>Welcome</h1>
       <p>
-        Hello samd;lmsalkdjksadl;ma;kldalknlknflkdnsalfn;as
+        Hello samd;lmsalkdjksadl;ma;kldalknlknflkdnsalfn;as<br/>
       </p>
     </div>
   );
