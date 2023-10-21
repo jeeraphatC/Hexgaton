@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class FindJob extends Component {
   state = {
@@ -25,8 +26,10 @@ class FindJob extends Component {
           {this.state.enterprises.map(enterprise => (
             <li key={enterprise.id}>
               <strong>Name:</strong> {enterprise.name}<br />
-              <strong>Location:</strong> {enterprise.location}<br />
+              <strong>Price:</strong> {enterprise.price}<br />
+              <strong>Time:</strong> {enterprise.time}<br />
               <strong>Description:</strong> {enterprise.description}<br />
+              <Link to={`/edit/${enterprise.id}`}>Edit</Link> {/* เพิ่มลิงก์ไปยังหน้า EditJob */}
             </li>
           ))}
         </ul>
