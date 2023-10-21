@@ -42,10 +42,6 @@ function Login({ className }) {
     <div className={className}>
       <div class="container">
         <div class="row">
-          <h2>Login</h2>
-          <hr />
-        </div>
-        <div class="row">
           <div class="col-sm-6">
 
             <div class="card">

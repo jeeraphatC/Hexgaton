@@ -1,19 +1,20 @@
 package freelance.service.freelanceservice;
 
+import java.util.List;
+
 public class AccountDTO {
-    private Long accountid;
+    private Long id;
     private String accountname;
     private String email;
     private String password;
     private String numberCard;
-
-    private Freelance freelance;
+    private List<Freelance> freelance;
 
     public AccountDTO() {
     }
 
-    public AccountDTO(Long accountid, String accountname, String email, String numberCard, String password) {
-        this.accountid = accountid;
+    public AccountDTO(Long id, String accountname, String email, String numberCard, String password) {
+        this.id = id;
         this.accountname = accountname;
         this.email = email;
         this.password = password;
@@ -21,11 +22,11 @@ public class AccountDTO {
     }
 
     public Long getAccountid() {
-        return accountid;
+        return id;
     }
 
-    public void setAccountid(Long accountid) {
-        this.accountid = accountid;
+    public void setAccountid(Long id) {
+        this.id = id;
     }
 
     public String getAccountname() {
@@ -59,19 +60,21 @@ public class AccountDTO {
     public void setNumberCard(String numberCard) {
         this.numberCard = numberCard;
     }
-
-    public Freelance getFreelance() {
+    public List<Freelance> getFreelance() {
         return freelance;
     }
 
-    public void setFreelance(Freelance freelance) {
+    public void setFreelance(List<Freelance> freelance) {
         this.freelance = freelance;
     }
 
+
+
     @Override
     public String toString() {
-        return "AccountDTO [accountid=" + accountid + ", accountname=" + accountname + ", email=" + email
+        return "AccountDTO [accountid=" + id + ", accountname=" + accountname + ", email=" + email
                 + ", password=" + password + "]";
     }
+
 
 }

@@ -1,11 +1,13 @@
 package freelance.service.freelanceservice;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 import javax.validation.constraints.NotEmpty;
 
 @Entity
-@Table(name = "S2account")
+@Table(name = "account")
 public class Account {
     @Id
     @Column(name = "id" , length = 45)
@@ -27,9 +29,11 @@ public class Account {
     @Column(name = "number_card", length = 13)
     private String numberCard;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "freelance_id", referencedColumnName = "id")
-    private Freelance freelance;
+  
+    
+    @OneToMany(mappedBy = "account", cascade = CascadeType.MERGE)
+    private List<Freelance> freelance;
+  
 
     public Account() {
     }
@@ -44,7 +48,7 @@ public class Account {
     }
 
     public Account(Long id, String accountname, String email, String numberCard, String password,
-            Freelance freelance) {
+            List<Freelance> freelance) {
         this.id = id;
         this.accountname = accountname;
         this.email = email;
@@ -93,13 +97,14 @@ public class Account {
     public void setNumberCard(String numberCard) {
         this.numberCard = numberCard;
     }
-
-    public Freelance getFreelance() {
+    public List<Freelance> getFreelance() {
         return freelance;
     }
 
-    public void setFreelance(Freelance freelance) {
+    public void setFreelance(List<Freelance> freelance) {
         this.freelance = freelance;
     }
+
+ 
 
 }

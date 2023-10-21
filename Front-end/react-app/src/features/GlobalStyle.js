@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 
 
-@font-face {
+   @font-face {
     font-family: 'Bebas Neue';
     src: url('/path-to-BebasNeueRegular.eot');
     src: url('/path-to-BebasNeueRegular.eot?#iefix') format('embedded-opentype'),
@@ -12,22 +12,23 @@ const GlobalStyle = createGlobalStyle`
          url('/path-to-BebasNeueRegular.svg') format('svg');
     font-weight: normal;
     font-style: normal;
-} 
+  }
+ 
+  
   body {
     margin: 0;
-    font-family: 'Bebas Neue', Arial, sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     
       text-decoration: none; 
-      width: 100%;
-  height: 100vh;
-  align-content: center;
-      
   
   }
+
     * {
   box-sizing: border-box;
   
     }
+
+
   a {
     color: inherit;
     text-decoration: none;
@@ -49,10 +50,35 @@ const GlobalStyle = createGlobalStyle`
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
 
-    width: auto;
+    width: 100%;
     
   }
 
+  form button {
+    font-size: 1rem;
+    line-height: 1.5;
+
+    padding: 0.5rem 0.7rem;
+
+    cursor: pointer;
+    float: right;
+
+    color: #ffffff;
+    background-color: #28a745;
+
+    border-radius: 0.25rem;
+    border: none;
+  }
+
+  .UpdateForm__delete-button {
+    background: none;
+    color: #ea4f3e;
+
+    float: left;
+    padding: 0;
+  }
+
+  
   
   .app-container {
     max-width: auto;
@@ -115,8 +141,11 @@ const GlobalStyle = createGlobalStyle`
     font-size:20px;
     font-weight: bold;
   }
+  .svg-container {
+    
+}
 .svg-container{
-  background-color  : red;
+    
 }
   svg{
   position:absolute;
@@ -157,9 +186,9 @@ const GlobalStyle = createGlobalStyle`
   }
     
   .btn-large {
-    width: 250px; 
-    height: 45px; 
-    font-size: 20px; 
+    width: 250px; /* กำหนดความกว้าง */
+    height: 45px; /* กำหนดความสูง */
+    font-size: 20px; /* กำหนดขนาดตัวอักษร */
   }
   
   `;

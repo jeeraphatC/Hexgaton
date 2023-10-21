@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import freelance.service.freelanceservice.Account;
 import freelance.service.freelanceservice.AccountDTO;
+import freelance.service.freelanceservice.Freelance;
 
 @RestController
 @CrossOrigin
@@ -73,7 +74,6 @@ public class AccountController {
         if (optionalAccount.isPresent()) {
             Account existingAccount = optionalAccount.get();
 
-            // Update the account fields as needed
             if (updatedAccountDTO.getEmail() != null) {
                 existingAccount.setEmail(updatedAccountDTO.getEmail());
             }
@@ -83,18 +83,30 @@ public class AccountController {
             if (updatedAccountDTO.getNumberCard() != null) {
                 existingAccount.setNumberCard(updatedAccountDTO.getNumberCard());
             }
-
             if (updatedAccountDTO.getPassword() != null) {
                 existingAccount.setPassword(updatedAccountDTO.getPassword());
             }
 
+            // Update associated Freelance entities if provided in the DTO
             if (updatedAccountDTO.getFreelance() != null) {
-                existingAccount.setFreelance(updatedAccountDTO.getFreelance());
+                List<Freelance> updatedFreelances = updatedAccountDTO.getFreelance();
+                existingAccount.getFreelance().clear(); // Clear existing associations
+
+                for (Freelance updatedFreelance : updatedFreelances) {
+                    // You may need to map the DTO fields to the entity fields
+                    Freelance newFreelance = new Freelance();
+                    newFreelance.setName(updatedFreelance.getName());
+                    newFreelance.setPrice(updatedFreelance.getPrice());
+                    newFreelance.setTime(updatedFreelance.getTime());
+                    newFreelance.setDescription(updatedFreelance.getDescription());
+                    existingAccount.getFreelance().add(newFreelance); // Add to the collection
+                }
             }
+
             // Save the updated account
             accountRepository.save(existingAccount);
 
-            return new ResponseEntity<>("Account updated successfully", HttpStatus.OK);
+            return new ResponseEntity<>("Account and Freelances updated successfully", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("Account not found", HttpStatus.NOT_FOUND);
         }

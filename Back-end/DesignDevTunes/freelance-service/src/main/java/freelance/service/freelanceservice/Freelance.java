@@ -22,7 +22,18 @@ public class Freelance {
     private String time;
     private String description;
 
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "account_id", referencedColumnName = "id")
+    private Account account;
     
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
     public Freelance() {
 
     }
