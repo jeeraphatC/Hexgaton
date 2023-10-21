@@ -8,9 +8,9 @@ import javax.validation.constraints.NotEmpty;
 @Table(name = "S2account")
 public class Account {
     @Id
-    @Column(name = "account_id", length = 45)
+    @Column(name = "id" , length = 45)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long accountid;
+    private Long id;
 
     @Column(name = "account_name", length = 255)
     @NotEmpty
@@ -34,8 +34,8 @@ public class Account {
     public Account() {
     }
 
-    public Account(Long accountid, String accountname, String email, String numberCard, String password) {
-        this.accountid = accountid;
+    public Account(Long id, String accountname, String email, String numberCard, String password) {
+        this.id = id;
         this.accountname = accountname;
         this.email = email;
 
@@ -43,9 +43,9 @@ public class Account {
         this.numberCard = numberCard;
     }
 
-    public Account(Long accountid, String accountname, String email, String numberCard, String password,
+    public Account(Long id, String accountname, String email, String numberCard, String password,
             Freelance freelance) {
-        this.accountid = accountid;
+        this.id = id;
         this.accountname = accountname;
         this.email = email;
 
@@ -55,11 +55,11 @@ public class Account {
     }
 
     public Long getAccountid() {
-        return accountid;
+        return id;
     }
 
-    public void setAccountid(Long accountid) {
-        this.accountid = accountid;
+    public void setAccountid(Long id) {
+        this.id = id;
     }
 
     public String getAccountname() {
