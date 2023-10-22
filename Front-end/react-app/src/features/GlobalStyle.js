@@ -322,6 +322,7 @@ a:active { text-decoration: none; }
     margin-left: 40%;
     margin-top: 27%;
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+  }
   .reviewname{
     font-size: 25px;
     position: absolute;
