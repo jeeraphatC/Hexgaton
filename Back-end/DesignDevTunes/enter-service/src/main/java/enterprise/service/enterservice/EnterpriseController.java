@@ -23,6 +23,11 @@ public class EnterpriseController {
         return enterpriseRepository.findById(id).orElse(null);
     }
 
+    @GetMapping("/type/{type}")
+    public List<Enterprise> findEnterprisesByType(@PathVariable String type) {
+        return enterpriseRepository.findByType(type);
+    }
+
     @PostMapping
     public Enterprise createEnterprise(@RequestBody Enterprise enterprise) {
         return enterpriseRepository.save(enterprise);
@@ -37,6 +42,7 @@ public class EnterpriseController {
             existingEnterprise.setPrice(updatedEnterprise.getPrice());
             existingEnterprise.setTime(updatedEnterprise.getTime());
             existingEnterprise.setDescription(updatedEnterprise.getDescription());
+            existingEnterprise.setType(updatedEnterprise.getType());
 
             return enterpriseRepository.save(existingEnterprise);
         }
@@ -61,6 +67,9 @@ public class EnterpriseController {
             }
             if (patchedEnterprise.getDescription() != null) {
                 existingEnterprise.setDescription(patchedEnterprise.getDescription());
+            }
+            if (patchedEnterprise.getType() != null) {
+                existingEnterprise.setType(patchedEnterprise.getType());
             }
 
             return enterpriseRepository.save(existingEnterprise);

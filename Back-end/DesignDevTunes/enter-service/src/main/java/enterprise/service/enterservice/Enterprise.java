@@ -15,16 +15,17 @@ public class Enterprise {
     private String price;
     private String time;
     private String description;
-    
+    private String type;
     public Enterprise() {
         
     }
-    public Enterprise(String id, String name, String price, String time, String description) {
+    public Enterprise(String id, String name, String price, String time, String description,String type) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.time = time;
         this.description = description;
+        this.type = type;
     }
     public String getId() {
         return id;
@@ -55,6 +56,12 @@ public class Enterprise {
     }
     public void setDescription(String description) {
         this.description = description;
+    }
+    public String getType() {
+        return type;
+    }
+    public void setType(String type) {
+        this.type = type;
     }
 
     

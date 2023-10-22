@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import { Container } from 'react-bootstrap';
 class PostJob extends Component {
   constructor(props) {
     super(props);
@@ -9,6 +9,7 @@ class PostJob extends Component {
       price: '',
       time: '',
       description: '',
+      type:' '
     };
   }
 
@@ -25,10 +26,11 @@ class PostJob extends Component {
       price: this.state.price,
       time: this.state.time,
       description: this.state.description,
+      type: this.state.type
     };
 
     // ทำ HTTP POST Request ไปยัง http://localhost:8080/enterprises ด้วย Axios
-    axios.post('http://localhost:8080/enterprises', jobData)
+    axios.post('http://localhost:8090/enterprises', jobData)
       .then((response) => {
         // ทำอะไรก็ตามที่คุณต้องการหลังจากส่งข้อมูลไปยังเซิร์ฟเวอร์
         console.log('Job posted successfully!', response.data);
@@ -41,6 +43,7 @@ class PostJob extends Component {
   render() {
     return (
       <div>
+        <Container>
         <h2>Post a Job</h2>
         <form onSubmit={this.handleSubmit}>
           <div>
@@ -78,8 +81,18 @@ class PostJob extends Component {
               onChange={this.handleInputChange}
             />
           </div>
+          <div>
+            <label>Type:</label>
+            <input
+              type="text"
+              name="type"
+              value={this.state.type}
+              onChange={this.handleInputChange}
+            />
+          </div>
           <button type="submit">Post Job</button>
         </form>
+        </Container>
       </div>
     );
   }
