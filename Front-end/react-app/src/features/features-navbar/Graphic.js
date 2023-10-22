@@ -31,7 +31,7 @@ const Graphic = ({ className }) => {
          
           {enterprises.map((enterprise, index) => (
               <Col md={4} key={index}>
-                <Card style={{ padding: 20, width: 400 }}>
+                <Card style={{ padding: 20, width: 400 , marginBottom : 20 }}>
                   <Card.Body>
                     <Card.Img variant="top" src={enterprise.image} />
                     <br />

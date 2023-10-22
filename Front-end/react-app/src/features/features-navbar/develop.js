@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Button, Card, Container, Row, Col } from 'react-bootstrap'
-import { useParams } from 'react-router-dom';
+
 const Develop = ({ className }) => {
   const [enterprises, setEnterprises] = useState([]);
 
@@ -30,7 +30,7 @@ const Develop = ({ className }) => {
          
           {enterprises.map((enterprise, index) => (
               <Col md={4} key={index}>
-                <Card style={{ padding: 20, width: 400 }}>
+                <Card style={{ padding: 20, width: 400, marginBottom : 20 }}>
                   <Card.Body>
                     <Card.Img variant="top" src={enterprise.image} />
                     <br />
