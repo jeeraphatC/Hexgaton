@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
-import bg2 from "./pic/bg2.jpg";
-import user1 from "./pic/user.png";
-import star from "./pic/star.png";
+import bg2 from "../pic/bg2.jpg";
+import user1 from "../pic/user.png";
+import star from "../pic/star.png";
 
 function Fprofile({ className }) {
   return (

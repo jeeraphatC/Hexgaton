@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import mlogo from "./pic/mini_logo.png";
-import blogo from "./pic/big_logo.png";
+import mlogo from "../pic/mini_logo.png";
+import blogo from "../pic/big_logo.png";
 
 function Register({ className }) {
   const [accountname, setAccountname] = useState("");

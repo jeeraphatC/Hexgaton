@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
-import blogo from "./pic/big_logo.png";
+import blogo from "../pic/big_logo.png";
 function Login({ className }) {
 
   const [email, setEmail] = useState('');
