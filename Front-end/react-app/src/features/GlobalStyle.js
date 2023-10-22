@@ -355,7 +355,11 @@ a:active { text-decoration: none; }
     color:#FFC107;
     font-weight: bold;
   }
-
+  .custom-button:hover {
+    background-color: cyan; 
+    color: white; 
+    border-color: darkblue; 
+  }
   `;
 
 export default GlobalStyle;

@@ -20,10 +20,15 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
     }
 
     @GetMapping("/{id}")
-    public Freelance getFreelanceById(@PathVariable Long id) { // เปลี่ยนชื่อเมทอดจาก getEnterpriseById เป็น
-                                                               // getFreelanceById
+    public Freelance getFreelanceById(@PathVariable Long id) { 
         return freelanceRepository.findById(id).orElse(null);
     }
+
+    @GetMapping("/type/{type}")
+    public List<Freelance> findFreelanceByType(@PathVariable String type) {
+        return freelanceRepository.findByType(type);
+    }
+
 
     @PostMapping
     public Freelance createFreelance(@RequestBody Freelance freelance) { // เปลี่ยนชื่อเมทอดจาก createEnterprise เป็น

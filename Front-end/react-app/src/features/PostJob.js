@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
+
+
 class PostJob extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +23,16 @@ class PostJob extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
+    if (
+      this.state.name === '' ||
+      this.state.price === '' ||
+      this.state.time === '' ||
+      this.state.description === '' ||
+      this.state.type.trim() === ''
+    ) {
+      alert('Please fill in all the required fields.');
+      return;
+    }
     const jobData = {
       name: this.state.name,
       price: this.state.price,
@@ -34,6 +46,13 @@ class PostJob extends Component {
       .then((response) => {
         // ทำอะไรก็ตามที่คุณต้องการหลังจากส่งข้อมูลไปยังเซิร์ฟเวอร์
         console.log('Job posted successfully!', response.data);
+        this.setState({
+          name: '',
+          price: '',
+          time: '',
+          description: '',
+          type: '',
+        });
       })
       .catch((error) => {
         console.error('Error posting job:', error);
@@ -42,7 +61,7 @@ class PostJob extends Component {
 
   render() {
     return (
-      <div>
+      <div >
         <Container>
           <h2>Post a Job</h2>
           <form onSubmit={this.handleSubmit}>
@@ -58,7 +77,7 @@ class PostJob extends Component {
             <div>
               <label>Price:</label>
               <input
-                type="text"
+                type="number" min="1"  
                 name="price"
                 value={this.state.price}
                 onChange={this.handleInputChange}
@@ -67,7 +86,7 @@ class PostJob extends Component {
             <div>
               <label>Time:</label>
               <input
-                type="text"
+                type="date"
                 name="time"
                 value={this.state.time}
                 onChange={this.handleInputChange}
@@ -88,17 +107,22 @@ class PostJob extends Component {
                 value={this.state.type}
                 onChange={this.handleInputChange}
               >
+                <option value=" ">Select Type</option>
                 <option value="develop">Develop</option>
                 <option value="graphic">Graphic</option>
                 <option value="music">Music</option>
               </select>
             </div>
-            <button type="submit">Post Job</button>
+            <div style={{ textAlign: "center" }}>
+              <Button variant="success" type="submit" className="custom-button" style={{width : 150}}>Submit</Button>
+            </div>
           </form>
         </Container>
       </div>
     );
   }
 }
+
+
 
 export default PostJob;

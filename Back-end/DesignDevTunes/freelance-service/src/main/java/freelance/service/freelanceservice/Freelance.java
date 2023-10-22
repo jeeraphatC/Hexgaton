@@ -20,6 +20,7 @@ public class Freelance {
     private String price;
     private String time;
     private String description;
+    private String type;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
@@ -37,12 +38,13 @@ public class Freelance {
 
     }
 
-    public Freelance(Long id, String name, String price, String time, String description) {
+    public Freelance(Long id, String name, String price, String time, String description,String type) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.time = time;
         this.description = description;
+        this.type=type;
     }
 
     public Long getId() {
@@ -83,6 +85,14 @@ public class Freelance {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
 }

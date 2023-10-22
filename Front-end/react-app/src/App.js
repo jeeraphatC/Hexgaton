@@ -18,6 +18,7 @@ import Profile from './features/Fprofile';
 import Options from './features/Options';
 import Graphic from './features/features-navbar/Graphic';
 import Music from './features/features-navbar/Music';
+
 function App() {
   const location = useLocation();
 
