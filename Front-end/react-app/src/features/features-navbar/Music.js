@@ -5,12 +5,12 @@ import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Button, Card, Container, Row, Col } from 'react-bootstrap'
 import { useParams } from 'react-router-dom';
-const Develop = ({ className }) => {
+const Music = ({ className }) => {
   const [enterprises, setEnterprises] = useState([]);
 
   useEffect(() => {
     // Make an API call when the component mounts
-    axios.get('http://localhost:8090/enterprises/type/develop')
+    axios.get('http://localhost:8090/enterprises/type/music')
       .then(response => {
         setEnterprises(response.data);
       })
@@ -24,7 +24,7 @@ const Develop = ({ className }) => {
       <div >
         <Container style={{ padding: 20, marginTop: 20 }}>
           <br />
-          <h3 style={{ textAlign: 'center' }}>DO you need Develop?</h3>
+          <h3 style={{ textAlign: 'center' }}>DO you need Music?</h3>
           <br />
           <Row>
          
@@ -39,7 +39,6 @@ const Develop = ({ className }) => {
                     <Card.Text>{enterprise.time}</Card.Text>
                     <Card.Text>{enterprise.description}</Card.Text>
                     <Card.Text>{enterprise.type}</Card.Text>
-                    
                   </Card.Body>
                 </Card>
               </Col>
@@ -53,11 +52,11 @@ const Develop = ({ className }) => {
 
 
 
-Develop.propTypes = {
+Music.propTypes = {
   className: PropTypes.string.isRequired
 };
 
-export default styled(Develop)`
+export default styled(Music)`
 width: 100%;
   margin-top: 50px;
   background-color: azure;

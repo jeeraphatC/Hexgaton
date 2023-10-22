@@ -16,7 +16,8 @@ import EditJob from './features/EditJob';
 import EditFreelance from './features/EditFreelance';
 import Profile from './features/Fprofile';
 import Options from './features/Options';
-
+import Graphic from './features/features-navbar/Graphic';
+import Music from './features/features-navbar/Music';
 function App() {
   const location = useLocation();
 
@@ -33,6 +34,8 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/develop" element={<Develop />} />
+            <Route path="/graphic" element={<Graphic />} />
+            <Route path="/music" element={<Music />} />
             <Route path="/findfreelance" element={<FindFreelance />} />
             <Route path="/findjob" element={<FindJob />} />
             <Route path="/FreelanceForm" element={<FreelanceForm />} />
