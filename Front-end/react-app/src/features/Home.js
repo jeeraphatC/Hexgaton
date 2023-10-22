@@ -235,9 +235,11 @@ color: #FFFFFF;
   text-align: center;
 }
 h4{
+  margin-top: 20px;
   margin-right: 50px;
   font-size:20px; 
   color: #FFFFFF;
+ 
 }
 h4:hover{
   color: #0196FC;
