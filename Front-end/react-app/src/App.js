@@ -18,7 +18,7 @@ import Profile from './features/Freelance/Fprofile';
 import Options from './features/Options';
 import Graphic from './features/features-navbar/Graphic';
 import Music from './features/features-navbar/Music';
-
+import Pro from './features/Freelance/Pro';
 function App() {
   const location = useLocation();
 
@@ -46,7 +46,7 @@ function App() {
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Options" element={<Options />} />
             <Route path="/ChatRoom" element={<ChatRoom /> }></Route>
-            
+            <Route path="/fix" element={<Pro /> }></Route>
           </Routes>
         </Container>  
       

@@ -206,6 +206,13 @@ a:active { text-decoration: none; }
     margin-left: 20%;
     top: 20%;
   }
+  .c1-fix{
+    width: 293px;
+    height: 700px;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+  }
   .user1{
     max-width:200px;
     margin-top:30px;

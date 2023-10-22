@@ -62,8 +62,9 @@ class PostJob extends Component {
   render() {
     return (
       <div >
-        <Container>
-          <h2>Post a Job</h2>
+        <Container style={{width : 500}}> 
+          
+          <h2 style={{marginTop : 60}}>Post a Job</h2>
           <form onSubmit={this.handleSubmit}>
             <div>
               <label>Name:</label>

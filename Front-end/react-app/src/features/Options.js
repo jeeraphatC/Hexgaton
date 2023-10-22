@@ -5,7 +5,7 @@ import freelance from "./pic/freelance.png";
 import enter from "./pic/enter.png";
 import chat from "./pic/chat.png";
 import workpro from "./pic/workpro.png";
-
+import { Container } from 'react-bootstrap';
 
 
 
@@ -13,7 +13,9 @@ import workpro from "./pic/workpro.png";
 
 function Options({ className }) {
   return (
+    
     <div className={className}>
+      <Container style={{marginTop: 60}}>
       <h1>Option</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id bibendum nulla. Sed suscipit urna non posuere volutpat.</p>
       <div className="optioncontainer">
@@ -52,6 +54,7 @@ function Options({ className }) {
         </div>
       </a>
       </div>
+      </Container>
     </div>
   );
 }
@@ -64,24 +67,17 @@ export default styled(Options)`
   text-align: center;
   h1{
     font-size: 45px;
-    position: absolute;
     font-weight: bold;
-    margin-top: 5%;
-    margin-left: 15%;
-    
   }
   h3{
     font-size: 25px;
     font-weight: bold;
     color:#FFF;
     margin: 20px;
-    textdecoration: none;
+    text-decoration: none;
   }
   p{
     font-size: 20px;
-    position: absolute;
-    margin-top: 8.5%;
-    margin-left: 15%;
     color:#959595;
   }
   .optioncontainer{
@@ -90,7 +86,7 @@ export default styled(Options)`
     background: #FFF;
     position: absolute;
     display: flex;
-    margin: 200px;
+    
   justify-content: left;
   flex-wrap:wrap;
    }
