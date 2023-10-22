@@ -7,21 +7,59 @@ import astronaut from "./pic/astronaut.png";
 function Home({ className }) {
   return (
     <div className={className}>
-      <div className='bg0'>
-      <h1>Do you have a job?</h1>
-      <p className='fonts'>
-      Let <span className='fonts01'>DesignDevTunes</span> help you to find your job.<br />
-      </p>
-      </div>
-      <div className='highlight'>
-      <span className='text-highlight'>LOGODESIG</span> 
-      <span className='text-highlight-2'>Popular jobs right now</span> 
-      <button className='button-take'>Take job</button>
-      <button className='button-hire'>HIRE A FREELANCE</button>
-      </div>
-      <div className='contain'>
-      </div>
-      <div className='footer'>
+
+
+      <div className="homebg">
+        <div className="mini">
+          <a href="/develop">
+            <h4>Logo design</h4>
+          </a>
+          <a href="/develop">
+            <h4>Sticker design</h4>
+          </a>
+          <a href="/develop">
+            <h4>ChatClientharacter design</h4>
+          </a>
+          <a href="/develop">
+            <h4>Banner advertising design</h4>
+          </a>
+          <a href="/develop">
+            <h4>Draw cartoons</h4>
+          </a>
+          <a href="/develop">
+            <h4>3D model</h4>
+          </a>
+          <a href="/develop">
+            <h4>Web development</h4>
+          </a>
+          <a href="/develop">
+            <h4>Game development</h4>
+          </a>
+          <a href="/develop">
+            <h4>Making chatbotS</h4>
+          </a>
+          <a href="/develop">
+            <h4>Beat</h4>
+          </a>
+
+          <a href="/develop">
+            <h4>Mobile App</h4>
+          </a>
+        </div>
+        <h1>Do you have a job?</h1>
+        <h3>
+          Let{" "}
+          <p1>
+            Design<p2>Dev</p2>Tunes
+          </p1>{" "}
+          help you to find your job.
+        </h3>
+        <img src={astronaut} alt="" className="astronaut" />
+        <div className="searchbar">
+          <div className="bluebar">
+            <img src={search} alt="" className="searchlogo" />
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -32,132 +70,108 @@ Home.propTypes = {
 };
 
 export default styled(Home)`
-
-text-align: center;
-position: absolute;
-
-width: 100%;
-color: white;
-.bg0{
-  width: 100%;
-  height: 500px;
-left: 0px;
-top: -40px;
-background: #242424;
-color: white;
-
-}
-/* Vector 2 */
-.highlight{
-  /* --mask:
-    radial-gradient(496.41px at 50% 666.00px,#000 99%,#0000 101%) calc(50% - 444px) 0/888px 51% repeat-x,
-    radial-gradient(496.41px at 50% -444px,#0000 99%,#000 101%) 50% 222px/888px calc(51% - 222px) repeat-x,
-    radial-gradient(496.41px at 50% calc(100% - 666.00px),#000 99%,#0000 101%) 50% 100%/888px 51% repeat-x,
-    radial-gradient(496.41px at 50% calc(100% + 444.00px),#0000 99%,#000 101%) calc(50% - 444px) calc(100% - 222px)/888px calc(51% - 222px) repeat-x;
-  -webkit-mask: var(--mask);
-          mask: var(--mask); */
-
-width: 100%;
-height: 1000px;
-top: 250px;
-background: #D9D9D9;
-
-}
-
-.contain{
-  /* --mask:
-    radial-gradient(496.41px at 50% 666.00px,#000 99%,#0000 101%) calc(50% - 444px) 0/888px 51% repeat-x,
-    radial-gradient(496.41px at 50% -444px,#0000 99%,#000 101%) 50% 222px/888px calc(51% - 222px) repeat-x,
-    radial-gradient(496.41px at 50% calc(100% - 666.00px),#000 99%,#0000 101%) 50% 100%/888px 51% repeat-x,
-    radial-gradient(496.41px at 50% calc(100% + 444.00px),#0000 99%,#000 101%) calc(50% - 444px) calc(100% - 222px)/888px calc(51% - 222px) repeat-x;
-  -webkit-mask: var(--mask);
-          mask: var(--mask); */
-position: absolute;
-width:100%;
-height: 1000px;
-left: -2.71px;
-top: 700px;
-background: #D9D9D9;
-
-
-}
-
-.footer{
-position: absolute;
-width: 100%;
-height: 200px;
-
-top: 2000px;
-
+	
+  top: 2800px;
 background: #0196FC;
-
-}
 
 .fonts{
  
   color: #0196FC;
+	
+  letter-spacing: -0.011em;
+color: #FFFFFF;
+}
+.homebg{
+  background: #242424;
+  height: 600px;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  text-align: center;
+}
+h4{
+  margin-right: 50px;
+  font-size:20px; 
+  color: #FFFFFF;
+}
+h4:hover{
+  color: #0196FC;
+}
+.mini{
+  width: 90%;
+  justify-content: center;
+  margin: auto;
+  position: absolute;
+  color: white;
+  top: 12%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  font-weight: bold;
+  font-size:80px;
+  display: flex;
 }
 
-.fonts01{
+h1 {
+  margin: auto;
+  position: absolute;
+  color: white;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  font-weight: bold;
+  font-size:80px;
+}
+h3 {
+  margin: auto;
+  margin-top: 15px;
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  font-weight: bold;
+  font-size:30px;
+}
+p1{
+  color: #0196FC;
+}
+p2{
   color: #25DAF9;
 }
-
-
-
-.button-take{
-/* Component 21 */
-
-position: absolute;
-width: 345px;
-height: 79px;
-left: 450px;
-top: 1101px;
-background: #0196FC;
-
-border-radius: 40px;
-position: absolute;
-font-family: 'Bebas Neue';
-font-style: normal;
-font-weight: 400;
-font-size: 40px;
-line-height: 150%;
-/* identical to box height, or 60px */
-letter-spacing: -0.011em;
-
-color: #FFFFFF;
-
-
+.searchbar {
+  background: #FFF;
+  height: 70px;
+  width: 350px;
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50px;
 }
-.button-hire{
-
-/* Component 22 */
-
-position: absolute;
-width: 345px;
-height: 79px;
-left: 450px;
-top: 1200px;
-
-
-
-/* Rectangle 18 */
-
-position: absolute;
-background: #242424;
-border-radius: 40px;
-
-
-font-family: 'Bebas Neue';
-font-style: normal;
-font-weight: 400;
-font-size: 40px;
-line-height: 150%;
-/* identical to box height, or 60px */
-letter-spacing: -0.011em;
-
-color: #FFFFFF;
-
-
+.bluebar{
+ 
+  height: 70px;
+  width: 90px;
+  position: absolute;
+  border-radius: 0px 50px 50px 0px;
+  background: #0196FC;
+  left: 75%;
+}
+.searchlogo{
+  max-width: 50px;
+max-height: 50px;
+margin: 10px;
+}
+.astronaut{
+  max-width: 150px;
+max-height: 150px;
+top: 35%;
+  left: 80%;
+  position: absolute;
+  transition: all 0.3s;
+}
+.astronaut:hover{
+  top: 30%;
 }
 
-`;
+ `;
