@@ -9,7 +9,7 @@ import Develop from './features/features-navbar/develop';
 import Register from './features/Regis';
 import FindFreelance from './features/Findfreelances';
 import FindJob from './features/FindJob';
-import ChatRoom from './features/ChatClient/component/chatRoom';
+import ChatRoom from './features/chatRoom';
 import FreelanceForm from './features/Postfreelance';
 import PostJob from './features/PostJob';
 import EditJob from './features/EditJob';
@@ -41,7 +41,7 @@ function App() {
             <Route path="/editfreelance/:id" element={<EditFreelance />} />
             <Route path="/Profile" element={<Profile />} />
             <Route path="/Options" element={<Options />} />
-            <Route path="/chatroom" element={<ChatRoom /> }>testChat</Route>
+            <Route path="/ChatRoom" element={<ChatRoom /> }></Route>
             
           </Routes>
         </Container>  

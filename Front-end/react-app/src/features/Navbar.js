@@ -7,6 +7,7 @@ import { useLocation } from "react-router-dom";
 import mlogo from "./pic/mini_logo.png";
 import ologo from "./pic/option.png";
 import chat from "./pic/chat.png";
+
 function Navbar({ className }) {
   const [developmentHovered, setDevelopmentHovered] = useState(false);
   const [graphicHovered, setGraphicHovered] = useState(false);
