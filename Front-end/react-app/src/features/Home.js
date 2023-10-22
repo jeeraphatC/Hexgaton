@@ -1,6 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled from "styled-components";
+import search from "./pic/search.png";
+import astronaut from "./pic/astronaut.png";
 
 function Home({ className }) {
   return (
@@ -12,10 +14,12 @@ function Home({ className }) {
       </p>
       </div>
       <div className='highlight'>
-      Let <span className='fonts01'>DesignDevTunes</span> help you to find your job.<br />
+      <span className='text-highlight'>LOGODESIG</span> 
+      <span className='text-highlight-2'>Popular jobs right now</span> 
+      <button className='button-take'>Take job</button>
+      <button className='button-hire'>HIRE A FREELANCE</button>
       </div>
       <div className='contain'>
-        Let <span className='fonts01'>DesignDevTunes</span> help you to find your job.<br />
       </div>
       <div className='footer'>
       </div>
@@ -24,7 +28,7 @@ function Home({ className }) {
 }
 
 Home.propTypes = {
-  className: PropTypes.string.isRequired
+  className: PropTypes.string.isRequired,
 };
 
 export default styled(Home)`
@@ -88,10 +92,7 @@ top: 2000px;
 background: #0196FC;
 
 }
-h1{
-  margin-top: 50px;
-  padding: 20px;
-}
+
 .fonts{
  
   color: #0196FC;
@@ -102,5 +103,61 @@ h1{
 }
 
 
+
+.button-take{
+/* Component 21 */
+
+position: absolute;
+width: 345px;
+height: 79px;
+left: 450px;
+top: 1101px;
+background: #0196FC;
+
+border-radius: 40px;
+position: absolute;
+font-family: 'Bebas Neue';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 150%;
+/* identical to box height, or 60px */
+letter-spacing: -0.011em;
+
+color: #FFFFFF;
+
+
+}
+.button-hire{
+
+/* Component 22 */
+
+position: absolute;
+width: 345px;
+height: 79px;
+left: 450px;
+top: 1200px;
+
+
+
+/* Rectangle 18 */
+
+position: absolute;
+background: #242424;
+border-radius: 40px;
+
+
+font-family: 'Bebas Neue';
+font-style: normal;
+font-weight: 400;
+font-size: 40px;
+line-height: 150%;
+/* identical to box height, or 60px */
+letter-spacing: -0.011em;
+
+color: #FFFFFF;
+
+
+}
 
 `;

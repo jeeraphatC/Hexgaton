@@ -75,7 +75,7 @@ function Register({ className }) {
       <div class="svg-container">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="1100"
+          width="150"
           height="150"
           viewBox="0 0 156 150"
           fill="none"
@@ -85,8 +85,8 @@ function Register({ className }) {
         </svg>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="132"
-          height="127"
+          width="150"
+          height="150"
           viewBox="0 0 132 127"
           fill="none"
           class="svg3"
@@ -148,7 +148,9 @@ function Register({ className }) {
       </div>
 
       <div className="app-container">
-        <img src={mlogo} alt="โลโก้" className="min-logo" />
+      <a href="/home">
+        <img src={mlogo} alt="" className="homelogo" />
+      </a>
       </div>
       <div class="containermt-4">
         <div class="card">
