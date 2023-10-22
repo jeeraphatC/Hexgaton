@@ -14,6 +14,9 @@ import FreelanceForm from './features/Postfreelance';
 import PostJob from './features/PostJob';
 import EditJob from './features/EditJob';
 import EditFreelance from './features/EditFreelance';
+import Profile from './features/Fprofile';
+import Options from './features/Options';
+
 function App() {
   const location = useLocation();
 
@@ -36,9 +39,12 @@ function App() {
             <Route path="/Postjob" element={<PostJob />} />
             <Route path="/edit/:id" element={<EditJob />} />
             <Route path="/editfreelance/:id" element={<EditFreelance />} />
+            <Route path="/Profile" element={<Profile />} />
+            <Route path="/Options" element={<Options />} />
             <Route path="/chatroom" element={<ChatRoom /> }>testChat</Route>
+            
           </Routes>
-        </Container>
+        </Container>  
       
     </>
   );

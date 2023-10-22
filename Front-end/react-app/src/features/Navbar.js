@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import { useLocation } from 'react-router-dom';
-import mlogo from './pic/mini_logo.png'
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
+import mlogo from "./pic/mini_logo.png";
+import ologo from "./pic/option.png";
+import chat from "./pic/chat.png";
 function Navbar({ className }) {
   const [developmentHovered, setDevelopmentHovered] = useState(false);
   const [graphicHovered, setGraphicHovered] = useState(false);
   const [musicHovered, setMusicHovered] = useState(false);
-  const [nameAccount, setNameAccount] = useState('Guest');
+  const [nameAccount, setNameAccount] = useState("Guest");
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
 
   const handleDevelopmentMouseEnter = () => {
@@ -35,18 +37,21 @@ function Navbar({ className }) {
   };
 
   const location = useLocation();
-  const email = location.state?.email || 'Guest';
+  const email = location.state?.email || "Guest";
 
   useEffect(() => {
-    if (email !== 'Guest') {
+    if (email !== "Guest") {
       // Fetch the list of accounts
-      axios.get('http://localhost:8085/api/v1/accounts/list')
+      axios
+        .get("http://localhost:8085/api/v1/accounts/list")
         .then((response) => {
           // Assuming the response data is an array of accounts
           const accounts = response.data;
 
           // Find the account with the specified email
-          const accountWithMatchingEmail = accounts.find((account) => account.email === email);
+          const accountWithMatchingEmail = accounts.find(
+            (account) => account.email === email
+          );
 
           if (accountWithMatchingEmail) {
             // If the account exists, set its accountname to the state
@@ -54,11 +59,11 @@ function Navbar({ className }) {
             setIsLoggedIn(true); // Set login status to true
           } else {
             // Handle the case where no matching account is found
-            setNameAccount('Guest');
+            setNameAccount("Guest");
           }
         })
         .catch((error) => {
-          console.error('Error fetching accounts:', error);
+          console.error("Error fetching accounts:", error);
         });
     }
   }, [email]);
@@ -66,12 +71,15 @@ function Navbar({ className }) {
   return (
     <header className={className}>
       <Link to="/home" > <img src={mlogo} alt="โลโก้" className="min-logo" /></Link>
+
+      
+      
       <div
         onMouseEnter={handleDevelopmentMouseEnter}
         onMouseLeave={handleDevelopmentMouseLeave}
-        className={`text ${developmentHovered ? 'hovered' : ''}`}
+        className={`text ${developmentHovered ? "hovered" : ""}`}
       >
-        <Link to="/develop">Development</Link>
+        <Link to="/develop" className="develop">Development</Link>
         {developmentHovered && (
           <div className="submenu">
             <Link to="/web">Web</Link>
@@ -84,7 +92,7 @@ function Navbar({ className }) {
       <div
         onMouseEnter={handleGraphicMouseEnter}
         onMouseLeave={handleGraphicMouseLeave}
-        className={`text ${graphicHovered ? 'hovered' : ''}`}
+        className={`text ${graphicHovered ? "hovered" : ""}`}
       >
         <Link to="/graphic">Graphic</Link>
         {graphicHovered && (
@@ -102,22 +110,28 @@ function Navbar({ className }) {
       <div
         onMouseEnter={handleMusicMouseEnter}
         onMouseLeave={handleMusicMouseLeave}
-        className={`text ${musicHovered ? 'hovered' : ''}`}
+        className={`text ${musicHovered ? "hovered" : ""}`}
       >
-        <Link to="/music">Music</Link>
+        <Link to="/music" >Music</Link>
         {musicHovered && (
           <div className="submenu">
             <Link to="/beat">Beat</Link>
           </div>
         )}
       </div>
-
-      <Link className="picture">pic</Link>
-      <Link className="picture1">pic</Link>
+      <a href="/options">
+        <img src={ologo} alt="" className="ologo" />
+      </a>
+      <a href="/chatroom">
+        <img src={chat} alt="" className="ologo" />
+      </a>
+      
       {isLoggedIn ? ( // Conditionally render "Sign-up" link
-        <Link  className="text">{nameAccount}</Link>
+        <Link className="text">{nameAccount}</Link>
       ) : (
-        <Link to="/register" className="text1">Sign-up</Link>
+        <Link to="/register" className="text1">
+          Sign-up
+        </Link>
       )}
     </header>
   );
@@ -128,6 +142,16 @@ Navbar.propTypes = {
 };
 
 export default styled(Navbar)`
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
   height: 48px;
   width: 100%;
   background-color: #ffffff;
@@ -147,43 +171,48 @@ export default styled(Navbar)`
     top: 0;
     margin-top: -5px;
   }
+
+  
   .text {
     color: black;
-    text-decoration: none;
     padding: 10px;
     transition: background-color 0.3s, color 0.3s;
+    transition: all 0.2s;
   }
- 
+
   .music {
     margin-right: 300px;
     text-decoration: none;
     padding: 10px;
     transition: background-color 0.3s, color 0.3s;
+    transition: all 0.2s;
   }
   .picture {
     margin-right: -100px;
     text-decoration: none;
     padding: 10px;
     transition: background-color 0.3s, color 0.3s;
+    transition: all 0.2s;
   }
   .picture1 {
     margin-right: -50px;
     text-decoration: none;
     padding: 10px;
     transition: background-color 0.3s, color 0.3s;
+    transition: all 0.2s;
   }
   .text:hover,
   .music:hover,
   .picture:hover,
   .picture1:hover {
-    background-color: black;
+    background-color: #0196FC;
     color: white;
   }
-  
+
   .text.hovered {
     position: relative;
   }
-  
+
   .submenu {
     display: none;
     position: absolute;
@@ -192,7 +221,7 @@ export default styled(Navbar)`
     background-color: white;
     border: 1px solid #dee2e6;
   }
-  
+
   .text.hovered .submenu {
     width: 180px;
     display: block;
@@ -204,8 +233,18 @@ export default styled(Navbar)`
     color: black;
     text-decoration: none;
   }
-  
+
   .submenu a:hover {
-    background-color: #f8f9fa;
+    background-color: #0196FC;
+    color: #FFF;
+  }
+
+  .ologo{
+    max-width: 30px;
+    
+  }
+  
+  .develop{
+    cursor: pointer;
   }
 `;
