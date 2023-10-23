@@ -4,14 +4,18 @@ import SockJS from 'sockjs-client';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-
+import { Cookies, useCookies } from 'react-cookie';
+import getCookies from './hook/getCookies';
+import styled from 'styled-components';
 var stompClient =null;
 const ChatRoom = () => {
+    const [cookies, setCookie, removeCookie] = useCookies();
     const [privateChats, setPrivateChats] = useState(new Map());     
     const [publicChats, setPublicChats] = useState([]); 
     const [tab,setTab] =useState("CHATROOM");
     const [nameAccount, setNameAccount] = useState('guest');
     const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [username, setUsername] = useState('');
     const [userData, setUserData] = useState({
         username: '',
         receivername: '',
@@ -22,14 +26,21 @@ const ChatRoom = () => {
       const location = useLocation();
       const email = location.state?.email || 'guest';
 
+
+      useEffect(() => {
+        // Get the username from the cookie
+        userData.username = getCookies('username');
+        if (username) {
+          setUserData.username(username);
+        }
+      }, [userData.username]);
     //   useEffect(() => {
     //     console.log(userData);
     //     axios.get('http://localhost:8085/api/v1/accounts/list')
     //     .then((response) => {
     //     const account = response.data ;
     //     const accountDataMatch = account.find((account) => account.email === email);
-        
-        
+
     //             // setNameAccount(accountDataMatch.);
     //             setNameAccount(accountDataMatch.accountname);
     //             setIsLoggedIn(true);
@@ -200,6 +211,7 @@ const ChatRoom = () => {
         
         <div className="member-list">
                 <ul>
+                <h1>Welcome to the Chat Room, {userData.username}!</h1>
                     {[...privateChats.keys()].map((name,index)=>(
                         <li onClick={()=>{setTab(name)}} className={`member ${tab===name && "active"}`} key={index}>{name}</li>
                     )).filter((name)=>{
@@ -260,4 +272,105 @@ const ChatRoom = () => {
     )
 }
 
-export default ChatRoom ;
+export default  styled(ChatRoom)`
+
+.container{
+  position: relative;
+}
+
+.register{
+  position: fixed;
+  padding:30px;
+  box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.034),0 6.7px 5.3px rgba(0, 0, 0, 0.048),0 12.5px 10px rgba(0, 0, 0, 0.06),0 22.3px 17.9px rgba(0, 0, 0, 0.072),0 41.8px 33.4px rgba(0, 0, 0, 0.086),0 100px 80px rgba(0, 0, 0, 0.12);
+  top:35%;
+  left:32%;
+  display: flex;
+  flex-direction: row;
+}
+.chat-box{
+  box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.034),0 6.7px 5.3px rgba(0, 0, 0, 0.048),0 12.5px 10px rgba(0, 0, 0, 0.06),0 22.3px 17.9px rgba(0, 0, 0, 0.072),0 41.8px 33.4px rgba(0, 0, 0, 0.086),0 100px 80px rgba(0, 0, 0, 0.12);
+  margin:40px 50px;
+  height: 600px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+}
+
+.member-list{
+  width: 20%;
+}
+
+.chat-content{
+  width:80%;
+  margin-left: 10px;
+}
+
+.chat-messages{
+  height: 80%;
+  border: 1px solid #000;
+}
+
+.send-message{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.input-message{
+  width:90%;
+  border-radius: 50px;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+.send-button{
+  width:10%;
+  border-radius: 50px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.member{
+  padding: 10px;
+  background: #eee;
+  border:#000;
+  cursor: pointer;
+  margin: 5px 2px;
+  box-shadow: 0 8px 8px -4px lightblue;
+}
+.member.active{
+  background: blueviolet;
+  color:#fff;
+}
+.member:hover{
+  background: grey;
+  color:#fff;
+}
+
+.avatar{
+  background-color: cornflowerblue;
+  padding: 3px 5px;
+  border-radius: 5px;
+  color:#fff;
+}
+.avatar.self{
+  color:#000;
+  background-color: greenyellow;
+}
+.message{
+  padding:5px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  margin: 5px 10px;
+}
+.message-data{
+  padding:5px;
+}
+.message.self{
+  justify-content: end;
+}
+
+` ;
