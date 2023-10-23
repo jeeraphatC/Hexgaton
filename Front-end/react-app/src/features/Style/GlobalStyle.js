@@ -362,6 +362,10 @@ a:active { text-decoration: none; }
     color:#FFC107;
     font-weight: bold;
   }
+
+
+
+  
   `;
 
 export default GlobalStyle;

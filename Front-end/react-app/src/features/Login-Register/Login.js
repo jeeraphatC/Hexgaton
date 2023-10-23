@@ -5,12 +5,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import blogo from "../pic/big_logo.png";
 import mlogo from "../pic/mini_logo.png";
+
+import { useCookies } from 'react-cookie';
 function Login({ className }) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+    /**cookies */
+    const [cookies, setCookie, removeCookie] = useCookies();
   async function login(event) {
+
+
     event.preventDefault();
     try {
       await axios.post("http://localhost:8085/api/v1/accounts/login", {
@@ -23,6 +30,8 @@ function Login({ className }) {
           alert("Email not exits");
         }
         else if (res.data.message === "Login Success") {
+
+          setCookie('username', email);
           navigate('/home', { state: { email } });
           
         }
