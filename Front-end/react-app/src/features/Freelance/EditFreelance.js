@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import { Container } from 'react-bootstrap';
 function EditFreelance() {
   const { id } = useParams();
   const [freelance, setFreelance] = useState({
@@ -52,26 +52,28 @@ function EditFreelance() {
 
   return (
     <div>
-      <h1>Edit Freelance</h1>
-      <form>
-        <div>
-          <label>Name:</label>
-          <input type="text" value={name} onChange={handleNameChange} />
-        </div>
-        <div>
-          <label>Price:</label>
-          <input type="text" value={price} onChange={handlePriceChange} />
-        </div>
-        <div>
-          <label>Time:</label>
-          <input type="text" value={time} onChange={handleTimeChange} />
-        </div>
-        <div>
-          <label>Description:</label>
-          <textarea value={description} onChange={handleDescriptionChange} />
-        </div>
-        <button type="button" onClick={handleSave}>Save</button>
-      </form>
+      <Container>
+        <h1>Edit Freelance</h1>
+        <form>
+          <div>
+            <label>Name:</label>
+            <input type="text" value={name} onChange={handleNameChange} />
+          </div>
+          <div>
+            <label>Price:</label>
+            <input type="text" value={price} onChange={handlePriceChange} />
+          </div>
+          <div>
+            <label>Time:</label>
+            <input type="text" value={time} onChange={handleTimeChange} />
+          </div>
+          <div>
+            <label>Description:</label>
+            <textarea value={description} onChange={handleDescriptionChange} />
+          </div>
+          <button type="button" onClick={handleSave}>Save</button>
+        </form>
+      </Container>
     </div>
   );
 }

@@ -13,7 +13,7 @@ function EditJob() {
 
   useEffect(() => {
     // เรียก API ดึงข้อมูล Enterprise ตาม ID ที่ถูกส่งมาจาก URL
-    axios.get(`http://localhost:8080/enterprises/${id}`)
+    axios.get(`http://localhost:8090/enterprises/${id}`)
       .then(response => {
         setEnterprise(response.data);
       })
@@ -60,11 +60,11 @@ function EditJob() {
         </div>
         <div>
           <label>Price:</label>
-          <input type="text" value={enterprise.price} onChange={handlePriceChange} />
+          <input type="number" value={enterprise.price} onChange={handlePriceChange} />
         </div>
         <div>
           <label>Time:</label>
-          <input type="text" value={enterprise.time} onChange={handleTimeChange} />
+          <input type="date" value={enterprise.time} onChange={handleTimeChange} />
         </div>
         <div>
           <label>Description:</label>

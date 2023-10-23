@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Button, Card, Container, Row, Col } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 
 const Develop = ({ className }) => {
   const [enterprises, setEnterprises] = useState([]);
@@ -39,7 +40,7 @@ const Develop = ({ className }) => {
                     <Card.Text>{enterprise.time}</Card.Text>
                     <Card.Text>{enterprise.description}</Card.Text>
                     <Card.Text>{enterprise.type}</Card.Text>
-                    
+                    <Button variant='success'><Link to ={`/edit/${enterprise.id}`}>Edit</Link></Button>
                   </Card.Body>
                 </Card>
               </Col>
