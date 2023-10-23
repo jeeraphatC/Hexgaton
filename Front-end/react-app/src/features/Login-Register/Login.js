@@ -12,7 +12,7 @@ function Login({ className }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
+  const [nameAccount, setNameAccount] = useState("Guest");
     /**cookies */
     const [cookies, setCookie, removeCookie] = useCookies();
   async function login(event) {
@@ -20,31 +20,34 @@ function Login({ className }) {
 
     event.preventDefault();
     try {
-      await axios.post("http://localhost:8085/api/v1/accounts/login", {
+      const loginResponse = await axios.post("http://localhost:8085/api/v1/accounts/login", {
         email: email,
         password: password,
-      }).then((res) => {
-        console.log(res.data);
-        
-        if (res.data.message === "Email not exits") {
-          alert("Email not exits");
-        }
-        else if (res.data.message === "Login Success") {
-
-          setCookie('username', email);
-          navigate('/home', { state: { email } });
-          
-        }
-        else {
-          alert("Incorrect Email and Password not match");
-        }
-      }, fail => {
-        console.error(fail); // Error!
       });
-    }
-
-    catch (err) {
-      alert(err);
+  
+      const responseData = loginResponse.data;
+  
+      if (responseData.message === "Email not exists") {
+        alert("Email does not exist");
+      } else if (responseData.message === "Login Success") {
+        const accountsResponse = await axios.get("http://localhost:8085/api/v1/accounts/list");
+        const accounts = accountsResponse.data;
+  
+        const accountWithMatchingEmail = accounts.find((account) => account.email === email);
+  
+        if (accountWithMatchingEmail) {
+          setNameAccount(accountWithMatchingEmail.accountname);
+          setCookie('username', accountWithMatchingEmail.accountname);
+          navigate('/home', { state: { email } });
+        } else {
+          alert("Account not found for the provided email");
+        }
+      } else {
+        alert("Incorrect Email and Password do not match");
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred during login. Please try again later.");
     }
 
   }

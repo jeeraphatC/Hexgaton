@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 const Develop = ({ className }) => {
   const [enterprises, setEnterprises] = useState([]);
 
+  
   useEffect(() => {
     // Make an API call when the component mounts
     axios.get('http://localhost:8090/enterprises/type/develop')
