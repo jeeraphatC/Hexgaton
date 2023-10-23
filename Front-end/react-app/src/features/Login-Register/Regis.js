@@ -249,4 +249,5 @@ export default styled(Register)`
   max-width: 500px;
   margin: 0 auto;
   padding: 4rem 0;
+  
 `;
