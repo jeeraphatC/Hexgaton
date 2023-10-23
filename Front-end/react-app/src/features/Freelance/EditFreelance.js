@@ -52,7 +52,7 @@ function EditFreelance() {
 
   return (
     <div>
-      <Container>
+      <Container style={{width : 800 , marginTop : 50}}>
         <h1>Edit Freelance</h1>
         <form>
           <div>

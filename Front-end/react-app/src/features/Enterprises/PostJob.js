@@ -62,7 +62,7 @@ class PostJob extends Component {
   render() {
     return (
       <div >
-        <Container style={{width : 500}}> 
+        <Container style={{width : 800}}> 
           
           <h2 style={{marginTop : 60}}>Post a Job</h2>
           <form onSubmit={this.handleSubmit}>
@@ -110,6 +110,7 @@ class PostJob extends Component {
               >
                 <option value=" ">Select Type</option>
                 <option value="develop">Develop</option>
+                
                 <option value="graphic">Graphic</option>
                 <option value="music">Music</option>
               </select>

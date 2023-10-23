@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import { Container } from 'react-bootstrap';
 function EditJob() {
   const { id } = useParams();
   const [enterprise, setEnterprise] = useState({
@@ -51,6 +51,7 @@ function EditJob() {
   };
 
   return (
+    <Container style={{width : 800 , marginTop : 50}}>
     <div>
       <h1>Edit Enterprise</h1>
       <form>
@@ -73,6 +74,7 @@ function EditJob() {
         <button type="button" onClick={updateEnterprise}>Save</button>
       </form>
     </div>
+    </Container>
   );
 }
 
