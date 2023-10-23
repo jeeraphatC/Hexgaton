@@ -17,8 +17,6 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
     List<Account>   findAll();
     Account findByEmail(String email);
     boolean existsByEmail(String email);
-    
-    // Custom method to check if an account name exists
     boolean existsByAccountname(String accountname);
 }
 

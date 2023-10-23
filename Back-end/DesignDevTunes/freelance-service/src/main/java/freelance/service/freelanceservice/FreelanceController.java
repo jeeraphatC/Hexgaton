@@ -1,9 +1,12 @@
 package freelance.service.freelanceservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin
 @RestController
@@ -77,11 +80,56 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
             if (patchedFreelance.getDescription() != null) {
                 existingFreelance.setDescription(patchedFreelance.getDescription());
             }
+             if (patchedFreelance.getType() != null) {
+                existingFreelance.setType(patchedFreelance.getType());
+            }
+             if (patchedFreelance.getAccount() != null) {
+                existingFreelance.setAccount(patchedFreelance.getAccount());
+            }
 
             return freelanceRepository.save(existingFreelance);
         }
 
         return null;
     }
+
+
+    @PatchMapping("/patch/{id}")
+    public ResponseEntity<String> patchDog(@PathVariable long id, @RequestBody FreelanceDTO freelanceDTO) {
+        Optional<Freelance> optDog = freelanceRepository.findById(id);
+        if (!optDog.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Freelance not found: " + id);
+        }
+        Freelance freelance = optDog.get();
+
+        // Update dog using mapper from dto
+        if (freelanceDTO.getName() != null) {
+            freelance.setName(freelanceDTO.getName());
+        }
+        if (freelanceDTO.getPrice() != null) {
+            freelance.setPrice(freelanceDTO.getPrice());
+        }
+        if (freelanceDTO.getDescription() != null) {
+            freelance.setDescription(freelanceDTO.getDescription());
+        }
+        if (freelanceDTO.getType() != null) {
+            freelance.setType(freelanceDTO.getType());
+        }
+         
+         if (freelanceDTO.getTime() != null) {
+            freelance.setTime(freelanceDTO.getTime());
+        }
+         if (freelanceDTO.getAccount() != null) {
+            freelance.setAccount(freelanceDTO.getAccount());
+        }
+
+        freelanceRepository.save(freelance);
+
+        return ResponseEntity.ok("Freelance updated");
+        }
+
+      
+    
+
 
 }

@@ -10,7 +10,7 @@ import javax.validation.constraints.NotEmpty;
 @Table(name = "account")
 public class Account {
     @Id
-    @Column(name = "id" , length = 45)
+    @Column(name = "id", length = 45)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -29,12 +29,6 @@ public class Account {
     @Column(name = "number_card", length = 13)
     private String numberCard;
 
-  
-    
-    @OneToMany(mappedBy = "account", cascade = CascadeType.MERGE)
-    private List<Freelance> freelance;
-  
-
     public Account() {
     }
 
@@ -45,17 +39,6 @@ public class Account {
 
         this.password = password;
         this.numberCard = numberCard;
-    }
-
-    public Account(Long id, String accountname, String email, String numberCard, String password,
-            List<Freelance> freelance) {
-        this.id = id;
-        this.accountname = accountname;
-        this.email = email;
-
-        this.password = password;
-        this.numberCard = numberCard;
-        this.freelance = freelance;
     }
 
     public Long getAccountid() {
@@ -97,14 +80,5 @@ public class Account {
     public void setNumberCard(String numberCard) {
         this.numberCard = numberCard;
     }
-    public List<Freelance> getFreelance() {
-        return freelance;
-    }
-
-    public void setFreelance(List<Freelance> freelance) {
-        this.freelance = freelance;
-    }
-
- 
 
 }

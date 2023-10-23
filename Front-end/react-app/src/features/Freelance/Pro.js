@@ -12,7 +12,7 @@ function profiles({ className }) {
             <img src={bg2} alt="" className="bg1" />
             <Container>
                 <Row>
-                    <Col md="4" style={{ marginTop: -100 }}>
+                    <Col md="4" style={{ marginTop: -300 }}>
                         <div className="c1-fix">
                             <img src={user1} alt="" className="user1" />
                             <div className="username">Lorem ipsum </div>
@@ -28,8 +28,8 @@ function profiles({ className }) {
                             </div>
 
                         </div>
-                    </Col>
-                    <Col md="4">
+                    </Col >
+                    <Col md="4" style={{ marginTop: -300 }}>
                         <Card style={{ width: 800, marginTop: 20 }}>
                             <Card.Title style={{ padding: 20 }}>Work of Lorem ipsum</Card.Title>
                             <Card.Text style={{ marginLeft: 10 }}><a href="/home">
@@ -77,7 +77,7 @@ function profiles({ className }) {
                     </Col>
                 </Row>
                 <Row >
-                    <Card style={{marginLeft : 500 , marginTop : 100, height : 150}}> 
+                    <Card style={{marginLeft : 550 , marginTop : 0, height : 150}}> 
                         <Card.Body>
                             <Card.Title>
                                 <a href="/home">
