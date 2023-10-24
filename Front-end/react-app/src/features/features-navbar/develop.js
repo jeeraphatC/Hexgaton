@@ -1,39 +1,48 @@
-
+import React, { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import axios from 'axios';
-import React, { useState, useEffect } from "react";
-import { Button, Card, Container, Row, Col } from 'react-bootstrap'
+import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Develop = ({ className }) => {
   const [enterprises, setEnterprises] = useState([]);
+  const [fetchData, setFetchData] = useState(true);
 
-  
+  const toggleFetchData = () => {
+    setFetchData(!fetchData);
+  };
+
   useEffect(() => {
-    // Make an API call when the component mounts
-    axios.get('http://localhost:8090/enterprises/type/develop')
-      .then(response => {
-        setEnterprises(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }, []);
+    if (fetchData) {
+      // Make an API call when the component mounts or when fetchData is true
+      axios.get('http://localhost:8090/enterprises/type/develop')
+        .then(response => {
+          setEnterprises(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+    }
+  }, [fetchData]);
 
   return (
     <div className={className}>
-      <div >
+      <div>
         <Container style={{ padding: 20, marginTop: 20 }}>
+        <Button variant="primary" onClick={toggleFetchData}>
+            {fetchData ? "Freelance" : "Enterpise"}
+          </Button>
           <br />
           <h3 style={{ textAlign: 'center' }}>DO you need Develop?</h3>
-          <Button variant="success" className='btn-add-first'><Link to='/Postjob' className='btn-add-sec' >ADD</Link></Button>
+          <Button variant="success" className='btn-add-first'>
+            <Link to='/Postjob' className='btn-add-sec'>ADD</Link>
+          </Button>
           <br />
           <Row>
-         
-          {enterprises.map((enterprise, index) => (
+            {enterprises.map((enterprise, index) => (
               <Col md={4} key={index}>
-                <Card style={{ padding: 20, width: 400, marginBottom : 20 }}>
+                <Card style={{ padding: 20, width: 400, marginBottom: 20 }}>
                   <Card.Body>
                     <Card.Img variant="top" src={enterprise.image} />
                     <br />
@@ -42,7 +51,9 @@ const Develop = ({ className }) => {
                     <Card.Text>{enterprise.time}</Card.Text>
                     <Card.Text>{enterprise.description}</Card.Text>
                     <Card.Text>{enterprise.type}</Card.Text>
-                    <Button variant='success'><Link to ={`/edit/${enterprise.id}`}>Edit</Link></Button>
+                    <Button variant='success'>
+                      <Link to={`/edit/${enterprise.id}`}>Edit</Link>
+                    </Button>
                   </Card.Body>
                 </Card>
               </Col>
@@ -54,16 +65,12 @@ const Develop = ({ className }) => {
   );
 };
 
-
-
 Develop.propTypes = {
   className: PropTypes.string.isRequired
 };
 
 export default styled(Develop)`
-width: 100%;
+  width: 100%;
   margin-top: 50px;
   background-color: azure;
-
-  
 `;
