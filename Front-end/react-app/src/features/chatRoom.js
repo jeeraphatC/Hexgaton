@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import {over} from 'stompjs';
 import SockJS from 'sockjs-client';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import { Cookies, useCookies } from 'react-cookie';
 import getCookies from './hook/getCookies';
 import styled from 'styled-components';
+import PropTypes from 'prop-types' ;
 var stompClient =null;
-const ChatRoom = () => {
+const ChatRoom = ({ className }) => {
     const [cookies, setCookie, removeCookie] = useCookies();
     const [privateChats, setPrivateChats] = useState(new Map());     
     const [publicChats, setPublicChats] = useState([]); 
     const [tab,setTab] =useState("CHATROOM");
-    const [nameAccount, setNameAccount] = useState('guest');
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const [username, setUsername] = useState('');
     const [userData, setUserData] = useState({
@@ -27,75 +25,27 @@ const ChatRoom = () => {
       const email = location.state?.email || 'guest';
 
 
+      // useEffect(() => {
+      //   // Get the username from the cookie
+      //   userData.username = getCookies('username');
+      //   if (username) {
+      //     setUserData.username(username);
+      //   }
+    
+      // }, [userData.username]);
+
       useEffect(() => {
         // Get the username from the cookie
-        userData.username = getCookies('username');
-        if (username) {
-          setUserData.username(username);
+        const usernameFromCookie = getCookies('username');
+        if (usernameFromCookie) {
+          handleUsername({ target: { value: usernameFromCookie } });
+          connect();
         }
-      }, [userData.username]);
-    //   useEffect(() => {
-    //     console.log(userData);
-    //     axios.get('http://localhost:8085/api/v1/accounts/list')
-    //     .then((response) => {
-    //     const account = response.data ;
-    //     const accountDataMatch = account.find((account) => account.email === email);
-
-    //             // setNameAccount(accountDataMatch.);
-    //             setNameAccount(accountDataMatch.accountname);
-    //             setIsLoggedIn(true);
-               
-    //             setUserData({
-    //     username: accountDataMatch.accountname,
-    //     receivername: '',
-    //     connected: isLoggedIn,
-    //     message: ''
-    // });
-
-    // });
-
-    //   }, [userData]);
+        // connect();
+      }, []);
   
-    // useEffect(() => {
-      
-    //     console.log(`test  ${userData}`);
 
-    //       // Fetch the list of accounts
-    //       axios.get('http://localhost:8085/api/v1/accounts/list')
-    //         .then((response) => {
-    //           // Assuming the response data is an array of accounts
-    //           const accounts = response.data;
-    
-    //           // Find the account with the specified email
-    //           const accountWithMatchingEmail = accounts.find((account) => account.email === email);
-    
-    //           if (accountWithMatchingEmail) {
-               
-    //             // If the account exists, set its accountname to the state
-    //             setNameAccount(accountWithMatchingEmail.accountname);
-    //             setIsLoggedIn(true); // Set login status to true
-    //             setUserData({
-    //               username: accountWithMatchingEmail.accountname,
-    //               receivername: '',
-    //               connected: isLoggedIn,
-    //               message: ''
-    //             });
-    //           //   setUserData()
-    //           } else {
-    //             // Handle the case where no matching account is found
-    //             setNameAccount('----');
-    //           }
-    //         })
-    //         .catch((error) => {
-    //           console.error('Error fetching accounts:', error);
-    //         });
-        
-
-  
-    //   }, [email]);
-
-    const 
-    connect =()=>{
+    const connect =()=>{
         let Sock = new SockJS('http://localhost:8080/ws');
         stompClient = over(Sock);
         stompClient.connect({},onConnected, onError);
@@ -187,36 +137,27 @@ const ChatRoom = () => {
         }
     }
 
-    const handleUsername=(event)=>{
-        const {value}=event.target;
-        setUserData({...userData,"username": value});
+    const handleUsername = (event) => {
+      const { value } = event.target;
+      const usernameFromCookie = getCookies('username'); // ใช้ค่าจาก getCookies
+      setUserData({ ...userData, "username": usernameFromCookie });
+    
     }
 
-    const registerUser=()=>{
-        connect();
-    }
+
     return (
-        // <div className='container-chat'>
-//   {/* {isLoggedIn ? ( // Conditionally render "Sign-up" link
-//         <Link  className="text">{nameAccount}</Link>
-//       ) : (
-//         <Link to="/register" className="text1">Sign-up</Link>
-//       )} */}
-
-//         {/* </div> */}
-      
+<div className={className}>
     <div className="container-chat">
-      {userData.connected=true && userData.username }
+      {userData.connected=true  }
         <div className="chat-box">
         
+
         <div className="member-list">
                 <ul>
-                <h1>Welcome to the Chat Room, {userData.username}!</h1>
+          
                     {[...privateChats.keys()].map((name,index)=>(
                         <li onClick={()=>{setTab(name)}} className={`member ${tab===name && "active"}`} key={index}>{name}</li>
-                    )).filter((name)=>{
-                        return name === userData.username;
-                    })}
+                    ))}
                 </ul>
             </div>
             {tab==="CHATROOM" && <div className="chat-content">
@@ -269,12 +210,14 @@ const ChatRoom = () => {
               </button> 
         </div>} */}
     </div>
+  </div>
     )
 }
 
+
 export default  styled(ChatRoom)`
 
-.container{
+.container-chat{
   position: relative;
 }
 
@@ -298,6 +241,7 @@ export default  styled(ChatRoom)`
 
 .member-list{
   width: 20%;
+ 
 }
 
 .chat-content{
@@ -338,10 +282,12 @@ ul {
   cursor: pointer;
   margin: 5px 2px;
   box-shadow: 0 8px 8px -4px lightblue;
+
 }
 .member.active{
   background: blueviolet;
   color:#fff;
+
 }
 .member:hover{
   background: grey;
@@ -374,3 +320,4 @@ ul {
 }
 
 ` ;
+

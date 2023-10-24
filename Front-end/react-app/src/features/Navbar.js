@@ -8,6 +8,8 @@ import mlogo from "./pic/mini_logo.png";
 import ologo from "./pic/option.png";
 import chat from "./pic/chat.png";
 import login from "./pic/login.png";
+import { Cookies } from "react-cookie";
+import getCookies from './hook/getCookies';
 function Navbar({ className }) {
   const [developmentHovered, setDevelopmentHovered] = useState(false);
   const [graphicHovered, setGraphicHovered] = useState(false);
@@ -140,7 +142,7 @@ function Navbar({ className }) {
       </Link>
       
       {isLoggedIn ? ( // Conditionally render "Sign-up" link
-        <Link to="/profile" className="navname">{nameAccount}</Link>
+        <Link to="/profile" className="navname">{getCookies('username')}</Link>
       ) : (
         <Link to="/register" className="text1">
           <img src={login} alt="" className="login-logo" />
