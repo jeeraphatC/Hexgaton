@@ -33,7 +33,7 @@ function App() {
       { showNavbar1 && showNavbar && <Navbar />}
         <Container>
           <Routes>
-            <Route exact path="/" element={<Interview />} />
+            <Route exact path="/" element={<Login />} />
             <Route path="/home" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/develop" element={<Develop />} />
