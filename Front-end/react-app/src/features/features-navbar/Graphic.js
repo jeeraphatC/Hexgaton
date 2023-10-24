@@ -25,13 +25,13 @@ const Graphic = ({ className }) => {
         <Container style={{ padding: 20, marginTop: 20 }}>
           <br />
           <h3 style={{ textAlign: 'center' }}>DO you need Graphic?</h3>
-          <Button variant="success" style={{float : 'right'}}><Link to='/Postjob'>ADD</Link></Button>
+          <Button variant="success" className='btn-add-first'><Link to='/Postjob' className='btn-add-sec' >ADD</Link></Button>
           <br />
           <Row>
-         
-          {enterprises.map((enterprise, index) => (
+
+            {enterprises.map((enterprise, index) => (
               <Col md={4} key={index}>
-                <Card style={{ padding: 20, width: 400 , marginBottom : 20 }}>
+                <Card style={{ padding: 20, width: 400, marginBottom: 20 }}>
                   <Card.Body>
                     <Card.Img variant="top" src={enterprise.image} />
                     <br />
@@ -58,7 +58,25 @@ Graphic.propTypes = {
 };
 
 export default styled(Graphic)`
-width: 100%;
+  width: 100%;
   margin-top: 50px;
   background-color: azure;
+
+  .btn-add-first   {
+    float : right ;
+    background-color : #0196FC;
+    border: 2px solid #0196FC;
+    
+  }
+
+.btn-add
+  .btn-add-first:hover 
+ {
+  color: white;
+    float : right ;
+    background-color : #0071BE;
+    border: 2px solid #0071BE;
+  }
+
+  
 `;

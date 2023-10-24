@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import React, { useState, useEffect } from "react";
 import { Button, Card, Container, Row, Col } from 'react-bootstrap'
-import { useParams } from 'react-router-dom';
+import { useParams , Link } from 'react-router-dom';
 const Music = ({ className }) => {
   const [enterprises, setEnterprises] = useState([]);
 
@@ -25,6 +25,7 @@ const Music = ({ className }) => {
         <Container style={{ padding: 20, marginTop: 20 }}>
           <br />
           <h3 style={{ textAlign: 'center' }}>DO you need Music?</h3>
+          <Button variant="success" className='btn-add-first'><Link to='/Postjob' className='btn-add-sec' >ADD</Link></Button>
           <br />
           <Row>
          
@@ -60,4 +61,6 @@ export default styled(Music)`
 width: 100%;
   margin-top: 50px;
   background-color: azure;
+
+  
 `;

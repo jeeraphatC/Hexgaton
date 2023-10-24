@@ -392,6 +392,26 @@ line-height: 150%; /* 30px */
 letter-spacing: -0.22px;
 }
 
+
+//feature-bar
+.btn-add-first   {
+    float : right ;
+    background-color : #0196FC;
+    border: 2px solid #0196FC;
+    
+  }
+
+.btn-add-sec{
+  color: white;
+}
+  .btn-add-first:hover 
+ {
+ 
+    float : right ;
+    background-color : #0071BE;
+    border: 2px solid #0071BE;
+  }
+
   `;
 
 export default GlobalStyle;

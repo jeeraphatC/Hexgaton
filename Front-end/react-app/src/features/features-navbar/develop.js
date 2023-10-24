@@ -27,6 +27,7 @@ const Develop = ({ className }) => {
         <Container style={{ padding: 20, marginTop: 20 }}>
           <br />
           <h3 style={{ textAlign: 'center' }}>DO you need Develop?</h3>
+          <Button variant="success" className='btn-add-first'><Link to='/Postjob' className='btn-add-sec' >ADD</Link></Button>
           <br />
           <Row>
          
@@ -63,4 +64,6 @@ export default styled(Develop)`
 width: 100%;
   margin-top: 50px;
   background-color: azure;
+
+  
 `;

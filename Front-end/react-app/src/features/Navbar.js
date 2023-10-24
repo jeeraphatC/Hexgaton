@@ -123,21 +123,21 @@ function Navbar({ className }) {
           </div>
         )}
       </div>
-      <a href="/Findjob">
+      <Link to="/Findjob">
         <h4>Findjob</h4>
-      </a>
-      <a href="/Findfreelances">
+      </Link>
+      <Link to="/Findfreelances">
         <h4>Entrepreneur</h4>
-      </a>
-      <a href="/Compare">
+      </Link>
+      <Link to="/Compare">
         <h4>Compare</h4>
-      </a>
-      <a href="/options">
+      </Link>
+      <Link to="/options">
         <img src={ologo} alt="" className="ologo" />
-      </a>
-      <a href="/chatroom">
+      </Link>
+      <Link to="/chatroom">
         <img src={chat} alt="" className="ologo" />
-      </a>
+      </Link>
       
       {isLoggedIn ? ( // Conditionally render "Sign-up" link
         <Link to="/profile" className="navname">{nameAccount}</Link>
