@@ -40,7 +40,7 @@ function EditJob() {
 
   // ฟังก์ชันที่จะอัปเดตข้อมูลในเซิร์ฟเวอร์
   const updateEnterprise = () => {
-    axios.put(`http://localhost:8080/enterprises/${id}`, enterprise)
+    axios.put(`http://localhost:8090/enterprises/${id}`, enterprise)
       .then(response => {
         // อัปเดตสถานะหรือทำสิ่งที่คุณต้องการหลังจากการอัปเดตข้อมูลเสร็จสมบูรณ์
         console.log('อัปเดตข้อมูลเรียบร้อยแล้ว');

@@ -9,7 +9,7 @@ class FindJob extends Component {
 
   componentDidMount() {
     // เรียก API ที่มีข้อมูล Enterprises ที่คุณต้องการดึง
-    axios.get('http://localhost:8080/enterprises')
+    axios.get('http://localhost:8090/enterprises')
       .then(response => {
         this.setState({ enterprises: response.data });
       })
