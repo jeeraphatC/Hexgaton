@@ -118,27 +118,27 @@ export default styled(Home)`
   }
   .inter {
     max-width: 130px;
-    margin: 500px 15px 15px 1100px;
+    margin: 500px 15px 15px 70%;
     position: absolute;
   }
   .arrow2 {
     max-width: 100px;
-    margin: 500px 15px 15px 900px;
+    margin: 500px 15px 15px 60%;
     position: absolute;
   }
   .search {
     max-width: 120px;
-    margin: 500px 15px 15px 700px;
+    margin: 500px 15px 15px 50%;
     position: absolute;
   }
   .arrow {
     max-width: 100px;
-    margin: 500px 15px 15px 500px;
+    margin: 500px 15px 15px 40%;
     position: absolute;
   }
   .lg {
     max-width: 200px;
-    margin: 500px 15px 15px 250px;
+    margin: 500px 15px 15px 30%;
     position: absolute;
   }
   .t1btext2 {
