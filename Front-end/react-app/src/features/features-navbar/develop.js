@@ -5,17 +5,18 @@ import axios from 'axios';
 import { Button, Card, Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+
 const Develop = ({ className }) => {
   const [enterprises, setEnterprises] = useState([]);
   const [freelance, setFreelance] = useState([]);
   const [fetchData, setFetchData] = useState('enterprises'); // Default to enterprises
-
   const toggleFetchData = () => {
     setFetchData(fetchData === 'enterprises' ? 'freelance' : 'enterprises');
   };
-
+  
 
   useEffect(() => {
+
     if (fetchData === 'enterprises') {
       axios.get('http://localhost:8090/enterprises/type/develop')
         .then(response => {
@@ -24,7 +25,8 @@ const Develop = ({ className }) => {
         .catch(error => {
           console.error('Error fetching enterprises:', error);
         });
-    } else if (fetchData === 'freelance') {
+    }
+    else if (fetchData === 'freelance') {
       axios.get('http://localhost:8082/freelances/type/develop')
         .then(response => {
           setFreelance(response.data);
@@ -100,18 +102,7 @@ const Develop = ({ className }) => {
                 </Col>
               ))
             )}
-
-
-
-
-
-
-
           </Row>
-
-
-
-
         </Container>
       </div>
     </div>
