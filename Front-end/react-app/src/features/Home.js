@@ -118,27 +118,27 @@ export default styled(Home)`
   }
   .inter {
     max-width: 130px;
-    margin: 500px 15px 15px 1300px;
+    margin: 500px 15px 15px 1100px;
     position: absolute;
   }
   .arrow2 {
     max-width: 100px;
-    margin: 500px 15px 15px 1100px;
+    margin: 500px 15px 15px 900px;
     position: absolute;
   }
   .search {
     max-width: 120px;
-    margin: 500px 15px 15px 900px;
+    margin: 500px 15px 15px 700px;
     position: absolute;
   }
   .arrow {
     max-width: 100px;
-    margin: 500px 15px 15px 700px;
+    margin: 500px 15px 15px 500px;
     position: absolute;
   }
   .lg {
     max-width: 200px;
-    margin: 500px 15px 15px 450px;
+    margin: 500px 15px 15px 250px;
     position: absolute;
   }
   .t1btext2 {
@@ -384,7 +384,7 @@ export default styled(Home)`
   h4 {
     margin-top: 20px;
     margin-right: 50px;
-    font-size: 20px;
+    font-size: 14px;
     color: #ffffff;
   }
   h4:hover {

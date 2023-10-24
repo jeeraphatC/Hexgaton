@@ -20,6 +20,7 @@ import Graphic from './features/features-navbar/Graphic';
 import Music from './features/features-navbar/Music';
 import Pro from './features/Freelance/Pro';
 import Compare from './features/Compare';
+import Interview from './features/Interview';
 function App() {
   const location = useLocation();
 
@@ -32,7 +33,7 @@ function App() {
       { showNavbar1 && showNavbar && <Navbar />}
         <Container>
           <Routes>
-            <Route exact path="/" element={<Login />} />
+            <Route exact path="/" element={<Interview />} />
             <Route path="/home" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/develop" element={<Develop />} />

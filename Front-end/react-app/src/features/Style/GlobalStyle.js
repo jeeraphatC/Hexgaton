@@ -391,6 +391,7 @@ font-weight: 400;
 line-height: 150%; /* 30px */
 letter-spacing: -0.22px;
 }
+
   `;
 
 export default GlobalStyle;
