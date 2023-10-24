@@ -91,7 +91,7 @@ export default styled(Options)`
   flex-wrap:wrap;
    }
    .options{
-    width: 260px;
+    width: 270px;
     height: 190px;
     background: #0196FC;
     display: flex;

@@ -42,7 +42,7 @@ class PostJob extends Component {
     };
 
     // ทำ HTTP POST Request ไปยัง http://localhost:8080/enterprises ด้วย Axios
-    axios.post('http://localhost:8090/enterprises', jobData)
+    axios.post('http://localhost:8080/enterprises', jobData)
       .then((response) => {
         // ทำอะไรก็ตามที่คุณต้องการหลังจากส่งข้อมูลไปยังเซิร์ฟเวอร์
         console.log('Job posted successfully!', response.data);

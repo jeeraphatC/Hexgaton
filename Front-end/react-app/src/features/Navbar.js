@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import mlogo from "./pic/mini_logo.png";
 import ologo from "./pic/option.png";
 import chat from "./pic/chat.png";
-
+import login from "./pic/login.png";
 function Navbar({ className }) {
   const [developmentHovered, setDevelopmentHovered] = useState(false);
   const [graphicHovered, setGraphicHovered] = useState(false);
@@ -71,16 +71,19 @@ function Navbar({ className }) {
 
   return (
     <header className={className}>
-      <Link to="/home" > <img src={mlogo} alt="โลโก้" className="min-logo" /></Link>
+      <Link to="/home">
+        {" "}
+        <img src={mlogo} alt="โลโก้" className="min-logo" />
+      </Link>
 
-      
-      
       <div
         onMouseEnter={handleDevelopmentMouseEnter}
         onMouseLeave={handleDevelopmentMouseLeave}
         className={`text ${developmentHovered ? "hovered" : ""}`}
       >
-        <Link to="/develop" className="develop">Development</Link>
+        <Link to="/develop" className="develop">
+          Development
+        </Link>
         {developmentHovered && (
           <div className="submenu">
             <Link to="/web">Web</Link>
@@ -113,13 +116,22 @@ function Navbar({ className }) {
         onMouseLeave={handleMusicMouseLeave}
         className={`text ${musicHovered ? "hovered" : ""}`}
       >
-        <Link to="/music" >Music</Link>
+        <Link to="/music">Music</Link>
         {musicHovered && (
           <div className="submenu">
             <Link to="/beat">Beat</Link>
           </div>
         )}
       </div>
+      <a href="/Findjob">
+        <h4>Findjob</h4>
+      </a>
+      <a href="/Findfreelances">
+        <h4>Entrepreneur</h4>
+      </a>
+      <a href="/Compare">
+        <h4>Compare</h4>
+      </a>
       <a href="/options">
         <img src={ologo} alt="" className="ologo" />
       </a>
@@ -128,10 +140,10 @@ function Navbar({ className }) {
       </a>
       
       {isLoggedIn ? ( // Conditionally render "Sign-up" link
-        <Link className="text">{nameAccount}</Link>
+        <Link to="/profile" className="navname">{nameAccount}</Link>
       ) : (
         <Link to="/register" className="text1">
-          Sign-up
+          <img src={login} alt="" className="login-logo" />
         </Link>
       )}
     </header>
@@ -143,16 +155,40 @@ Navbar.propTypes = {
 };
 
 export default styled(Navbar)`
-a:link { text-decoration: none; }
+.navname{
+  font-size:25px;
+  font-weight: bold;
+  color:#0071BE;
+  margin:20px;
+}
+.login-logo{
+  max-width:80px;
+  margin:20px;
+}
+h4{
+  font-size:20px;
+  font-weight: bold;
+  margin-top: 10px;
+  color:#0196FC;
+}
+h4:hover{
+  color:#0071BE;
+}
+  a:link {
+    text-decoration: none;
+  }
 
+  a:visited {
+    text-decoration: none;
+  }
 
-a:visited { text-decoration: none; }
+  a:hover {
+    text-decoration: none;
+  }
 
-
-a:hover { text-decoration: none; }
-
-
-a:active { text-decoration: none; }
+  a:active {
+    text-decoration: none;
+  }
   height: 48px;
   width: 100%;
   background-color: #ffffff;
@@ -167,13 +203,12 @@ a:active { text-decoration: none; }
   justify-content: space-between;
   font-weight: bold;
 
-  .min-logo{
-    max-width:100px;
+  .min-logo {
+    max-width: 100px;
     top: 0;
     margin-top: -5px;
   }
 
-  
   .text {
     color: black;
     padding: 10px;
@@ -206,7 +241,7 @@ a:active { text-decoration: none; }
   .music:hover,
   .picture:hover,
   .picture1:hover {
-    background-color: #0196FC;
+    background-color: #0196fc;
     color: white;
   }
 
@@ -236,16 +271,15 @@ a:active { text-decoration: none; }
   }
 
   .submenu a:hover {
-    background-color: #0196FC;
-    color: #FFF;
+    background-color: #0196fc;
+    color: #fff;
   }
 
-  .ologo{
+  .ologo {
     max-width: 30px;
-    
   }
-  
-  .develop{
+
+  .develop {
     cursor: pointer;
   }
 `;

@@ -19,6 +19,7 @@ import Options from './features/Options';
 import Graphic from './features/features-navbar/Graphic';
 import Music from './features/features-navbar/Music';
 import Pro from './features/Freelance/Pro';
+import Compare from './features/Compare';
 function App() {
   const location = useLocation();
 
@@ -47,6 +48,7 @@ function App() {
             <Route path="/Options" element={<Options />} />
             <Route path="/ChatRoom" element={<ChatRoom /> }></Route>
             <Route path="/fix" element={<Pro /> }></Route>
+            <Route path="/Compare" element={<Compare /> }></Route>
           </Routes>
         </Container>  
       

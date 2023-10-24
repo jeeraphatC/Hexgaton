@@ -362,10 +362,35 @@ a:active { text-decoration: none; }
     color:#FFC107;
     font-weight: bold;
   }
-
-
-
-  
+.footer-content{
+  position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 500px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+    margin:2600px 0px 0px 0px;
+}
+.big_logofooter{
+  max-width: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.footertext1{
+  margin: 400px 0px 0px 50px;
+  padding-bottom:50px;
+  color: #9C9C9C;
+font-family: Bebas Neue;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 30px */
+letter-spacing: -0.22px;
+}
   `;
 
 export default GlobalStyle;
