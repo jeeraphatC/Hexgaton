@@ -23,6 +23,7 @@ function Login({ className }) {
       const loginResponse = await axios.post("http://localhost:8085/api/v1/accounts/login", {
         email: email,
         password: password,
+       
       });
   
       const responseData = loginResponse.data;
@@ -37,7 +38,8 @@ function Login({ className }) {
   
         if (accountWithMatchingEmail) {
           setNameAccount(accountWithMatchingEmail.accountname);
-          setCookie('username', accountWithMatchingEmail.accountname);
+          setCookie('username', accountWithMatchingEmail.accountname ); 
+          setCookie('email',accountWithMatchingEmail.email);
           navigate('/home', { state: { email } });
         } else {
           alert("Account not found for the provided email");

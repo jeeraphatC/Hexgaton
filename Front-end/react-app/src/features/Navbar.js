@@ -60,6 +60,7 @@ function Navbar({ className }) {
             // If the account exists, set its accountname to the state
             setNameAccount(accountWithMatchingEmail.accountname);
             setIsLoggedIn(true); // Set login status to true
+          
           } else {
             // Handle the case where no matching account is found
             setNameAccount("Guest");
