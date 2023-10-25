@@ -21,6 +21,7 @@ import Music from './features/features-navbar/Music';
 import Pro from './features/Freelance/Pro';
 import Compare from './features/Compare';
 import ViewFreelance from './features/ViewFreelance';
+import ViewEnter from './features/ViewEnter';
 function App() {
   const location = useLocation();
 
@@ -50,7 +51,8 @@ function App() {
           <Route path="/ChatRoom" element={<ChatRoom />}></Route>
           <Route path="/fix" element={<Pro />}></Route>
           <Route path="/Compare" element={<Compare />}></Route>
-          <Route path="/view/:id" element={<ViewFreelance />} />
+          <Route path="/Freelance/:id" element={<ViewFreelance />} />
+          <Route path="/enterprises/:id" element={<ViewEnter />} />
         </Routes>
       </Container>
 

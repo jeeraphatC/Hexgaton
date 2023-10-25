@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
-
+import styled from "styled-components";
+import search4 from "../pic/search4.png";
+import pen2 from "../pic/pen2.png";
 class FindJob extends Component {
   state = {
     enterprises: [],
@@ -24,7 +26,8 @@ class FindJob extends Component {
     return (
       <div>
         <Container style={{ marginTop: 50 }}>
-          <h1 style={{ textAlign : 'center'}}>รายชื่อ Enterprises</h1>
+        <h1 style={{ margin: '100px 20px 20px 20px',color:'#0196FC'}}>Find jobs (ALL)</h1>
+
           <Row>
 
 
@@ -33,12 +36,19 @@ class FindJob extends Component {
                 <Col md={4} key={enterprise.id}>
                   <Card style={{width : 400 , padding : 20 , marginBottom : 20}}>
                     <Card.Body>
-
+                  <a href={`/edit/${enterprise.id}`}>
+                        <img src={pen2} alt="View Details" className='jobdetail' style={{ width: '40px', height: '40px', margin: '115px 0px 0px 255px', position:'absolute' }} />
+                      </a>
+                      <a href={`/enterprises/${enterprise.id}`}>
+                        <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px', margin: '105px 0px 0px 300px', position:'absolute' }} />
+                      </a>
                       <Card.Title><strong>Name:</strong> {enterprise.name}</Card.Title>
                       <Card.Text><strong>Price:</strong> {enterprise.price}</Card.Text>
                       <Card.Text><strong>Time:</strong> {enterprise.time}</Card.Text>
                       <Card.Text><strong>Description:</strong>{truncateText(enterprise.description, 40)}</Card.Text>
-                      <Button ><Link to={`/edit/${enterprise.id}`} style={{ color : "white"}}>Edit</Link></Button> 
+                      
+
+
                     </Card.Body>
                   </Card>
                 </Col>
@@ -57,4 +67,6 @@ function truncateText(text, maxLength) {
   }
   return text;
 }
-export default FindJob;
+export default styled(FindJob)`
+
+`;
