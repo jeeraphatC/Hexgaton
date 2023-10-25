@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import styled from "styled-components";
 function ViewFreelance() {
   const { id } = useParams();
   const [freelance, setFreelance] = useState(null);
@@ -22,7 +22,7 @@ function ViewFreelance() {
 
   return (
     <div>
-      <h1>{freelance.name}</h1>
+      <h1 className='ViewFreelanceName'>{freelance.name}</h1>
       <p><strong>Price:</strong> {freelance.price}</p>
       <p><strong>Time:</strong> {freelance.time}</p>
       <p><strong>Description:</strong> {freelance.description}</p>
@@ -30,4 +30,8 @@ function ViewFreelance() {
   );
 }
 
-export default ViewFreelance;
+export default styled(ViewFreelance)`
+
+
+
+`;

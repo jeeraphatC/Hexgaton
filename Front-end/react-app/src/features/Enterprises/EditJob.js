@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
+import styled from "styled-components";
 function EditJob() {
   const { id } = useParams();
   const [enterprise, setEnterprise] = useState({
@@ -53,7 +54,7 @@ function EditJob() {
   return (
     <Container style={{width : 800 , marginTop : 50}}>
     <div>
-      <h1>Edit Enterprise</h1>
+      <h1 className='Edith1'>Edit Enterprise</h1>
       <form>
         <div>
           <label>Name:</label>
@@ -78,4 +79,8 @@ function EditJob() {
   );
 }
 
-export default EditJob;
+export default styled(EditJob)`
+.Edith1{
+  
+}
+`;
