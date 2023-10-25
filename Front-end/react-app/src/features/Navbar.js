@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation , useNavigate } from "react-router-dom";
 import mlogo from "./pic/mini_logo.png";
 import ologo from "./pic/option.png";
 import chat from "./pic/chat.png";
@@ -16,7 +16,10 @@ function Navbar({ className }) {
   const [musicHovered, setMusicHovered] = useState(false);
   const [nameAccount, setNameAccount] = useState("Guest");
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
-
+const navagate=useNavigate();
+  const clickhandle =(e)=>{
+    navagate("/devlop")
+  }
   const handleDevelopmentMouseEnter = () => {
     setDevelopmentHovered(true);
   };
@@ -84,7 +87,10 @@ function Navbar({ className }) {
         onMouseLeave={handleDevelopmentMouseLeave}
         className={`text ${developmentHovered ? "hovered" : ""}`}
       >
-        <Link to="/develop" className="develop">
+        <Link to="/develop" 
+        state={{type : "develop"}}
+        // className="develop"
+        >
           Development
         </Link>
         {developmentHovered && (
@@ -101,7 +107,8 @@ function Navbar({ className }) {
         onMouseLeave={handleGraphicMouseLeave}
         className={`text ${graphicHovered ? "hovered" : ""}`}
       >
-        <Link to="/graphic">Graphic</Link>
+        <Link to="/develop"
+         state={{type : "graphic"}}>Graphic</Link>
         {graphicHovered && (
           <div className="submenu">
             <Link to="/logo">Logo Design</Link>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Button, Card, Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link , useLocation } from 'react-router-dom';
 
 
 const Develop = ({ className }) => {
@@ -13,12 +13,13 @@ const Develop = ({ className }) => {
   const toggleFetchData = () => {
     setFetchData(fetchData === 'enterprises' ? 'freelance' : 'enterprises');
   };
-
-
+const location=useLocation();
+const type=location.state.type;
+console.log(type);
   useEffect(() => {
 
     if (fetchData === 'enterprises') {
-      axios.get('http://localhost:8090/enterprises/type/develop')
+      axios.get(`http://localhost:8090/enterprises/type/${type}`)
         .then(response => {
           setEnterprises(response.data);
         })
@@ -27,7 +28,7 @@ const Develop = ({ className }) => {
         });
     }
     else if (fetchData === 'freelance') {
-      axios.get('http://localhost:8082/freelances/type/develop')
+      axios.get(`http://localhost:8082/freelances/type/${type}`)
         .then(response => {
           setFreelance(response.data);
         })
