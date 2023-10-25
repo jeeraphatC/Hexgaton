@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
+import styled from "styled-components";
 function EditFreelance() {
   const { id } = useParams();
   const [freelance, setFreelance] = useState({
@@ -53,7 +54,7 @@ function EditFreelance() {
   return (
     <div>
       <Container style={{width : 800 , marginTop : 50}}>
-        <h1>Edit Freelance</h1>
+        <h1 className='EditFreelanceh1'>Edit Freelance</h1>
         <form>
           <div>
             <label>Name:</label>
@@ -78,4 +79,6 @@ function EditFreelance() {
   );
 }
 
-export default EditFreelance;
+export default styled(EditFreelance)`
+
+`;
