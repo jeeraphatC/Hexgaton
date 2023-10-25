@@ -13,7 +13,7 @@ const Develop = ({ className }) => {
   const toggleFetchData = () => {
     setFetchData(fetchData === 'enterprises' ? 'freelance' : 'enterprises');
   };
-  
+
 
   useEffect(() => {
 
@@ -74,8 +74,8 @@ const Develop = ({ className }) => {
                       <Card.Text>{enterprise.time}</Card.Text>
                       <Card.Text>{enterprise.description}</Card.Text>
                       <Card.Text>{enterprise.type}</Card.Text>
-                      <Button variant='success'>
-                        <Link to={`/edit/${enterprise.id}`}>Edit</Link>
+                      <Button  >
+                        <Link to={`/edit/${enterprise.id}` } style={{color : "white"}}>Edit</Link>
                       </Button>
                     </Card.Body>
                   </Card>
@@ -94,8 +94,8 @@ const Develop = ({ className }) => {
                       <Card.Text>{freelancer.time}</Card.Text>
                       <Card.Text>{freelancer.description}</Card.Text>
                       <Card.Text>{freelancer.type}</Card.Text>
-                      <Button variant='success'>
-                        <Link to={`/edit/${freelancer.id}`}>Edit</Link>
+                      <Button >
+                        <Link to={`/edit/${freelancer.id}`} style={{color : "white"}}>Edit</Link>
                       </Button>
                     </Card.Body>
                   </Card>
@@ -118,6 +118,23 @@ export default styled(Develop)`
   margin-top: 50px;
   background-color: azure;
 
+  .btn-add-first   {
+    float : right ;
+    background-color : #0196FC;
+    border: 2px solid #0196FC;
+    
+  }
+.btn-add-sec{
+  color: white;
+}
+  .btn-add-first:hover 
+ {
+ 
+    float : right ;
+    background-color : #0071BE;
+    border: 2px solid #0071BE;
+  }
+  
   .switch {
     display: inline-block;
     position: relative;

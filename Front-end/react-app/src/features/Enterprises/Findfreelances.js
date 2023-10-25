@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import { Container, Col, Row, Card,Button } from 'react-bootstrap';
 class FindFreelance extends Component {
   state = {
     freelances: [],
@@ -20,21 +20,28 @@ class FindFreelance extends Component {
 
   render() {
     return (
-      <div>
-        <h1>รายชื่อ Freelances</h1>
-        <ul>
+      <Container style={{ marginTop: 50 }}>
+
+        <h1 style={{ textAlign: 'center' }}>รายชื่อ Freelances</h1>
+        <Row>
+
           {this.state.freelances.map(freelance => (
-            <li key={freelance.id}>
-              <strong>Name:</strong> {freelance.name}<br />
-              <strong>Price:</strong> {freelance.price}<br />
-              <strong>Time:</strong> {freelance.time}<br />
-              <strong>Description:</strong> {freelance.description}<br />
-              <Link to={`/editfreelance/${freelance.id}`}>Edit</Link><br />
-              <Link to={`/view/${freelance.id}`}>View Details</Link>
-            </li>
+            <Col md={4} key={freelance.id}>
+              <Card style={{ width: 400, padding: 20, marginBottom: 20 }}>
+                <Card.Body>
+                  <Card.Title><strong>Name:</strong> {freelance.name}</Card.Title>
+                  <Card.Text><strong>Price:</strong> {freelance.price}</Card.Text>
+                  <Card.Text><strong>Time:</strong> {freelance.time}</Card.Text>
+                  <Card.Text><strong>Description:</strong> {freelance.description}</Card.Text>
+                  <Button><Link to={`/editfreelance/${freelance.id}`} style={{color : 'white'}}>Edit</Link></Button>
+                  <Button><Link to={`/view/${freelance.id}`} style={{color : 'white'}}>View Details</Link></Button>
+                </Card.Body>
+              </Card>
+            </Col>
           ))}
-        </ul>
-      </div>
+        </Row>
+
+      </Container >
     );
   }
 }
