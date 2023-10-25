@@ -29,7 +29,8 @@ class FindFreelance extends Component {
               <strong>Price:</strong> {freelance.price}<br />
               <strong>Time:</strong> {freelance.time}<br />
               <strong>Description:</strong> {freelance.description}<br />
-              <Link to={`/editfreelance/${freelance.id}`}>Edit</Link>
+              <Link to={`/editfreelance/${freelance.id}`}>Edit</Link><br />
+              <Link to={`/view/${freelance.id}`}>View Details</Link>
             </li>
           ))}
         </ul>

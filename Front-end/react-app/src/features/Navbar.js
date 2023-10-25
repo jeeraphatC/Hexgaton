@@ -126,10 +126,10 @@ function Navbar({ className }) {
           </div>
         )}
       </div>
-      <Link to="/Findjob">
+      <Link to="/findjob">
         <h4>Findjob</h4>
       </Link>
-      <Link to="/Findfreelances">
+      <Link to="/findfreelance">
         <h4>Entrepreneur</h4>
       </Link>
       <Link to="/Compare">
