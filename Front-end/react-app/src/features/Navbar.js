@@ -60,7 +60,7 @@ function Navbar({ className }) {
             // If the account exists, set its accountname to the state
             setNameAccount(accountWithMatchingEmail.accountname);
             setIsLoggedIn(true); // Set login status to true
-          
+
           } else {
             // Handle the case where no matching account is found
             setNameAccount("Guest");
@@ -141,7 +141,7 @@ function Navbar({ className }) {
       <Link to="/chatroom">
         <img src={chat} alt="" className="ologo" />
       </Link>
-      
+
       {isLoggedIn ? ( // Conditionally render "Sign-up" link
         <Link to="/profile" className="navname">{getCookies('username')}</Link>
       ) : (
