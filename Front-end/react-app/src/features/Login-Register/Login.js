@@ -40,7 +40,7 @@ function Login({ className }) {
           setNameAccount(accountWithMatchingEmail.accountname);
           setCookie('username', accountWithMatchingEmail.accountname ); 
           setCookie('email',accountWithMatchingEmail.email);
-          navigate('/home', { state: { email } });
+          navigate('/', { state: { email } });
         } else {
           alert("Account not found for the provided email");
         }

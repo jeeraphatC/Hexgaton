@@ -77,7 +77,7 @@ const navagate=useNavigate();
 
   return (
     <header className={className}>
-      <Link to="/home">
+      <Link to="/">
         {" "}
         <img src={mlogo} alt="โลโก้" className="min-logo" />
       </Link>
@@ -126,7 +126,8 @@ const navagate=useNavigate();
         onMouseLeave={handleMusicMouseLeave}
         className={`text ${musicHovered ? "hovered" : ""}`}
       >
-        <Link to="/music">Music</Link>
+        <Link to="/develop"
+        state={{type : "music"}}>Music</Link>
         {musicHovered && (
           <div className="submenu">
             <Link to="/beat">Beat</Link>

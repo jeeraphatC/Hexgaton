@@ -12,7 +12,6 @@ const Develop = ({ className }) => {
   const [fetchData, setFetchData] = useState('enterprises'); // Default to enterprises
   const toggleFetchData = () => {
     setFetchData(fetchData === 'enterprises' ? 'freelance' : 'enterprises');
-    window.location.reload();
   };
 const location=useLocation();
 const type=location.state.type;

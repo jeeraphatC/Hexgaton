@@ -3,7 +3,7 @@ import Navbar from './features/Navbar';
 import Home from './features/Home';
 import GlobalStyle from './features/Style/GlobalStyle';
 import Container from './features/Container';
-import { Route, Routes, useLocation } from 'react-router-dom'; // Removed 'Switch'
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom'; // Removed 'Switch'
 import Login from './features/Login-Register/Login';
 import Develop from './features/features-navbar/develop';
 import Register from './features/Login-Register/Regis';
@@ -22,22 +22,26 @@ import Pro from './features/Freelance/Pro';
 import Compare from './features/Compare';
 import ViewFreelance from './features/ViewFreelance';
 import ViewEnter from './features/ViewEnter';
+import getCookies from './features/hook/getCookies';
+
 function App() {
   const location = useLocation();
-
-  // Determine whether to show the Navbar based on the current route
-  const showNavbar = location.pathname !== '/';
+  const showNavbar = location.pathname !== '/login';
   const showNavbar1 = location.pathname !== '/register';
+  const username = getCookies('username'); 
   return (
     <>
       <GlobalStyle />
       {showNavbar1 && showNavbar && <Navbar />}
       <Container>
         <Routes>
-          <Route exact path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/develop" element={<Develop />} />
+          {username  ? (
+            <Route path="/develop" element={<Develop />} />
+          ) : (<Navigate to="/login" replace />
+          )}
           <Route path="/graphic" element={<Graphic />} />
           <Route path="/music" element={<Music />} />
           <Route path="/findfreelance" element={<FindFreelance />} />

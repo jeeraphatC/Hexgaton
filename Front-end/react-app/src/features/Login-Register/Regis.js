@@ -60,7 +60,7 @@ function Register({ className }) {
       });
 
       alert("Account Registration Successful");
-      navigate("/");
+      navigate("/login");
     } catch (err) {
       if (err.response && err.response.status === 400) {
         setErrorMessage(err.response.data);
@@ -148,7 +148,7 @@ function Register({ className }) {
       </div>
 
       <div className="app-container">
-      <a href="/home">
+      <a href="/login">
         <img src={mlogo} alt="" className="homelogo" />
       </a>
       </div>
@@ -160,7 +160,7 @@ function Register({ className }) {
           {errorMessage && (
             <div className="alert alert-danger">{errorMessage}</div>
           )}
-          <Link to="/">
+          <Link to="/login">
             <a className="alogin">Login</a>
           </Link>
           <div className="asignup">Signup</div>
