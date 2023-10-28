@@ -36,7 +36,7 @@ console.log(type);
           console.error('Error fetching freelancers:', error);
         });
     }
-  }, [fetchData]);
+  }, [fetchData,type]);
 
   return (
     <div className={className}>

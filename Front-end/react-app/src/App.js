@@ -23,14 +23,17 @@ import Compare from './features/Compare';
 import ViewFreelance from './features/ViewFreelance';
 import ViewEnter from './features/ViewEnter';
 import getCookies from './features/hook/getCookies';
-
+import { useCookies } from 'react-cookie';
 function App() {
   const location = useLocation();
   const showNavbar = location.pathname !== '/login';
   const showNavbar1 = location.pathname !== '/register';
-  const username = getCookies('username'); 
+  const username = getCookies('username'); // เรียกใช้คุกกี้ 'username'
+  const [cookies, setCookie, removeCookie] = useCookies();
+  const isUserLoggedIn = username !== undefined;
   return (
     <>
+     
       <GlobalStyle />
       {showNavbar1 && showNavbar && <Navbar />}
       <Container>
@@ -38,13 +41,13 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          {username  ? (
-            <Route path="/develop" element={<Develop />} />
-          ) : (<Navigate to="/login" replace />
-          )}
-          <Route path="/graphic" element={<Graphic />} />
-          <Route path="/music" element={<Music />} />
-          <Route path="/findfreelance" element={<FindFreelance />} />
+          <Route
+            path="/develop"
+            element={isUserLoggedIn ? <Develop /> : <Navigate to="/login" />}
+            />
+          <Route path="/graphic" element={isUserLoggedIn ?<Graphic /> : <Navigate to="/login" />} />
+          <Route path="/music" element={isUserLoggedIn ?<Music /> : <Navigate to="/login" />} />
+          <Route path="/findfreelance" element={isUserLoggedIn ?<FindFreelance /> : <Navigate to="/login" />} />
           <Route path="/findjob" element={<FindJob />} />
           <Route path="/FreelanceForm" element={<FreelanceForm />} />
           <Route path="/Postjob" element={<PostJob />} />
