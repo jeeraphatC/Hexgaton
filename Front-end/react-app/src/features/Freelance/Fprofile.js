@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import bg2 from "../pic/bg2.jpg";
-import user1 from "../pic/user.png";
+import user1 from "../pic/woman.jpg";
 import star from "../pic/star.png";
 import getCookies from '../hook/getCookies';
 import { Link } from "react-router-dom";
@@ -22,7 +22,7 @@ function Fprofile({ className }) {
       <div className="c1">
         <div className='container-profile'>
           <img src={user1} alt="" className="user1" />
-          <div class="overlay"><Link to="/EditProfile">Edit Profile</Link></div>
+          <div class="overlay"><Link to="/EditProfile" className='link-edit'>Edit Profile</Link></div>
         </div>
         <div className="username">{username} </div>
 
@@ -89,8 +89,8 @@ export default styled(Fprofile)`
  text-align: center;
 
 .container-profile {
-  margin: 10px 45px;
-  border: 1px solid black;
+  margin: 15px 45px;
+
   position: relative;
   border-radius: 50%;
   width: 200px;
@@ -112,16 +112,19 @@ export default styled(Fprofile)`
   left: 50%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Center the element */
   width: 100%;
+  height:100%;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.4); /* Black see-through */
   transition: .5s ease;
   opacity: 0;
-  color: black;
+  color: white;
   font-size: 20px;
-  padding: 20px;
+  padding-top: 80px;
   text-align: center;
 }
 
-.link {
-  color: black; /* Set link color to black */
+.link-edit {
+  color:white; /* Set link color to black */
 }
 
 .container-profile:hover .overlay {
