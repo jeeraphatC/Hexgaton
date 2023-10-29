@@ -1,18 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import bg2 from "../pic/bg2.jpg";
 import user1 from "../pic/user.png";
 import star from "../pic/star.png";
+import getCookies from '../hook/getCookies';
+import { Link } from "react-router-dom";
 
 function Fprofile({ className }) {
+  const [username, setusername] = useState();
+
+  useEffect(() => {
+    // Get the username from the cookie
+    setusername(getCookies("username"));
+  }, []);
+
   return (
     <div className={className}>
       <img src={bg2} alt="" className="bg1" />
 
       <div className="c1">
-        <img src={user1} alt="" className="user1" />
-        <div className="username">Lorem ipsum </div>
+        <div className='container-profile'>
+          <img src={user1} alt="" className="user1" />
+          <div class="overlay"><Link to="/EditProfile">Edit Profile</Link></div>
+        </div>
+        <div className="username">{username} </div>
+
         <div className="rating">Rating</div>
         <img src={star} alt="" className="star" />
 
@@ -40,7 +53,6 @@ function Fprofile({ className }) {
             <div className="wfootname">Lorem ipsum</div>
           </div>
         </div>
-        
       </div>
       <div className="c3">
         <div className="workcon">
@@ -55,18 +67,17 @@ function Fprofile({ className }) {
         </div>
       </div>
 
-      
       <a href="/home">
-          <div className="review">Review</div>
-        </a>
-        <div className="reviewcon">
-            <img src={user1} alt="" className="reviewpro" />
-            <div className="reviewname">Lorem ipsum</div>
-            <div className="reviewbody">Awesome, I haven't ordered work yet but the work is finished.</div>
-            <img src={star} alt="" className="reviewstar" />
-            <div className="reviewscore">5.0</div>
-        </div>
+        <div className="review">Review</div>
+      </a>
+      <div className="reviewcon">
+        <img src={user1} alt="" className="reviewpro" />
+        <div className="reviewname">Lorem ipsum</div>
+        <div className="reviewbody">Awesome, I haven't ordered work yet but the work is finished.</div>
+        <img src={star} alt="" className="reviewstar" />
+        <div className="reviewscore">5.0</div>
       </div>
+    </div>
   );
 }
 
@@ -75,5 +86,45 @@ Fprofile.propTypes = {
 };
 
 export default styled(Fprofile)`
+ text-align: center;
+
+.container-profile {
+  margin: 10px 45px;
+  border: 1px solid black;
+  position: relative;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.user1 {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-top:0
+}
+
+.overlay {
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center the element */
+  width: 100%;
+  transition: .5s ease;
+  opacity: 0;
+  color: black;
+  font-size: 20px;
+  padding: 20px;
   text-align: center;
+}
+
+.link {
+  color: black; /* Set link color to black */
+}
+
+.container-profile:hover .overlay {
+  opacity: 1;
+}
 `;

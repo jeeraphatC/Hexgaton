@@ -12,7 +12,7 @@ const ChatRoom = ({ className }) => {
     const [privateChats, setPrivateChats] = useState(new Map());     
     const [publicChats, setPublicChats] = useState([]); 
     const [tab,setTab] =useState("CHATROOM");
-    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [username, setUsername] = useState('');
     const [userData, setUserData] = useState({
         username: '',
@@ -39,7 +39,7 @@ const ChatRoom = ({ className }) => {
         const usernameFromCookie = getCookies('username');
         if (usernameFromCookie) {
           handleUsername({ target: { value: usernameFromCookie } });
-          connect();
+         
         }
         // connect();
       }, []);
@@ -49,6 +49,7 @@ const ChatRoom = ({ className }) => {
         let Sock = new SockJS('http://localhost:8080/ws');
         stompClient = over(Sock);
         stompClient.connect({},onConnected, onError);
+        setIsLoggedIn(true);
     }
 
     const onConnected = () => {
@@ -148,7 +149,7 @@ const ChatRoom = ({ className }) => {
     return (
 <div className={className}>
     <div className="container-chat">
-      {userData.connected=true  }
+      {userData.connected? 
         <div className="chat-box">
         
 
@@ -195,20 +196,13 @@ const ChatRoom = ({ className }) => {
                 </div>
             </div>}
         </div>
-        {/* :
+        :
         <div className="register">
-            <input
-                id="user-name"
-                placeholder="Enter your name"
-                name="userName"
-                value={userData.username}
-                onChange={handleUsername}
-                margin="normal"
-              />
-              <button type="button" onClick={registerUser}>
+           
+              <button type="button" onClick={connect}>
                     connect
               </button> 
-        </div>} */}
+        </div>} 
     </div>
   </div>
     )
