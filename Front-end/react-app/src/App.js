@@ -33,7 +33,7 @@ function App() {
   const isUserLoggedIn = username !== undefined;
   return (
     <>
-     
+
       <GlobalStyle />
       {showNavbar1 && showNavbar && <Navbar />}
       <Container>
@@ -44,22 +44,22 @@ function App() {
           <Route
             path="/develop"
             element={isUserLoggedIn ? <Develop /> : <Navigate to="/login" />}
-            />
-          <Route path="/graphic" element={isUserLoggedIn ?<Graphic /> : <Navigate to="/login" />} />
-          <Route path="/music" element={isUserLoggedIn ?<Music /> : <Navigate to="/login" />} />
-          <Route path="/findfreelance" element={isUserLoggedIn ?<FindFreelance /> : <Navigate to="/login" />} />
-          <Route path="/findjob" element={<FindJob />} />
-          <Route path="/FreelanceForm" element={<FreelanceForm />} />
-          <Route path="/Postjob" element={<PostJob />} />
-          <Route path="/edit/:id" element={<EditJob />} />
-          <Route path="/editfreelance/:id" element={<EditFreelance />} />
-          <Route path="/Profile" element={<Profile />} />
-          <Route path="/Options" element={<Options />} />
-          <Route path="/ChatRoom" element={<ChatRoom />}></Route>
-          <Route path="/fix" element={<Pro />}></Route>
-          <Route path="/Compare" element={<Compare />}></Route>
-          <Route path="/Freelance/:id" element={<ViewFreelance />} />
-          <Route path="/enterprises/:id" element={<ViewEnter />} />
+          />
+          <Route path="/graphic" element={isUserLoggedIn ? <Graphic /> : <Navigate to="/login" />} />
+          <Route path="/music" element={isUserLoggedIn ? <Music /> : <Navigate to="/login" />} />
+          <Route path="/findfreelance" element={isUserLoggedIn ? <FindFreelance /> : <Navigate to="/login" />} />
+          <Route path="/findjob" element={isUserLoggedIn ? <FindJob /> : <Navigate to="/login" />} />
+          <Route path="/FreelanceForm" element={isUserLoggedIn ? <FreelanceForm /> : <Navigate to="/login" />} />
+          <Route path="/Postjob" element={isUserLoggedIn ? <PostJob /> : <Navigate to="/login" />} />
+          <Route path="/edit/:id" element={isUserLoggedIn ? <EditJob /> : <Navigate to="/login" />} />
+          <Route path="/editfreelance/:id" element={isUserLoggedIn ? <EditFreelance /> : <Navigate to="/login" />} />
+          <Route path="/Profile" element={isUserLoggedIn ? <Profile /> : <Navigate to="/login" />} />
+          <Route path="/Options" element={isUserLoggedIn ? <Options /> : <Navigate to="/login" />} />
+          <Route path="/ChatRoom" element={isUserLoggedIn ? <ChatRoom /> : <Navigate to="/login" />}></Route>
+          <Route path="/fix" element={isUserLoggedIn ? <Pro /> : <Navigate to="/login" />}></Route>
+          <Route path="/Compare" element={isUserLoggedIn ? <Compare /> : <Navigate to="/login" />}></Route>
+          <Route path="/Freelance/:id" element={isUserLoggedIn ? <ViewFreelance /> : <Navigate to="/login" />} />
+          <Route path="/enterprises/:id" element={isUserLoggedIn ? <ViewEnter /> : <Navigate to="/login" />} />
         </Routes>
       </Container>
 

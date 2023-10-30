@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Button, Card, Container, Row, Col } from 'react-bootstrap';
-import { Link , useLocation } from 'react-router-dom';
-
+import { Link, useLocation } from 'react-router-dom';
+import getCookies from '../hook/getCookies';
 
 const Develop = ({ className }) => {
   const [enterprises, setEnterprises] = useState([]);
   const [freelance, setFreelance] = useState([]);
   const [fetchData, setFetchData] = useState('enterprises'); // Default to enterprises
+  const cookieValue = getCookies("id");
   const toggleFetchData = () => {
     setFetchData(fetchData === 'enterprises' ? 'freelance' : 'enterprises');
   };
-const location=useLocation();
-const type=location.state.type;
-console.log(type);
+  const location = useLocation();
+  const type = location.state.type;
+  console.log(type);
   useEffect(() => {
 
     if (fetchData === 'enterprises') {
@@ -36,7 +37,7 @@ console.log(type);
           console.error('Error fetching freelancers:', error);
         });
     }
-  }, [fetchData,type]);
+  }, [fetchData, type]);
 
   return (
     <div className={className}>
@@ -76,7 +77,10 @@ console.log(type);
                       <Card.Text>{enterprise.description}</Card.Text>
                       <Card.Text>{enterprise.type}</Card.Text>
                       <Button  >
-                        <Link to={`/edit/${enterprise.id}` } style={{color : "white"}}>Edit</Link>
+                       
+                        {enterprise.account.accountid == cookieValue && (
+                          <Link to={`/edit/${enterprise.id}`} style={{ color: "white" }}>Edit</Link>
+                        )}
                       </Button>
                     </Card.Body>
                   </Card>
@@ -96,8 +100,11 @@ console.log(type);
                       <Card.Text>{freelancer.description}</Card.Text>
                       <Card.Text>{freelancer.type}</Card.Text>
                       <Button >
-                        <Link to={`/edit/${freelancer.id}`} style={{color : "white"}}>Edit</Link>
+                        {freelancer.account.accountid == cookieValue && (
+                          <Link to={`/edit/${freelancer.id}`} style={{ color: "white" }}>Edit</Link>
+                        )}
                       </Button>
+
                     </Card.Body>
                   </Card>
                 </Col>
