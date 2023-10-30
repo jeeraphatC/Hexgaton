@@ -95,4 +95,5 @@ public class Freelance {
         this.type = type;
     }
 
+    
 }

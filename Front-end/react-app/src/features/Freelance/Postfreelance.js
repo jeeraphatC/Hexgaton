@@ -3,8 +3,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Container } from 'react-bootstrap';
+import getCookies from '../hook/getCookies';
 const FreelanceForm = () => {
   const [formData, setFormData] = useState({
+    id:'',
     name: '',
     price: '',
     time: '',
@@ -36,6 +38,44 @@ const FreelanceForm = () => {
     try {
       const response = await axios.post('http://localhost:8082/freelances', formData);
       console.log('Freelance created:', response.data);
+      
+      const accoun_id=getCookies('id');
+      axios.get(`http://localhost:8085/api/v1/accounts/list/${accoun_id}`)
+        .then((accountResponse) => {
+          const accountData = accountResponse.data;
+          console.log('Account data retrieved successfully:', accountData);
+
+          const jobDataToUpdate = {
+            id: response.data.id, // Replace with the job ID you want to update
+            name: response.data.name,
+            price: response.data.price,
+            time: response.data.time,
+            description: response.data.description,
+            type: response.data.type,
+            account: {
+              accountname: accountData.accountname,
+              email: accountData.email,
+              password: accountData.password,
+              numberCard: accountData.numberCard,
+              accountid: accoun_id
+            }
+          };
+
+          // Make a PUT request to update job data
+          axios.put(`http://localhost:8082/freelances/${jobDataToUpdate.id}`, jobDataToUpdate)
+            .then((jobResponse) => {
+              console.log('Job updated successfully!', jobResponse.data);
+              // Do whatever you need to do after updating job data
+            })
+            .catch((jobError) => {
+              console.error('Error updating job:', jobError);
+            });
+        })
+        .catch((accountError) => {
+          console.error('Error retrieving account data:', accountError);
+        });
+
+
       setFormData({
         name: '',
         price: '',
@@ -63,7 +103,7 @@ const FreelanceForm = () => {
         <div>
           <label>Price:</label>
           <input
-            type="number" min="1"  
+            type="number" min="1"
             name="price"
             value={formData.price}
             onChange={handleChange}
@@ -102,7 +142,7 @@ const FreelanceForm = () => {
           </select>
         </div>
         <div style={{ textAlign: "center" }}>
-          <Button variant="success" type="submit" style={{width : 150}}>Submit</Button>
+          <Button variant="success" type="submit" style={{ width: 150 }}>Submit</Button>
         </div>
 
       </form>

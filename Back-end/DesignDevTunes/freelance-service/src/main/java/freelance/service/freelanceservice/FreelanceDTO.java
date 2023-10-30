@@ -8,21 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
-public class FreelanceDTO {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
+public class FreelanceDTO {
+    private Long id;
     private String name;
     private String price;
     private String time;
     private String description;
     private String type;
-
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
     
     public FreelanceDTO() {

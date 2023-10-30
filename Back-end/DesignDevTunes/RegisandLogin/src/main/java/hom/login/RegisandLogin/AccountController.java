@@ -55,6 +55,18 @@ public class AccountController {
         return new ResponseEntity<>(accounts, HttpStatus.OK);
     }
 
+    @GetMapping("/list/{id}")
+public ResponseEntity<Account> getAccountById(@PathVariable long id) {
+    Optional<Account> account = accountRepository.findById(id);
+
+    if (account.isPresent()) {
+        return new ResponseEntity<>(account.get(), HttpStatus.OK);
+    } else {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+}
+
+
     @DeleteMapping("/list/{id}")
     public ResponseEntity<String> delete(@PathVariable long id) {
         if (!accountRepository.existsById(id)) {

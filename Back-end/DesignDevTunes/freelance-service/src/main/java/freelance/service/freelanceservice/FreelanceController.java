@@ -128,11 +128,6 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
         return ResponseEntity.ok("Freelance updated");
     }
 
-    @PutMapping("/{id}/account/{accountid}")
-    public Freelance updateFreelances(@PathVariable Long id, @PathVariable Long accountid) { 
-        Freelance freelance = freelanceRepository.findById(id).get();
-
-        return null;
-    }
+   
 
 }

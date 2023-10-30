@@ -38,7 +38,7 @@ class PostJob extends Component {
       price: this.state.price,
       time: this.state.time,
       description: this.state.description,
-      type: this.state.type
+      type: this.state.type,
     };
 
     // ทำ HTTP POST Request ไปยัง http://localhost:8080/enterprises ด้วย Axios
@@ -62,9 +62,9 @@ class PostJob extends Component {
   render() {
     return (
       <div >
-        <Container style={{width : 800}}> 
-          
-          <h2 style={{marginTop : 60}}>Post a Job</h2>
+        <Container style={{ width: 800 }}>
+
+          <h2 style={{ marginTop: 60 }}>Post a Job</h2>
           <form onSubmit={this.handleSubmit}>
             <div>
               <label>Name:</label>
@@ -78,7 +78,7 @@ class PostJob extends Component {
             <div>
               <label>Price:</label>
               <input
-                type="number" min="1"  
+                type="number" min="1"
                 name="price"
                 value={this.state.price}
                 onChange={this.handleInputChange}
@@ -110,13 +110,13 @@ class PostJob extends Component {
               >
                 <option value=" ">Select Type</option>
                 <option value="develop">Develop</option>
-                
+
                 <option value="graphic">Graphic</option>
                 <option value="music">Music</option>
               </select>
             </div>
             <div style={{ textAlign: "center" }}>
-              <Button variant="success" type="submit" className="custom-button" style={{width : 150}}>Submit</Button>
+              <Button variant="success" type="submit" className="custom-button" style={{ width: 150 }}>Submit</Button>
             </div>
           </form>
         </Container>
