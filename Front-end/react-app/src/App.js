@@ -28,9 +28,10 @@ function App() {
   const location = useLocation();
   const showNavbar = location.pathname !== '/login';
   const showNavbar1 = location.pathname !== '/register';
-  const username = getCookies('username'); // เรียกใช้คุกกี้ 'username'
-  const [cookies, setCookie, removeCookie] = useCookies();
+  const username = getCookies('username'); 
+  
   const isUserLoggedIn = username !== undefined;
+  const [cookies, setCookie, removeCookie] = useCookies();
   return (
     <>
 

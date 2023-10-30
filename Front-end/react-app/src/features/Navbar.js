@@ -3,21 +3,24 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { useLocation , useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import mlogo from "./pic/mini_logo.png";
 import ologo from "./pic/option.png";
 import chat from "./pic/chat.png";
 import login from "./pic/login.png";
-import { Cookies } from "react-cookie";
 import getCookies from './hook/getCookies';
 function Navbar({ className }) {
   const [developmentHovered, setDevelopmentHovered] = useState(false);
   const [graphicHovered, setGraphicHovered] = useState(false);
   const [musicHovered, setMusicHovered] = useState(false);
   const [nameAccount, setNameAccount] = useState("Guest");
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
-const navagate=useNavigate();
-  const clickhandle =(e)=>{
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navagate = useNavigate();
+  const username = getCookies('username');
+  const isUserLoggedIn = username !== undefined;
+
+
+  const clickhandle = (e) => {
     navagate("/devlop")
   }
   const handleDevelopmentMouseEnter = () => {
@@ -43,37 +46,8 @@ const navagate=useNavigate();
   };
 
   const location = useLocation();
-  const email = location.state?.email || "Guest";
 
-  useEffect(() => {
-    if (email !== "Guest") {
-      // Fetch the list of accounts
-      axios
-        .get("http://localhost:8085/api/v1/accounts/list")
-        .then((response) => {
-          // Assuming the response data is an array of accounts
-          const accounts = response.data;
 
-          // Find the account with the specified email
-          const accountWithMatchingEmail = accounts.find(
-            (account) => account.email === email
-          );
-
-          if (accountWithMatchingEmail) {
-            // If the account exists, set its accountname to the state
-            setNameAccount(accountWithMatchingEmail.accountname);
-            setIsLoggedIn(true); // Set login status to true
-
-          } else {
-            // Handle the case where no matching account is found
-            setNameAccount("Guest");
-          }
-        })
-        .catch((error) => {
-          console.error("Error fetching accounts:", error);
-        });
-    }
-  }, [email]);
 
   return (
     <header className={className}>
@@ -87,8 +61,8 @@ const navagate=useNavigate();
         onMouseLeave={handleDevelopmentMouseLeave}
         className={`text ${developmentHovered ? "hovered" : ""}`}
       >
-        <Link to="/develop" 
-        state={{type : "develop"}}
+        <Link to="/develop"
+          state={{ type: "develop" }}
         // className="develop"
         >
           Development
@@ -108,7 +82,7 @@ const navagate=useNavigate();
         className={`text ${graphicHovered ? "hovered" : ""}`}
       >
         <Link to="/develop"
-         state={{type : "graphic"}}>Graphic</Link>
+          state={{ type: "graphic" }}>Graphic</Link>
         {graphicHovered && (
           <div className="submenu">
             <Link to="/logo">Logo Design</Link>
@@ -127,7 +101,7 @@ const navagate=useNavigate();
         className={`text ${musicHovered ? "hovered" : ""}`}
       >
         <Link to="/develop"
-        state={{type : "music"}}>Music</Link>
+          state={{ type: "music" }}>Music</Link>
         {musicHovered && (
           <div className="submenu">
             <Link to="/beat">Beat</Link>
@@ -150,13 +124,17 @@ const navagate=useNavigate();
         <img src={chat} alt="" className="ologo" />
       </Link>
 
-      {isLoggedIn ? ( // Conditionally render "Sign-up" link
-        <Link to="/profile" className="navname">{getCookies('username')}</Link>
-      ) : (
-        <Link to="/register" className="text1">
-          <img src={login} alt="" className="login-logo" />
+
+      {isUserLoggedIn ? (
+        <Link to="/profile" className="navname">
+          {getCookies("username")}
         </Link>
-      )}
+      )  // or you can use any other component/message when the user is logged in
+        : (
+          <Link to="/register" className="text1">
+            <img src={login} alt="" className="login-logo" />
+          </Link>
+        )}
     </header>
   );
 }

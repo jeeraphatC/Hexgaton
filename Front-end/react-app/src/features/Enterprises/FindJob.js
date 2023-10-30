@@ -36,12 +36,12 @@ class FindJob extends Component {
                 <Col md={4} key={enterprise.id}>
                   <Card style={{width : 400 , padding : 20 , marginBottom : 20}}>
                     <Card.Body>
-                  <a href={`/edit/${enterprise.id}`}>
+                  <Link to={`/edit/${enterprise.id}`}>
                         <img src={pen2} alt="View Details" className='jobdetail' style={{ width: '40px', height: '40px', margin: '115px 0px 0px 255px', position:'absolute' }} />
-                      </a>
-                      <a href={`/enterprises/${enterprise.id}`}>
+                      </Link>
+                      <Link to={`/enterprises/${enterprise.id}`}>
                         <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px', margin: '105px 0px 0px 300px', position:'absolute' }} />
-                      </a>
+                      </Link>
                       <Card.Title><strong>Name:</strong> {enterprise.name}</Card.Title>
                       <Card.Text><strong>Price:</strong> {enterprise.price}</Card.Text>
                       <Card.Text><strong>Time:</strong> {enterprise.time}</Card.Text>
