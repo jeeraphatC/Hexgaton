@@ -3,6 +3,8 @@ package enterprise.service.enterservice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import freelance.service.freelanceservice.Enterprise;
+
 import java.util.List;
 
 @CrossOrigin
@@ -19,7 +21,7 @@ public class EnterpriseController {
     }
 
     @GetMapping("/{id}")
-    public Enterprise getEnterpriseById(@PathVariable String id) {
+    public Enterprise getEnterpriseById(@PathVariable Long id) {
         return enterpriseRepository.findById(id).orElse(null);
     }
 
@@ -34,7 +36,7 @@ public class EnterpriseController {
     }
 
     @PutMapping("/{id}")
-    public Enterprise updateEnterprise(@PathVariable String id, @RequestBody Enterprise updatedEnterprise) {
+    public Enterprise updateEnterprise(@PathVariable Long id, @RequestBody Enterprise updatedEnterprise) {
         Enterprise existingEnterprise = enterpriseRepository.findById(id).orElse(null);
 
         if (existingEnterprise != null) {
@@ -43,7 +45,7 @@ public class EnterpriseController {
             existingEnterprise.setTime(updatedEnterprise.getTime());
             existingEnterprise.setDescription(updatedEnterprise.getDescription());
             existingEnterprise.setType(updatedEnterprise.getType());
-
+            existingEnterprise.setAccount(updatedEnterprise.getAccount());
             return enterpriseRepository.save(existingEnterprise);
         }
 
@@ -51,7 +53,7 @@ public class EnterpriseController {
     }
 
     @PatchMapping("/{id}")
-    public Enterprise patchEnterprise(@PathVariable String id, @RequestBody Enterprise patchedEnterprise) {
+    public Enterprise patchEnterprise(@PathVariable Long id, @RequestBody Enterprise patchedEnterprise) {
         Enterprise existingEnterprise = enterpriseRepository.findById(id).orElse(null);
 
         if (existingEnterprise != null) {
@@ -79,7 +81,7 @@ public class EnterpriseController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteEnterprise(@PathVariable String id) {
+    public void deleteEnterprise(@PathVariable Long id) {
         enterpriseRepository.deleteById(id);
     }
 }

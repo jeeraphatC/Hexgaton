@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import freelance.service.freelanceservice.Account;
 import freelance.service.freelanceservice.AccountDTO;
+
 @RestController
 @CrossOrigin
 @RequestMapping("api/v1/accounts")
@@ -56,16 +57,15 @@ public class AccountController {
     }
 
     @GetMapping("/list/{id}")
-public ResponseEntity<Account> getAccountById(@PathVariable long id) {
-    Optional<Account> account = accountRepository.findById(id);
+    public ResponseEntity<Account> getAccountById(@PathVariable long id) {
+        Optional<Account> account = accountRepository.findById(id);
 
-    if (account.isPresent()) {
-        return new ResponseEntity<>(account.get(), HttpStatus.OK);
-    } else {
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        if (account.isPresent()) {
+            return new ResponseEntity<>(account.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
-}
-
 
     @DeleteMapping("/list/{id}")
     public ResponseEntity<String> delete(@PathVariable long id) {
