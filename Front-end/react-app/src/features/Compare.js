@@ -349,12 +349,12 @@ margin:19px 0 0 -300px;
     font-size: 50px;
     color: #0071BE;
     font-weight: 400;
-    margin-top: 200px;
+    margin-top: 250px;
   }
   .userDataName2{
     font-size: 50px;
     color: #0196FC;
     font-weight: 400;
-    margin-top: 200px;
+    margin-top: 250px;
   }
 `;
