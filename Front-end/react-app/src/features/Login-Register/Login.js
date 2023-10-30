@@ -13,6 +13,7 @@ function Login({ className }) {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const [nameAccount, setNameAccount] = useState("Guest");
+  
     /**cookies */
     const [cookies, setCookie, removeCookie] = useCookies();
   async function login(event) {
@@ -40,6 +41,7 @@ function Login({ className }) {
           setNameAccount(accountWithMatchingEmail.accountname);
           setCookie('username', accountWithMatchingEmail.accountname ); 
           setCookie('email',accountWithMatchingEmail.email);
+          setCookie('id',accountWithMatchingEmail.accountid);
           navigate('/', { state: { email } });
         } else {
           alert("Account not found for the provided email");

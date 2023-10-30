@@ -36,7 +36,6 @@ public class Account {
         this.id = id;
         this.accountname = accountname;
         this.email = email;
-
         this.password = password;
         this.numberCard = numberCard;
     }

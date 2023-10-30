@@ -22,7 +22,7 @@ public class Freelance {
     private String description;
     private String type;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
      

@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+
+
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +25,7 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
     }
 
     @GetMapping("/{id}")
-    public Freelance getFreelanceById(@PathVariable Long id) { 
+    public Freelance getFreelanceById(@PathVariable Long id) {
         return freelanceRepository.findById(id).orElse(null);
     }
 
@@ -31,7 +33,6 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
     public List<Freelance> findFreelanceByType(@PathVariable String type) {
         return freelanceRepository.findByType(type);
     }
-
 
     @PostMapping
     public Freelance createFreelance(@RequestBody Freelance freelance) { // เปลี่ยนชื่อเมทอดจาก createEnterprise เป็น
@@ -51,7 +52,7 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
             existingFreelance.setPrice(updatedFreelance.getPrice());
             existingFreelance.setTime(updatedFreelance.getTime());
             existingFreelance.setDescription(updatedFreelance.getDescription());
-
+            existingFreelance.setAccount(updatedFreelance.getAccount());
             return freelanceRepository.save(existingFreelance);
         }
 
@@ -80,10 +81,10 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
             if (patchedFreelance.getDescription() != null) {
                 existingFreelance.setDescription(patchedFreelance.getDescription());
             }
-             if (patchedFreelance.getType() != null) {
+            if (patchedFreelance.getType() != null) {
                 existingFreelance.setType(patchedFreelance.getType());
             }
-             if (patchedFreelance.getAccount() != null) {
+            if (patchedFreelance.getAccount() != null) {
                 existingFreelance.setAccount(patchedFreelance.getAccount());
             }
 
@@ -92,7 +93,6 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
 
         return null;
     }
-
 
     @PatchMapping("/patch/{id}")
     public ResponseEntity<String> patchDog(@PathVariable long id, @RequestBody FreelanceDTO freelanceDTO) {
@@ -115,21 +115,24 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
         if (freelanceDTO.getType() != null) {
             freelance.setType(freelanceDTO.getType());
         }
-         
-         if (freelanceDTO.getTime() != null) {
+
+        if (freelanceDTO.getTime() != null) {
             freelance.setTime(freelanceDTO.getTime());
         }
-         if (freelanceDTO.getAccount() != null) {
+        if (freelanceDTO.getAccount() != null) {
             freelance.setAccount(freelanceDTO.getAccount());
         }
 
         freelanceRepository.save(freelance);
 
         return ResponseEntity.ok("Freelance updated");
-        }
+    }
 
-      
-    
+    @PutMapping("/{id}/account/{accountid}")
+    public Freelance updateFreelances(@PathVariable Long id, @PathVariable Long accountid) { 
+        Freelance freelance = freelanceRepository.findById(id).get();
 
+        return null;
+    }
 
 }
