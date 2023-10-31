@@ -10,6 +10,10 @@ public class AccountDTO {
     private String numberCard;
     private List<Freelance> freelance;
 
+    /**add Description  */
+    private String descrip ;
+
+
     public AccountDTO() {
     }
 
@@ -69,6 +73,14 @@ public class AccountDTO {
     }
 
 
+
+    public String getDescrip() {
+        return descrip;
+    }
+
+    public void setDescrip(String descrip) {
+        this.descrip = descrip;
+    }
 
     @Override
     public String toString() {

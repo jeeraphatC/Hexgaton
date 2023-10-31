@@ -29,6 +29,9 @@ public class Account {
     @Column(name = "number_card", length = 13)
     private String numberCard;
 
+    @Column(name = "descrip")
+    private String descrip ;
+
     public Account() {
     }
 
@@ -78,6 +81,14 @@ public class Account {
 
     public void setNumberCard(String numberCard) {
         this.numberCard = numberCard;
+    }
+
+    public String getDescrip() {
+        return descrip;
+    }
+
+    public void setDescrip(String descrip) {
+        this.descrip = descrip;
     }
 
 }
