@@ -40,7 +40,7 @@ class FindFreelance extends Component {
                   <Card.Title><strong>Name:</strong> {freelance.name}</Card.Title>
                   <Card.Text><strong>Price:</strong> {freelance.price}</Card.Text>
                   <Card.Text><strong>Time:</strong> {freelance.time}</Card.Text>
-                  <Card.Text><strong>Description:</strong> {freelance.description}</Card.Text>
+                  <Card.Text><strong>Description:</strong>{truncateText(enterprise.description, 40)}</Card.Text>
                  
                 </Card.Body>
               </Card>
@@ -51,6 +51,13 @@ class FindFreelance extends Component {
       </Container >
     );
   }
+}
+
+function truncateText(text, maxLength) {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + '...';
+  }
+  return text;
 }
 
 export default FindFreelance;

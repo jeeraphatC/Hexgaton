@@ -84,4 +84,7 @@ public class EnterpriseController {
     public void deleteEnterprise(@PathVariable Long id) {
         enterpriseRepository.deleteById(id);
     }
+
+
+    
 }

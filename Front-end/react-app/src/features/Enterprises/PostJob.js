@@ -7,7 +7,7 @@ class PostJob extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id:'',
+      id: '',
       name: '',
       price: '',
       time: '',
@@ -21,6 +21,7 @@ class PostJob extends Component {
     this.setState({ [name]: value });
   }
 
+
   handleSubmit = (event) => {
     event.preventDefault();
 
@@ -29,7 +30,7 @@ class PostJob extends Component {
       this.state.price === '' ||
       this.state.time === '' ||
       this.state.description === '' ||
-      this.state.type.trim() === ''
+      this.state.type.trim() === '' 
     ) {
       alert('Please fill in all the required fields.');
       return;
@@ -47,12 +48,12 @@ class PostJob extends Component {
       .then((response) => {
         // ทำอะไรก็ตามที่คุณต้องการหลังจากส่งข้อมูลไปยังเซิร์ฟเวอร์
         console.log('Job posted successfully!', response.data);
-        const accoun_id=getCookies('id');
+        const accoun_id = getCookies('id');
         axios.get(`http://localhost:8085/api/v1/accounts/list/${accoun_id}`)
           .then((accountResponse) => {
             const accountData = accountResponse.data;
             console.log('Account data retrieved successfully:', accountData);
-  
+
             const jobDataToUpdate = {
               id: response.data.id, // Replace with the job ID you want to update
               name: response.data.name,
@@ -68,7 +69,7 @@ class PostJob extends Component {
                 accountid: accoun_id
               }
             };
-  
+
             // Make a PUT request to update job data
             axios.put(`http://localhost:8090/enterprises/${jobDataToUpdate.id}`, jobDataToUpdate)
               .then((jobResponse) => {
