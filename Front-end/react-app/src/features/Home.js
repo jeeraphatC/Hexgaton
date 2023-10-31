@@ -8,45 +8,46 @@ import lg from "./pic/lg.png";
 import arrow from "./pic/arrow.png";
 import inter from "./pic/inter.png";
 import big_logo from "./pic/big_logo.png";
+import { Link } from "react-router-dom";
 function Home({ className }) {
   return (
     <div className={className}>
       <div className="homebg">
         <div className="mini">
-          <a href="/develop">
+          <Link to="/develop">
             <h4>Logo design</h4>
-          </a>
-          <a href="/develop">
+          </Link>
+          <Link to="/develop">
             <h4>Sticker design</h4>
-          </a>
-          <a href="/develop">
+          </Link>
+          <Link to="/develop">
             <h4>ChatClientharacter design</h4>
-          </a>
-          <a href="/develop">
+          </Link>
+          <Link to="/develop">
             <h4>Banner advertising design</h4>
-          </a>
-          <a href="/develop">
+          </Link>
+          <Link to="/develop">
             <h4>Draw cartoons</h4>
-          </a>
-          <a href="/develop">
+          </Link>
+          <Link to="/develop">
             <h4>3D model</h4>
-          </a>
-          <a href="/develop">
+          </Link>
+          <Link to="/develop">
             <h4>Web development</h4>
-          </a>
-          <a href="/develop">
+          </Link>
+          <Link to="/develop">
             <h4>Game development</h4>
-          </a>
-          <a href="/develop">
+          </Link>
+          <Link to="/develop">
             <h4>Making chatbotS</h4>
-          </a>
-          <a href="/develop">
+          </Link>
+          <Link to="/develop">
             <h4>Beat</h4>
-          </a>
+          </Link>
 
-          <a href="/develop">
+          <Link to="/develop">
             <h4>Mobile App</h4>
-          </a>
+          </Link>
         </div>
         <h1>Do you have a job?</h1>
         <h3>

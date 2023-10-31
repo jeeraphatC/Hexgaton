@@ -148,7 +148,7 @@ function Register({ className }) {
       </div>
 
       <div className="app-container">
-      <a href="/login">
+      <a href="/">
         <img src={mlogo} alt="" className="homelogo" />
       </a>
       </div>

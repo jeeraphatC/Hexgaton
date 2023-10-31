@@ -132,7 +132,7 @@ function Login({ className }) {
         </svg>
       </div>
       <div className="app-container">
-      <a href="/home">
+      <a href="/">
         <img src={mlogo} alt="" className="homelogo" />
       </a>
       </div>
