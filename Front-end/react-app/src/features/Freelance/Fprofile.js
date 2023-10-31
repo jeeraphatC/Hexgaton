@@ -6,13 +6,38 @@ import user1 from "../pic/woman.jpg";
 import star from "../pic/star.png";
 import getCookies from '../hook/getCookies';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 function Fprofile({ className }) {
-  const [username, setusername] = useState();
+
+  const [userdata, setUserdata] = useState(
+    {
+      username : '',
+      description : '',
+      rating : 0,
+    }
+  );
+
+  const [userName, setuserName] = useState();
+  
 
   useEffect(() => {
-    // Get the username from the cookie
-    setusername(getCookies("username"));
+    setuserName(getCookies('username'));
+
+    // const usernameFromCookies = getCookies("username");
+    // setUserdata({ ...userdata, "username": usernameFromCookies });
+
+   const account_id = getCookies('id');
+    // Use axios to fetch data
+    axios
+      .get(`http://localhost:8085/api/v1/accounts/list/${account_id}`)
+      .then(response => {
+        // Update the description inside the then block
+        setUserdata({ ...userdata, description: response.data.descrip });
+      })
+      .catch(error => {
+        console.error("Error fetching data: ", error);
+      });
   }, []);
 
   return (
@@ -23,27 +48,24 @@ function Fprofile({ className }) {
       <div className="c1">
         <div className='container-profile'>
           <img src={user1} alt="" className="user1" />
-          <div class="overlay"><Link to="/EditProfile" className='link-edit'>Edit Profile</Link></div>
+          <div class="overlay"><Link to="/editprofile" className='link-edit'>Edit Profile</Link></div>
         </div>
-        <div className="username">{username} </div>
+        <div className="username">{userName} </div>
 
         <div className="rating">Rating</div>
         <img src={star} alt="" className="star" />
 
         <div className="phead1">Description</div>
         <div className="pbody1">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique
-          justo volutpat, tincidunt ligula et, eleifend quam. Aliquam quam elit,
-          elementum sed diam id.Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit. Sed tristique justo volutpat,
+       {userdata.description} 
         </div>
       </div>
 
       <div className='block-work-review'>
       <div className='block-work-of'>
       <div className='head-band'>
-        <h3>Work of {username}</h3>
-        <Link to="/EditProfile" className='link-history'>PRESS TO SEE MORE HISTORY</Link>
+        <h3>Work of {userdata.username}</h3>
+        <Link to="/editprofile" className='link-history'>PRESS TO SEE MORE HISTORY</Link>
         </div>
 <div className='work'>
   

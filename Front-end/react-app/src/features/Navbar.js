@@ -135,6 +135,8 @@ function Navbar({ className }) {
             <img src={login} alt="" className="login-logo" />
           </Link>
         )}
+
+        
     </header>
   );
 }
