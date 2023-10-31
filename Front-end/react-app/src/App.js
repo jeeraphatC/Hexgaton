@@ -62,7 +62,7 @@ function App() {
           <Route path="/Compare" element={isUserLoggedIn ? <Compare /> : <Navigate to="/login" />}></Route>
           <Route path="/Freelance/:id" element={isUserLoggedIn ? <ViewFreelance /> : <Navigate to="/login" />} />
           <Route path="/enterprises/:id" element={isUserLoggedIn ? <ViewEnter /> : <Navigate to="/login" />} />
-          <Route path="/editprofile/" element={isUserLoggedIn ? <EditProfile /> : <Navigate to="/editprofile" />} />
+          <Route path="/editprofile/:id" element={isUserLoggedIn ? <EditProfile /> : <Navigate to="/editprofile" />} />
         </Routes>
       </Container>
 
