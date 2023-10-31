@@ -76,12 +76,10 @@ const Develop = ({ className }) => {
                       <Card.Text>{enterprise.time}</Card.Text>
                       <Card.Text>{enterprise.description}</Card.Text>
                       <Card.Text>{enterprise.type}</Card.Text>
-                      <Button  >
-                       
-                        {enterprise.account.accountid == cookieValue && (
-                          <Link to={`/edit/${enterprise.id}`} style={{ color: "white" }}>Edit</Link>
-                        )}
-                      </Button>
+                      <Link to={`/enterprises/${enterprise.id}`}>
+                        <p>Details</p>
+                      </Link>
+                      
                     </Card.Body>
                   </Card>
                 </Col>
