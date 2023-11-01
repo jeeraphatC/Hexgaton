@@ -28,7 +28,7 @@ function Compare({ className }) {
       return;
     }
 
-    fetch(`http://localhost:8082/freelances/${userId1}`)
+    fetch(`http://localhost:8090/enterprises/${userId1}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('User not found');
@@ -56,7 +56,7 @@ function Compare({ className }) {
       return;
     }
 
-    fetch(`http://localhost:8082/freelances/${userId2}`)
+    fetch(`http://localhost:8090/enterprises/${userId2}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('User not found');
