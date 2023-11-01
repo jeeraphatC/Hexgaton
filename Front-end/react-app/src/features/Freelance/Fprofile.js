@@ -28,15 +28,29 @@ function Fprofile({ className }) {
     // setUserdata({ ...userdata, "username": usernameFromCookies });
 
    const account_id = getCookies('id');
-    // Use axios to fetch data
     axios
       .get(`http://localhost:8085/api/v1/accounts/list/${account_id}`)
       .then(response => {
-        // Update the description inside the then block
         setUserdata({ ...userdata, description: response.data.descrip });
       })
       .catch(error => {
         console.error("Error fetching data: ", error);
+      });
+  }, []);
+
+
+  const [image, setImage] = useState(null);
+  const imagelocation = getCookies("id");
+  useEffect(() => {
+    
+    axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
+      .then(response => {
+        const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+        const imageSrc = `data:image/jpeg;base64,${base64}`;
+        setImage(imageSrc);
+      })
+      .catch(error => {
+        console.error('Error fetching image:', error);
       });
   }, []);
 
@@ -47,7 +61,7 @@ function Fprofile({ className }) {
       <div className='container'>
       <div className="c1">
         <div className='container-profile'>
-          <img src={user1} alt="" className="user1" />
+          <img src={image} alt="" className="user1" />
           <div class="overlay"><Link to="/editprofile/:id" className='link-edit'>Edit Profile</Link></div>
         </div>
         <div className="username">{userName} </div>
