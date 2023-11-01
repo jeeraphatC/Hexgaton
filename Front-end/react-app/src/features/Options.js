@@ -43,16 +43,16 @@ function Options({ className }) {
         <img src={workpro} alt="" className="logo" />   
         </div>
       </Link>
-      <Link to="/home">
+      <Link to="/mywork">
         <div className="options">
-        <h3>My work </h3>
+        <h3>My Post Freelance </h3>
         </div>
       </Link>
-      <a href="/home">
+      <Link to="/myworkenterpise">
         <div className="options">
-        <h3>My work Entrepreneur </h3>
+        <h3>My Post Enterprise</h3>
         </div>
-      </a>
+        </Link>
       </div>
       </Container>
     </div>

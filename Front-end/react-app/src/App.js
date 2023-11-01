@@ -8,7 +8,7 @@ import Login from './features/Login-Register/Login';
 import Develop from './features/features-navbar/develop';
 import Register from './features/Login-Register/Regis';
 import FindFreelance from './features/Enterprises/Findfreelances';
-import FindJob from './features/Enterprises/FindJob';
+import FindJob from './features/Freelance/FindJob';
 import ChatRoom from './features/chatRoom';
 import FreelanceForm from './features/Freelance/Postfreelance';
 import PostJob from './features/Enterprises/PostJob';
@@ -25,6 +25,8 @@ import ViewEnter from './features/ViewEnter';
 import getCookies from './features/hook/getCookies';
 import { useCookies } from 'react-cookie';
 import EditProfile from './features/EditProfile';
+import Myworkenterpise from './features/Enterprises/Myworkenterpise';
+import Mywork from './features/Freelance/Mywork';
 function App() {
   const location = useLocation();
   const showNavbar = location.pathname !== '/login';
@@ -63,6 +65,8 @@ function App() {
           <Route path="/Freelance/:id" element={isUserLoggedIn ? <ViewFreelance /> : <Navigate to="/login" />} />
           <Route path="/enterprises/:id" element={isUserLoggedIn ? <ViewEnter /> : <Navigate to="/login" />} />
           <Route path="/editprofile/:id" element={isUserLoggedIn ? <EditProfile /> : <Navigate to="/editprofile" />} />
+          <Route path="/myworkenterpise" element={isUserLoggedIn ? <Myworkenterpise /> : <Navigate to="/login" />} />
+          <Route path="/mywork" element={isUserLoggedIn ? <Mywork /> : <Navigate to="/login" />} />
         </Routes>
       </Container>
 
