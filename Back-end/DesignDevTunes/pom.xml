@@ -27,6 +27,7 @@
 		<module>RegisandLogin</module>
 		<module>enter-service</module>
 		<module>chat-service</module>
+		<module>picture</module>
 	</modules>
 
 	<dependencies>
