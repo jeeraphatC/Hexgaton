@@ -10,7 +10,8 @@ const PostJob = () => {
     price: '',
     time: '',
     description: '',
-    type: ''
+    type: '',
+    location: '',
   });
 
   const handleInputChange = (event) => {
@@ -30,7 +31,8 @@ const PostJob = () => {
       formData.price === '' ||
       formData.time === '' ||
       formData.description === '' ||
-      formData.type.trim() === ''
+      formData.type.trim() === ''||
+      formData.type.location === ''
     ) {
       alert('Please fill in all the required fields.');
       return;
@@ -53,6 +55,7 @@ const PostJob = () => {
             time: response.data.time,
             description: response.data.description,
             type: response.data.type,
+            location: response.data.location,
             account: {
               accountname: accountData.accountname,
               email: accountData.email,
@@ -119,6 +122,7 @@ const PostJob = () => {
       time: '',
       description: '',
       type: '',
+      location: '',
     });
 
     // Clear selectedImage
@@ -183,7 +187,18 @@ const PostJob = () => {
               <option value="music">Music</option>
             </select>
           </div>
-
+          <div>
+              <label>Location:</label>
+              <select
+                name="location"
+                value={formData.location}
+                onChange={handleInputChange}
+              >
+                <option value=" ">Select Location</option>
+                <option value="onsite">onsite</option>
+                <option value="online">online</option>
+              </select>
+            </div>
           <div >
             <input type="file" onChange={handleImageChange} />
           </div>

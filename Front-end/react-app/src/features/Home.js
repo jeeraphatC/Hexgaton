@@ -8,11 +8,13 @@ import lg from "./pic/lg.png";
 import arrow from "./pic/arrow.png";
 import inter from "./pic/inter.png";
 import big_logo from "./pic/big_logo.png";
+import bgcom2 from "./pic/bgcom2.jpg";
 import { Link } from "react-router-dom";
 function Home({ className }) {
   return (
     <div className={className}>
       <div className="homebg">
+      <img src={bgcom2} alt="" className="bgcom" />
         <div className="mini">
           <Link to="/develop">
             <h4>Logo design</h4>
@@ -115,6 +117,11 @@ Home.propTypes = {
 };
 
 export default styled(Home)`
+.bgcom{
+  height: 600px;
+    width: 100%;
+    box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
   .footer-content {
   }
   .inter {

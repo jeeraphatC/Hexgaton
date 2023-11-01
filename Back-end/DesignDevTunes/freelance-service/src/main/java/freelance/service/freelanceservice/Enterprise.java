@@ -15,6 +15,7 @@ public class Enterprise {
     private int time;
     private String description;
     private String type;
+    private String location;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
@@ -29,12 +30,13 @@ public class Enterprise {
     public Enterprise() {
     }
 
-    public Enterprise(String name, String price, int time, String description, String type ) {
+    public Enterprise(String name, String price, int time, String description, String type, String location ) {
         this.name = name;
         this.price = price;
         this.time = time;
         this.description = description;
         this.type = type;
+        this.location = location;
     }
 
     public Long getId() {
@@ -83,5 +85,13 @@ public class Enterprise {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

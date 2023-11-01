@@ -1,9 +1,11 @@
-import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import search from "./pic/search.png";
 import astronaut from "./pic/astronaut.png";
 import bgcom from "./pic/bgcom.jpg";
+import big_logo from "./pic/big_logo.png";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 class UserData {
   constructor(data) {
@@ -11,15 +13,28 @@ class UserData {
     this.name = data.name;
     this.price = data.price;
     this.type = data.type;
+    this.location = data.location;
   }
 }
 
 function Compare({ className }) {
+  
   const [userId1, setUserId1] = useState(""); 
   const [userId2, setUserId2] = useState(""); 
   const [userData1, setUserData1] = useState(null); 
   const [userData2, setUserData2] = useState(null); 
   const [showClearButton, setShowClearButton] = useState(false);
+
+  const { id } = useParams();
+  
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const ids = searchParams.get('ids');
+    const [id1, id2] = ids.split(',');
+
+    setUserId1(id1);
+    setUserId2(id2);
+  }, []);
 
   const handleSubmit1 = (e) => {
     e.preventDefault();
@@ -40,6 +55,7 @@ function Compare({ className }) {
         user1.time = data.time;
         user1.price = data.price;
         user1.description = data.type;
+        user1.location = data.location;
         setUserData1(user1);
         setShowClearButton(true);
       })
@@ -68,6 +84,7 @@ function Compare({ className }) {
         user2.time = data.time;
         user2.price = data.price;
         user2.description = data.type;
+        user2.location = data.location;
         setUserData2(user2);
         setShowClearButton(true);
       })
@@ -126,8 +143,12 @@ function Compare({ className }) {
               <h3 className="data1">{userData1.price}</h3>
             </div>
             <div className="FirstDataContainer3">
-              <h3 className="datacontent2">Type</h3>
+              <h3 className="datacontent">Type</h3>
               <h3 className="data1">{userData1.type}</h3>
+            </div>
+            <div className="FirstDataContainer4">
+              <h3 className="datacontent">Location</h3>
+              <h3 className="data1">{userData1.location}</h3>
             </div>
           </div>
         )}
@@ -139,7 +160,7 @@ function Compare({ className }) {
             <h2 className="userDataName2">{userData2.name}</h2>
           </div>
           <div className="SecondDataContainer1">
-            <h3 className="data2">{userData2.time}</h3>
+            <h3 className="data2">{userData2.time} Day</h3>
           </div>
           <div className="SecondDataContainer2">
             <h3 className="data2">{userData2.price}</h3>
@@ -147,12 +168,29 @@ function Compare({ className }) {
           <div className="SecondDataContainer3">
             <h3 className="data2">{userData2.type}</h3>
           </div>
+          <div className="SecondDataContainer4">
+            <h3 className="data2">{userData2.location}</h3>
+          </div>
         </div>
       )}
+
+      
 
       {showClearButton && (
         <button className="clearbtn"onClick={handleClear}>Clear</button>
       )}
+
+<footer>
+        <div class="footer-content">
+          <img src={big_logo} alt="" className="big_logofooter" />
+          <p className="footertext1">
+            Norrapat Sai-ai 652110289<br></br>
+            Samitthichai Peeragun 652110309<br></br>
+            Sivasith Singkaew 652110308<br></br>
+            Jeeraphat Chantra 652110318<br></br>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
@@ -163,6 +201,31 @@ Compare.propTypes = {
 
 
 export default styled(Compare)`
+
+
+.SecondDataContainer4{
+  position: absolute;
+  border-radius: 10px;
+  background: #0196FC;
+  top: 1450px;
+  left: 1150px;
+  transform: translate(-50%, -50%);
+  width: 773px;
+  height: 93px;
+  z-index:-1;
+  margin-top: 120px;
+}
+.FirstDataContainer4{
+  position: absolute;
+  border-radius: 10px 0px 0px 10px;
+  background: #0071BE;
+  top: 1450px;
+  left: 600px;
+  transform: translate(-50%, -50%);
+  width: 750px;
+  height: 93px;
+  margin-top: 120px;
+}
 .clearbtn{
   background-color:red;
   position: absolute;
@@ -177,12 +240,7 @@ export default styled(Compare)`
 box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
 background-color:grey;
 }
-.datacontent2{
-  color: #FFF;
-font-size: 40px;
-font-weight: 400;
-margin:19px 0 0 -270px;
-}
+
 .SecondDataContainer3{
   position: absolute;
   border-radius: 10px;
@@ -312,7 +370,7 @@ margin:19px 0 0 -300px;
     font-size: 23px;
   }
   input:hover{
-    box-shadow: 0px 3px px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 2px px 0px rgba(0, 0, 0, 0.15);
   }
 
   .bgcom {
@@ -328,7 +386,7 @@ margin:19px 0 0 -300px;
     background-color:#0196FC;
     color: white;
     border-radius: 10px;
-
+    border: 1px solid #FFF;
   }
 
   .userContentContainer1 {

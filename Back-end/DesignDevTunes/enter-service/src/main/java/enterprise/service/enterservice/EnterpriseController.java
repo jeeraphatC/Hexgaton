@@ -46,6 +46,7 @@ public class EnterpriseController {
             existingEnterprise.setDescription(updatedEnterprise.getDescription());
             existingEnterprise.setType(updatedEnterprise.getType());
             existingEnterprise.setAccount(updatedEnterprise.getAccount());
+            existingEnterprise.setLocation(updatedEnterprise.getLocation());
             return enterpriseRepository.save(existingEnterprise);
         }
 
@@ -73,7 +74,11 @@ public class EnterpriseController {
             if (patchedEnterprise.getType() != null) {
                 existingEnterprise.setType(patchedEnterprise.getType());
             }
-
+            
+        if (patchedEnterprise.getLocation() != null) {
+                existingEnterprise.setLocation(patchedEnterprise.getLocation());
+            }
+            
             return enterpriseRepository.save(existingEnterprise);
         }
 

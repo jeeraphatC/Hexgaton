@@ -10,6 +10,7 @@ const Develop = ({ className }) => {
   const [enterprises, setEnterprises] = useState([]);
   const [freelance, setFreelance] = useState([]);
   const [fetchData, setFetchData] = useState('enterprises'); // Default to enterprises
+  const [selectedItems, setSelectedItems] = useState([]);
   const cookieValue = getCookies("id");
   const toggleFetchData = () => {
     setFetchData(fetchData === 'enterprises' ? 'freelance' : 'enterprises');
@@ -109,6 +110,26 @@ console.log(fetchData)
         });
     }
   }, [fetchData, type]);
+  const handleCardClick = (item) => {
+    setSelectedItems(prevSelectedItems => {
+      const itemIndex = prevSelectedItems.findIndex(selectedItem => selectedItem.id === item.id);
+
+      if (itemIndex === -1 && prevSelectedItems.length < 2) {
+        return [...prevSelectedItems, item];
+      } else if (itemIndex !== -1) {
+        const updatedItems = [...prevSelectedItems];
+        updatedItems.splice(itemIndex, 1);
+        return updatedItems;
+      } else {
+        return prevSelectedItems;
+      }
+    });
+  };
+  const handleCompareClick = () => {
+    const selectedIds = selectedItems.map(item => item.id);
+    const url = `/compare?ids=${selectedIds.join(',')}`;
+    window.location.href = url; // Manually navigate to the URL
+  };
   return (
     <div className={className}>
       <div>
@@ -137,7 +158,7 @@ console.log(fetchData)
             {fetchData === 'enterprises' && (
               enterprises.map((enterprise, index) => (
                 <Col md={4} key={index}>
-                  <Card style={{ padding: 20, width: 400, marginBottom: 20 }}>
+                  <Card style={{ padding: 20, width: 400, marginBottom: 20, border: selectedItems.includes(enterprise) ? '2px solid green' : 'none' }} onClick={() => handleCardClick(enterprise)}>
                     <Card.Body>
 
                       <Card.Img variant="top"  style={{width : 300 , height: 200}} src={enterpriseImages[enterprise.id]} />
@@ -159,7 +180,7 @@ console.log(fetchData)
             {fetchData === 'freelance' && (
               freelance.map((freelancer, index) => (
                 <Col md={4} key={index}>
-                  <Card style={{ padding: 20, width: 400, marginBottom: 20 }}>
+                   <Card style={{ padding: 20, width: 400, marginBottom: 20, border: selectedItems.includes(freelancer) ? '2px solid green' : 'none' }} onClick={() => handleCardClick(freelancer)}>
                     <Card.Body>
 
 
@@ -184,6 +205,15 @@ console.log(fetchData)
               ))
             )}
           </Row>
+          <h4>Selected Items:</h4>
+          {selectedItems.map((selectedItem, index) => (
+            <div key={index}>
+              <p>{selectedItem.name}</p>
+            </div>
+          ))}
+          {selectedItems.length === 2 && (
+          <button onClick={handleCompareClick}>Compare</button>
+        )}
         </Container>
       </div>
     </div>

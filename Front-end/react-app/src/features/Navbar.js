@@ -114,9 +114,6 @@ function Navbar({ className }) {
       <Link to="/findfreelance">
         <h4>Entrepreneur</h4>
       </Link>
-      <Link to="/Compare">
-        <h4>Compare</h4>
-      </Link>
       <Link to="/options">
         <img src={ologo} alt="" className="ologo" />
       </Link>
