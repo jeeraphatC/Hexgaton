@@ -19,7 +19,7 @@ function EditProfile({ className }) {
   });
 
   const [successMessage, setSuccessMessage] = useState(''); // State for success message
-
+  const [selectedImage, setSelectedImage] = useState(null);
   useEffect(() => {
     const setIdFromCookies = getCookies('id');
     setFormData({
@@ -48,7 +48,8 @@ function EditProfile({ className }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const account_id = id; // Retrieve account_id from the formData
+    const account_id = id;
+
 
     try {
       if (account_id) {
@@ -58,8 +59,39 @@ function EditProfile({ className }) {
             console.log(formData);
             setCookie('username', formData.accountname);
             setCookie('email', formData.email);
-            
+
             setSuccessMessage('Account updated successfully'); // Set the success message
+            if (selectedImage) {
+              const formData = new FormData();
+              formData.append('image', selectedImage);
+              axios.post('http://localhost:2023/add', formData)
+                .then(imageResponse => {
+                  console.log('Image uploaded successfully.');
+                  const imageId = imageResponse.data;
+                  console.log(imageId);
+
+                  if (imageId) {
+                    const imageFormData = new FormData();
+                    imageFormData.append('image', selectedImage);
+                    imageFormData.append('imagelocation', account_id);
+                    imageFormData.append('name', "account");
+
+                    axios.put(`http://localhost:2023/update?id=${imageId}`, imageFormData)
+                      .then(response => {
+                        console.log('Image updated successfully.');
+                      })
+                      .catch(error => {
+                        console.error('Error updating image:', error);
+                      });
+                  } else {
+                    console.error('imageId is null or invalid. Cannot update the image.');
+                  }
+                })
+                .catch(error => {
+                  console.error('Error uploading image:', error);
+                });
+            }
+
           })
           .catch((error) => {
             console.error('Error updating', error.message);
@@ -72,12 +104,17 @@ function EditProfile({ className }) {
     }
   };
 
+
+  const handleImageChange = (event) => {
+    setSelectedImage(event.target.files[0]);
+  };
+
   return (
     <Container>
       <div className={className}>
         <img src={bg2} alt="" className="bg1" />
         <div className="container-edit">
-        {successMessage && <div className="success-message">{successMessage}</div>}
+          {successMessage && <div className="success-message">{successMessage}</div>}
           <div className="edit-Box">
             <form onSubmit={handleSubmit}>
               <div>
@@ -110,6 +147,10 @@ function EditProfile({ className }) {
                 />
               </div>
 
+              <div >
+                <input type="file" onChange={handleImageChange} />
+              </div>
+
               <div style={{ textAlign: 'center' }}>
                 <Button variant="success" type="submit" style={{ width: 150 }}>
                   Confirm
@@ -117,7 +158,7 @@ function EditProfile({ className }) {
               </div>
             </form>
 
-          
+
           </div>
         </div>
       </div>
