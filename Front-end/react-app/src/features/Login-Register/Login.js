@@ -5,8 +5,9 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import blogo from "../pic/big_logo.png";
 import mlogo from "../pic/mini_logo.png";
-
+import SockJS from 'sockjs-client';
 import { useCookies } from 'react-cookie';
+
 function Login({ className }) {
 
   const [email, setEmail] = useState('');
@@ -42,6 +43,10 @@ function Login({ className }) {
           setCookie('username', accountWithMatchingEmail.accountname ); 
           setCookie('email',accountWithMatchingEmail.email);
           setCookie('id',accountWithMatchingEmail.accountid);
+          /*connect chat*/
+          // let Sock = new SockJS('http://localhost:8080/ws');
+          // setCookie('sock',Sock);
+          setCookie("connectChat",true)
           navigate('/', { state: { email } });
         } else {
           alert("Account not found for the provided email");
