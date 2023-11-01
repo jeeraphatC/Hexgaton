@@ -122,9 +122,9 @@ class PostJob extends Component {
               />
             </div>
             <div>
-              <label>Time:</label>
+              <label>Number of Day:</label>
               <input
-                type="date"
+                type="number"
                 name="time"
                 value={this.state.time}
                 onChange={this.handleInputChange}

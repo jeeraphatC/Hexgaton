@@ -64,9 +64,9 @@ public class EnterpriseController {
             if (patchedEnterprise.getPrice() != null) {
                 existingEnterprise.setPrice(patchedEnterprise.getPrice());
             }
-            if (patchedEnterprise.getTime() != null) {
-                existingEnterprise.setTime(patchedEnterprise.getTime());
-            }
+            // if (patchedEnterprise.getTime() != null) {
+            //     existingEnterprise.setTime(patchedEnterprise.getTime());
+            // }
             if (patchedEnterprise.getDescription() != null) {
                 existingEnterprise.setDescription(patchedEnterprise.getDescription());
             }

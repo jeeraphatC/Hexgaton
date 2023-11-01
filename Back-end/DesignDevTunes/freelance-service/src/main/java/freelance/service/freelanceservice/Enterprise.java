@@ -12,7 +12,7 @@ public class Enterprise {
 
     private String name;
     private String price;
-    private String time;
+    private int time;
     private String description;
     private String type;
     @ManyToOne(cascade = CascadeType.ALL)
@@ -29,7 +29,7 @@ public class Enterprise {
     public Enterprise() {
     }
 
-    public Enterprise(String name, String price, String time, String description, String type ) {
+    public Enterprise(String name, String price, int time, String description, String type ) {
         this.name = name;
         this.price = price;
         this.time = time;
@@ -61,11 +61,11 @@ public class Enterprise {
         this.price = price;
     }
 
-    public String getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(int time) {
         this.time = time;
     }
 

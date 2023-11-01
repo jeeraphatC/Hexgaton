@@ -119,7 +119,7 @@ function Compare({ className }) {
             </div>
             <div className="FirstDataContainer1">
               <h3 className="datacontent">Time</h3>
-              <h3 className="data1">{userData1.time}</h3>
+              <h3 className="data1">{userData1.time} Day</h3>
             </div>
             <div className="FirstDataContainer2">
               <h3 className="datacontent">Budget</h3>
