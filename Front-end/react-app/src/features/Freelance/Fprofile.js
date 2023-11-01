@@ -48,17 +48,20 @@ function Fprofile({ className }) {
       <div className="c1">
         <div className='container-profile'>
           <img src={user1} alt="" className="user1" />
-          <div class="overlay"><Link to="/editprofile" className='link-edit'>Edit Profile</Link></div>
+          <div class="overlay"><Link to="/editprofile/:id" className='link-edit'>Edit Profile</Link></div>
         </div>
         <div className="username">{userName} </div>
 
         <div className="rating">Rating</div>
         <img src={star} alt="" className="star" />
 
-        <div className="phead1">Description</div>
+        <div className="phead1">Description
         <div className="pbody1">
        {userdata.description} 
+       </div>
         </div>
+
+        <div className='edit'><Link to="/editprofile/:id" className='edit'>Edit Profile</Link></div>
       </div>
 
       <div className='block-work-review'>
@@ -215,6 +218,16 @@ flex-direction:column;
     font-size:30px;
     color:#0196FC;
   }
+  .edit{
+   
+    
+    color:#808080;
+    font-size:20px;
+    text-decoration: underline;
+  }
+  .edit:hover{
+    color:#0196fc ;
+  }
   .star{
     max-width:30px;
     margin-left:70px;
@@ -253,6 +266,13 @@ flex-direction:column;
   }
   .pbody1{
     margin:10px 20px 20px 20px;
+    color:#969696;
+    font-size:18px;
+    margin-bottom:20%;
+    word-wrap: break-word; 
+    height:200px;
+  
+    overflow:auto;
   }
   
   .phead2{
