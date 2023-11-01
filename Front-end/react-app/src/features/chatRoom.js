@@ -20,6 +20,7 @@ const ChatRoom = ({ className }) => {
         connected: isLoggedIn,
         message: ''
       });
+    const [chatConnect,setChatConnect] = useState(false);
 
       const location = useLocation();
       const email = location.state?.email || 'guest';
@@ -34,23 +35,50 @@ const ChatRoom = ({ className }) => {
     
       // }, [userData.username]);
 
-      useEffect(() => {
-        // Get the username from the cookie
-        const usernameFromCookie = getCookies('username');
-        if (usernameFromCookie) {
-          handleUsername({ target: { value: usernameFromCookie } });
-         
-        }
-        // connect();
-      }, []);
+//       useEffect(() => {
+//         // Get the username from the cookie
+//         const usernameFromCookie = getCookies('username');
+//         const chatIsTrue = getCookies('connectChat');
+//         setChatConnect(chatIsTrue);
+//         console.log(chatConnect);
+//         if (usernameFromCookie) {
+//           handleUsername({ target: { value: usernameFromCookie } });
+        
+//         }
+//         // connect();
+//       }, []);
   
+// if(chatConnect) {
+//   let Sock = new SockJS('http://localhost:8080/ws');
+//   stompClient = over(Sock);
+//   stompClient.connect({},onConnected, onError);
+//   setIsLoggedIn(true);
+// }
 
-    const connect =()=>{
-        let Sock = new SockJS('http://localhost:8080/ws');
-        stompClient = over(Sock);
-        stompClient.connect({},onConnected, onError);
-        setIsLoggedIn(true);
+  useEffect(() => {
+    // Get the username from the cookie
+    const usernameFromCookie = getCookies('username');
+    const chatIsTrue = getCookies('connectChat');
+    if (usernameFromCookie) {
+      handleUsername({ target: { value: usernameFromCookie } });
     }
+    setChatConnect(chatIsTrue); // Set chatConnect after handling username
+  }, []);
+
+  useEffect(() => {
+    if (chatConnect) {
+      let Sock = new SockJS('http://localhost:8080/ws');
+      stompClient = over(Sock);
+      stompClient.connect({}, onConnected, onError);
+      setIsLoggedIn(true);
+    }
+  }, [chatConnect]);
+    //     const connect =()=>{
+    //     let Sock = new SockJS('http://localhost:8080/ws');
+    //     stompClient = over(Sock);
+    //     stompClient.connect({},onConnected, onError);
+    //     setIsLoggedIn(true);
+    // }
 
     const onConnected = () => {
         setUserData({...userData,"connected": true});
@@ -148,65 +176,77 @@ const ChatRoom = ({ className }) => {
 
     return (
 <div className={className}>
-    <div className="container-chat">
-      {userData.connected? 
+      <div className="container-chat">
+        {userData.connected }
         <div className="chat-box">
-        
-
-        <div className="member-list">
-                <ul>
-          
-                    {[...privateChats.keys()].map((name,index)=>(
-                        <li onClick={()=>{setTab(name)}} className={`member ${tab===name && "active"}`} key={index}>{name}</li>
-                    ))}
-                </ul>
+       
+          {tab === "CHATROOM" && (
+            <div className="chat-content">
+              <ul className="chat-messages">
+                {publicChats.map((chat, index) => (
+                  <li className={`message ${chat.senderName === userData.username && "self"}`} key={index}>
+                    {chat.senderName !== userData.username && <div className="avatar">{chat.senderName}</div>}
+                    <div className="message-data">{chat.message}</div>
+                    {chat.senderName === userData.username && <div className="avatar self">{chat.senderName}</div>}
+                  </li>
+                ))}
+              </ul>
+              <div className="content-send-message">
+                <div className="send-message">
+                  <input
+                    type="text"
+                    className="input-message"
+                    placeholder="Enter the message"
+                    value={userData.message}
+                    onChange={handleMessage}
+                  />
+                  <button type="button" className="send-button" onClick={sendValue}>
+                    Send
+                  </button>
+                </div>
+              </div>
             </div>
-            {tab==="CHATROOM" && <div className="chat-content">
-                <ul className="chat-messages">
-                    {publicChats.map((chat,index)=>(
-                        <li className={`message ${chat.senderName === userData.username && "self"}`} key={index}>
-                            {chat.senderName !== userData.username && <div className="avatar">{chat.senderName}</div>}
-                            <div className="message-data">{chat.message}</div>
-                            {chat.senderName === userData.username && <div className="avatar self">{chat.senderName}</div>}
-                        </li>
-                    ))}
-                </ul>
-            <div className="content-send-message">
+          )}
+          {tab !== "CHATROOM" && (
+            <div className="chat-content">
+              <ul className="chat-messages">
+                {[...privateChats.get(tab)].map((chat, index) => (
+                  <li className={`message ${chat.senderName === userData.username && "self"}`} key={index}>
+                    {chat.senderName !== userData.username && <div className="avatar">{chat.senderName}</div>}
+                    <div className="message-data">{chat.message}</div>
+                    {chat.senderName === userData.username && <div className="avatar self">{chat.senderName}</div>}
+                  </li>
+                ))}
+              </ul>
+              <div className="content-send-message">
                 <div className="send-message">
-                    <input type="text" className="input-message" placeholder="enter the message" value={userData.message} onChange={handleMessage} /> 
-                    <button type="button" className="send-button" onClick={sendValue}>send</button>
+                  <input
+                    type="text"
+                    className="input-message"
+                    placeholder="Enter the message"
+                    value={userData.message}
+                    onChange={handleMessage}
+                  />
+                  <button type="button" className="send-button" onClick={sendPrivateValue}>
+                    Send
+                  </button>
                 </div>
-                </div>
-            </div>}
-            {tab!=="CHATROOM" && <div className="chat-content">
-                <ul className="chat-messages">
-                    {[...privateChats.get(tab)].map((chat,index)=>(
-                        <li className={`message ${chat.senderName === userData.username && "self"}`} key={index}>
-                            {chat.senderName !== userData.username && <div className="avatar">{chat.senderName}</div>}
-                            <div className="message-data">{chat.message}</div>
-                            {chat.senderName === userData.username && <div className="avatar self">{chat.senderName}</div>}
-                        </li>
-                    ))}
-                </ul>
-                <div className="content-send-message">
-                <div className="send-message">
-                    <input type="text" className="input-message" placeholder="enter the message" value={userData.message} onChange={handleMessage} /> 
-                    <button type="button" className="send-button" onClick={sendPrivateValue}>send</button>
-                </div>
-                </div>
-            </div>}
+              </div>
+            </div>
+          )}
         </div>
-        :
-        <div className="register">
-           
-              <button type="button" onClick={connect}>
-                    connect
-              </button> 
-        </div>} 
+      </div>
     </div>
-  </div>
-    )
-}
+  );
+};
+        {/* // :
+        // <div className="register">
+           
+        //       <button type="button" onClick={connect}>
+        //             connect
+        //       </button> 
+        // </div>}  */}
+
 
 
 export default  styled(ChatRoom)`
@@ -241,11 +281,14 @@ export default  styled(ChatRoom)`
 .chat-content{
   width:80%;
   margin-left: 10px;
+ 
+
 }
 
 .chat-messages{
   height: 80%;
   border: 1px solid #000;
+  overflow:auto;
 }
 
 .send-message{
@@ -293,6 +336,8 @@ ul {
   padding: 3px 5px;
   border-radius: 5px;
   color:#fff;
+  text-align:center;
+  margin:5px;
 }
 .avatar.self{
   color:#000;
@@ -303,11 +348,20 @@ ul {
   width: auto;
   display: flex;
   flex-direction: row;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+ 
   margin: 5px 10px;
 }
-.message-data{
-  padding:5px;
+.message-data {
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  word-wrap: break-word;
+  max-width: 80%; /* Adjust the width as needed */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 5px 0;
+  font-size: 16px;
+  color: #333;
 }
 .message.self{
   justify-content: end;
