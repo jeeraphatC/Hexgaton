@@ -1,9 +1,9 @@
-package com.picture.picture;
+package com.pictureenter.pictureenter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import com.picture.picture.ImageRepository;
+import com.pictureenter.pictureenter.ImageRepository;
 
 @Service
 public class ImageServiceImpl implements ImageService {

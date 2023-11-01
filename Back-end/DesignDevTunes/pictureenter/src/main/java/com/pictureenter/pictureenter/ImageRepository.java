@@ -1,4 +1,4 @@
-package com.picture.picture;
+package com.pictureenter.pictureenter;
 
 
 import java.util.List;

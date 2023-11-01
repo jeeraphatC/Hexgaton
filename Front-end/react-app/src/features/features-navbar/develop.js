@@ -16,29 +16,99 @@ const Develop = ({ className }) => {
   };
   const location = useLocation();
   const type = location.state.type;
-  console.log(type);
-  useEffect(() => {
 
+  const [freelancerImages, setFreelancerImages] = useState({});
+  const [enterpriseImages, setEnterprisesimage] = useState({});
+console.log(fetchData)
+  useEffect(() => {
     if (fetchData === 'enterprises') {
       axios.get(`http://localhost:8090/enterprises/type/${type}`)
         .then(response => {
           setEnterprises(response.data);
-        })
+
+          const enterprise = response.data;
+          const fetchAllImages = async (enter) => {
+            const imagePromises = enterprises.map((enterprise) =>
+              fetchImageByImagelocation(enterprise.id)
+            );
+        
+            try {
+              const images = await Promise.all(imagePromises);
+              const imageMap = {};
+              images.forEach((image, index) => {
+                imageMap[enterprises[index].id] = image;
+              });
+              setEnterprisesimage(imageMap);
+            } catch (error) {
+              console.error('Error fetching images:', error);
+            }
+          };
+        
+          const fetchImageByImagelocation = (imagelocation) => {
+            return axios.get(`http://localhost:2023/getByNameAndImagelocation/${fetchData}/${imagelocation}`, { responseType: 'arraybuffer' })
+              .then(imageResponse => {
+                const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+                const imageSrc = `data:image/jpeg;base64,${base64}`;
+                return imageSrc;
+              })
+              .catch(error => {
+                console.error('Error fetching image:', error);
+                return null;
+              });
+          };
+          if (enterprises.length > 0) {
+            // Fetch images for freelancers
+            fetchAllImages(enterprises);
+          }
+        }, [fetchData ])
+
         .catch(error => {
           console.error('Error fetching enterprises:', error);
         });
-    }
-    else if (fetchData === 'freelance') {
+    } else if (fetchData === 'freelance') {
       axios.get(`http://localhost:8082/freelances/type/${type}`)
         .then(response => {
           setFreelance(response.data);
-        })
+          const freelancers = response.data;
+          const fetchAllImages = async (freelancers) => {
+            const imagePromises = freelancers.map((freelancer) =>
+              fetchImageByImagelocation(freelancer.id)
+            );
+        
+            try {
+              const images = await Promise.all(imagePromises);
+              const imageMap = {};
+              images.forEach((image, index) => {
+                imageMap[freelancers[index].id] = image;
+              });
+              setFreelancerImages(imageMap);
+            } catch (error) {
+              console.error('Error fetching images:', error);
+            }
+          };
+        
+          const fetchImageByImagelocation = (imagelocation) => {
+            return axios.get(`http://localhost:2023/getByNameAndImagelocation/${fetchData}/${imagelocation}`, { responseType: 'arraybuffer' })
+              .then(imageResponse => {
+                const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+                const imageSrc = `data:image/jpeg;base64,${base64}`;
+                return imageSrc;
+              })
+              .catch(error => {
+                console.error('Error fetching image:', error);
+                return null;
+              });
+          };
+          if (freelancers.length > 0) {
+            // Fetch images for freelancers
+            fetchAllImages(freelancers);
+          }
+        }, [fetchData ])
         .catch(error => {
           console.error('Error fetching freelancers:', error);
         });
     }
   }, [fetchData, type]);
-
   return (
     <div className={className}>
       <div>
@@ -69,7 +139,8 @@ const Develop = ({ className }) => {
                 <Col md={4} key={index}>
                   <Card style={{ padding: 20, width: 400, marginBottom: 20 }}>
                     <Card.Body>
-                      <Card.Img variant="top" src={enterprise.image} />
+
+                      <Card.Img variant="top"  style={{width : 300 , height: 200}} src={enterpriseImages[enterprise.id]} />
                       <br />
                       <Card.Title>{enterprise.name}</Card.Title>
                       <Card.Text>{enterprise.price}</Card.Text>
@@ -79,7 +150,7 @@ const Develop = ({ className }) => {
                       <Link to={`/enterprises/${enterprise.id}`}>
                         <p>Details</p>
                       </Link>
-                      
+
                     </Card.Body>
                   </Card>
                 </Col>
@@ -90,8 +161,12 @@ const Develop = ({ className }) => {
                 <Col md={4} key={index}>
                   <Card style={{ padding: 20, width: 400, marginBottom: 20 }}>
                     <Card.Body>
-                      <Card.Img variant="top" src={freelancer.image} />
+
+
+                      <Card.Img variant="top" style={{width : 300 , height: 200}}  src={freelancerImages[freelancer.id]} />
+
                       <br />
+
                       <Card.Title>{freelancer.name}</Card.Title>
                       <Card.Text>{freelancer.price}</Card.Text>
                       <Card.Text>{freelancer.time}</Card.Text>

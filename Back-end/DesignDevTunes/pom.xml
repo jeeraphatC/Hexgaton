@@ -28,6 +28,7 @@
 		<module>enter-service</module>
 		<module>chat-service</module>
 		<module>picture</module>
+		<module>pictureenter</module>
 	</modules>
 
 	<dependencies>

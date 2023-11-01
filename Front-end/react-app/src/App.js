@@ -25,6 +25,8 @@ import ViewEnter from './features/ViewEnter';
 import getCookies from './features/hook/getCookies';
 import { useCookies } from 'react-cookie';
 import EditProfile from './features/EditProfile';
+import ImageUpload from './features/picture';
+import ImageDisplay from './features/DisplayImg';
 function App() {
   const location = useLocation();
   const showNavbar = location.pathname !== '/login';
@@ -63,6 +65,8 @@ function App() {
           <Route path="/Freelance/:id" element={isUserLoggedIn ? <ViewFreelance /> : <Navigate to="/login" />} />
           <Route path="/enterprises/:id" element={isUserLoggedIn ? <ViewEnter /> : <Navigate to="/login" />} />
           <Route path="/editprofile/:id" element={isUserLoggedIn ? <EditProfile /> : <Navigate to="/editprofile" />} />
+          <Route path="/picture" element={isUserLoggedIn ? <ImageUpload /> : <Navigate to="/editprofile" />} />
+          <Route path="/picturedis" element={isUserLoggedIn ? <ImageDisplay /> : <Navigate to="/editprofile" />} />
         </Routes>
       </Container>
 

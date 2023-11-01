@@ -1,4 +1,4 @@
-package com.picture.picture;
+package com.pictureenter.pictureenter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

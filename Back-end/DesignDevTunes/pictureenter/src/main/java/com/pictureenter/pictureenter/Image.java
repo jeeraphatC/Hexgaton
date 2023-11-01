@@ -1,11 +1,11 @@
-package com.picture.picture;
+package com.pictureenter.pictureenter;
 
 import javax.persistence.*;
 import java.sql.Blob;
 import java.util.Date;
 
 @Entity
-@Table(name = "image_table")
+@Table(name = "image_table_enter")
 public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

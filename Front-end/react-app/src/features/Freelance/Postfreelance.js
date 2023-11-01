@@ -6,13 +6,17 @@ import { Button, Container } from 'react-bootstrap';
 import getCookies from '../hook/getCookies';
 const FreelanceForm = () => {
   const [formData, setFormData] = useState({
-    id:'',
+    id: '',
     name: '',
     price: '',
     time: '',
     description: '',
     type: ''
   });
+
+  const formData2 = (' ');
+
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +25,6 @@ const FreelanceForm = () => {
       [name]: value,
     });
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (
@@ -38,8 +41,8 @@ const FreelanceForm = () => {
     try {
       const response = await axios.post('http://localhost:8082/freelances', formData);
       console.log('Freelance created:', response.data);
-      
-      const accoun_id=getCookies('id');
+
+      const accoun_id = getCookies('id');
       axios.get(`http://localhost:8085/api/v1/accounts/list/${accoun_id}`)
         .then((accountResponse) => {
           const accountData = accountResponse.data;
@@ -61,11 +64,43 @@ const FreelanceForm = () => {
             }
           };
 
-          // Make a PUT request to update job data
+          
           axios.put(`http://localhost:8082/freelances/${jobDataToUpdate.id}`, jobDataToUpdate)
             .then((jobResponse) => {
               console.log('Job updated successfully!', jobResponse.data);
-              // Do whatever you need to do after updating job data
+              const updatedJobId = jobResponse.data.id; // Store the updated job ID
+
+              if (selectedImage) {
+                const formData = new FormData();
+                formData.append('image', selectedImage);
+
+                axios.post('http://localhost:2023/add', formData)
+                  .then(imageResponse => {
+                    console.log('Image uploaded successfully.');
+                    const imageId = imageResponse.data;
+                    console.log(imageId);
+
+                    if (imageId) {
+                      const imageFormData = new FormData();
+                      imageFormData.append('image', selectedImage);
+                      imageFormData.append('imagelocation', updatedJobId);
+                      imageFormData.append('name', "freelance");
+
+                      axios.put(`http://localhost:2023/update?id=${imageId}`, imageFormData)
+                        .then(response => {
+                          console.log('Image updated successfully.');
+                        })
+                        .catch(error => {
+                          console.error('Error updating image:', error);
+                        });
+                    } else {
+                      console.error('imageId is null or invalid. Cannot update the image.');
+                    }
+                  })
+                  .catch(error => {
+                    console.error('Error uploading image:', error);
+                  });
+              }
             })
             .catch((jobError) => {
               console.error('Error updating job:', jobError);
@@ -74,20 +109,28 @@ const FreelanceForm = () => {
         .catch((accountError) => {
           console.error('Error retrieving account data:', accountError);
         });
-
-
-      setFormData({
-        name: '',
-        price: '',
-        time: '',
-        description: '',
-        type: '',
-      });
     } catch (error) {
       console.error('Error creating freelance:', error);
     }
-  };
 
+    // Reset the form data here
+    setFormData({
+      id: '',
+      name: '',
+      price: '',
+      time: '',
+      description: '',
+      type: '',
+    });
+
+    // Clear selectedImage
+    setSelectedImage(null);
+  };
+  
+  const [selectedImage, setSelectedImage] = useState(null);
+  const handleImageChange = (event) => {
+    setSelectedImage(event.target.files[0]);
+  };
   return (
     <Container style={{ marginTop: 60 }}>
       <form onSubmit={handleSubmit}>
@@ -140,6 +183,10 @@ const FreelanceForm = () => {
             <option value="music">Music</option>
             {/* Add more options as needed */}
           </select>
+        </div>
+
+        <div >
+          <input type="file" onChange={handleImageChange} />
         </div>
         <div style={{ textAlign: "center" }}>
           <Button variant="success" type="submit" style={{ width: 150 }}>Submit</Button>
