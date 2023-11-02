@@ -18,7 +18,7 @@ public class Freelance {
 
     private String name;
     private String price;
-    private String time;
+    private int time;
     private String description;
     private String type;
     private String subtype;
@@ -38,7 +38,7 @@ public class Freelance {
 
     }
 
-    public Freelance(Long id, String name, String price, String time, String description,String type ,String subtype) {
+    public Freelance(Long id, String name, String price, int time, String description,String type ,String subtype) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -72,11 +72,11 @@ public class Freelance {
         this.price = price;
     }
 
-    public String getTime() {
+    public int getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(int time) {
         this.time = time;
     }
 

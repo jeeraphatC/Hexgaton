@@ -207,15 +207,17 @@ console.log(fetchData)
               ))
             )}
           </Row>
-          <h4>Selected Items:</h4>
-          {selectedItems.map((selectedItem, index) => (
-            <div key={index}>
-              <p>{selectedItem.name}</p>
-            </div>
-          ))}
-          {selectedItems.length === 2 && (
-          <button onClick={handleCompareClick}>Compare</button>
-        )}
+          <div className="selected-items">
+            <h4>Selected Items:</h4>
+            {selectedItems.map((selectedItem, index) => (
+              <div key={index}>
+                <p>{selectedItem.name}</p>
+              </div>
+            ))}
+            {selectedItems.length === 2 && (
+              <button onClick={handleCompareClick}>Compare</button>
+            )}
+          </div>
         </Container>
       </div>
     </div>
@@ -227,6 +229,15 @@ Develop.propTypes = {
 };
 
 export default styled(Develop)`
+.selected-items {
+  position: fixed;
+  top: 50px; /* Adjust the value as needed */
+  right: 20px; /* Adjust the value as needed */
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
  width: 100%;
   margin-top: 50px;
   background-color: azure;

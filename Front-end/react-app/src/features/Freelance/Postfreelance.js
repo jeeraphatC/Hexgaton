@@ -153,9 +153,9 @@ const FreelanceForm = () => {
           />
         </div>
         <div>
-          <label>Time:</label>
+          <label>Number of Day:</label>
           <input
-            type="date"
+            type="number"
             name="time"
             value={formData.time}
             onChange={handleChange}
@@ -169,22 +169,6 @@ const FreelanceForm = () => {
             onChange={handleChange}
           />
         </div>
-
-        <div>
-          <label>Type:</label>
-          <select
-            name="type"
-            value={formData.type}
-            onChange={handleChange}
-          >
-            <option value="">Select Type</option>
-            <option value="develop">Develop</option>
-            <option value="graphic">Graphic</option>
-            <option value="music">Music</option>
-            {/* Add more options as needed */}
-          </select>
-        </div>
-
         <div >
           <input type="file" onChange={handleImageChange} />
         </div>
