@@ -21,14 +21,16 @@ const Develop = ({ className }) => {
   const [freelancerImages, setFreelancerImages] = useState({});
   const [enterpriseImages, setEnterprisesimage] = useState({});
 console.log(fetchData)
+
   useEffect(() => {
     if (fetchData === 'enterprises') {
+      
       axios.get(`http://localhost:8090/enterprises/type/${type}`)
         .then(response => {
           setEnterprises(response.data);
 
           const enterprise = response.data;
-          const fetchAllImages = async (enter) => {
+          const fetchAllImages = async (enterprises) => {
             const imagePromises = enterprises.map((enterprise) =>
               fetchImageByImagelocation(enterprise.id)
             );
@@ -58,10 +60,9 @@ console.log(fetchData)
               });
           };
           if (enterprises.length > 0) {
-            // Fetch images for freelancers
             fetchAllImages(enterprises);
           }
-        }, [fetchData ])
+        })
 
         .catch(error => {
           console.error('Error fetching enterprises:', error);
@@ -104,12 +105,12 @@ console.log(fetchData)
             // Fetch images for freelancers
             fetchAllImages(freelancers);
           }
-        }, [fetchData ])
+        })
         .catch(error => {
           console.error('Error fetching freelancers:', error);
         });
     }
-  }, [fetchData, type]);
+  }, [fetchData, type ,enterpriseImages]);
   const handleCardClick = (item) => {
     setSelectedItems(prevSelectedItems => {
       const itemIndex = prevSelectedItems.findIndex(selectedItem => selectedItem.id === item.id);
