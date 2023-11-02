@@ -9,6 +9,8 @@ import ologo from "./pic/option.png";
 import chat from "./pic/chat.png";
 import login from "./pic/login.png";
 import getCookies from './hook/getCookies';
+import removeAllCookies from './hook/removeAllCookies';
+
 function Navbar({ className }) {
   const [developmentHovered, setDevelopmentHovered] = useState(false);
   const [graphicHovered, setGraphicHovered] = useState(false);
@@ -47,7 +49,9 @@ function Navbar({ className }) {
 
   const location = useLocation();
 
-
+  const handleRemoveAllCookies = () => {
+      removeAllCookies();
+  }
 
   return (
     <header className={className}>
@@ -132,6 +136,8 @@ function Navbar({ className }) {
             <img src={login} alt="" className="login-logo" />
           </Link>
         )}
+
+          <Link to="/login" onClick={handleRemoveAllCookies}>LOG OUT</Link>
 
 
     </header>
