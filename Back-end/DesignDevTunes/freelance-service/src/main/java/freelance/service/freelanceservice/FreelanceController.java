@@ -32,10 +32,10 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
         return freelanceRepository.findByType(type);
     }
 
-    // @GetMapping("/type/{type}/subtype/{subtype}")
-    // public List<Freelance> findFreelanceByTypeandSubtype(@PathVariable String type ,@PathVariable String subtype) {
-    //     return freelanceRepository.findByTypeandSubtype(type,subtype);
-    // }
+    @GetMapping("/type/{type}/{subtype}")
+    public List<Freelance> findFreelanceByTypeandSubtype(@PathVariable String type, @PathVariable String subtype) {
+        return freelanceRepository.findByTypeAndSubtype(type, subtype);
+    }
 
     @PostMapping
     public Freelance createFreelance(@RequestBody Freelance freelance) { // เปลี่ยนชื่อเมทอดจาก createEnterprise เป็น
