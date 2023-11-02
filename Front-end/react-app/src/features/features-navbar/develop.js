@@ -12,6 +12,9 @@ const Develop = ({ className }) => {
   const [fetchData, setFetchData] = useState('enterprises'); // Default to enterprises
   const [selectedItems, setSelectedItems] = useState([]);
   const cookieValue = getCookies("id");
+  const handleClearSelected = () => {
+    setSelectedItems([]);
+  };
   const toggleFetchData = () => {
     setFetchData(fetchData === 'enterprises' ? 'freelance' : 'enterprises');
   };
@@ -100,7 +103,9 @@ console.log(fetchData)
     const url = `/compare?ids=${selectedIds.join(',')}`;
     window.location.href = url; // Manually navigate to the URL
   };
-
+  const handleClearSelected2 = () => {
+    setSelectedItems([]);
+  };
 
   const fetchAllImages = async (enterprises) => {
     const imagePromises = enterprises.map((enterprise) =>
@@ -163,59 +168,76 @@ console.log(fetchData)
             {fetchData === 'enterprises' && (
               enterprises.map((enterprise, index) => (
                 <Col md={4} key={index}>
-                  <Card style={{ padding: 20, width: 400, marginBottom: 20, border: selectedItems.includes(enterprise) ? '2px solid green' : 'none' }} onClick={() => handleCardClick(enterprise)}>
-                    <Card.Body>
-
-                      <Card.Img variant="top"  style={{width : 300 , height: 200}} src={enterpriseImages[enterprise.id]} />
-                      <br />
-                      <Card.Title>{enterprise.name}</Card.Title>
-                      <Card.Text>{enterprise.price}</Card.Text>
-                      <Card.Text>{enterprise.time}</Card.Text>
-                      <Card.Text>{enterprise.description}</Card.Text>
-                      <Card.Text>{enterprise.type}</Card.Text>
-                      <Link to={`/enterprises/${enterprise.id}`}>
-                        <p>Details</p>
-                      </Link>
-
-                    </Card.Body>
-                  </Card>
-                </Col>
+  <Card 
+    style={{
+      padding: 20,
+      width: 400,
+      marginBottom: 20,
+      
+    }} 
+    onClick={() => handleCardClick(enterprise)}
+  >
+    <Card.Body>
+      <Card.Img variant="top"  style={{width : 300 , height: 200}} src={enterpriseImages[enterprise.id]} />
+      <br />
+      <Card.Title>{enterprise.name}</Card.Title>
+      <Card.Text>{enterprise.price}</Card.Text>
+      <Card.Text>{enterprise.time}</Card.Text>
+      <Card.Text>{enterprise.description}</Card.Text>
+      <Card.Text>{enterprise.type}</Card.Text>
+      <Link to={`/enterprises/${enterprise.id}`}>
+        <p>Details</p>
+      </Link>
+    </Card.Body>
+  </Card>
+</Col>
               ))
             )}
             {fetchData === 'freelance' && (
               freelance.map((freelancer, index) => (
                 <Col md={4} key={index}>
-                   <Card style={{ padding: 20, width: 400, marginBottom: 20, border: selectedItems.includes(freelancer) ? '2px solid green' : 'none' }} onClick={() => handleCardClick(freelancer)}>
-                    <Card.Body>
-
-
-                      <Card.Img variant="top" style={{width : 300 , height: 200}}  src={freelancerImages[freelancer.id]} />
-
-                      <br />
-
-                      <Card.Title>{freelancer.name}</Card.Title>
-                      <Card.Text>{freelancer.price}</Card.Text>
-                      <Card.Text>{freelancer.time}</Card.Text>
-                      <Card.Text>{freelancer.description}</Card.Text>
-                      <Card.Text>{freelancer.type}</Card.Text>
-                      <Link to={`/Freelance/${freelancer.id}`}>
-                        <p>Details</p>
-                      </Link>
-                    </Card.Body>
-                  </Card>
-                </Col>
+  <Card 
+    style={{
+      padding: 20,
+      width: 400,
+      marginBottom: 20,
+      border: selectedItems.includes(freelancer) ? '2px solid green' : 'none'
+    }} 
+    onClick={() => handleCardClick(freelancer)}
+  >
+    <Card.Body>
+      <Card.Img variant="top" style={{width : 300 , height: 200}}  src={freelancerImages[freelancer.id]} />
+      <br />
+      <Card.Title>{freelancer.name}</Card.Title>
+      <Card.Text>{freelancer.price}</Card.Text>
+      <Card.Text>{freelancer.time}</Card.Text>
+      <Card.Text>{freelancer.description}</Card.Text>
+      <Card.Text>{freelancer.type}</Card.Text>
+      <Link to={`/Freelance/${freelancer.id}`}>
+        <p>Details</p>
+      </Link>
+    </Card.Body>
+  </Card>
+</Col>
               ))
             )}
           </Row>
-          <h4>Selected Items:</h4>
-          {selectedItems.map((selectedItem, index) => (
-            <div key={index}>
-              <p>{selectedItem.name}</p>
-            </div>
-          ))}
-          {selectedItems.length === 2 && (
-          <button onClick={handleCompareClick}>Compare</button>
-        )}
+          <div className="selected-items">
+  <h4>Selected job to compare</h4>
+  {selectedItems.map((selectedItem, index) => (
+    <div key={index}>
+      <p>Job {index+1} :{selectedItem.name}</p>
+    </div>
+  ))}
+  {selectedItems.length > 0 && (
+    <button onClick={handleClearSelected2}>Clear Selected Items</button>
+  )}
+  {selectedItems.length === 2 && (
+    <button onClick={handleCompareClick}>Compare</button>
+  )}
+
+  
+</div>
         </Container>
       </div>
     </div>
@@ -227,6 +249,25 @@ Develop.propTypes = {
 };
 
 export default styled(Develop)`
+.selected-items button {
+  margin: 5px; 
+  color: #FFFFFF;
+  background-color : #0196FC;
+  border: 0px;
+  border-radius: 3px;
+  padding: 5px;
+}
+.selected-items {
+  position: fixed;
+  top:70px; /* Adjust the value as needed */
+  right: 20px; /* Adjust the value as needed */
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 240px;
+  text-align: center;
+}
  width: 100%;
   margin-top: 50px;
   background-color: azure;
