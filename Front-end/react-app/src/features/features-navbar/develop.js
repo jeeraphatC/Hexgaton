@@ -30,38 +30,7 @@ console.log(fetchData)
           setEnterprises(response.data);
 
           const enterprise = response.data;
-          const fetchAllImages = async (enterprises) => {
-            const imagePromises = enterprises.map((enterprise) =>
-              fetchImageByImagelocation(enterprise.id)
-            );
-        
-            try {
-              const images = await Promise.all(imagePromises);
-              const imageMap = {};
-              images.forEach((image, index) => {
-                imageMap[enterprises[index].id] = image;
-              });
-              setEnterprisesimage(imageMap);
-            } catch (error) {
-              console.error('Error fetching images:', error);
-            }
-          };
-        
-          const fetchImageByImagelocation = (imagelocation) => {
-            return axios.get(`http://localhost:2023/getByNameAndImagelocation/${fetchData}/${imagelocation}`, { responseType: 'arraybuffer' })
-              .then(imageResponse => {
-                const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
-                const imageSrc = `data:image/jpeg;base64,${base64}`;
-                return imageSrc;
-              })
-              .catch(error => {
-                console.error('Error fetching image:', error);
-                return null;
-              });
-          };
-          if (enterprises.length > 0) {
-            fetchAllImages(enterprises);
-          }
+          
         })
 
         .catch(error => {
@@ -131,6 +100,41 @@ console.log(fetchData)
     const url = `/compare?ids=${selectedIds.join(',')}`;
     window.location.href = url; // Manually navigate to the URL
   };
+
+
+  const fetchAllImages = async (enterprises) => {
+    const imagePromises = enterprises.map((enterprise) =>
+      fetchImageByImagelocation(enterprise.id)
+    );
+
+    try {
+      const images = await Promise.all(imagePromises);
+      const imageMap = {};
+      images.forEach((image, index) => {
+        imageMap[enterprises[index].id] = image;
+      });
+      setEnterprisesimage(imageMap);
+    } catch (error) {
+      console.error('Error fetching images:', error);
+    }
+  };
+
+  const fetchImageByImagelocation = (imagelocation) => {
+    return axios.get(`http://localhost:2023/getByNameAndImagelocation/${fetchData}/${imagelocation}`, { responseType: 'arraybuffer' })
+      .then(imageResponse => {
+        const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+        const imageSrc = `data:image/jpeg;base64,${base64}`;
+        return imageSrc;
+      })
+      .catch(error => {
+        console.error('Error fetching image:', error);
+        return null;
+      });
+  };
+  if (enterprises.length > 0) {
+    fetchAllImages(enterprises);
+  }
+  
   return (
     <div className={className}>
       <div>

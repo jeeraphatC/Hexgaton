@@ -1,6 +1,8 @@
 package enterprise.service.enterservice;
 
+import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import freelance.service.freelanceservice.Enterprise;
@@ -66,7 +68,7 @@ public class EnterpriseController {
                 existingEnterprise.setPrice(patchedEnterprise.getPrice());
             }
             // if (patchedEnterprise.getTime() != null) {
-            //     existingEnterprise.setTime(patchedEnterprise.getTime());
+            // existingEnterprise.setTime(patchedEnterprise.getTime());
             // }
             if (patchedEnterprise.getDescription() != null) {
                 existingEnterprise.setDescription(patchedEnterprise.getDescription());
@@ -74,11 +76,11 @@ public class EnterpriseController {
             if (patchedEnterprise.getType() != null) {
                 existingEnterprise.setType(patchedEnterprise.getType());
             }
-            
-        if (patchedEnterprise.getLocation() != null) {
+
+            if (patchedEnterprise.getLocation() != null) {
                 existingEnterprise.setLocation(patchedEnterprise.getLocation());
             }
-            
+
             return enterpriseRepository.save(existingEnterprise);
         }
 
@@ -90,6 +92,21 @@ public class EnterpriseController {
         enterpriseRepository.deleteById(id);
     }
 
+    @DeleteMapping("id/{id}")
+    public ResponseEntity<String> deleteEnterprises(@PathVariable Long id) {
+        try {
+            
+            Enterprise enterprise = enterpriseRepository.findById(id).orElse(null);
+            if (enterprise != null) {
+                // Set the foreign key value to null (assuming the relationship allows this)
+                enterprise.setAccount(null);
+                enterpriseRepository.save(enterprise);
+            }
+            enterpriseRepository.deleteById(id);
+            return ResponseEntity.ok("Enterprise deleted successfully.");
+        } catch (Exception e) {
+             return ResponseEntity.ok("Enterprise deleted notsuccessfully.");
+        }
+    }
 
-    
 }
