@@ -12,6 +12,7 @@ const Develop = ({ className }) => {
   const [fetchData, setFetchData] = useState('enterprises'); // Default to enterprises
   const [selectedItems, setSelectedItems] = useState([]);
   const cookieValue = getCookies("id");
+
   const handleClearSelected = () => {
     setSelectedItems([]);
   };
@@ -20,27 +21,41 @@ const Develop = ({ className }) => {
   };
   const location = useLocation();
   const type = location.state.type;
-
+  const subtype = location.state.type2;
+  console.log(type);
+  console.log(subtype);
   const [freelancerImages, setFreelancerImages] = useState({});
   const [enterpriseImages, setEnterprisesimage] = useState({});
-console.log(fetchData)
+  console.log(fetchData)
+  let pathfreelance;
+  let pathenterprise;
+  if (subtype != null) {
+    pathfreelance = `http://localhost:8082/freelances/type/${type}/${subtype}`;
+    pathenterprise = `http://localhost:8090/enterprises/type/${type}/${subtype}`
+  } else {
+    pathfreelance = `http://localhost:8082/freelances/type/${type}`;
+    pathenterprise = `http://localhost:8090/enterprises/type/${type}`;
+  }
+
+
 
   useEffect(() => {
     if (fetchData === 'enterprises') {
-      
-      axios.get(`http://localhost:8090/enterprises/type/${type}`)
+
+      axios.get(pathenterprise)
         .then(response => {
           setEnterprises(response.data);
 
           const enterprise = response.data;
-          
+
         })
 
         .catch(error => {
           console.error('Error fetching enterprises:', error);
         });
     } else if (fetchData === 'freelance') {
-      axios.get(`http://localhost:8082/freelances/type/${type}`)
+
+      axios.get(pathfreelance)
         .then(response => {
           setFreelance(response.data);
           const freelancers = response.data;
@@ -48,7 +63,7 @@ console.log(fetchData)
             const imagePromises = freelancers.map((freelancer) =>
               fetchImageByImagelocation(freelancer.id)
             );
-        
+
             try {
               const images = await Promise.all(imagePromises);
               const imageMap = {};
@@ -60,7 +75,7 @@ console.log(fetchData)
               console.error('Error fetching images:', error);
             }
           };
-        
+
           const fetchImageByImagelocation = (imagelocation) => {
             return axios.get(`http://localhost:2023/getByNameAndImagelocation/${fetchData}/${imagelocation}`, { responseType: 'arraybuffer' })
               .then(imageResponse => {
@@ -81,8 +96,10 @@ console.log(fetchData)
         .catch(error => {
           console.error('Error fetching freelancers:', error);
         });
+
+
     }
-  }, [fetchData, type ,enterpriseImages]);
+  }, [fetchData, type, enterpriseImages,pathenterprise,pathfreelance]);
   const handleCardClick = (item) => {
     setSelectedItems(prevSelectedItems => {
       const itemIndex = prevSelectedItems.findIndex(selectedItem => selectedItem.id === item.id);
@@ -139,7 +156,7 @@ console.log(fetchData)
   if (enterprises.length > 0) {
     fetchAllImages(enterprises);
   }
-  
+
   return (
     <div className={className}>
       <div>
@@ -168,76 +185,76 @@ console.log(fetchData)
             {fetchData === 'enterprises' && (
               enterprises.map((enterprise, index) => (
                 <Col md={4} key={index}>
-  <Card 
-    style={{
-      padding: 20,
-      width: 400,
-      marginBottom: 20,
-      
-    }} 
-    onClick={() => handleCardClick(enterprise)}
-  >
-    <Card.Body>
-      <Card.Img variant="top"  style={{width : 300 , height: 200}} src={enterpriseImages[enterprise.id]} />
-      <br />
-      <Card.Title>{enterprise.name}</Card.Title>
-      <Card.Text>{enterprise.price}</Card.Text>
-      <Card.Text>{enterprise.time}</Card.Text>
-      <Card.Text>{enterprise.description}</Card.Text>
-      <Card.Text>{enterprise.type}</Card.Text>
-      <Link to={`/enterprises/${enterprise.id}`}>
-        <p>Details</p>
-      </Link>
-    </Card.Body>
-  </Card>
-</Col>
+                  <Card
+                    style={{
+                      padding: 20,
+                      width: 400,
+                      marginBottom: 20,
+
+                    }}
+                    onClick={() => handleCardClick(enterprise)}
+                  >
+                    <Card.Body>
+                      <Card.Img variant="top" style={{ width: 300, height: 200 }} src={enterpriseImages[enterprise.id]} />
+                      <br />
+                      <Card.Title><strong>Name : </strong>{enterprise.name}</Card.Title>
+                      <Card.Text><strong>Price : </strong>{enterprise.price}</Card.Text>
+                      <Card.Text><strong>Time : </strong>{enterprise.time}</Card.Text>
+                      <Card.Text><strong>Description :</strong>{enterprise.description}</Card.Text>
+                      <Card.Text><strong>Type :</strong>{enterprise.type}</Card.Text>
+                      <Link to={`/enterprises/${enterprise.id}`}>
+                        <p>Details</p>
+                      </Link>
+                    </Card.Body>
+                  </Card>
+                </Col>
               ))
             )}
             {fetchData === 'freelance' && (
               freelance.map((freelancer, index) => (
                 <Col md={4} key={index}>
-  <Card 
-    style={{
-      padding: 20,
-      width: 400,
-      marginBottom: 20,
-      border: selectedItems.includes(freelancer) ? '2px solid green' : 'none'
-    }} 
-    onClick={() => handleCardClick(freelancer)}
-  >
-    <Card.Body>
-      <Card.Img variant="top" style={{width : 300 , height: 200}}  src={freelancerImages[freelancer.id]} />
-      <br />
-      <Card.Title>{freelancer.name}</Card.Title>
-      <Card.Text>{freelancer.price}</Card.Text>
-      <Card.Text>{freelancer.time}</Card.Text>
-      <Card.Text>{freelancer.description}</Card.Text>
-      <Card.Text>{freelancer.type}</Card.Text>
-      <Link to={`/Freelance/${freelancer.id}`}>
-        <p>Details</p>
-      </Link>
-    </Card.Body>
-  </Card>
-</Col>
+                  <Card
+                    style={{
+                      padding: 20,
+                      width: 400,
+                      marginBottom: 20,
+                      border: selectedItems.includes(freelancer) ? '2px solid green' : 'none'
+                    }}
+                    onClick={() => handleCardClick(freelancer)}
+                  >
+                    <Card.Body>
+                      <Card.Img variant="top" style={{ width: 300, height: 200 }} src={freelancerImages[freelancer.id]} />
+                      <br />
+                      <Card.Title><strong>Name : </strong>{freelancer.name}</Card.Title>
+                      <Card.Text><strong>Price : </strong>{freelancer.price}</Card.Text>
+                      <Card.Text><strong>Time :</strong>{freelancer.time}</Card.Text>
+                      <Card.Text><strong>Description :</strong>{freelancer.description}</Card.Text>
+                      <Card.Text><strong>Type :</strong>{freelancer.type}</Card.Text>
+                      <Link to={`/Freelance/${freelancer.id}`}>
+                        <p>Details</p>
+                      </Link>
+                    </Card.Body>
+                  </Card>
+                </Col>
               ))
             )}
           </Row>
           <div className="selected-items">
-  <h4>Selected job to compare</h4>
-  {selectedItems.map((selectedItem, index) => (
-    <div key={index}>
-      <p>Job {index+1} :{selectedItem.name}</p>
-    </div>
-  ))}
-  {selectedItems.length > 0 && (
-    <button onClick={handleClearSelected2}>Clear Selected Items</button>
-  )}
-  {selectedItems.length === 2 && (
-    <button onClick={handleCompareClick}>Compare</button>
-  )}
+            <h4>Selected job to compare</h4>
+            {selectedItems.map((selectedItem, index) => (
+              <div key={index}>
+                <p>Job {index + 1} :{selectedItem.name}</p>
+              </div>
+            ))}
+            {selectedItems.length > 0 && (
+              <button onClick={handleClearSelected2}>Clear Selected Items</button>
+            )}
+            {selectedItems.length === 2 && (
+              <button onClick={handleCompareClick}>Compare</button>
+            )}
 
-  
-</div>
+
+          </div>
         </Container>
       </div>
     </div>

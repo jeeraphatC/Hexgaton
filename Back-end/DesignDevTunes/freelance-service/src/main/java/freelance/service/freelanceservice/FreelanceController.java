@@ -56,6 +56,7 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
             existingFreelance.setTime(updatedFreelance.getTime());
             existingFreelance.setDescription(updatedFreelance.getDescription());
             existingFreelance.setAccount(updatedFreelance.getAccount());
+            existingFreelance.setSubtype(updatedFreelance.getSubtype());
             return freelanceRepository.save(existingFreelance);
         }
 
@@ -86,6 +87,9 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
             }
             if (patchedFreelance.getType() != null) {
                 existingFreelance.setType(patchedFreelance.getType());
+            }
+            if (patchedFreelance.getSubtype() != null) {
+                existingFreelance.setSubtype(patchedFreelance.getSubtype());
             }
             if (patchedFreelance.getAccount() != null) {
                 existingFreelance.setAccount(patchedFreelance.getAccount());
@@ -134,7 +138,7 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
     @DeleteMapping("id/{id}")
     public ResponseEntity<String> deleteEnterprises(@PathVariable Long id) {
         try {
-            
+
             Freelance freelance = freelanceRepository.findById(id).orElse(null);
             if (freelance != null) {
                 // Set the foreign key value to null (assuming the relationship allows this)
@@ -144,7 +148,7 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
             freelanceRepository.deleteById(id);
             return ResponseEntity.ok("Enterprise deleted successfully.");
         } catch (Exception e) {
-             return ResponseEntity.ok("Enterprise deleted notsuccessfully.");
+            return ResponseEntity.ok("Enterprise deleted notsuccessfully.");
         }
     }
 

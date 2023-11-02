@@ -11,7 +11,7 @@ const PostJob = () => {
     time: '',
     description: '',
     type: '',
-    location: '',
+    // location: '',
   });
 
   const handleInputChange = (event) => {
@@ -31,8 +31,8 @@ const PostJob = () => {
       formData.price === '' ||
       formData.time === '' ||
       formData.description === '' ||
-      formData.type.trim() === ''||
-      formData.type.location === ''
+      formData.type.trim() === ''
+      // ||formData.type.location === ''
     ) {
       alert('Please fill in all the required fields.');
       return;
@@ -55,7 +55,7 @@ const PostJob = () => {
             time: response.data.time,
             description: response.data.description,
             type: response.data.type,
-            location: response.data.location,
+            // location: response.data.location,
             account: {
               accountname: accountData.accountname,
               email: accountData.email,
@@ -65,11 +65,11 @@ const PostJob = () => {
             }
           };
 
-          
+
           axios.put(`http://localhost:8090/enterprises/${jobDataToUpdate.id}`, jobDataToUpdate)
             .then((jobResponse) => {
               console.log('Job updated successfully!', jobResponse.data);
-              const updatedJobId = jobResponse.data.id; 
+              const updatedJobId = jobResponse.data.id;
 
               if (selectedImage) {
                 const formData = new FormData();
@@ -134,7 +134,7 @@ const PostJob = () => {
   };
   return (
     <div >
-      <Container style={{ width: 800 }}>
+      <Container style={{ width: 800, marginTop: 60 }}>
 
         <h2 style={{ marginTop: 60 }}>Post a Job</h2>
         <form onSubmit={handleSubmit}>
@@ -182,23 +182,22 @@ const PostJob = () => {
             >
               <option value=" ">Select Type</option>
               <option value="develop">Develop</option>
-
               <option value="graphic">Graphic</option>
               <option value="music">Music</option>
             </select>
           </div>
           <div>
-              <label>Location:</label>
-              <select
-                name="location"
-                value={formData.location}
-                onChange={handleInputChange}
-              >
-                <option value=" ">Select Location</option>
-                <option value="onsite">onsite</option>
-                <option value="online">online</option>
-              </select>
-            </div>
+            <label>Location:</label>
+            <select
+              name="location"
+              value={formData.location}
+              onChange={handleInputChange}
+            >
+              <option value=" ">Select Location</option>
+              <option value="onsite">onsite</option>
+              <option value="online">online</option>
+            </select>
+          </div>
           <div >
             <input type="file" onChange={handleImageChange} />
           </div>
@@ -207,7 +206,7 @@ const PostJob = () => {
           </div>
         </form>
       </Container>
-    </div>
+    </div >
   );
 }
 

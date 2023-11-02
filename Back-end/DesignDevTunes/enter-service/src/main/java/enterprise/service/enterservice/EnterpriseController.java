@@ -48,6 +48,7 @@ public class EnterpriseController {
             existingEnterprise.setDescription(updatedEnterprise.getDescription());
             existingEnterprise.setType(updatedEnterprise.getType());
             existingEnterprise.setAccount(updatedEnterprise.getAccount());
+            existingEnterprise.setSubtype(updatedEnterprise.getSubtype());
             existingEnterprise.setLocation(updatedEnterprise.getLocation());
             return enterpriseRepository.save(existingEnterprise);
         }
@@ -75,6 +76,9 @@ public class EnterpriseController {
             }
             if (patchedEnterprise.getType() != null) {
                 existingEnterprise.setType(patchedEnterprise.getType());
+            }
+            if (patchedEnterprise.getSubtype() != null) {
+                existingEnterprise.setType(patchedEnterprise.getSubtype());
             }
 
             if (patchedEnterprise.getLocation() != null) {
@@ -108,5 +112,7 @@ public class EnterpriseController {
              return ResponseEntity.ok("Enterprise deleted notsuccessfully.");
         }
     }
+
+    
 
 }

@@ -16,25 +16,25 @@ function Home({ className }) {
       <div className="homebg">
       <img src={bgcom2} alt="" className="bgcom" />
         <div className="mini">
-          <Link to="/develop" state={{  type:  "logos" }}>
+          <Link to="/develop" state={{  type: "graphic",type2:  "logos" }}>
             <h4>Logo design</h4>
           </Link>
-          <Link to="/develop" state={{  type:  "sticker" }}>
+          <Link to="/develop" state={{  type: "graphic",type2:  "sticker" }}>
             <h4>Sticker design</h4>
           </Link>
           <Link to="/develop" state={{  type:  "chat-ckient" }}>
             <h4>ChatClientharacter design</h4>
           </Link>
-          <Link to="/develop" state={{  type:  "banner" }}>
+          <Link to="/develop" state={{  type: "graphic",type2: "banner" }}>
             <h4>Banner advertising design</h4>
           </Link>
-          <Link to="/develop" state={{  type:  "draw-cartoon" }}> 
+          <Link to="/develop" state={{  type: "graphic",type2:  "draw-cartoon" }}> 
             <h4>Draw cartoons</h4>
           </Link>
-          <Link to="/develop" state={{  type:  "3d-models" }}>
+          <Link to="/develop" state={{  type: "graphic",type2:  "3d-models" }}>
             <h4>3D model</h4>
           </Link>
-          <Link to="/develop" state={{  type:  "web" }}>
+          <Link to="/develop" state={{  type: "develop",type2:  "web" }}>
             <h4>Web development</h4>
           </Link>
           <Link to="/develop" state={{  type:  "game" }}>

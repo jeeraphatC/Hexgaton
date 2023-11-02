@@ -73,9 +73,9 @@ function Navbar({ className }) {
         </Link>
         {developmentHovered && (
           <div className="submenu">
-            <Link to="/develop" state={{  type:  "web" }}>Web</Link>
-            <Link to="/develop" state={{  type:  "mobile" }}>Mobile</Link>
-            <Link to="/develop" state={{  type:  "desktop" }}>Desktop</Link>
+            <Link to="/develop" state={{ type:"develop", type2:  "web" }}>Web</Link>
+            <Link to="/develop" state={{ type:"develop", type2:  "mobile" }}>Mobile</Link>
+            <Link to="/develop" state={{ type:"develop", type2:  "desktop" }}>Desktop</Link>
           </div>
         )}
       </div>
@@ -89,12 +89,12 @@ function Navbar({ className }) {
           state={{ type: "graphic" }}>Graphic</Link>
         {graphicHovered && (
           <div className="submenu">
-            <Link to="/develop" state={{ type:  "logos" }}>Logo Design</Link>
-            <Link to="/develop" state={{ type:  "sticker" }}>Sticker Design</Link>
-            <Link to="/develop" state={{ type:  "character" }}>Character Design</Link>
-            <Link to="/develop" state={{ type:  "draw-cartoon" }}>Draw cartoons</Link>
-            <Link to="/develop" state={{ type:  "3d-models" }}>3D Models</Link>
-            <Link to="/develop" state={{ type:  "banner" }}>Banner advertising design</Link>
+            <Link to="/develop" state={{type: "graphic",type2:  "logos" }}>Logo Design</Link>
+            <Link to="/develop" state={{type: "graphic",type2:  "sticker" }}>Sticker Design</Link>
+            <Link to="/develop" state={{type: "graphic",type2:  "character" }}>Character Design</Link>
+            <Link to="/develop" state={{type: "graphic",type2:  "draw-cartoon" }}>Draw cartoons</Link>
+            <Link to="/develop" state={{type: "graphic",type2:  "3d-models" }}>3D Models</Link>
+            <Link to="/develop" state={{type: "graphic",type2:  "banner" }}>Banner advertising design</Link>
           </div>
         )}
       </div>

@@ -11,12 +11,9 @@ const FreelanceForm = () => {
     price: '',
     time: '',
     description: '',
-    type: ''
+    type: '',
+    subtype: ' '
   });
-
-  const formData2 = (' ');
-
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,6 +52,7 @@ const FreelanceForm = () => {
             time: response.data.time,
             description: response.data.description,
             type: response.data.type,
+            subtype: response.data.subtype,
             account: {
               accountname: accountData.accountname,
               email: accountData.email,
@@ -64,7 +62,7 @@ const FreelanceForm = () => {
             }
           };
 
-          
+
           axios.put(`http://localhost:8082/freelances/${jobDataToUpdate.id}`, jobDataToUpdate)
             .then((jobResponse) => {
               console.log('Job updated successfully!', jobResponse.data);
@@ -126,13 +124,13 @@ const FreelanceForm = () => {
     // Clear selectedImage
     setSelectedImage(null);
   };
-  
+
   const [selectedImage, setSelectedImage] = useState(null);
   const handleImageChange = (event) => {
     setSelectedImage(event.target.files[0]);
   };
   return (
-    <Container style={{ marginTop: 60 }}>
+    <Container style={{ width: 800, marginTop: 60 }}>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Name:</label>
@@ -169,7 +167,60 @@ const FreelanceForm = () => {
             onChange={handleChange}
           />
         </div>
-        <div >
+        <div>
+          <label>Type:</label>
+          <select
+            name="type"
+            value={formData.type}
+            onChange={handleChange}
+          >
+            <option value=" ">Select Type</option>
+            <option value="develop">Develop</option>
+
+            <option value="graphic">Graphic</option>
+            <option value="music">Music</option>
+          </select>
+        </div>
+
+        {formData.type === 'develop' && (
+          <select
+            name="subtype"
+            value={formData.subtype}
+            onChange={handleChange}
+          >
+            <option value=" ">Select Type</option>
+            <option value="web">Web</option>
+            <option value="mobile">Mobile</option>
+            <option value="desktop">Desktop</option>
+          </select>
+        )}
+        {formData.type === 'graphic' && (
+          <select
+            name="subtype"
+            value={formData.subtype}
+            onChange={handleChange}
+          >
+            <option value=" ">Select Type</option>
+            <option value="logos">Logo Design</option>
+            <option value="sticker">Sticker Design</option>
+            <option value="character">Character Design</option>
+            <option value="draw-cartoon">Draw cartoons</option>
+            <option value="3d-models">3D Models</option>
+            <option value="banner">Banner advertising design</option>
+          </select>
+        )}
+        {formData.type === 'music' && (
+          <select
+            name="subtype"
+            value={formData.subtype}
+            onChange={handleChange}
+          >
+            <option value=" ">Select Type</option>
+            <option value="beat">Beat</option>
+          </select>
+        )}
+
+        <div>
           <input type="file" onChange={handleImageChange} />
         </div>
         <div style={{ textAlign: "center" }}>
