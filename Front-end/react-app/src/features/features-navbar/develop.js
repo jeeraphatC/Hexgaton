@@ -194,12 +194,9 @@ console.log(fetchData)
                       <Card.Text>{freelancer.time}</Card.Text>
                       <Card.Text>{freelancer.description}</Card.Text>
                       <Card.Text>{freelancer.type}</Card.Text>
-                      <Button >
-                        {freelancer.account.accountid == cookieValue && (
-                          <Link to={`/edit/${freelancer.id}`} style={{ color: "white" }}>Edit</Link>
-                        )}
-                      </Button>
-
+                      <Link to={`/Freelance/${freelancer.id}`}>
+                        <p>Details</p>
+                      </Link>
                     </Card.Body>
                   </Card>
                 </Col>

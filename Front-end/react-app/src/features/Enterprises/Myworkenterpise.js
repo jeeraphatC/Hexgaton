@@ -21,7 +21,20 @@ class MyworkEnter extends Component {
         console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
       });
   }
-
+  
+  deleteEnterprise = (id) => {
+    axios.delete(`http://localhost:8090/enterprises/${id}`)
+      .then(response => {
+        // Remove the deleted enterprise from the state
+        this.setState(prevState => ({
+          enterprises: prevState.enterprises.filter(enterprise => enterprise.id !== id)
+        }));
+      })
+      .catch(error => {
+        console.error('Error deleting enterprise:', error);
+      });
+  }
+  
 
   render() {
     return (
@@ -44,6 +57,7 @@ class MyworkEnter extends Component {
           <Card.Text><strong>Price:</strong> {enterprise.price}</Card.Text>
           <Card.Text><strong>Time:</strong> {enterprise.time}</Card.Text>
           <Card.Text><strong>Description:</strong> {truncateText(enterprise.description, 40)}</Card.Text>
+          <Button onClick={() => this.deleteEnterprise(enterprise.id)} variant="danger">Delete</Button>                  
         </Card.Body>
       </Card>
     ) : ""}
