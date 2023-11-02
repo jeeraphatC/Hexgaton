@@ -223,10 +223,10 @@ console.log(fetchData)
             )}
           </Row>
           <div className="selected-items">
-  <h4>Selected Items:</h4>
+  <h4>Selected job to compare</h4>
   {selectedItems.map((selectedItem, index) => (
     <div key={index}>
-      <p>{selectedItem.name}</p>
+      <p>Job {index+1} :{selectedItem.name}</p>
     </div>
   ))}
   {selectedItems.length > 0 && (
@@ -250,17 +250,23 @@ Develop.propTypes = {
 
 export default styled(Develop)`
 .selected-items button {
-  margin: 10px; /* ปรับตำแหน่งของปุ่ม */
-  /* เพิ่มสไตล์อื่น ๆ ตามต้องการ */
+  margin: 5px; 
+  color: #FFFFFF;
+  background-color : #0196FC;
+  border: 0px;
+  border-radius: 3px;
+  padding: 5px;
 }
 .selected-items {
   position: fixed;
-  top: 50px; /* Adjust the value as needed */
+  top:70px; /* Adjust the value as needed */
   right: 20px; /* Adjust the value as needed */
   background-color: white;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 3px;
+  width: 240px;
+  text-align: center;
 }
  width: 100%;
   margin-top: 50px;
