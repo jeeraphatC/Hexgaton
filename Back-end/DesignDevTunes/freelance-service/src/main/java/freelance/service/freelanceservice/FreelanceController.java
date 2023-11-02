@@ -5,8 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
-
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +31,11 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
     public List<Freelance> findFreelanceByType(@PathVariable String type) {
         return freelanceRepository.findByType(type);
     }
+
+    // @GetMapping("/type/{type}/subtype/{subtype}")
+    // public List<Freelance> findFreelanceByTypeandSubtype(@PathVariable String type ,@PathVariable String subtype) {
+    //     return freelanceRepository.findByTypeandSubtype(type,subtype);
+    // }
 
     @PostMapping
     public Freelance createFreelance(@RequestBody Freelance freelance) { // เปลี่ยนชื่อเมทอดจาก createEnterprise เป็น
@@ -127,7 +130,5 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
 
         return ResponseEntity.ok("Freelance updated");
     }
-
-   
 
 }

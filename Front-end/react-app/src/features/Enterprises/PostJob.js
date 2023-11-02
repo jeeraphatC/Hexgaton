@@ -69,7 +69,7 @@ const PostJob = () => {
           axios.put(`http://localhost:8090/enterprises/${jobDataToUpdate.id}`, jobDataToUpdate)
             .then((jobResponse) => {
               console.log('Job updated successfully!', jobResponse.data);
-              const updatedJobId = jobResponse.data.id; // Store the updated job ID
+              const updatedJobId = jobResponse.data.id; 
 
               if (selectedImage) {
                 const formData = new FormData();

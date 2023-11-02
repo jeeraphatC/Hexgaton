@@ -69,9 +69,9 @@ function Navbar({ className }) {
         </Link>
         {developmentHovered && (
           <div className="submenu">
-            <Link to="/web">Web</Link>
-            <Link to="/mobile">Mobile</Link>
-            <Link to="/desktop">Desktop</Link>
+            <Link to="/web" state={{ type: "web" }}>Web</Link>
+            <Link to="/mobile" state={{ type: "mobile" }}>Mobile</Link>
+            <Link to="/desktop" state={{ type: "desktop" }}>Desktop</Link>
           </div>
         )}
       </div>
@@ -85,12 +85,12 @@ function Navbar({ className }) {
           state={{ type: "graphic" }}>Graphic</Link>
         {graphicHovered && (
           <div className="submenu">
-            <Link to="/logo">Logo Design</Link>
-            <Link to="/sticker">Sticker Design</Link>
-            <Link to="/character">Character Design</Link>
-            <Link to="/draw-cartoon">Draw cartoons</Link>
-            <Link to="/3d-models">3D Models</Link>
-            <Link to="/banner">Banner advertising design</Link>
+            <Link to="/logo" state={{ type: "logo" }}>Logo Design</Link>
+            <Link to="/sticker" state={{ type: "sticker" }}>Sticker Design</Link>
+            <Link to="/character" state={{ type: "character" }}>Character Design</Link>
+            <Link to="/draw-cartoon" state={{ type: "draw-cartoon" }}>Draw cartoons</Link>
+            <Link to="/3d-models" state={{ type: "3d-models" }}>3D Models</Link>
+            <Link to="/banner" state={{ type: "banner" }}>Banner advertising design</Link>
           </div>
         )}
       </div>
@@ -104,7 +104,7 @@ function Navbar({ className }) {
           state={{ type: "music" }}>Music</Link>
         {musicHovered && (
           <div className="submenu">
-            <Link to="/beat">Beat</Link>
+            <Link to="/beat" state={{ type: "beat" }}>Beat</Link>
           </div>
         )}
       </div>
