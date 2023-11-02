@@ -16,38 +16,38 @@ function Home({ className }) {
       <div className="homebg">
       <img src={bgcom2} alt="" className="bgcom" />
         <div className="mini">
-          <Link to="/develop">
+          <Link to="/develop" state={{  type:  "logos" }}>
             <h4>Logo design</h4>
           </Link>
-          <Link to="/develop">
+          <Link to="/develop" state={{  type:  "sticker" }}>
             <h4>Sticker design</h4>
           </Link>
-          <Link to="/develop">
+          <Link to="/develop" state={{  type:  "chat-ckient" }}>
             <h4>ChatClientharacter design</h4>
           </Link>
-          <Link to="/develop">
+          <Link to="/develop" state={{  type:  "banner" }}>
             <h4>Banner advertising design</h4>
           </Link>
-          <Link to="/develop">
+          <Link to="/develop" state={{  type:  "draw-cartoon" }}> 
             <h4>Draw cartoons</h4>
           </Link>
-          <Link to="/develop">
+          <Link to="/develop" state={{  type:  "3d-models" }}>
             <h4>3D model</h4>
           </Link>
-          <Link to="/develop">
+          <Link to="/develop" state={{  type:  "web" }}>
             <h4>Web development</h4>
           </Link>
-          <Link to="/develop">
+          <Link to="/develop" state={{  type:  "game" }}>
             <h4>Game development</h4>
           </Link>
-          <Link to="/develop">
+          <Link to="/develop" state={{  type:  "chatbot" }}>
             <h4>Making chatbotS</h4>
           </Link>
-          <Link to="/develop">
+          <Link to="/develop" state={{  type:  "beat" }}>
             <h4>Beat</h4>
           </Link>
 
-          <Link to="/develop">
+          <Link to="/develop" state={{  type:  "mobile" }}>
             <h4>Mobile App</h4>
           </Link>
         </div>
