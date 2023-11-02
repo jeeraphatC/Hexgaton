@@ -17,16 +17,17 @@ public class FreelanceDTO {
     private String description;
     private String type;
     private Account account;
-    
+    private String subtype;
     public FreelanceDTO() {
     }
-    public FreelanceDTO(Long id, String name, String price, String time, String description, String type) {
+    public FreelanceDTO(Long id, String name, String price, String time, String description, String type ,String subtype) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.time = time;
         this.description = description;
         this.type = type;
+        this.subtype=subtype;
 
     }
     public Long getId() {
@@ -70,6 +71,12 @@ public class FreelanceDTO {
     }
     public void setAccount(Account account) {
         this.account = account;
+    }
+    public String getSubtype() {
+        return subtype;
+    }
+    public void setSubtype(String subtype) {
+        this.subtype = subtype;
     }
 
     
