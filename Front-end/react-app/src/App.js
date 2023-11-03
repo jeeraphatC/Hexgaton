@@ -27,6 +27,8 @@ import { useCookies } from 'react-cookie';
 import EditProfile from './features/EditProfile';
 import Myworkenterpise from './features/Enterprises/Myworkenterpise';
 import Mywork from './features/Freelance/Mywork';
+import OptionsFreelance from './features/Options-freelance';
+import OptionsEnter from './features/Options-enter';
 function App() {
   const location = useLocation();
   const showNavbar = location.pathname !== '/login';
@@ -66,6 +68,8 @@ function App() {
           <Route path="/enterprises/:id" element={isUserLoggedIn ? <ViewEnter /> : <Navigate to="/login" />} />
           <Route path="/editprofile/:id" element={isUserLoggedIn ? <EditProfile /> : <Navigate to="/editprofile" />} />
           <Route path="/myworkenterpise" element={isUserLoggedIn ? <Myworkenterpise /> : <Navigate to="/login" />} />
+          <Route path="/optionfree" element={isUserLoggedIn ? <OptionsFreelance /> : <Navigate to="/login" />} />
+          <Route path="/optionenter" element={isUserLoggedIn ? <OptionsEnter /> : <Navigate to="/login" />} />
           <Route path="/mywork" element={isUserLoggedIn ? <Mywork /> : <Navigate to="/login" />} />
         </Routes>
       </Container>

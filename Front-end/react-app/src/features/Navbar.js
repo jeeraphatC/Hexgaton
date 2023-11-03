@@ -112,10 +112,10 @@ function Navbar({ className }) {
           </div>
         )}
       </div>
-      <Link to="/findjob">
+      <Link to="/optionfree">
         <h4>Findjob</h4>
       </Link>
-      <Link to="/findfreelance">
+      <Link to="/optionenter">
         <h4>Entrepreneur</h4>
       </Link>
       <Link to="/options">
