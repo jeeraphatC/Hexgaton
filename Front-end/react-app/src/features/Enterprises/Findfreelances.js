@@ -12,6 +12,9 @@ function FindFreelances({ className }) {
   console.log(type)
   console.log(type2)
   const [freelances, setFreelance] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [freelancerImages, setFreelancerImages] = useState({});
+  const [enterprises, setEnterprises] = useState([]);
   let path;
   if (type2 == null) {
     path = `http://localhost:8082/freelances/type/${type}`
@@ -85,23 +88,58 @@ function FindFreelances({ className }) {
         </Col>
       )
     }
-
-
-
     return null;
   }
   useEffect(() => {
     axios.get(path)
       .then(response => {
         setFreelance(response.data);
+        const freelancers = response.data;
+        const fetchAllImages = async (freelancers) => {
+          const imagePromises = freelancers.map((freelancer) =>
+            fetchImageByImagelocation(freelancer.id)
+          );
+
+          try {
+            const images = await Promise.all(imagePromises);
+            const imageMap = {};
+            images.forEach((image, index) => {
+              imageMap[freelancers[index].id] = image;
+            });
+            setFreelancerImages(imageMap);
+          } catch (error) {
+            console.error('Error fetching images:', error);
+          }
+        };
+
+        const fetchImageByImagelocation = (imagelocation) => {
+          return axios.get(`http://localhost:2023/getByNameAndImagelocation/freelance/${imagelocation}`, { responseType: 'arraybuffer' })
+            .then(imageResponse => {
+              const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+              const imageSrc = `data:image/jpeg;base64,${base64}`;
+              return imageSrc;
+            })
+            .catch(error => {
+              console.error('Error fetching image:', error);
+              return null;
+            });
+        };
+        if (freelancers.length > 0) {
+          // Fetch images for freelancers
+          fetchAllImages(freelancers);
+        }
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
   }, [type, type2]);
 
+
+
+
+
   return (
-    <div>
+    <div className={className}>
       <Container style={{ marginTop: 50 }}>
         <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>Find jobs (ALL)</h1>
         <Row style={{ marginBottom: 50 }}>
@@ -115,14 +153,17 @@ function FindFreelances({ className }) {
         <Row >
           {freelances.map(freelance => (
             <Col md={4} key={freelance.id}>
-              <Card style={{ width: 400, padding: 20, marginBottom: 20 }}>
+              <Card style={{ width: 400, padding: 20, marginBottom: 20 ,alignItems:"center" }}>
                 <Card.Body>
+                  <Card.Img className ="picture" variant="top" style={{ width: 300, height: 200 }} src={freelancerImages[freelance.id]} />
+                  <br />
+                  <br />
                   <Link to={`/Freelance/${freelance.id}`}>
                     <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px', margin: '105px 0px 0px 300px', position: 'absolute' }} />
                   </Link>
                   <Card.Title><strong>Name:</strong> {freelance.name}</Card.Title>
-                  <Card.Text><strong>Price:</strong> {freelance.price}</Card.Text>
-                  <Card.Text><strong>Time:</strong> {freelance.time}</Card.Text>
+                  <Card.Text><strong>Price:</strong>Baht{freelance.price}</Card.Text>
+                  <Card.Text><strong>Time:</strong>Days{freelance.time}</Card.Text>
                   <Card.Text><strong>Description:</strong>{truncateText(freelance.description, 40)}</Card.Text>
                 </Card.Body>
               </Card>
@@ -141,6 +182,13 @@ FindFreelances.propTypes = {
   className: PropTypes.string.isRequired,
 };
 export default styled(FindFreelances)`
+.jobdetail{
+  padding: 5px;
+}
+.picture{
+  
+  border: 2px solid black;
+}
 .selected-items button {
   margin: 5px; 
   color: #FFFFFF;
@@ -186,4 +234,5 @@ export default styled(FindFreelances)`
     margin-top: 0px;
     margin-right: 5px;
   }
+  
 `;

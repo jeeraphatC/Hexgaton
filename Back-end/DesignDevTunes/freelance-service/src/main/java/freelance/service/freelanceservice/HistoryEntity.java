@@ -18,8 +18,6 @@ public class HistoryEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-    
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name =  "workEnter_id", referencedColumnName = "id")
     private  Enterprise enterprise ;
@@ -28,7 +26,7 @@ public class HistoryEntity {
     @JoinColumn(name =  "workFreelance_id", referencedColumnName = "id")
     private Freelance freelancer ;
 
-
+   
     public HistoryEntity() {
     }
 

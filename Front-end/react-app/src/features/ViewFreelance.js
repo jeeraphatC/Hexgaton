@@ -42,7 +42,7 @@ function ViewFreelance({className}) {
     <div className={className}>
       <Container style={{ marginTop: 50, marginLeft: 400, width: 800 }}>
         <div>
-          <Card>
+          <Card style={{ alignItems:"center" }}>
             <Card.Body>
               <Card.Title style={{textAlign : 'center'}}>{freelance.name}</Card.Title>
               <Card.Img variant="top" style={{ width: 420, height: 300 }} src={freelanceImages[id]} />
