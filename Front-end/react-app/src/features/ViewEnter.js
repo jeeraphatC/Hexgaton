@@ -5,6 +5,8 @@ import { Container, Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
+import getCookies from './hook/getCookies';
+
 function ViewEnter() {
   const { id } = useParams();
   const [enterprise, setEnterprise] = useState(null);
@@ -42,6 +44,8 @@ function ViewEnter() {
     setChatButtonClicked(true); // เปลี่ยนสถานะปุ่มเป็น "แชท"
   };
 
+  const isOwner = getCookies("id") == enterprise.account.accountid;
+
   return (
     <Container style={{ marginTop: 50, marginLeft: 400, width: 800 }}>
       <div>
@@ -59,7 +63,13 @@ function ViewEnter() {
             {isChatButtonClicked ? (
               <Link to="/chatroom">Chat</Link>
             ) : (
-              <button onClick={handleConfirmButtonClick}>ยืนยัน</button>
+              isOwner ? (
+                <Link to={`/edit/${enterprise.id}`}>
+               edit
+              </Link>
+              ) : (
+                <button onClick={handleConfirmButtonClick}>ยืนยัน</button>
+              )
             )}
           </Card.Body>
         </Card>
@@ -73,7 +83,5 @@ ViewEnter.propTypes = {
 };
 
 export default styled(ViewEnter)`
-
-
-
+  /* Your styles here */
 `;
