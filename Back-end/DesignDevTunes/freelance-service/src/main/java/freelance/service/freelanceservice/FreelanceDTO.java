@@ -18,18 +18,23 @@ public class FreelanceDTO {
     private String type;
     private Account account;
     private String subtype;
+    private String companyName;
     public FreelanceDTO() {
     }
-    public FreelanceDTO(Long id, String name, String price, int time, String description, String type ,String subtype) {
+    
+    public FreelanceDTO(Long id, String name, String price, int time, String description, String type, Account account,
+            String subtype, String companyName) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.time = time;
         this.description = description;
         this.type = type;
-        this.subtype=subtype;
-
+        this.account = account;
+        this.subtype = subtype;
+        this.companyName = companyName;
     }
+
     public Long getId() {
         return id;
     }
@@ -77,6 +82,14 @@ public class FreelanceDTO {
     }
     public void setSubtype(String subtype) {
         this.subtype = subtype;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     

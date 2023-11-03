@@ -129,6 +129,9 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
         if (freelanceDTO.getAccount() != null) {
             freelance.setAccount(freelanceDTO.getAccount());
         }
+        if (freelanceDTO.getCompanyName() != null) {
+            freelance.setCompanyName(freelanceDTO.getCompanyName());
+        }
 
         freelanceRepository.save(freelance);
 
