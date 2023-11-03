@@ -233,11 +233,6 @@ const FreelanceForm = () => {
               </div>
             </>
           )}
-
-
-
-
-
           <div style={{ marginBottom: 20 }}>
             <input type="file" onChange={handleImageChange} />
           </div>

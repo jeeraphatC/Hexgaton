@@ -12,6 +12,7 @@ const PostJob = () => {
     time: '',
     description: '',
     type: '',
+    subtype:'',
     location: '',
     workprocess: '',
     examplejob: '',
@@ -35,7 +36,7 @@ const PostJob = () => {
       formData.time === '' ||
       formData.description === '' ||
       formData.type.trim() === '' ||
-      formData.type.location === ''||
+      formData.type.location === '' ||
       formData.workprocess === '' ||
       formData.examplejob === '' ||
       formData.fixtime === ''
@@ -61,6 +62,7 @@ const PostJob = () => {
             time: response.data.time,
             description: response.data.description,
             type: response.data.type,
+            subtype:response.data.subtype,
             location: response.data.location,
             workprocess: response.data.workprocess,
             examplejob: response.data.examplejob,
@@ -224,6 +226,53 @@ const PostJob = () => {
               <option value="music">Music</option>
             </select>
           </div>
+          {formData.type === 'develop' && (
+            <>
+            <label>Subtype for develop:</label>
+            <select
+              name="subtype"
+              value={formData.subtype}
+              onChange={handleInputChange}
+            >
+              <option value=" ">Select Type</option>
+              <option value="web">Web</option>
+              <option value="mobile">Mobile</option>
+              <option value="desktop">Desktop</option>
+            </select>
+            </>
+          )}
+          {formData.type === 'graphic' && (
+            <>
+            <label>Subtype for graphic:</label>
+            <select
+              name="subtype"
+              value={formData.subtype}
+              onChange={handleInputChange}
+            >
+              <option value=" ">Select Type</option>
+              <option value="logos">Logo Design</option>
+              <option value="sticker">Sticker Design</option>
+              <option value="character">Character Design</option>
+              <option value="draw-cartoon">Draw cartoons</option>
+              <option value="3d-models">3D Models</option>
+              <option value="banner">Banner advertising design</option>
+            </select>
+            </>
+          )}
+          {formData.type === 'music' && (
+            <>
+            <label>Subtype for music:</label>
+            <select
+              name="subtype"
+              value={formData.subtype}
+              onChange={handleInputChange}
+            >
+              <option value=" ">Select Type</option>
+              <option value="beat">Beat</option>
+            </select>
+            </>
+          )}
+
           <div>
             <label>Location:</label>
             <select
@@ -243,8 +292,8 @@ const PostJob = () => {
             <Button variant="success" type="submit" className="custom-button" style={{ width: 150 }}>Submit</Button>
           </div>
         </form>
-        </PostJobContainer>
-        <footer>
+      </PostJobContainer>
+      <footer>
         <div class="footer-content">
           <img src={big_logo} alt="" className="big_logofooter" />
           <p className="footertext1">
