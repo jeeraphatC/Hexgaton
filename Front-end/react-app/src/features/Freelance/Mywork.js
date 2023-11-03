@@ -8,20 +8,32 @@ import pen2 from "../pic/pen2.png";
 import getCookies from '../hook/getCookies';
 class Mywork extends Component {
   state = {
-    enterprises: [],
+    freelances: [],
   };
 
   componentDidMount() {
     // เรียก API ที่มีข้อมูล Enterprises ที่คุณต้องการดึง
     axios.get('http://localhost:8082/freelances')
       .then(response => {
-        this.setState({ enterprises: response.data });
+        this.setState({ freelances: response.data });
       })
       .catch(error => {
         console.error('เกิดข้อผิดพลาดในการดึงข้อมูล:', error);
       });
   }
 
+  deleteEnterprise = (id) => {
+    axios.delete(`http://localhost:8082/freelances/id/${id}`)
+      .then(response => {
+        // Remove the deleted enterprise from the state
+        this.setState(prevState => ({
+          freelances: prevState.freelances.filter(freelance => freelance.id !== id)
+        }));
+      })
+      .catch(error => {
+        console.error('Error deleting enterprise:', error);
+      });
+  }
 
   render() {
     return (
@@ -29,7 +41,7 @@ class Mywork extends Component {
         <Container style={{ marginTop: 50 }}>
           <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>My Postfreelance</h1>
           <Row>
-            {this.state.enterprises.map(freelances => (
+            {this.state.freelances.map(freelances => (
               <Col md={4} key={freelances.id}>
                 {getCookies("id") == freelances.account.accountid ? (
                   <Card className="cardWithCSS">
@@ -44,6 +56,7 @@ class Mywork extends Component {
                       <Card.Text><strong>Price:</strong> {freelances.price}</Card.Text>
                       <Card.Text><strong>Time:</strong> {freelances.time}</Card.Text>
                       <Card.Text><strong>Description:</strong> {truncateText(freelances.description, 40)}</Card.Text>
+                      <Button onClick={() => this.deleteEnterprise(freelances.id)} variant="danger">Delete</Button>
                     </Card.Body>
                   </Card>
                 ) : ""}

@@ -168,7 +168,7 @@ const PostJob = () => {
           <div>
             <label>Price:</label>
             <input
-              type="number" min="1"
+              type="number" min="500"
               name="price"
               value={formData.price}
               onChange={handleInputChange}

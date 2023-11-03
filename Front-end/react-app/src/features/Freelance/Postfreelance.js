@@ -70,7 +70,7 @@ const PostFreelance = () => {
       formData.description === '' ||
       formData.type.trim() === '' ||
       formData.subtype === '' ||
-      formData.companyName === ''||
+      formData.companyName === '' ||
       !selectedImage
     ) {
       alert('Please fill in all the required fields.');
@@ -175,7 +175,7 @@ const PostFreelance = () => {
   return (
     <div>
       <PostFreelanceContainer>
-        <h2 style={{ marginTop: 60,fontSize:'80px',color:'#0196FC' }}>Post a Freelance</h2>
+        <h2 style={{ marginTop: 60, fontSize: '80px', color: '#0196FC' }}>Post a Freelance</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Name:</label>
@@ -208,47 +208,56 @@ const PostFreelance = () => {
             </select>
           </div>
           {formData.type === 'develop' && (
-            <select
-              name="subtype"
-              value={formData.subtype}
-              onChange={handleInputChange}
-            >
-              <option value=" ">Select Type</option>
-              <option value="web">Web</option>
-              <option value="mobile">Mobile</option>
-              <option value="desktop">Desktop</option>
-            </select>
+            <>
+              <label>Subtype for develop:</label>
+              <select
+                name="subtype"
+                value={formData.subtype}
+                onChange={handleInputChange}
+              >
+                <option value=" ">Select Type</option>
+                <option value="web">Web</option>
+                <option value="mobile">Mobile</option>
+                <option value="desktop">Desktop</option>
+              </select>
+            </>
           )}
           {formData.type === 'graphic' && (
-            <select
-              name="subtype"
-              value={formData.subtype}
-              onChange={handleInputChange}
-            >
-              <option value=" ">Select Type</option>
-              <option value="logos">Logo Design</option>
-              <option value="sticker">Sticker Design</option>
-              <option value="character">Character Design</option>
-              <option value="draw-cartoon">Draw cartoons</option>
-              <option value="3d-models">3D Models</option>
-              <option value="banner">Banner advertising design</option>
-            </select>
+            <>
+              <label>Subtype for graphic:</label>
+              <select
+                name="subtype"
+                value={formData.subtype}
+                onChange={handleInputChange}
+              >
+                <option value=" ">Select Type</option>
+                <option value="logos">Logo Design</option>
+                <option value="sticker">Sticker Design</option>
+                <option value="character">Character Design</option>
+                <option value="draw-cartoon">Draw cartoons</option>
+                <option value="3d-models">3D Models</option>
+                <option value="banner">Banner advertising design</option>
+              </select>
+            </>
           )}
           {formData.type === 'music' && (
-            <select
-              name="subtype"
-              value={formData.subtype}
-              onChange={handleInputChange}
-            >
-              <option value=" ">Select Type</option>
-              <option value="beat">Beat</option>
-            </select>
+            <>
+              <label>Subtype for music:</label>
+              <select
+                name="subtype"
+                value={formData.subtype}
+                onChange={handleInputChange}
+              >
+                <option value=" ">Select Type</option>
+                <option value="beat">Beat</option>
+              </select>
+            </>
           )}
 
           <div>
             <label>Price:</label>
             <input
-              type="number" min="1"
+              type="number" min="500"
               name="price"
               value={formData.price}
               onChange={handleInputChange}
@@ -281,7 +290,7 @@ const PostFreelance = () => {
         </form>
       </PostFreelanceContainer>
       <footer >
-      <div class="footer-content" style={{ marginTop: '1200px' }}>
+        <div class="footer-content" style={{ marginTop: '1200px' }}>
           <img src={big_logo} alt="" className="big_logofooter" />
           <p className="footertext1">
             Norrapat Sai-ai 652110289<br></br>

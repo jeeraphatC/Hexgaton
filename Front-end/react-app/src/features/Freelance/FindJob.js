@@ -153,6 +153,8 @@ function FindJob({ className }) {
               <Card style={{ width: 400, padding: 20, marginBottom: 20, alignItems: "center" }}>
                 <Card.Body>
                   <Card.Img className="picture" variant="top" style={{ width: 300, height: 200 }} src={enterpriseImages[enterprise.id]} />
+                  <br />
+                  <br />
                   <Link to={`/enterprises/${enterprise.id}`}>
                     <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px', margin: '105px 0px 0px 300px', position: 'absolute' }} />
                   </Link>
