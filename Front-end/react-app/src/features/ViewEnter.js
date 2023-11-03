@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled from "styled-components";
 import { Container, Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 function ViewEnter() {
   const { id } = useParams();
   const [enterprise, setEnterprise] = useState(null);
@@ -54,7 +54,7 @@ function ViewEnter() {
             <Card.Text><strong>Description:</strong> {enterprise.description}</Card.Text>
             <Card.Text><strong>Name:</strong> {enterprise.account.accountname}</Card.Text>
             {isChatButtonClicked ? (
-              <p>Chat</p> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
+              <Link to="/chatroom">Chat</Link> 
             ) : (
               <button onClick={handleConfirmButtonClick}>ยืนยัน</button>
             )}

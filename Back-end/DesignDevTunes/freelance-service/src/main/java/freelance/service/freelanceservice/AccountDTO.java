@@ -9,8 +9,6 @@ public class AccountDTO {
     private String password;
     private String numberCard;
     private List<Freelance> freelance;
-
-    /**add Description  */
     private String descrip ;
 
 

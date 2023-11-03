@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import styled from "styled-components";
 import { Container, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import { Link } from "react-router-dom";
 function ViewFreelance({className}) {
   const { id } = useParams();
   const [freelance, setFreelance] = useState(null);
@@ -54,7 +55,7 @@ function ViewFreelance({className}) {
               <Card.Text><strong>Description:</strong> {freelance.description}</Card.Text>
 
               {isChatButtonClicked ? (
-                <p>Chat</p> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
+                <Link to="/chatroom">Chat</Link> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
               ) : (
                 <button onClick={handleConfirmButtonClick}>ยืนยัน</button>
               )}

@@ -29,7 +29,7 @@ const FreelanceForm = () => {
       formData.price === '' ||
       formData.time === '' ||
       formData.description === '' ||
-      formData.type.trim() === ''
+      formData.type.trim() === '' 
     ) {
       alert('Please fill in all the required fields.');
       return;
