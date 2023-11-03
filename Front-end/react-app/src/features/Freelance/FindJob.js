@@ -36,13 +36,9 @@ class FindJob extends Component {
             <Link to="/stickerdesign" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "stickerdesign" }}>Sticker design</Link>
             <Link to="/characterdesign" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "characterdesign" }}>Character design</Link>
             <Link to="/drawcartoon" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "drawcartoon" }}>Draw</Link>
-
             <Link to="/3dmodel" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "3dmodel" }}>3D model</Link>
-
             <Link to="/banner" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "banner" }}>banner</Link>
-
             <Link to="/music" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "music" }}>music</Link>
-
             <Link to="/beat" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "beat" }}>beat</Link>
           </div>
          

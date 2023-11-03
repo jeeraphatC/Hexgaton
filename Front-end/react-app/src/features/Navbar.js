@@ -60,7 +60,7 @@ function Navbar({ className }) {
         <img src={mlogo} alt="โลโก้" className="min-logo" />
       </Link>
 
-      <div
+      {/* <div
         onMouseEnter={handleDevelopmentMouseEnter}
         onMouseLeave={handleDevelopmentMouseLeave}
         className={`text ${developmentHovered ? "hovered" : ""}`}
@@ -111,7 +111,7 @@ function Navbar({ className }) {
             <Link to="/develop" state={{  type:  "beat" }}>Beat</Link>
           </div>
         )}
-      </div>
+      </div> */}
       <Link to="/findjob">
         <h4>Findjob</h4>
       </Link>
