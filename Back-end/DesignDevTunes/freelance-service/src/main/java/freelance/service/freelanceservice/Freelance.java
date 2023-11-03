@@ -22,6 +22,7 @@ public class Freelance {
     private String description;
     private String type;
     private String subtype;
+    private String companyName;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
@@ -38,14 +39,18 @@ public class Freelance {
 
     }
 
-    public Freelance(Long id, String name, String price, int time, String description,String type ,String subtype) {
+    
+    public Freelance(Long id, String name, String price, int time, String description, String type, String subtype,
+            String companyName, Account account) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.time = time;
         this.description = description;
-        this.type=type;
-        this.subtype=subtype;
+        this.type = type;
+        this.subtype = subtype;
+        this.companyName = companyName;
+        this.account = account;
     }
 
     public Long getId() {
@@ -102,6 +107,14 @@ public class Freelance {
 
     public void setSubtype(String subtype) {
         this.subtype = subtype;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     

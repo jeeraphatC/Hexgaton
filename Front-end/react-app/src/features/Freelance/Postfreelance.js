@@ -13,7 +13,8 @@ const FreelanceForm = () => {
     time: '',
     description: '',
     type: '',
-    subtype: ' '
+    subtype: ' ',
+    companyName: ' ',
   });
 
   const [showPriceAndDay, setShowPriceAndDay] = useState(false);
@@ -37,7 +38,8 @@ const FreelanceForm = () => {
       formData.name === '' ||formData.price === '' ||
       formData.time === '' ||
       formData.description === '' ||
-      formData.type.trim() === ''
+      formData.type.trim() === ''||
+      formData.companyName === '' 
     ) {
       alert(`Please fill in all the required fields.`);
       return;
@@ -61,6 +63,7 @@ const FreelanceForm = () => {
             description: response.data.description,
             type: response.data.type,
             subtype: response.data.subtype,
+            companyName: response.data.companyName,
             account: {
               accountname: accountData.accountname,
               email: accountData.email,
@@ -127,6 +130,7 @@ const FreelanceForm = () => {
       time: '',
       description: '',
       type: '',
+      companyName: '',
     });
 
     // Clear selectedImage
@@ -233,6 +237,17 @@ const FreelanceForm = () => {
               </div>
             </>
           )}
+
+          <div>
+            <label>companyName:</label>
+            <textarea
+              name="companyName"
+              value={formData.companyName}
+              onChange={handleChange}
+            />
+          </div>
+
+
           <div style={{ marginBottom: 20 }}>
             <input type="file" onChange={handleImageChange} />
           </div>

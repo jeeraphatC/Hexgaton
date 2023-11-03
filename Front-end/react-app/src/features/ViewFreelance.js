@@ -53,6 +53,7 @@ function ViewFreelance({className}) {
               <Card.Text><strong>Price:</strong> {freelance.price}&nbsp;&nbsp;Baht</Card.Text>
               <Card.Text><strong>Time:</strong> {freelance.time}&nbsp;&nbsp;&nbsp;Days</Card.Text>
               <Card.Text><strong>Description:</strong> {freelance.description}</Card.Text>
+              <Card.Text><strong>companyName:</strong> {freelance.companyName}</Card.Text>
 
               {isChatButtonClicked ? (
                 <Link to="/chatroom">Chat</Link> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
