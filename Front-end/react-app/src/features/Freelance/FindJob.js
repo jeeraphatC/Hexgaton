@@ -101,7 +101,7 @@ const FindJob = ({ className }) => {
             ))}
           </Row>
           <div className="selected-items">
-            <h4>Selected job to compare</h4>
+            <h4>Select 2 job to compare</h4>
             {selectedItems.map((selectedItem, index) => (
               <div key={index}>
                 <p>Job {index + 1} :{selectedItem.name}</p>
