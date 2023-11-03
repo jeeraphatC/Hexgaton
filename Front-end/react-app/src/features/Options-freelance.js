@@ -5,7 +5,7 @@ import freelance from "./pic/freelance.png";
 import enter from "./pic/enter.png";
 import chat from "./pic/chat.png";
 import workpro from "./pic/workpro.png";
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
@@ -13,38 +13,50 @@ import { Link } from 'react-router-dom';
 
 function OptionsFreelance({ className }) {
   return (
-    
+
     <div className={className}>
-      <Container style={{marginTop: 60}}>
-     
-      <h1>Type For Freelance</h1>
-      <p>สำหรับผู้ที่ต้องการหางานจากผู้ประกอบการ</p>
-      <div className="optioncontainer">
-      <Link to="/findjob" state={{type : "develop"}}>
-        <div className="options">
-          <h3>Develop</h3>
-          <img src={freelance} alt="" className="logo" />   
+      <Container style={{ marginTop: 60 }}>
+
+
+        <h1>Type For Freelance</h1>
+        <p>สำหรับผู้ที่ต้องการหางานจากผู้ประกอบการ</p>
+        <div className="optioncontainer">
+          <Row>
+            <Col md={3}>
+              <Link to="/findjob" state={{ type: "develop" }}>
+                <div className="options">
+                  <h3>Develop</h3>
+                  <img src={freelance} alt="" className="logo" />
+                </div>
+              </Link>
+            </Col>
+            <Col md={3}>
+              <Link to="/findjob" state={{ type: "graphic" }}>
+                <div className="options">
+                  <h3>Graphic</h3>
+                  <img src={enter} alt="" className="logo2" />
+                </div>
+              </Link></Col>
+            <Col md={3}>
+              <Link to="/findjob" state={{ type: "music" }}>
+                <div className="options">
+                  <h3>Music</h3>
+                  <img src={chat} alt="" className="logo3" />
+                </div>
+              </Link>
+            </Col>
+            <Col md={3}>
+              <Link to="/FreelanceForm" state={{ type: "postf" }}>
+                <div className="options">
+                  <h3>Post for Enterprises</h3>
+                  <img src={chat} alt="" className="logo3" />
+                </div>
+              </Link>
+            </Col>
+          </Row>
         </div>
-      </Link>
-      <Link to="/findjob" state={{type : "graphic"}}>
-        <div className="options">
-        <h3>Graphic</h3>  
-        <img src={enter} alt="" className="logo2" />   
-        </div>
-      </Link>
-      <Link to="/findjob" state={{type : "music"}}>
-        <div className="options">
-        <h3>Music</h3>
-        <img src={chat} alt="" className="logo3" />   
-        </div>
-      </Link> 
-      <Link to="/FreelanceForm" state={{type : "postf"}}>
-        <div className="options">
-        <h3>Post for Enterprises</h3>
-        <img src={chat} alt="" className="logo3" />   
-        </div>
-      </Link> 
-      </div>
+
+
       </Container>
     </div>
   );
