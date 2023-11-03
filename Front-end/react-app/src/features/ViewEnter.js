@@ -10,6 +10,9 @@ function ViewEnter() {
   const [enterprise, setEnterprise] = useState(null);
   const [isChatButtonClicked, setChatButtonClicked] = useState(false);
   const [enterpriseImages, setEnterpriseImages] = useState({});
+  const [status, setStatus] = useState({
+    status: '',
+  });
 
   useEffect(() => {
     axios.get(`http://localhost:8090/enterprises/${id}`)
@@ -37,10 +40,24 @@ function ViewEnter() {
   }
 
   const handleConfirmButtonClick = () => {
-    // ทำสิ่งที่คุณต้องการเมื่อคลิกปุ่มยืนยัน
-    // เช่น ส่งคำขอหรือดำเนินกิจกรรมที่เกี่ยวข้อง
-    setChatButtonClicked(true); // เปลี่ยนสถานะปุ่มเป็น "แชท"
+    setChatButtonClicked(true); 
+    const statusData = {
+      status: "process",
+      enterprise: {
+        id: id
+      }
+    };
+  
+    axios.post(`http://localhost:8082/status`, statusData)
+      .then((statusResponse) => {
+        const status = statusResponse.data;
+        console.log(status);
+      })
+      .catch(error => {
+        console.error('Error updating status:', error);
+      });
   };
+
 
   return (
     <Container style={{ marginTop: 50, marginLeft: 400, width: 800 }}>

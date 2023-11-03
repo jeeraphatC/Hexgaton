@@ -5,11 +5,26 @@ import styled from "styled-components";
 import { Container, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
-function ViewFreelance({className}) {
+import getCookies from './hook/getCookies';
+function ViewFreelance({ className }) {
   const { id } = useParams();
   const [freelance, setFreelance] = useState(null);
   const [isChatButtonClicked, setChatButtonClicked] = useState(false);
   const [freelanceImages, setFreelanceImages] = useState({});
+  const [image, setImage] = useState(null);
+  const imagelocation = getCookies("id");
+  useEffect(() => {
+    axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
+      .then(response => {
+        const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+        const imageSrc = `data:image/jpeg;base64,${base64}`;
+        setImage(imageSrc);
+
+      })
+      .catch(error => {
+        console.error('Error fetching image:', error);
+      });
+  }, []);
 
   useEffect(() => {
     axios.get(`http://localhost:8082/freelances/${id}`)
@@ -35,16 +50,33 @@ function ViewFreelance({className}) {
   }
 
   const handleConfirmButtonClick = () => {
-    setChatButtonClicked(true); // เปลี่ยนสถานะปุ่มเป็น "แชท"
+    setChatButtonClicked(true);
+    const statusData = {
+      status: "process",
+      freelancer: {
+        id: id
+      }
+    };
+
+    axios.post(`http://localhost:8082/status`, statusData)
+      .then((statusResponse) => {
+        const status = statusResponse.data;
+        console.log(status);
+      })
+      .catch(error => {
+        console.error('Error updating status:', error);
+      });
   };
+
+
 
   return (
     <div className={className}>
       <Container style={{ marginTop: 50, marginLeft: 400, width: 800 }}>
         <div>
-          <Card style={{ alignItems:"center" }}>
+          <Card style={{ alignItems: "center" }}>
             <Card.Body>
-              <Card.Title style={{textAlign : 'center'}}>{freelance.name}</Card.Title>
+              <Card.Title style={{ textAlign: 'center' }}>{freelance.name}</Card.Title>
               <Card.Img variant="top" style={{ width: 420, height: 300 }} src={freelanceImages[id]} />
               <br />
               <br />
@@ -65,6 +97,7 @@ function ViewFreelance({className}) {
           <Card>
             <Card.Body>
               <Card.Text><strong>Name:</strong> {freelance.account.accountname}</Card.Text>
+              <Card.Img src={image} alt="" className="user1" />
             </Card.Body>
           </Card>
         </div>
