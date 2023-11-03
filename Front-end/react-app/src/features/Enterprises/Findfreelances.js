@@ -9,7 +9,7 @@ function FindFreelances({ className }) {
   const location = useLocation();
   const type = location.state.type;
   const type2 = location.state.type2;
-
+  console.log(type)
   console.log(type2)
   const [freelances, setFreelance] = useState([]);
   let path;
@@ -73,7 +73,18 @@ function FindFreelances({ className }) {
         </div>
       );
     }
-
+    else if (type === 'music') {
+      return (
+        <Col md={4} >
+          <Link to="/findfreelance" state={{ type: "music" }}>
+            <Button style={{ marginBottom: 10 }}>Music</Button>
+          </Link>
+          <Link to="/findfreelance" state={{ type: "music", type2: "beat" }}>
+            <Button style={{ marginBottom: 10 }}>beat</Button>
+          </Link>
+        </Col>
+      )
+    }
 
 
 
@@ -97,7 +108,7 @@ function FindFreelances({ className }) {
           <Col md={10} >
             {develop()}
             <Button variant="success" className='btn-add-first'>
-              <Link to='/FreelanceForm' className='btn-add-sec'>For Freelance ADD Job</Link>
+              <Link to='/Postjob' className='btn-add-sec'>For Freelance ADD Job</Link>
             </Button>
           </Col>
         </Row>
