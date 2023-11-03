@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Container } from 'react-bootstrap';
 import getCookies from '../hook/getCookies';
-
+import styled from 'styled-components';
 const PostJob = () => {
   const [formData, setFormData] = useState({
     id: '',
@@ -70,6 +70,7 @@ const PostJob = () => {
             .then((jobResponse) => {
               console.log('Job updated successfully!', jobResponse.data);
               const updatedJobId = jobResponse.data.id;
+              window.location.href = '/';
 
               if (selectedImage) {
                 const formData = new FormData();
@@ -134,9 +135,9 @@ const PostJob = () => {
   };
   return (
     <div >
-      <Container style={{ width: 800, marginTop: 60 }}>
+      <PostJobContainer>
 
-        <h2 style={{ marginTop: 60 }}>Post a Job</h2>
+        <h2 style={{ marginTop: 60, }}>Post a Job</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Name:</label>
@@ -205,12 +206,56 @@ const PostJob = () => {
             <Button variant="success" type="submit" className="custom-button" style={{ width: 150 }}>Submit</Button>
           </div>
         </form>
-      </Container>
+        </PostJobContainer>
     </div >
   );
 }
 
+const PostJobContainer = styled.div`
+margin:50px 400px 0px 400px;
+.custom-button {
+  margin-top: 30px;
+  margin-left: 900px;
+}
+input[type="file"] {
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+select {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+  h2 {
+    margin-top: 60px;
+    color: #0196FC;
+    font-size: 80px;
+  }
 
+  p {
+    color: #9C9C9C;
+    font-size: 50px;
+    
+  }
+  label{
+    font-size: 20px;
+    margin-top: 20px;
+    
+  }
+  textarea {
+    width: 100%;
+    height: 100px;
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+  }
+`;
 
-
-export default PostJob;
+export default styled(PostJob)``;

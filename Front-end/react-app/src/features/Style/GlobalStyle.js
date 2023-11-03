@@ -398,8 +398,8 @@ letter-spacing: -0.22px;
     float : right ;
     background-color : #0196FC;
     border: 2px solid #0196FC;
-    
-  }
+    position: absolute;
+     }
 
 .btn-add-sec{
   color: white;
