@@ -143,8 +143,8 @@ function Compare({ className }) {
       <div className="formcon">
       <button
   type="submit"
+  className="handleSubmit2"
   onClick={handleSubmit2}
-  style={{ width: '400px', height: '100px',fontSize:'40px'}}
 >
   Start Compare Jobs
 </button>

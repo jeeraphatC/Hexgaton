@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Container, Col, Row, Card,Button } from 'react-bootstrap';
 import search4 from "../pic/search4.png";
 import pen2 from "../pic/pen2.png";
+import plus from "../pic/plus.png";
 class FindFreelance extends Component {
   state = {
     freelances: [],
@@ -23,8 +24,35 @@ class FindFreelance extends Component {
   render() {
     return (
       <Container style={{ marginTop: 50 }}>
+<Link to="/FreelanceForm">
+  <img
+    src={plus}
+    alt="Post a Job"
+    style={{
+      margin: '20px',
+      width: '40px',
+      position: 'absolute',
+      top: '80px',
+      left: '250px',
 
+    }}
+  />
+</Link>
       <h1 style={{ margin: '100px 20px 20px 20px',color:'#0196FC'}}>Find Freelance (ALL)</h1>
+      <div className="develop" style={{ margin: '10px 20px 20px 20px',fontSize:'22px',width:'120%'}} >
+            <Link to="/develop" style={{ margin: '20px'}} state={{  type:  "develop" }}>Develop</Link>
+            <Link to="/web" style={{ margin: '20px'}} state={{  type:  "web" }}>Web</Link>
+            <Link to="/mobile" style={{ margin: '20px'}} state={{  type:  "mobile" }}>Mobile</Link>
+            <Link to="/graphic" style={{ margin: '20px'}} state={{  type:  "graphic" }}>Graphic</Link>
+            <Link to="/logodesign" style={{ margin: '20px'}} state={{  type:  "logodesign" }}>Logo design</Link>
+            <Link to="/stickerdesign" style={{ margin: '20px'}} state={{  type:  "stickerdesign" }}>Sticker design</Link>
+            <Link to="/characterdesign" style={{ margin: '20px'}} state={{  type:  "characterdesign" }}>Character design</Link>
+            <Link to="/drawcartoon" style={{ margin: '20px'}} state={{  type:  "drawcartoon" }}>Draw</Link>
+            <Link to="/3dmodel" style={{ margin: '20px'}} state={{  type:  "3dmodel" }}>3D model</Link>
+            <Link to="/banner" style={{ margin: '20px'}} state={{  type:  "banner" }}>banner</Link>
+            <Link to="/music" style={{ margin: '20px'}} state={{  type:  "music" }}>music</Link>
+            <Link to="/beat" style={{ margin: '20px'}} state={{  type:  "beat" }}>beat</Link>
+          </div>
         <Row>
 
           {this.state.freelances.map(freelance => (
