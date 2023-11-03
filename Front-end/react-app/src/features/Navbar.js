@@ -112,7 +112,7 @@ function Navbar({ className }) {
           </div>
         )}
       </div>
-      <Link to="/findjob">
+      <Link to="/optionfree">
         <h4>Findjob</h4>
       </Link>
       <Link to="/optionenter">
