@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import getCookies from './hook/getCookies';
-
 function ViewEnter() {
   const { id } = useParams();
   const [enterprise, setEnterprise] = useState(null);
@@ -42,10 +41,24 @@ function ViewEnter() {
   }
 
   const handleConfirmButtonClick = () => {
-    // ทำสิ่งที่คุณต้องการเมื่อคลิกปุ่มยืนยัน
-    // เช่น ส่งคำขอหรือดำเนินกิจกรรมที่เกี่ยวข้อง
-    setChatButtonClicked(true); // เปลี่ยนสถานะปุ่มเป็น "แชท"
+    setChatButtonClicked(true); 
+    const statusData = {
+      status: "process",
+      enterprise: {
+        id: id
+      }
+    };
+  
+    axios.post(`http://localhost:8082/status`, statusData)
+      .then((statusResponse) => {
+        const status = statusResponse.data;
+        console.log(status);
+      })
+      .catch(error => {
+        console.error('Error updating status:', error);
+      });
   };
+  const isOwner = getCookies("id") == enterprise.account.accountid;
 
   return (
     <Container style={{ marginTop: 50, marginLeft: 400, width: 800 }}>
@@ -65,9 +78,7 @@ function ViewEnter() {
               <Link to="/chatroom">Chat</Link>
             ) : (
               isOwner ? (
-                <Link to={`/edit/${enterprise.id}`}>
-               edit
-              </Link>
+                <Link to={`/edit/${enterprise.id}`}> edit </Link>
               ) : (
                 <button onClick={handleConfirmButtonClick}>ยืนยัน</button>
               )
@@ -84,5 +95,7 @@ ViewEnter.propTypes = {
 };
 
 export default styled(ViewEnter)`
-  /* Your styles here */
+
+
+
 `;
