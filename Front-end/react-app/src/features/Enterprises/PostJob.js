@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Button, Container } from 'react-bootstrap';
 import getCookies from '../hook/getCookies';
 import styled from 'styled-components';
+import big_logo from "../pic/big_logo.png";
 const PostJob = () => {
   const [formData, setFormData] = useState({
     id: '',
@@ -243,6 +244,17 @@ const PostJob = () => {
           </div>
         </form>
         </PostJobContainer>
+        <footer>
+        <div class="footer-content">
+          <img src={big_logo} alt="" className="big_logofooter" />
+          <p className="footertext1">
+            Norrapat Sai-ai 652110289<br></br>
+            Samitthichai Peeragun 652110309<br></br>
+            Sivasith Singkaew 652110308<br></br>
+            Jeeraphat Chantra 652110318<br></br>
+          </p>
+        </div>
+      </footer>
     </div >
   );
 }
