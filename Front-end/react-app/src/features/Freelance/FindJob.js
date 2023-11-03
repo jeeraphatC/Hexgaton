@@ -27,11 +27,26 @@ class FindJob extends Component {
       <div>
         <Container style={{ marginTop: 50 }}>
         <h1 style={{ margin: '100px 20px 20px 20px',color:'#0196FC'}}>Find jobs (ALL)</h1>
+        <div className="develop" style={{ margin: '10px 20px 20px 20px',fontSize:'25px',width:'120%'}} >
+            <Link to="/develop" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "develop" }}>Develop</Link>
+            <Link to="/web" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "web" }}>Web</Link>
+            <Link to="/mobile" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "mobile" }}>Mobile</Link>
+            <Link to="/graphic" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "graphic" }}>Graphic</Link>
+            <Link to="/logodesign" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "logodesign" }}>Logo design</Link>
+            <Link to="/stickerdesign" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "stickerdesign" }}>Sticker design</Link>
+            <Link to="/characterdesign" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "characterdesign" }}>Character design</Link>
+            <Link to="/drawcartoon" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "drawcartoon" }}>Draw</Link>
 
+            <Link to="/3dmodel" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "3dmodel" }}>3D model</Link>
+
+            <Link to="/banner" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "banner" }}>banner</Link>
+
+            <Link to="/music" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "music" }}>music</Link>
+
+            <Link to="/beat" style={{ margin: '20px',fontSize:'25px'}} state={{  type:  "beat" }}>beat</Link>
+          </div>
+         
           <Row>
-
-
-            
               {this.state.enterprises.map(enterprise => (
                 <Col md={4} key={enterprise.id}>
                   <Card style={{width : 400 , padding : 20 , marginBottom : 20}}>
