@@ -49,10 +49,10 @@ const FindJob = ({ className }) => {
     alt="Post a Job"
     style={{
       margin: '20px',
-      width: '50px',
+      width: '40px',
       position: 'absolute',
-      top: '200px',
-      left: '200px',
+      top: '80px',
+      left: '250px',
 
     }}
   />
