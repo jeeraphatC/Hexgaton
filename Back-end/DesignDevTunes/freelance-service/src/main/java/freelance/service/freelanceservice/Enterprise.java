@@ -17,6 +17,11 @@ public class Enterprise {
     private String type;
     private String subtype;
     private String location;
+    private String workprocess;
+    private String examplejob;
+    private int fixtime;
+  
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
@@ -31,7 +36,11 @@ public class Enterprise {
     public Enterprise() {
     }
 
-    public Enterprise(String name, String price, int time, String description, String type, String location,String subtype) {
+    
+
+    public Enterprise(Long id, String name, String price, int time, String description, String type, String subtype,
+            String location, String workprocess, String examplejob, int fixtime, Account account) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.time = time;
@@ -39,6 +48,34 @@ public class Enterprise {
         this.type = type;
         this.subtype = subtype;
         this.location = location;
+        this.workprocess = workprocess;
+        this.examplejob = examplejob;
+        this.fixtime = fixtime;
+        this.account = account;
+    }
+
+    public String getworkprocess() {
+        return workprocess;
+    }
+
+    public void setworkprocess(String workprocess) {
+        this.workprocess = workprocess;
+    }
+
+    public String getExamplejob() {
+        return examplejob;
+    }
+
+    public void setExamplejob(String examplejob) {
+        this.examplejob = examplejob;
+    }
+
+    public int getFixtime() {
+        return fixtime;
+    }
+
+    public void setFixtime(int fixtime) {
+        this.fixtime = fixtime;
     }
 
     public Long getId() {

@@ -11,9 +11,11 @@ const PostJob = () => {
     time: '',
     description: '',
     type: '',
-    // location: '',
+    location: '',
+    workprocess: '',
+    examplejob: '',
+    fixtime: '',
   });
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -31,8 +33,11 @@ const PostJob = () => {
       formData.price === '' ||
       formData.time === '' ||
       formData.description === '' ||
-      formData.type.trim() === ''
-      // ||formData.type.location === ''
+      formData.type.trim() === '' ||
+      formData.type.location === ''||
+      formData.workprocess === '' ||
+      formData.examplejob === '' ||
+      formData.fixtime === ''
     ) {
       alert('Please fill in all the required fields.');
       return;
@@ -55,7 +60,10 @@ const PostJob = () => {
             time: response.data.time,
             description: response.data.description,
             type: response.data.type,
-            // location: response.data.location,
+            location: response.data.location,
+            workprocess: response.data.workprocess,
+            examplejob: response.data.examplejob,
+            fixtime: response.data.fixtime,
             account: {
               accountname: accountData.accountname,
               email: accountData.email,
@@ -124,6 +132,9 @@ const PostJob = () => {
       description: '',
       type: '',
       location: '',
+      workprocess: '',
+      examplejob: '',
+      fixtime: '',
     });
 
     // Clear selectedImage
@@ -171,6 +182,31 @@ const PostJob = () => {
             <textarea
               name="description"
               value={formData.description}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label>Workprocess:</label>
+            <textarea
+              name="workprocess"
+              value={formData.workprocess}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label>examplejob:</label>
+            <textarea
+              name="examplejob"
+              value={formData.examplejob}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div>
+            <label>Fix time:</label>
+            <input
+              type="number"
+              name="fixtime"
+              value={formData.fixtime}
               onChange={handleInputChange}
             />
           </div>

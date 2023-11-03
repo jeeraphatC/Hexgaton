@@ -50,6 +50,9 @@ public class EnterpriseController {
             existingEnterprise.setAccount(updatedEnterprise.getAccount());
             existingEnterprise.setSubtype(updatedEnterprise.getSubtype());
             existingEnterprise.setLocation(updatedEnterprise.getLocation());
+            existingEnterprise.setworkprocess(updatedEnterprise.getworkprocess());
+            existingEnterprise.setExamplejob(updatedEnterprise.getExamplejob());
+            existingEnterprise.setFixtime(updatedEnterprise.getFixtime());
             return enterpriseRepository.save(existingEnterprise);
         }
 
