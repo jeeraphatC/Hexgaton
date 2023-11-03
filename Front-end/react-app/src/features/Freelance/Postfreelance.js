@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Container } from 'react-bootstrap';
 import getCookies from '../hook/getCookies';
+import styled from 'styled-components';
 const FreelanceForm = () => {
   const [formData, setFormData] = useState({
     id: '',
@@ -15,8 +16,14 @@ const FreelanceForm = () => {
     subtype: ' '
   });
 
+  const [showPriceAndDay, setShowPriceAndDay] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (formData.name && formData.description && formData.type) {
+      setShowPriceAndDay(true);
+    }
     setFormData({
       ...formData,
       [name]: value,
@@ -24,14 +31,15 @@ const FreelanceForm = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+
     if (
-      formData.name === '' ||
-      formData.price === '' ||
+      formData.name === '' ||formData.price === '' ||
       formData.time === '' ||
       formData.description === '' ||
-      formData.type.trim() === '' 
+      formData.type.trim() === ''
     ) {
-      alert('Please fill in all the required fields.');
+      alert(`Please fill in all the required fields.`);
       return;
     }
 
@@ -131,105 +139,128 @@ const FreelanceForm = () => {
   };
   return (
     <Container style={{ width: 800, marginTop: 60 }}>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Price:</label>
-          <input
-            type="number" min="1"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Number of Day:</label>
-          <input
-            type="number"
-            name="time"
-            value={formData.time}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Description:</label>
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Type:</label>
-          <select
-            name="type"
-            value={formData.type}
-            onChange={handleChange}
-          >
-            <option value=" ">Select Type</option>
-            <option value="develop">Develop</option>
+      <PostJobContainer>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>Name:</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+          </div>
 
-            <option value="graphic">Graphic</option>
-            <option value="music">Music</option>
-          </select>
-        </div>
+          <div>
+            <label>Description:</label>
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label>Type:</label>
+            <select
+              name="type"
+              value={formData.type}
+              onChange={handleChange}
+            >
+              <option value=" ">Select Type</option>
+              <option value="develop">Develop</option>
 
-        {formData.type === 'develop' && (
-          <select
-            name="subtype"
-            value={formData.subtype}
-            onChange={handleChange}
-          >
-            <option value=" ">Select Type</option>
-            <option value="web">Web</option>
-            <option value="mobile">Mobile</option>
-            <option value="desktop">Desktop</option>
-          </select>
-        )}
-        {formData.type === 'graphic' && (
-          <select
-            name="subtype"
-            value={formData.subtype}
-            onChange={handleChange}
-          >
-            <option value=" ">Select Type</option>
-            <option value="logos">Logo Design</option>
-            <option value="sticker">Sticker Design</option>
-            <option value="character">Character Design</option>
-            <option value="draw-cartoon">Draw cartoons</option>
-            <option value="3d-models">3D Models</option>
-            <option value="banner">Banner advertising design</option>
-          </select>
-        )}
-        {formData.type === 'music' && (
-          <select
-            name="subtype"
-            value={formData.subtype}
-            onChange={handleChange}
-          >
-            <option value=" ">Select Type</option>
-            <option value="beat">Beat</option>
-          </select>
-        )}
+              <option value="graphic">Graphic</option>
+              <option value="music">Music</option>
+            </select>
+          </div>
+          {formData.type === 'develop' && (
+            <select
+              name="subtype"
+              value={formData.subtype}
+              onChange={handleChange}
+            >
+              <option value=" ">Select Type</option>
+              <option value="web">Web</option>
+              <option value="mobile">Mobile</option>
+              <option value="desktop">Desktop</option>
+            </select>
+          )}
+          {formData.type === 'graphic' && (
+            <select
+              name="subtype"
+              value={formData.subtype}
+              onChange={handleChange}
+            >
+              <option value=" ">Select Type</option>
+              <option value="logos">Logo Design</option>
+              <option value="sticker">Sticker Design</option>
+              <option value="character">Character Design</option>
+              <option value="draw-cartoon">Draw cartoons</option>
+              <option value="3d-models">3D Models</option>
+              <option value="banner">Banner advertising design</option>
+            </select>
+          )}
+          {formData.type === 'music' && (
+            <select
+              name="subtype"
+              value={formData.subtype}
+              onChange={handleChange}
+            >
+              <option value=" ">Select Type</option>
+              <option value="beat">Beat</option>
+            </select>
+          )}
 
-        <div>
-          <input type="file" onChange={handleImageChange} />
-        </div>
-        <div style={{ textAlign: "center" }}>
-          <Button variant="success" type="submit" style={{ width: 150 }}>Submit</Button>
-        </div>
+          {showPriceAndDay && (
+            <>
+              <div>
+                <label>Price:</label>
+                <input
+                  type="number" min="1"
+                  name="price"
+                  value={formData.price}
+                  onChange={handleChange}
+                />
+              </div>
+              <div style={{ marginBottom: 20 }}>
+                <label>Number of Day:</label>
+                <input
+                  type="number"
+                  name="time"
+                  value={formData.time}
+                  onChange={handleChange}
+                />
+              </div>
+            </>
+          )}
 
-      </form>
+
+
+
+
+          <div style={{ marginBottom: 20 }}>
+            <input type="file" onChange={handleImageChange} />
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <Button variant="success" type="submit" style={{ width: 150 }}>Submit</Button>
+          </div>
+
+        </form>
+      </PostJobContainer>
     </Container>
   );
 };
 
+
+const PostJobContainer = styled.div`
+  textarea {
+    width: 100%;
+    height: 100px;
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+  }
+`;
 export default FreelanceForm;

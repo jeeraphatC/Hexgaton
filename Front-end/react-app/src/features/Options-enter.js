@@ -16,8 +16,8 @@ function OptionsEnterprise({ className }) {
     
     <div className={className}>
       <Container style={{marginTop: 60}}>
-      <h1>Option</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id bibendum nulla. Sed suscipit urna non posuere volutpat.</p>
+      <h1>Type For Enterprises</h1>
+      <p>สำหรับผู้ประกอบการที่ต้องการหาFreelanceมาช่วยทำงาน</p>
       <div className="optioncontainer">
       <Link to="/findfreelance" state={{type : "develop"}}>
         <div className="options">

@@ -20,7 +20,7 @@ public class HistoryEntity {
 
 
     
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name =  "workEnter_id", referencedColumnName = "id")
     private  Enterprise enterprise ;
 
@@ -32,11 +32,10 @@ public class HistoryEntity {
     public HistoryEntity() {
     }
 
-    public HistoryEntity(Long id, Account account, Enterprise enterprise, Freelance freelancer) {
+    public HistoryEntity(Long id, Account account, Enterprise enterprise) {
         this.id = id;
-       
         this.enterprise = enterprise;
-        this.freelancer = freelancer;
+        
     }
 
     public Enterprise getEnterprise() {
@@ -53,6 +52,14 @@ public class HistoryEntity {
 
     public void setFreelancer(Freelance freelancer) {
         this.freelancer = freelancer;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
   

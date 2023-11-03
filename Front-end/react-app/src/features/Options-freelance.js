@@ -16,8 +16,9 @@ function OptionsFreelance({ className }) {
     
     <div className={className}>
       <Container style={{marginTop: 60}}>
-      <h1>Option</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id bibendum nulla. Sed suscipit urna non posuere volutpat.</p>
+     
+      <h1>Type For Freelance</h1>
+      <p>สำหรับผู้ที่ต้องการหางานจากผู้ประกอบการ</p>
       <div className="optioncontainer">
       <Link to="/findjob" state={{type : "develop"}}>
         <div className="options">
