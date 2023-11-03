@@ -162,8 +162,8 @@ function FindFreelances({ className }) {
                     <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px', margin: '105px 0px 0px 300px', position: 'absolute' }} />
                   </Link>
                   <Card.Title><strong>Name:</strong> {freelance.name}</Card.Title>
-                  <Card.Text><strong>Price:</strong>Baht{freelance.price}</Card.Text>
-                  <Card.Text><strong>Time:</strong>Days{freelance.time}</Card.Text>
+                  <Card.Text><strong>Price:</strong>{freelance.price}Baht</Card.Text>
+                  <Card.Text><strong>Time:</strong>{freelance.time}Days</Card.Text>
                   <Card.Text><strong>Description:</strong>{truncateText(freelance.description, 40)}</Card.Text>
                 </Card.Body>
               </Card>

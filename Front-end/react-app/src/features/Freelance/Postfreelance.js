@@ -70,7 +70,8 @@ const PostFreelance = () => {
       formData.description === '' ||
       formData.type.trim() === '' ||
       formData.subtype === '' ||
-      formData.companyName === ''
+      formData.companyName === ''||
+      !selectedImage
     ) {
       alert('Please fill in all the required fields.');
       return;
