@@ -38,6 +38,12 @@ function OptionsFreelance({ className }) {
         <img src={chat} alt="" className="logo3" />   
         </div>
       </Link> 
+      <Link to="/FreelanceForm" state={{type : "postf"}}>
+        <div className="options">
+        <h3>Post for Enterprises</h3>
+        <img src={chat} alt="" className="logo3" />   
+        </div>
+      </Link> 
       </div>
       </Container>
     </div>

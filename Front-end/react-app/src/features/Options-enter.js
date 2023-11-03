@@ -37,6 +37,12 @@ function OptionsEnterprise({ className }) {
         <img src={chat} alt="" className="logo3" />   
         </div>
       </Link> 
+      <Link to="/postjob" state={{type : "post"}}>
+        <div className="options">
+        <h3>postjob</h3>
+        <img src={chat} alt="" className="logo3" />   
+        </div>
+      </Link> 
       </div>
       </Container>
     </div>
