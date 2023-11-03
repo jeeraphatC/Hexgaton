@@ -23,7 +23,7 @@ class MyworkEnter extends Component {
   }
   
   deleteEnterprise = (id) => {
-    axios.delete(`http://localhost:8090/enterprises/${id}`)
+    axios.delete(`http://localhost:8090/enterprises/id/${id}`)
       .then(response => {
         // Remove the deleted enterprise from the state
         this.setState(prevState => ({

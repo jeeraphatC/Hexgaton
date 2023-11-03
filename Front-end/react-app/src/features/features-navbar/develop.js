@@ -99,7 +99,7 @@ const Develop = ({ className }) => {
 
 
     }
-  }, [fetchData, type, enterpriseImages,pathenterprise,pathfreelance]);
+  }, [fetchData,type,subtype,pathenterprise,pathfreelance]);
   const handleCardClick = (item) => {
     setSelectedItems(prevSelectedItems => {
       const itemIndex = prevSelectedItems.findIndex(selectedItem => selectedItem.id === item.id);
