@@ -66,7 +66,7 @@ const FindJob = ({ className }) => {
                     width: 400,
                     padding: 20,
                     marginBottom: 20,
-                    border: selectedItems.includes(enterprise) ? '2px solid green' : 'none'
+                    border: selectedItems.includes(enterprise) ? '3px solid #0196FC' : 'none'
                   }}
                   onClick={() => handleCardClick(enterprise)}
                 >
