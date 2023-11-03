@@ -29,6 +29,7 @@
 		<module>chat-service</module>
 		<module>picture</module>
 		<module>pictureenter</module>
+		<module>history</module>
 	</modules>
 
 	<dependencies>

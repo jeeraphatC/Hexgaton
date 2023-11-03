@@ -20,7 +20,7 @@ public class Enterprise {
     private String workprocess;
     private String examplejob;
     private int fixtime;
-  
+    private String companyName;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "id")

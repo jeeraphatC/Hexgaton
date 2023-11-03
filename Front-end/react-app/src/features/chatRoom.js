@@ -26,6 +26,8 @@ const ChatRoom = ({ className }) => {
       const email = location.state?.email || 'guest';
 
 
+
+      
       // useEffect(() => {
       //   // Get the username from the cookie
       //   userData.username = getCookies('username');

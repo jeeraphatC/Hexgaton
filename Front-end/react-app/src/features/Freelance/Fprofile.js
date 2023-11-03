@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 
 function Fprofile({ className }) {
+  const [workData, setWorkData] = useState([]);
 
   const [userdata, setUserdata] = useState(
     {
@@ -31,6 +32,7 @@ function Fprofile({ className }) {
     axios
       .get(`http://localhost:8085/api/v1/accounts/list/${account_id}`)
       .then(response => {
+
         setUserdata({ ...userdata, description: response.data.descrip });
       })
       .catch(error => {
@@ -48,11 +50,30 @@ function Fprofile({ className }) {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
         const imageSrc = `data:image/jpeg;base64,${base64}`;
         setImage(imageSrc);
+        
       })
       .catch(error => {
         console.error('Error fetching image:', error);
       });
   }, []);
+
+  useEffect(() => {
+
+    axios.get(`http://localhost:9010/history`)
+    .then(response => {
+      // Handle the response data here
+      console.log(response.data);
+      // You can set the response data to a state variable or perform other actions
+    })
+    .catch(error => {
+      // Handle errors if the request fails
+      console.error(error);
+    });
+
+  }, []);
+
+
+
 
   return (
     <div className={className}>
@@ -88,6 +109,16 @@ function Fprofile({ className }) {
   
 <div className='content-work'></div>
 {/* fetch from database that user worked  */}
+
+{workData.map((item, index) => (
+    <div key={index}>
+      {/* Display the data from workData here */}
+      {/* For example, item.name and item.description */}
+      <p>{item.name}</p>
+      <p>{item.description}</p>
+    </div>
+  ))}
+
 </div>
 
 
@@ -117,7 +148,16 @@ Fprofile.propTypes = {
 };
 
 export default styled(Fprofile)`
+
+
  text-align: center;
+ .work-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #f8f8f8;
+  /* Add more styles as needed */
+}
  .container{
   display: flex;
   flex-direction:row;

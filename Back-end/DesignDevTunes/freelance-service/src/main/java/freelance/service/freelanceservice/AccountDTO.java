@@ -8,6 +8,7 @@ public class AccountDTO {
     private String email;
     private String password;
     private String numberCard;
+
     private List<Freelance> freelance;
 
     /**add Description  */
