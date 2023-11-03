@@ -44,7 +44,6 @@ function Fprofile({ className }) {
   const [image, setImage] = useState(null);
   const imagelocation = getCookies("id");
   useEffect(() => {
-    
     axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
       .then(response => {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
