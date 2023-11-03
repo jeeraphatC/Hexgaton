@@ -4,6 +4,7 @@ import { Card, Button, Container, Row, Col } from 'react-bootstrap';
 import styled from "styled-components";
 import axios from 'axios';
 import search4 from "../pic/search4.png";
+import plus from "../pic/plus.png";
 
 const FindJob = ({ className }) => {
   const [enterprises, setEnterprises] = useState([]);
@@ -42,7 +43,21 @@ const FindJob = ({ className }) => {
   return (
     <div className={className}>
       <div>
-        <Container style={{ marginTop: 50 }}>
+      <Link to="/postjob">
+  <img
+    src={plus}
+    alt="Post a Job"
+    style={{
+      margin: '20px',
+      width: '50px',
+      position: 'absolute',
+      top: '200px',
+      left: '200px',
+
+    }}
+  />
+</Link>
+      <Container style={{ marginTop: 50 }}>
         <h1 style={{ margin: '100px 20px 20px 20px',color:'#0196FC'}}>Find jobs (ALL)</h1>
         <div className="develop" style={{ margin: '10px 20px 20px 20px',fontSize:'22px',width:'120%'}} >
             <Link to="/develop" style={{ margin: '20px'}} state={{  type:  "develop" }}>Develop</Link>
@@ -58,6 +73,8 @@ const FindJob = ({ className }) => {
             <Link to="/music" style={{ margin: '20px'}} state={{  type:  "music" }}>music</Link>
             <Link to="/beat" style={{ margin: '20px'}} state={{  type:  "beat" }}>beat</Link>
           </div>
+          
+
           <Row>
             {enterprises.map(enterprise => (
               <Col md={4} key={enterprise.id}>
@@ -74,10 +91,10 @@ const FindJob = ({ className }) => {
                     <Link to={`/enterprises/${enterprise.id}`}>
                       <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px', margin: '105px 0px 0px 300px', position:'absolute' }} />
                     </Link>
-                    <Card.Title><strong>Name:</strong> {enterprise.name}</Card.Title>
-                    <Card.Text><strong>Price:</strong> {enterprise.price}</Card.Text>
-                    <Card.Text><strong>Time:</strong> {enterprise.time}</Card.Text>
-                    <Card.Text><strong>Description:</strong>{truncateText(enterprise.description, 40)}</Card.Text>
+                    <Card.Title><strong>Name : </strong> {enterprise.name}</Card.Title>
+                    <Card.Text><strong>Price :</strong> {enterprise.price}</Card.Text>
+                    <Card.Text><strong>Time : </strong> {enterprise.time}</Card.Text>
+                    <Card.Text><strong>Type : </strong>{truncateText(enterprise.type)}</Card.Text>
                   </Card.Body>
                 </Card>
               </Col>

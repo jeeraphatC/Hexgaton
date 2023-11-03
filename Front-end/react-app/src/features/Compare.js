@@ -6,7 +6,7 @@ import bgcom from "./pic/bgcom.jpg";
 import big_logo from "./pic/big_logo.png";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import { Link } from "react-router-dom";
 class UserData {
   constructor(data) {
     this.id = data.id;
@@ -25,7 +25,6 @@ function Compare({ className }) {
   const [userData1, setUserData1] = useState(null);
   const [userData2, setUserData2] = useState(null);
   const [showClearButton, setShowClearButton] = useState(false);
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -37,10 +36,41 @@ function Compare({ className }) {
     setUserId2(id2);
   }, []);
 
-  const handleSubmit1 = (e) => {
+  // const handleSubmit1 = (e) => {
+  //   e.preventDefault();
+  //   if (!userId1) {
+  //     alert("Please enter Job 1 ID");
+  //     return;
+  //   }
+
+  //   fetch(`http://localhost:8090/enterprises/${userId1}`)
+  //     .then((response) => {
+  //       if (!response.ok) {
+  //         throw new Error("User not found");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       const user1 = new UserData(data);
+  //       user1.time = data.time;
+  //       user1.price = data.price;
+  //       user1.description = data.type;
+  //       user1.location = data.location;
+  //       user1.workprocess = data.workprocess;
+  //       user1.fixtime = data.fixtime;
+  //       setUserData1(user1);
+  //       setShowClearButton(true);
+  //     })
+  //     .catch((error) => {
+  //       alert(error.message);
+  //       console.error("Error:", error);
+  //     });
+  // };
+
+  const handleSubmit2 = (e) => {
     e.preventDefault();
     if (!userId1) {
-      alert("Please enter Job 1 ID");
+      alert("Please select item again");
       return;
     }
 
@@ -66,9 +96,6 @@ function Compare({ className }) {
         alert(error.message);
         console.error("Error:", error);
       });
-  };
-
-  const handleSubmit2 = (e) => {
     e.preventDefault();
     if (!userId2) {
       alert("Please enter Job 2 ID");
@@ -92,6 +119,7 @@ function Compare({ className }) {
         user2.fixtime = data.fixtime;
         setUserData2(user2);
         setShowClearButton(true);
+        
       })
       .catch((error) => {
         alert(error.message);
@@ -99,13 +127,13 @@ function Compare({ className }) {
       });
   };
 
-  const handleClear = () => {
-    setUserId1("");
-    setUserId2("");
-    setUserData1(null);
-    setUserData2(null);
-    setShowClearButton(false);
-  };
+  // const handleClear = () => {
+  //   setUserId1("");
+  //   setUserId2("");
+  //   setUserData1(null);
+  //   setUserData2(null);
+  //   setShowClearButton(false);
+  // };
 
   return (
     <div className={className}>
@@ -113,7 +141,14 @@ function Compare({ className }) {
       <h1>Compare jobs for freelane</h1>
       <h3>Freelancers can compare jobs to make a decision.</h3>
       <div className="formcon">
-        <form onSubmit={handleSubmit1}>
+      <button
+  type="submit"
+  onClick={handleSubmit2}
+  style={{ width: '400px', height: '100px',fontSize:'40px'}}
+>
+  Start Compare Jobs
+</button>
+        {/* <form onSubmit={handleSubmit2}>
           <input
             type="text"
             value={userId1}
@@ -132,7 +167,7 @@ function Compare({ className }) {
             required
           />
           <button type="submit">Add job</button>
-        </form>
+        </form> */}
 
         {userData1 && (
           <div>
@@ -203,9 +238,11 @@ function Compare({ className }) {
       )}
 
       {showClearButton && (
-        <button className="clearbtn" onClick={handleClear}>
-          Clear
+        <Link to="/findjob">
+        <button className="clearbtn" style={{ width: '150px', height: '50px',fontSize:'20px'}}>
+          Back
         </button>
+      </Link>
       )}
 
       <footer>
