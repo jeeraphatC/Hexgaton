@@ -1,11 +1,46 @@
-// src/components/FreelanceForm.js
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Container } from 'react-bootstrap';
 import getCookies from '../hook/getCookies';
 import styled from 'styled-components';
-const FreelanceForm = () => {
+import big_logo from "../pic/big_logo.png";
+
+const PostFreelanceContainer = styled.div`
+  margin: 50px 400px 0px 400px;
+  .custom-button {
+    margin-top: 30px;
+    margin-left: 900px;
+  }
+  input[type="file"] {
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 20px;
+  }
+  select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  label{
+    font-size: 20px;
+    margin-top: 20px;
+  }
+  textarea {
+    width: 100%;
+    height: 100px;
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+  }
+`;
+
+const PostFreelance = () => {
   const [formData, setFormData] = useState({
     id: '',
     name: '',
@@ -13,35 +48,31 @@ const FreelanceForm = () => {
     time: '',
     description: '',
     type: '',
-    subtype: ' ',
-    companyName: ' ',
+    subtype: '',
+    companyName: '',
   });
 
-  const [showPriceAndDay, setShowPriceAndDay] = useState(false);
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    if (formData.name && formData.description && formData.type) {
-      setShowPriceAndDay(true);
-    }
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
     setFormData({
       ...formData,
       [name]: value,
     });
-  };
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  }
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
     if (
-      formData.name === '' ||formData.price === '' ||
+      formData.name === '' ||
+      formData.price === '' ||
       formData.time === '' ||
       formData.description === '' ||
-      formData.type.trim() === ''||
-      formData.companyName === '' 
+      formData.type.trim() === '' ||
+      formData.subtype === '' ||
+      formData.companyName === ''
     ) {
-      alert(`Please fill in all the required fields.`);
+      alert('Please fill in all the required fields.');
       return;
     }
 
@@ -56,7 +87,7 @@ const FreelanceForm = () => {
           console.log('Account data retrieved successfully:', accountData);
 
           const jobDataToUpdate = {
-            id: response.data.id, // Replace with the job ID you want to update
+            id: response.data.id,
             name: response.data.name,
             price: response.data.price,
             time: response.data.time,
@@ -73,11 +104,10 @@ const FreelanceForm = () => {
             }
           };
 
-
           axios.put(`http://localhost:8082/freelances/${jobDataToUpdate.id}`, jobDataToUpdate)
             .then((jobResponse) => {
               console.log('Job updated successfully!', jobResponse.data);
-              const updatedJobId = jobResponse.data.id; // Store the updated job ID
+              const updatedJobId = jobResponse.data.id;
 
               if (selectedImage) {
                 const formData = new FormData();
@@ -122,7 +152,6 @@ const FreelanceForm = () => {
       console.error('Error creating freelance:', error);
     }
 
-    // Reset the form data here
     setFormData({
       id: '',
       name: '',
@@ -130,10 +159,10 @@ const FreelanceForm = () => {
       time: '',
       description: '',
       type: '',
+      subtype: '',
       companyName: '',
     });
 
-    // Clear selectedImage
     setSelectedImage(null);
   };
 
@@ -141,9 +170,11 @@ const FreelanceForm = () => {
   const handleImageChange = (event) => {
     setSelectedImage(event.target.files[0]);
   };
+
   return (
-    <Container style={{ width: 800, marginTop: 60 }}>
-      <PostJobContainer>
+    <div>
+      <PostFreelanceContainer>
+        <h2 style={{ marginTop: 60,fontSize:'80px',color:'#0196FC' }}>Post a Freelance</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Name:</label>
@@ -151,16 +182,15 @@ const FreelanceForm = () => {
               type="text"
               name="name"
               value={formData.name}
-              onChange={handleChange}
+              onChange={handleInputChange}
             />
           </div>
-
           <div>
             <label>Description:</label>
             <textarea
               name="description"
               value={formData.description}
-              onChange={handleChange}
+              onChange={handleInputChange}
             />
           </div>
           <div>
@@ -168,11 +198,10 @@ const FreelanceForm = () => {
             <select
               name="type"
               value={formData.type}
-              onChange={handleChange}
+              onChange={handleInputChange}
             >
               <option value=" ">Select Type</option>
               <option value="develop">Develop</option>
-
               <option value="graphic">Graphic</option>
               <option value="music">Music</option>
             </select>
@@ -181,7 +210,7 @@ const FreelanceForm = () => {
             <select
               name="subtype"
               value={formData.subtype}
-              onChange={handleChange}
+              onChange={handleInputChange}
             >
               <option value=" ">Select Type</option>
               <option value="web">Web</option>
@@ -193,7 +222,7 @@ const FreelanceForm = () => {
             <select
               name="subtype"
               value={formData.subtype}
-              onChange={handleChange}
+              onChange={handleInputChange}
             >
               <option value=" ">Select Type</option>
               <option value="logos">Logo Design</option>
@@ -208,69 +237,61 @@ const FreelanceForm = () => {
             <select
               name="subtype"
               value={formData.subtype}
-              onChange={handleChange}
+              onChange={handleInputChange}
             >
               <option value=" ">Select Type</option>
               <option value="beat">Beat</option>
             </select>
           )}
 
-          {showPriceAndDay && (
-            <>
-              <div>
-                <label>Price:</label>
-                <input
-                  type="number" min="1"
-                  name="price"
-                  value={formData.price}
-                  onChange={handleChange}
-                />
-              </div>
-              <div style={{ marginBottom: 20 }}>
-                <label>Number of Day:</label>
-                <input
-                  type="number"
-                  name="time"
-                  value={formData.time}
-                  onChange={handleChange}
-                />
-              </div>
-            </>
-          )}
-
+          <div>
+            <label>Price:</label>
+            <input
+              type="number" min="1"
+              name="price"
+              value={formData.price}
+              onChange={handleInputChange}
+            />
+          </div>
+          <div style={{ marginBottom: 20 }}>
+            <label>Number of Day:</label>
+            <input
+              type="number"
+              name="time"
+              value={formData.time}
+              onChange={handleInputChange}
+            />
+          </div>
           <div>
             <label>companyName:</label>
             <textarea
               name="companyName"
               value={formData.companyName}
-              onChange={handleChange}
+              onChange={handleInputChange}
             />
           </div>
-
 
           <div style={{ marginBottom: 20 }}>
             <input type="file" onChange={handleImageChange} />
           </div>
           <div style={{ textAlign: "center" }}>
-            <Button variant="success" type="submit" style={{ width: 150 }}>Submit</Button>
+            <Button variant="success" type="submit" className="custom-button" style={{ width: 150 }}>Submit</Button>
           </div>
-
         </form>
-      </PostJobContainer>
-    </Container>
+      </PostFreelanceContainer>
+      <footer >
+      <div class="footer-content" style={{ marginTop: '1200px' }}>
+          <img src={big_logo} alt="" className="big_logofooter" />
+          <p className="footertext1">
+            Norrapat Sai-ai 652110289<br></br>
+            Samitthichai Peeragun 652110309<br></br>
+            Sivasith Singkaew 652110308<br></br>
+            Jeeraphat Chantra 652110318<br></br>
+          </p>
+        </div>
+      </footer>
+    </div>
   );
-};
+}
 
-
-const PostJobContainer = styled.div`
-  textarea {
-    width: 100%;
-    height: 100px;
-    font-size: 16px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: none;
-  }
-`;
-export default FreelanceForm;
+export default PostFreelance;
