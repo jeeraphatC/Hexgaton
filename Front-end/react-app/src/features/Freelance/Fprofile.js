@@ -42,8 +42,8 @@ function Fprofile({ className }) {
   }, []);
 
 
-  // const [image, setImage] = useState(null);
-  // const imagelocation = getCookies("id");
+  const [image, setImage] = useState(null);
+  const imagelocation = getCookies("id");
   // useEffect(() => {
     
   //   axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
@@ -58,25 +58,25 @@ function Fprofile({ className }) {
   //     });
   // }, []);
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
-      .then(response => {
-        if (Array.isArray(response.data)) {
-          const filteredData = response.data.filter(item => item.account && item.account.accountid == idfromCookies);
-          console.log(filteredData);
+  //   axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
+  //     .then(response => {
+  //       if (Array.isArray(response.data)) {
+  //         const filteredData = response.data.filter(item => item.account && item.account.accountid == idfromCookies);
+  //         console.log(filteredData);
             
-          setWorkData(filteredData);
-          // Handle the filtered data here
-        } else {
-          console.error('Response data is not an array');
-        }
-      })
-      .catch(error => {
-        // Handle errors if the request fails
-        console.error(error);
-      });
-  }, []);
+  //         setWorkData(filteredData);
+  //         // Handle the filtered data here
+  //       } else {
+  //         console.error('Response data is not an array');
+  //       }
+  //     })
+  //     .catch(error => {
+  //       // Handle errors if the request fails
+  //       console.error(error);
+  //     });
+  // }, []);
 
 
 

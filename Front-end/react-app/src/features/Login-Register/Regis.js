@@ -26,6 +26,8 @@ function Register({ className }) {
     );
   };
 
+
+
   const validateForm2 = () => {
     const validName = namePattern.test(accountname);
     const validEmail = emailPattern.test(email);
@@ -58,7 +60,6 @@ function Register({ className }) {
         numberCard: numberCard,
         password: password,
       });
-
       alert("Account Registration Successful");
       navigate("/login");
     } catch (err) {
@@ -148,9 +149,9 @@ function Register({ className }) {
       </div>
 
       <div className="app-container">
-      <a href="/">
-        <img src={mlogo} alt="" className="homelogo" />
-      </a>
+        <a href="/">
+          <img src={mlogo} alt="" className="homelogo" />
+        </a>
       </div>
       <div class="containermt-4">
         <div class="card">
