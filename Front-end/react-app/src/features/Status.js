@@ -22,22 +22,28 @@ class Status extends Component {
   }
 
   FinishEnterprise = (id) => {
-    // สร้างอ็อบเจ็กต์ที่จะส่งไปยัง API
-    const updatedStatus = {
-        status: "Finish"
-    };
+    // Show a confirmation dialog
+    const confirmFinish = window.confirm('Are you sure you want to finish this item?');
   
-    // ส่งคำขอ PUT ไปยัง API เพื่ออัพเดตสถานะของ Enterprise
-    axios.patch(`http://localhost:8082/status/${id}`, updatedStatus)
-      .then(response => {
-        // หากอัพเดตสำเร็จ, คุณสามารถทำอะไรสักอย่าง (เช่น อัพเดตสถานะในสถานะของคอมโพนนี้)
-        console.log('อัพเดตสถานะสำเร็จ');
-        window.location.reload();
-      })
-      .catch(error => {
-        console.error('เกิดข้อผิดพลาดในการอัพเดตสถานะ:', error);
-      });
-   
+    if (confirmFinish) {
+      // User confirmed, proceed with the action
+  
+      // สร้างอ็อบเจ็กต์ที่จะส่งไปยัง API
+      const updatedStatus = {
+        status: "Finish"
+      };
+  
+      // ส่งคำขอ PUT ไปยัง API เพื่ออัพเดตสถานะของ Enterprise
+      axios.patch(`http://localhost:8082/status/${id}`, updatedStatus)
+        .then(response => {
+          // หากอัพเดตสำเร็จ, คุณสามารถทำอะไรสักอย่าง (เช่น อัพเดตสถานะในสถานะของคอมโพนนี้)
+          console.log('อัพเดตสถานะสำเร็จ');
+          window.location.reload();
+        })
+        .catch(error => {
+          console.error('เกิดข้อผิดพลาดในการอัพเดตสถานะ:', error);
+        });
+    }
   }
   
 
@@ -47,11 +53,11 @@ class Status extends Component {
     return (
       <div >
         <Container style={{ marginTop: 50 }}>
-          <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>Work status</h1>
+          <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>In process</h1>
           <Row>
             {this.state.status.map(status => (
               <Col md={4} key={status.id}>
-                 {getCookies("id") == status.enterprise.account.accountid ? (
+                 {getCookies("id") == status.enterprise.account.accountid && status.status === "process" ? (
                   <Card style={{ width: 400, padding: 20, marginBottom: 20 }} >
                     <Card.Body>
                       <Card.Title><strong>Name:</strong> {status.enterprise.name}</Card.Title>
@@ -70,11 +76,35 @@ class Status extends Component {
                  ) : null}
               </Col>
             ))}
-
-
+          </Row>
+        </Container>
+        <Container style={{ marginTop: 50 }}>
+          <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>Finished</h1>
+          <Row>
+            {this.state.status.map(status => (
+              <Col md={4} key={status.id}>
+                 {getCookies("id") == status.enterprise.account.accountid && status.status !== "process" ? (
+                  <Card style={{ width: 400, padding: 20, marginBottom: 20 }} >
+                    <Card.Body>
+                      <Card.Title><strong>Name:</strong> {status.enterprise.name}</Card.Title>
+                      <Card.Title><strong>Price:</strong> {status.enterprise.price}</Card.Title>
+                      <Card.Title><strong>Time:</strong> {status.enterprise.time}</Card.Title>
+                      <Card.Title><strong>Workprocess:</strong> {status.enterprise.workprocess}</Card.Title>
+                      <Card.Title><strong>Type:</strong> {status.enterprise.type}</Card.Title>
+                      <Card.Title><strong>Subtype:</strong> {status.enterprise.subtype}</Card.Title>
+                      <Card.Title><strong>Location:</strong> {status.enterprise.location}</Card.Title>
+                      <Card.Title><strong>Description:</strong> {status.enterprise.description}</Card.Title>
+                      <Card.Title><strong>Freelance:</strong> {status.freelancer}</Card.Title>
+                      <Card.Title><strong>Status:</strong> {status.status}</Card.Title>
+                    </Card.Body>
+                  </Card>
+                 ) : null}
+              </Col>
+            ))}
           </Row>
         </Container>
       </div>
+      
     );
   }
 }
