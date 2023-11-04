@@ -67,7 +67,7 @@ function ViewFreelance({ className }) {
         console.error('Error updating status:', error);
       });
   };
-
+  const isOwner = getCookies("id") == freelance.account.accountid;
 
 
   return (
@@ -90,7 +90,11 @@ function ViewFreelance({ className }) {
               {isChatButtonClicked ? (
                 <Link to="/chatroom">Chat</Link> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
               ) : (
-                <button onClick={handleConfirmButtonClick}>ยืนยัน</button>
+                isOwner ? (
+                  <Link to={`/editfreelance/${freelance.id}`}> edit </Link>
+                ) : (
+                  <button onClick={handleConfirmButtonClick}>ยืนยัน</button>
+                )
               )}
             </Card.Body>
           </Card>

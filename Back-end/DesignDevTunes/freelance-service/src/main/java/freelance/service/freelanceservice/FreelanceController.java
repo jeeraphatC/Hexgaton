@@ -53,7 +53,9 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
             existingFreelance.setTime(updatedFreelance.getTime());
             existingFreelance.setDescription(updatedFreelance.getDescription());
             existingFreelance.setAccount(updatedFreelance.getAccount());
+            existingFreelance.setType(updatedFreelance.getType());
             existingFreelance.setSubtype(updatedFreelance.getSubtype());
+            existingFreelance.setCompanyName(updatedFreelance.getCompanyName());
             return freelanceRepository.save(existingFreelance);
         }
 
