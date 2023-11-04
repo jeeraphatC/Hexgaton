@@ -7,13 +7,15 @@ import search4 from "../pic/search4.png";
 import PropTypes from 'prop-types';
 function FindJob({ className }) {
 
-
+  const [selectedItems, setSelectedItems] = useState([]);
   const [enterprises, setEnterprises] = useState([]);
   const [enterpriseImages, setEnterprisesimage] = useState({});
   const location = useLocation();
   const type = location.state.type;
   const type2 = location.state.type2;
-
+  const handleClearSelected = () => {
+    setSelectedItems([]);
+  };
   let path;
   if (type2 == null) {
     path = `http://localhost:8090/enterprises/type/${type}`
@@ -134,7 +136,29 @@ function FindJob({ className }) {
   if (enterprises.length > 0) {
     fetchAllImages(enterprises);
   }
+  const handleCardClick = (item) => {
+    setSelectedItems(prevSelectedItems => {
+      const itemIndex = prevSelectedItems.findIndex(selectedItem => selectedItem.id === item.id);
 
+      if (itemIndex === -1 && prevSelectedItems.length < 2) {
+        return [...prevSelectedItems, item];
+      } else if (itemIndex !== -1) {
+        const updatedItems = [...prevSelectedItems];
+        updatedItems.splice(itemIndex, 1);
+        return updatedItems;
+      } else {
+        return prevSelectedItems;
+      }
+    });
+  };
+  const handleCompareClick = () => {
+    const selectedIds = selectedItems.map(item => item.id);
+    const url = `/compare?ids=${selectedIds.join(',')}`;
+    window.location.href = url; // Manually navigate to the URL
+  };
+  const handleClearSelected2 = () => {
+    setSelectedItems([]);
+  };
   return (
     <div className={className}>
       <Container style={{ marginTop: 50 }}>
@@ -150,7 +174,15 @@ function FindJob({ className }) {
         <Row>
           {enterprises.map(enterprise => (
             <Col md={4} key={enterprise.id}>
-              <Card style={{ width: 400, padding: 20, marginBottom: 20, alignItems: "center" }}>
+              <Card
+                    style={{
+                      padding: 20,
+                      width: 400,
+                      marginBottom: 20,
+
+                    }}
+                    onClick={() => handleCardClick(enterprise)}
+                  >
                 <Card.Body>
                   <Card.Img className="picture" variant="top" style={{ width: 300, height: 200 }} src={enterpriseImages[enterprise.id]} />
                   <br />
@@ -167,6 +199,22 @@ function FindJob({ className }) {
             </Col>
           ))}
         </Row>
+        <div className="selected-items">
+            <h4>Selected job to compare</h4>
+            {selectedItems.map((selectedItem, index) => (
+              <div key={index}>
+                <p>Job {index + 1} :{selectedItem.name}</p>
+              </div>
+            ))}
+            {selectedItems.length > 0 && (
+              <button onClick={handleClearSelected2}>Clear Selected Items</button>
+            )}
+            {selectedItems.length === 2 && (
+              <button onClick={handleCompareClick}>Compare</button>
+            )}
+
+
+          </div>
       </Container>
     </div>
   );
@@ -184,6 +232,25 @@ FindJob.propTypes = {
 };
 
 export default styled(FindJob)`
+.selected-items button {
+  margin: 5px; 
+  color: #FFFFFF;
+  background-color : #0196FC;
+  border: 0px;
+  border-radius: 3px;
+  padding: 5px;
+}
+.selected-items {
+  position: fixed;
+  top:70px; /* Adjust the value as needed */
+  right: 20px; /* Adjust the value as needed */
+  background-color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 240px;
+  text-align: center;
+}
 .jobdetail{
   padding: 5px;
 }
