@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import webdevbg from "./pic/webdevbg.jpg";
 import designbg2 from "./pic/designbg2.jpg";
 import musicbg from "./pic/musicbg.jpg";
-import plus from "./pic/plus.png";
+import big_logo from "./pic/big_logo.png";
 import arrow from "./pic/barrow.png";
 import { Container ,Col ,Row} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -50,6 +50,17 @@ function OptionsEnterprise({ className }) {
                 </div>
               </Link>
       </Container>
+      <footer>
+        <div class="footer-content" style={{marginTop:'800px'}}>
+          <img src={big_logo} alt="" className="big_logofooter" />
+          <p className="footertext1">
+            Norrapat Sai-ai 652110289<br></br>
+            Samitthichai Peeragun 652110309<br></br>
+            Sivasith Singkaew 652110308<br></br>
+            Jeeraphat Chantra 652110318<br></br>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }

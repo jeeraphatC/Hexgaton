@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-
+import big_logo from "./pic/big_logo.png";
 import webdevbg from "./pic/webdevbg.jpg";
 import designbg2 from "./pic/designbg2.jpg";
 import musicbg from "./pic/musicbg.jpg";
@@ -50,7 +50,17 @@ function OptionsFreelance({ className }) {
                 </div>
               </Link>
       </Container>
-     
+      <footer>
+        <div class="footer-content" style={{marginTop:'800px'}}>
+          <img src={big_logo} alt="" className="big_logofooter" />
+          <p className="footertext1">
+            Norrapat Sai-ai 652110289<br></br>
+            Samitthichai Peeragun 652110309<br></br>
+            Sivasith Singkaew 652110308<br></br>
+            Jeeraphat Chantra 652110318<br></br>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
@@ -60,13 +70,6 @@ OptionsFreelance.propTypes = {
 };
 
 export default styled(OptionsFreelance)`
-
-.div1{
-  width:100%;
-  height:500px;
-  background: #0196FC;
-  margin-top:700px;
-}
 
 .musicbg:hover{
 
@@ -132,7 +135,7 @@ export default styled(OptionsFreelance)`
     text-align: left;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 500px;
     border-radius:10px;
 
    }
@@ -144,7 +147,7 @@ export default styled(OptionsFreelance)`
     transition: all 0.2s;
     text-align: left;
     position: absolute;
-    top: 50%;
+    top: 500px;
     border-radius:10px;
    }
    .options2{
