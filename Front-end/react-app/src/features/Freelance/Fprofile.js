@@ -44,39 +44,41 @@ function Fprofile({ className }) {
 
   const [image, setImage] = useState(null);
   const imagelocation = getCookies("id");
-  // useEffect(() => {
+  useEffect(() => {
     
-  //   axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
-  //     .then(response => {
-  //       const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
-  //       const imageSrc = `data:image/jpeg;base64,${base64}`;
-  //       setImage(imageSrc);
+    axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
+      .then(response => {
+        const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+        const imageSrc = `data:image/jpeg;base64,${base64}`;
+        setImage(imageSrc);
         
-  //     })
-  //     .catch(error => {
-  //       console.error('Error fetching image:', error);
-  //     });
-  // }, []);
+      })
+      .catch(error => {
+        console.error('Error fetching image:', error);
+      });
+  }, []);
 
-  // useEffect(() => {
-    
-  //   axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
-  //     .then(response => {
-  //       if (Array.isArray(response.data)) {
-  //         const filteredData = response.data.filter(item => item.account && item.account.accountid == idfromCookies);
-  //         console.log(filteredData);
-            
-  //         setWorkData(filteredData);
-  //         // Handle the filtered data here
-  //       } else {
-  //         console.error('Response data is not an array');
-  //       }
-  //     })
-  //     .catch(error => {
-  //       // Handle errors if the request fails
-  //       console.error(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    const idFromCookies = getCookies("id");
+  
+    axios
+      .get(`http://localhost:8082/historys/enterprise`)
+      .then((response) => {
+        if (Array.isArray(response.data)) {
+          const filteredData = response.data.filter((item) => item.enterprise.account.accountid == idFromCookies);
+          console.log('History', filteredData);
+  
+          setWorkData(filteredData);
+          // Handle the filtered data here
+        } else {
+          console.error('Response data is not an array');
+        }
+      })
+      .catch((error) => {
+        // Handle errors if the request fails
+        console.error(error);
+      });
+  }, []);
 
 
 
@@ -116,22 +118,17 @@ function Fprofile({ className }) {
 
 {/* fetch from database that user worked  */}
 <div className='content-work'>
-{workData.slice(0, 5).map(item => (
-      <Card className='card-history'>
+  {workData.slice(0, 5).map((item ) => (
+    <Card className='card-history' >
       <CardBody>
-     <Card.Title><strong>Name : </strong> {item.name}</Card.Title>
-     <Card.Text><strong>Type : </strong> {item.type}</Card.Text>
-
-      {/* Render the properties you want to display */}
-      <Card.Text><strong>Price : </strong> {item.price}</Card.Text>
-      <Card.Text><strong>Description : </strong> {item.description}</Card.Text>
-   
-     
-      {/* Add more properties as needed */}
- 
-    </CardBody>
+        <Card.Title><strong>Name : </strong> {item.enterprise.name}</Card.Title>
+        <Card.Text><strong>Type : </strong> {item.enterprise.type}</Card.Text>
+        <Card.Text><strong>Price : </strong> {item.enterprise.price}</Card.Text>
+        <Card.Text><strong>Description : </strong> {item.enterprise.description}</Card.Text>
+        {/* Add more properties as needed */}
+      </CardBody>
     </Card>
-    ))}
+  ))}
 </div>
 
 

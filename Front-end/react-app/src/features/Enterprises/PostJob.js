@@ -6,6 +6,9 @@ import getCookies from '../hook/getCookies';
 import styled from 'styled-components';
 import big_logo from "../pic/big_logo.png";
 const PostJob = () => {
+
+
+
   const [formData, setFormData] = useState({
     id: '',
     name: '',
@@ -50,12 +53,23 @@ const PostJob = () => {
     try {
       const response = await axios.post('http://localhost:8090/enterprises', formData);
       console.log('Enterprises created:', response.data);
-
+      const history = {
+        enterprise: {
+          id: response.data.id
+        }
+      }
+      axios.post('http://localhost:8082/historys/enterprise', history);
+      console.log('History creacte ',history.data);
       const accoun_id = getCookies('id');
+
+      
       axios.get(`http://localhost:8085/api/v1/accounts/list/${accoun_id}`)
         .then((accountResponse) => {
           const accountData = accountResponse.data;
           console.log('Account data retrieved successfully:', accountData);
+
+    
+         
 
           const jobDataToUpdate = {
             id: response.data.id, // Replace with the job ID you want to update
@@ -83,7 +97,7 @@ const PostJob = () => {
             .then((jobResponse) => {
               console.log('Job updated successfully!', jobResponse.data);
               const updatedJobId = jobResponse.data.id;
-
+             
 
               if (selectedImage) {
                 const formData = new FormData();
@@ -292,7 +306,8 @@ const PostJob = () => {
             <input type="file" onChange={handleImageChange} />
           </div>
           <div style={{ textAlign: "center" }}>
-            <Button variant="success" type="submit" className="custom-button" style={{ width: 150 }}>Submit</Button>
+
+            <Button variant="success" type="submit" className="custom-button" style={{ width: 150 }} >Submit</Button>
           </div>
         </form>
       </PostJobContainer>
