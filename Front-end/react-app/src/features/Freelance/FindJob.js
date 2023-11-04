@@ -5,6 +5,8 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import styled from "styled-components";
 import search4 from "../pic/search4.png";
 import PropTypes from 'prop-types';
+import arrow from ".././pic/barrow.png";
+
 function FindJob({ className }) {
 
   const [selectedItems, setSelectedItems] = useState([]);
@@ -31,14 +33,14 @@ function FindJob({ className }) {
     return text;
   }
 
-
+// if for fetch subdata
   function develop() {
     if (type === 'develop') {
       return (
         <div className={className} style={{
           marginTop: 0
         }}>
-          <Col md={6} >
+          <Col md={6} s>
             <Link to="/findjob" state={{ type: "develop" }}>
               <Button style={{ marginBottom: 10 }}>Developer</Button>
             </Link>
@@ -80,6 +82,9 @@ function FindJob({ className }) {
     }
     else if (type === 'music') {
       return (
+        <div style={{
+          marginTop: 0
+        }}>
         <Col md={4} >
           <Link to="/findjob" state={{ type: "music" }}>
             <Button style={{ marginBottom: 10 }}>Music</Button>
@@ -88,18 +93,20 @@ function FindJob({ className }) {
             <Button style={{ marginBottom: 10 }}>beat</Button>
           </Link>
         </Col>
+        </div>
       )
     }
     return null;
   }
 
+  //ตัวหนังสือ
   function truncateText(text, maxLength) {
     if (text.length > maxLength) {
       return text.substring(0, maxLength) + '...';
     }
     return text;
   }
-
+//data and picture
   useEffect(() => {
     axios.get(path)
       .then(response => {
@@ -143,6 +150,7 @@ function FindJob({ className }) {
       });
   }, [enterpriseImages,type, type2]);
 
+  //Compare
   const handleCardClick = (item) => {
     setSelectedItems(prevSelectedItems => {
       const itemIndex = prevSelectedItems.findIndex(selectedItem => selectedItem.id === item.id);
@@ -169,14 +177,20 @@ function FindJob({ className }) {
 
   return (
     <div className={className}>
-      <Container style={{ marginTop: 50 }}>
-        <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>Find jobs (ALL)</h1>
+      <Container style={{ marginTop: 100 }}>
+      <Link to="/" style={{fontSize:'30px',marginTop:'30px',color:'#0071BE'}}>Home</Link>
+        <img src={arrow} alt=""style={{width:'30px',marginLeft:'10px',marginBottom:'10px'}} />
+        <Link to="/optionfree" style={{fontSize:'30px',marginTop:'30px',marginLeft:'10px',color:'#808080'}}>Freelance</Link>
+        <img src={arrow} alt=""style={{width:'30px',marginLeft:'10px',marginBottom:'10px'}} />
+        <Link to="/findjob" style={{fontSize:'30px',marginTop:'30px',marginLeft:'10px',color:'#808080'}}>{type}</Link>
+
+        <h1 style={{ margin: '30px 10px 20px 0px', color: '#0196FC' }}>Find jobs (ALL)</h1>
         <Row style={{ marginBottom: 50 }}>
-          <Col md={10}>
+          <Col md={10} style={{paddingLeft : 0}}>
             {develop()}
-            <Button variant="success" className='btn-add-first'>
+            {/* <Button variant="success" className='btn-add-first'>
               <Link to='/FreelanceForm' className='btn-add-sec'>For Freelance ADD Job</Link>
-            </Button>
+            </Button> */}
           </Col>
         </Row>
         <Row>
@@ -280,7 +294,7 @@ export default styled(FindJob)`
   width: 240px;
   text-align: center;
 }
- width: 100%;
+  width: 100%;
   margin-top: 50px;
   background-color: azure;
 
@@ -292,13 +306,10 @@ export default styled(FindJob)`
   }
   .btn-add-first:active 
  {
- 
-    float : right ;
-    border: 2px solid #0071BE;
+  float : right ;
+  border: 2px solid #0071BE;
   }
   Button{
-    
-    margin-top: 0px;
     margin-right: 5px;
   }
 `;
