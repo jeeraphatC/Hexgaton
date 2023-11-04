@@ -29,19 +29,20 @@ import Myworkenterpise from './features/Enterprises/Myworkenterpise';
 import Mywork from './features/Freelance/Mywork';
 import OptionsFreelance from './features/Options-freelance';
 import OptionsEnter from './features/Options-enter';
+import BasicExample from './features/Example';
 function App() {
   const location = useLocation();
   const showNavbar = location.pathname !== '/login';
   const showNavbar1 = location.pathname !== '/register';
-  const username = getCookies('username'); 
-  
+  const username = getCookies('username');
+
   const isUserLoggedIn = username !== undefined;
   const [cookies, setCookie, removeCookie] = useCookies();
   return (
     <>
 
       <GlobalStyle />
-      {showNavbar1 && showNavbar && <Navbar />}
+      {showNavbar1 && showNavbar && <BasicExample />}
       <Container>
         <Routes>
           <Route path="/" element={<Home />} />

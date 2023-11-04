@@ -459,7 +459,7 @@ export default styled(Home)`
     margin: auto;
     position: absolute;
     color: white;
-    top: 12%;
+    margin-top: 20px;
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;

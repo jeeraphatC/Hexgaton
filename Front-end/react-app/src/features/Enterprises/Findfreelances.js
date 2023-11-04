@@ -5,6 +5,9 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import styled from "styled-components";
 import search4 from "../pic/search4.png";
 import PropTypes from 'prop-types';
+import arrow from "../pic/barrow.png";
+
+
 function FindFreelances({ className }) {
   const location = useLocation();
   const type = location.state.type;
@@ -131,7 +134,7 @@ function FindFreelances({ className }) {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-  }, [type, type2,freelancerImages]);
+  }, [type, type2, freelancerImages]);
 
   const handleCardClick = (item) => {
     setSelectedItems(prevSelectedItems => {
@@ -161,30 +164,36 @@ function FindFreelances({ className }) {
 
   return (
     <div className={className}>
-      <Container style={{ marginTop: 50 }}>
-        <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>Find Freelance (ALL)</h1>
-        <Row style={{ marginBottom: 50 }}>
-          <Col md={10} >
+      <Container >
+        <Link to="/" style={{ fontSize: '30px', marginTop: '30px', color: '#0071BE' }}>Home</Link>
+        <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
+        <Link to="/optionenter" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>enterprise</Link>
+        <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
+        <Link to="/findfreelance" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{type}</Link>
+
+        <h1 style={{ margin: '30px 20px 20px 0px', color: '#0196FC' }}>Find Freelance (ALL)</h1>
+        <Row style={{ marginBottom: 20 }}>
+          <Col md={10} style={{paddingLeft : 0}}>
             {develop()}
-            <Button variant="success" className='btn-add-first'>
+            {/* <Button variant="success" className='btn-add-first'>
               <Link to='/Postjob' className='btn-add-sec'>For Freelance ADD Job</Link>
-            </Button>
+            </Button> */}
           </Col>
         </Row>
         <Row >
           {freelances.map(freelance => (
             <Col md={4} key={freelance.id}>
               <Card
-                    style={{
-                      padding: 20,
-                      width: 400,
-                      marginBottom: 20,
-                      border: selectedItems.includes(freelance) ? '2px solid green' : 'none'
-                    }}
-                    onClick={() => handleCardClick(freelance)}
-                  >
+                style={{
+                  padding: 20,
+                  width: 400,
+                  marginBottom: 20,
+                  border: selectedItems.includes(freelance) ? '2px solid green' : 'none'
+                }}
+                onClick={() => handleCardClick(freelance)}
+              >
                 <Card.Body>
-                  <Card.Img className ="picture" variant="top" style={{ width: 300, height: 200 }} src={freelancerImages[freelance.id]} />
+                  <Card.Img className="picture" variant="top" style={{ width: 300, height: 200 }} src={freelancerImages[freelance.id]} />
                   <br />
                   <br />
                   <Link to={`/Freelance/${freelance.id}`}>
@@ -200,21 +209,21 @@ function FindFreelances({ className }) {
           ))}
         </Row>
         <div className="selected-items">
-            <h4>Selected job to compare</h4>
-            {selectedItems.map((selectedItem, index) => (
-              <div key={index}>
-                <p>Job {index + 1} :{selectedItem.name}</p>
-              </div>
-            ))}
-            {selectedItems.length > 0 && (
-              <button onClick={handleClearSelected2}>Clear Selected Items</button>
-            )}
-            {selectedItems.length === 2 && (
-              <button onClick={handleCompareClick}>Compare</button>
-            )}
+          <h4>Selected job to compare</h4>
+          {selectedItems.map((selectedItem, index) => (
+            <div key={index}>
+              <p>Job {index + 1} :{selectedItem.name}</p>
+            </div>
+          ))}
+          {selectedItems.length > 0 && (
+            <button onClick={handleClearSelected2}>Clear Selected Items</button>
+          )}
+          {selectedItems.length === 2 && (
+            <button onClick={handleCompareClick}>Compare</button>
+          )}
 
 
-          </div>
+        </div>
       </Container>
     </div>
   );
@@ -227,6 +236,8 @@ FindFreelances.propTypes = {
   className: PropTypes.string.isRequired,
 };
 export default styled(FindFreelances)`
+  margin-top: 10px;
+  background-color: azure;
 .jobdetail{
   padding: 5px;
 }
@@ -279,8 +290,7 @@ export default styled(FindFreelances)`
   width: 240px;
   text-align: center;
 } 
-  margin-top: 50px;
-  background-color: azure;
+
 
   .btn-add-first   {
     float : right ;

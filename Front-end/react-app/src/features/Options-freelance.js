@@ -16,7 +16,7 @@ function OptionsFreelance({ className }) {
   return (
 
     <div className={className}>
-       <Container style={{ marginTop: 100 }}>
+       <Container style={{ marginTop: 50 }}>
         <Link to="/" style={{fontSize:'30px',marginTop:'30px',color:'#0071BE'}}>Home</Link>
         <img src={arrow} alt=""style={{width:'30px',marginLeft:'10px',marginBottom:'10px'}} />
         <Link to="/optionfree" style={{fontSize:'30px',marginTop:'30px',marginLeft:'10px',color:'#808080'}}>Freelance</Link>

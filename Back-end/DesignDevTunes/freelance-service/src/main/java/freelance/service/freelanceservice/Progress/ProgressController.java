@@ -44,7 +44,6 @@ public class ProgressController {
             existingprogree.setStatus(updatedprogree.getStatus());
             existingprogree.setEnterprise(updatedprogree.getEnterprise());
             existingprogree.setFreelancer(updatedprogree.getFreelancer());
-
             return progressRepository.save(existingprogree);
         }
 

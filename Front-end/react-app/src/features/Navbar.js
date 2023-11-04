@@ -25,29 +25,7 @@ function Navbar({ className }) {
   const clickhandle = (e) => {
     navagate("/devlop")
   }
-  const handleDevelopmentMouseEnter = () => {
-    setDevelopmentHovered(true);
-  };
-
-  const handleDevelopmentMouseLeave = () => {
-    setDevelopmentHovered(false);
-  };
-  const handleGraphicMouseEnter = () => {
-    setGraphicHovered(true);
-  };
-
-  const handleGraphicMouseLeave = () => {
-    setGraphicHovered(false);
-  };
-  const handleMusicMouseEnter = () => {
-    setMusicHovered(true);
-  };
-
-  const handleMusicMouseLeave = () => {
-    setMusicHovered(false);
-  };
-
-  const location = useLocation();
+ 
 
   const handleRemoveAllCookies = () => {
     removeAllCookies();
@@ -60,58 +38,6 @@ function Navbar({ className }) {
         <img src={mlogo} alt="โลโก้" className="min-logo" />
       </Link>
 
-      {/* <div
-        onMouseEnter={handleDevelopmentMouseEnter}
-        onMouseLeave={handleDevelopmentMouseLeave}
-        className={`text ${developmentHovered ? "hovered" : ""}`}
-      >
-        <Link to="/develop"
-          state={{ type: "develop" }}
-        // className="develop"
-        >
-          Development
-        </Link>
-        {developmentHovered && (
-          <div className="submenu">
-            <Link to="/develop" state={{ type: "develop", type2: "web" }}>Web</Link>
-            <Link to="/develop" state={{ type: "develop", type2: "mobile" }}>Mobile</Link>
-            <Link to="/develop" state={{ type: "develop", type2: "desktop" }}>Desktop</Link>
-          </div>
-        )}
-      </div>
-
-      <div
-        onMouseEnter={handleGraphicMouseEnter}
-        onMouseLeave={handleGraphicMouseLeave}
-        className={`text ${graphicHovered ? "hovered" : ""}`}
-      >
-        <Link to="/develop"
-          state={{ type: "graphic" }}>Graphic</Link>
-        {graphicHovered && (
-          <div className="submenu">
-            <Link to="/develop" state={{ type: "graphic", type2: "logos" }}>Logo Design</Link>
-            <Link to="/develop" state={{ type: "graphic", type2: "sticker" }}>Sticker Design</Link>
-            <Link to="/develop" state={{ type: "graphic", type2: "character" }}>Character Design</Link>
-            <Link to="/develop" state={{ type: "graphic", type2: "draw-cartoon" }}>Draw cartoons</Link>
-            <Link to="/develop" state={{ type: "graphic", type2: "3d-models" }}>3D Models</Link>
-            <Link to="/develop" state={{ type: "graphic", type2: "banner" }}>Banner advertising design</Link>
-          </div>
-        )}
-      </div>
-
-      <div
-        onMouseEnter={handleMusicMouseEnter}
-        onMouseLeave={handleMusicMouseLeave}
-        className={`text ${musicHovered ? "hovered" : ""}`}
-      >
-        <Link to="/develop"
-          state={{ type: "music" }}>Music</Link>
-        {musicHovered && (
-          <div className="submenu">
-            <Link to="/develop" state={{ type: "beat" }}>Beat</Link>
-          </div>
-        )}
-      </div> */}
       <Link to="/optionfree">
         <h4>Freelance</h4>
       </Link>

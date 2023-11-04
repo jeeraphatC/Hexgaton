@@ -177,7 +177,7 @@ function FindJob({ className }) {
 
   return (
     <div className={className}>
-      <Container style={{ marginTop: 100 }}>
+      <Container style={{ marginTop: 10 }}>
       <Link to="/" style={{fontSize:'30px',marginTop:'30px',color:'#0071BE'}}>Home</Link>
         <img src={arrow} alt=""style={{width:'30px',marginLeft:'10px',marginBottom:'10px'}} />
         <Link to="/optionfree" style={{fontSize:'30px',marginTop:'30px',marginLeft:'10px',color:'#808080'}}>Freelance</Link>
@@ -185,7 +185,7 @@ function FindJob({ className }) {
         <Link to="/findjob" style={{fontSize:'30px',marginTop:'30px',marginLeft:'10px',color:'#808080'}}>{type}</Link>
 
         <h1 style={{ margin: '30px 10px 20px 0px', color: '#0196FC' }}>Find jobs (ALL)</h1>
-        <Row style={{ marginBottom: 50 }}>
+        <Row style={{ marginBottom: 20 }}>
           <Col md={10} style={{paddingLeft : 0}}>
             {develop()}
             {/* <Button variant="success" className='btn-add-first'>

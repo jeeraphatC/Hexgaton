@@ -65,10 +65,7 @@ a:active { text-decoration: none; }
     
   }
 
- 
 
-  
-  
   .app-container {
     max-width: auto;
     position: absolute;
