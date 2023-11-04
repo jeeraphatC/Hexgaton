@@ -41,14 +41,25 @@ function ViewEnter() {
   }
 
   const handleConfirmButtonClick = () => {
+
+
+
     setChatButtonClicked(true); 
     const statusData = {
       status: "process",
       enterprise: {
         id: id
       }
+
+
+      
     };
-  
+  const response = axios.post('http://localhost:8082/historys/freelance')
+  .then((responsedata) => {
+
+
+
+  })
     axios.post(`http://localhost:8082/status`, statusData)
       .then((statusResponse) => {
         const status = statusResponse.data;

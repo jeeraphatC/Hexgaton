@@ -125,6 +125,7 @@ function Fprofile({ className }) {
         <Card.Text><strong>Type : </strong> {item.enterprise.type}</Card.Text>
         <Card.Text><strong>Price : </strong> {item.enterprise.price}</Card.Text>
         <Card.Text><strong>Description : </strong> {item.enterprise.description}</Card.Text>
+        <Card.Text><strong>Owner : </strong> {item.enterprise.account.accountname}</Card.Text>
         {/* Add more properties as needed */}
       </CardBody>
     </Card>

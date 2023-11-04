@@ -59,6 +59,7 @@ public class HistoryController {
     }
 
 
+
 // @GetMapping("/accountid/{id}")
 // public List<HistoryEntity> findByAccount(@PathVariable Long id) {
 //     // Retrieve the Account object based on the 'id' parameter, or use a service to do this
