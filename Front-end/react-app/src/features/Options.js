@@ -45,7 +45,7 @@ function Options({ className }) {
               </Link>
               </Col>
             <Col md={3}>
-              <Link to="/home">
+              <Link to="/status">
                 <div className="options">
                   <h3>Work status </h3>
                   <img src={workpro} alt="" className="logo" />
