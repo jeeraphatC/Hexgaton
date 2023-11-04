@@ -42,7 +42,7 @@ function OptionsEnterprise({ className }) {
             
               <Link to="/PostJob" state={{ type: "postf" }}>
                 <div className="options4">
-                  <h3 style={{zIndex:20,fontSize:'40px',marginTop:'130px'}}>ADD Post for Freelance</h3>
+                  <h3 style={{zIndex:20,fontSize:'40px',marginTop:'130px'}}>ADD Job for Freelance</h3>
                 </div>
               </Link>
       </Container>
