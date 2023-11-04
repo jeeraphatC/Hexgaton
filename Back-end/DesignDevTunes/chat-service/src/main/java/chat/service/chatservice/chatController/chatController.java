@@ -19,6 +19,9 @@ import chat.service.chatservice.model.Message;
 @CrossOrigin
 public class chatController {
     
+    // @Autowired
+    
+
 
     @Autowired
     private SimpMessagingTemplate simpMessagingTemplate;
@@ -29,9 +32,12 @@ public class chatController {
     @MessageMapping("/message")
     @SendTo("/chatroom/public")
     public Message receiveMessage(@Payload Message message){
+
         publicChatMessages.add(message); // Store the message
         return message;
     }
+
+
 
     @MessageMapping("/private-message")
     public Message recMessage(@Payload Message message){

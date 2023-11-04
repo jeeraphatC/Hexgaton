@@ -7,6 +7,7 @@ import star from "../pic/star.png";
 import getCookies from '../hook/getCookies';
 import { Link } from "react-router-dom";
 import axios from 'axios';
+import { Container, Row, Col, Card, Button, CardBody } from 'react-bootstrap';
 
 function Fprofile({ className }) {
   const [workData, setWorkData] = useState([]);
@@ -41,35 +42,41 @@ function Fprofile({ className }) {
   }, []);
 
 
-  const [image, setImage] = useState(null);
-  const imagelocation = getCookies("id");
-  useEffect(() => {
+  // const [image, setImage] = useState(null);
+  // const imagelocation = getCookies("id");
+  // useEffect(() => {
     
-    axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
-      .then(response => {
-        const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
-        const imageSrc = `data:image/jpeg;base64,${base64}`;
-        setImage(imageSrc);
+  //   axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
+  //     .then(response => {
+  //       const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+  //       const imageSrc = `data:image/jpeg;base64,${base64}`;
+  //       setImage(imageSrc);
         
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching image:', error);
+  //     });
+  // }, []);
+
+  useEffect(() => {
+    const idfromCookies = getCookies('id');
+    console.log(idfromCookies);
+    axios.get(`http://localhost:8090/enterprises`)
+      .then(response => {
+        if (Array.isArray(response.data)) {
+          const filteredData = response.data.filter(item => item.account && item.account.accountid == idfromCookies);
+          console.log(filteredData);
+            
+          setWorkData(filteredData);
+          // Handle the filtered data here
+        } else {
+          console.error('Response data is not an array');
+        }
       })
       .catch(error => {
-        console.error('Error fetching image:', error);
+        // Handle errors if the request fails
+        console.error(error);
       });
-  }, []);
-
-  useEffect(() => {
-
-    axios.get(`http://localhost:9010/history`)
-    .then(response => {
-      // Handle the response data here
-      console.log(response.data);
-      // You can set the response data to a state variable or perform other actions
-    })
-    .catch(error => {
-      // Handle errors if the request fails
-      console.error(error);
-    });
-
   }, []);
 
 
@@ -82,7 +89,7 @@ function Fprofile({ className }) {
       <div className='container'>
       <div className="c1">
         <div className='container-profile'>
-          <img src={image} alt="" className="user1" />
+          <img src={null} alt="" className="user1" />
           <div class="overlay"><Link to="/editprofile/:id" className='link-edit'>Edit Profile</Link></div>
         </div>
         <div className="username">{userName} </div>
@@ -102,24 +109,35 @@ function Fprofile({ className }) {
       <div className='block-work-review'>
       <div className='block-work-of'>
       <div className='head-band'>
-        <h3>Work of {userdata.username}</h3>
+        <h3 >Work of {userName}</h3>
         <Link to="/editprofile" className='link-history'>PRESS TO SEE MORE HISTORY</Link>
         </div>
-<div className='work'>
+
   
-<div className='content-work'></div>
+
 {/* fetch from database that user worked  */}
+<div className='content-work'>
+{workData.slice(0, 5).map(item => (
+      <Card className='card-history'>
+      <CardBody>
+     <Card.Title><strong>Name : </strong> {item.name}</Card.Title>
+     <Card.Text><strong>Type : </strong> {item.type}</Card.Text>
 
-{workData.map((item, index) => (
-    <div key={index}>
-      {/* Display the data from workData here */}
-      {/* For example, item.name and item.description */}
-      <p>{item.name}</p>
-      <p>{item.description}</p>
-    </div>
-  ))}
-
+      {/* Render the properties you want to display */}
+      <Card.Text><strong>Price : </strong> {item.price}</Card.Text>
+      <Card.Text><strong>Description : </strong> {item.description}</Card.Text>
+   
+     
+      {/* Add more properties as needed */}
+ 
+    </CardBody>
+    </Card>
+    ))}
 </div>
+
+
+
+
 
 
       </div>
@@ -150,13 +168,46 @@ Fprofile.propTypes = {
 export default styled(Fprofile)`
 
 
+.card-history{
+font-size:16px;
+background-color:#0196FC;
+color:white;
+width: 250px;
+align-items:center;
+margin-right:10px;
+}
+
  text-align: center;
- .work-item {
-  border: 1px solid #ccc;
+ .content-work {
+  display:flex;
+  flex-direction: row;
+  margin-top:40px;
+
+width: 1300px;
+height: 240px;
   padding: 10px;
-  margin: 10px 0;
-  background-color: #f8f8f8;
-  /* Add more styles as needed */
+  
+  overflow:auto;
+}
+
+.block-work-of{
+    
+    overflow:auto;
+    border:1px solid black;
+
+    width: 600px;
+    height: 500px ;
+    border-radius: 10px;
+    background: #fff;
+
+  }
+
+.container-work p{
+  color: red;
+}
+
+.content-work div {
+  margin-bottom: 10px;
 }
  .container{
   display: flex;
@@ -239,16 +290,10 @@ flex-direction:column;
     background: #fff;
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
   }
-  .block-work-of{
-
-    border:1px solid black;
-
-    width: 500px;
-    height: 500px ;
-    border-radius: 10px;
-    background: #fff;
-
+  .head-band{
+    position: absolute;
   }
+
   .block-work-of h3 {
     text-align: start;
     width: auto;
