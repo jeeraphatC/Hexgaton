@@ -52,7 +52,7 @@ function BasicExample() {
           )  
             : (
               <Link to="/register" className="text1">
-                <img src={login} alt="" className="login-logo" />
+                <img src={login} alt="" style={{ maxWidth: 65}} />
               </Link>
             )} id="basic-nav-dropdown">
             <NavDropdown.Divider />
