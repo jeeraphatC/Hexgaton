@@ -141,7 +141,7 @@ function FindFreelances({ className }) {
   return (
     <div className={className}>
       <Container style={{ marginTop: 50 }}>
-        <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>Find jobs (ALL)</h1>
+        <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>Find Freelance (ALL)</h1>
         <Row style={{ marginBottom: 50 }}>
           <Col md={10} >
             {develop()}
