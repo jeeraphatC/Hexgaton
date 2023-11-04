@@ -5,6 +5,7 @@ import webdevbg from "./pic/webdevbg.jpg";
 import designbg2 from "./pic/designbg2.jpg";
 import musicbg from "./pic/musicbg.jpg";
 import plus from "./pic/plus.png";
+import arrow from "./pic/barrow.png";
 import { Container ,Col ,Row} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -16,6 +17,9 @@ function OptionsEnterprise({ className }) {
 
     <div className={className}>
       <Container style={{ marginTop: 100 }}>
+      <Link to="/" style={{fontSize:'30px',marginTop:'30px',color:'#0071BE'}}>Home</Link>
+        <img src={arrow} alt=""style={{width:'30px',marginLeft:'10px',marginBottom:'10px'}} />
+        <Link to="/optionfree" style={{fontSize:'30px',marginTop:'30px',marginLeft:'10px',color:'#808080'}}>Enterprises</Link>
         <h1>Type For Enterprises</h1>
         <p>สำหรับผู้ประกอบการที่ต้องการหาFreelanceมาช่วยทำงาน</p>
           
@@ -42,7 +46,7 @@ function OptionsEnterprise({ className }) {
             
               <Link to="/PostJob" state={{ type: "postf" }}>
                 <div className="options4">
-                  <h3 style={{zIndex:20,fontSize:'40px',marginTop:'130px'}}>ADD Job for Freelance</h3>
+                  <h3 style={{zIndex:20,fontSize:'40px',marginTop:'130px'}}>ADD Post for Freelance</h3>
                 </div>
               </Link>
       </Container>

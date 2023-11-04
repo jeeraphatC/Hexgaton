@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import webdevbg from "./pic/webdevbg.jpg";
 import designbg2 from "./pic/designbg2.jpg";
 import musicbg from "./pic/musicbg.jpg";
+import arrow from "./pic/barrow.png";
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -16,13 +17,16 @@ function OptionsFreelance({ className }) {
 
     <div className={className}>
        <Container style={{ marginTop: 100 }}>
+        <Link to="/" style={{fontSize:'30px',marginTop:'30px',color:'#0071BE'}}>Home</Link>
+        <img src={arrow} alt=""style={{width:'30px',marginLeft:'10px',marginBottom:'10px'}} />
+        <Link to="/optionfree" style={{fontSize:'30px',marginTop:'30px',marginLeft:'10px',color:'#808080'}}>Freelance</Link>
         <h1>Type For Freelance</h1>
         <p>สำหรับFreelanceที่ต้องการหางาน</p>
           
               <Link to="/findjob" state={{ type: "develop" }}>
                 <div className="options1">
                   <img src={webdevbg} alt="" className="webdevbg" />
-                  <h3 style={{zIndex:20,fontSize:'40px',marginTop:'130px'}} >Develop</h3>
+                  <h3 style={{zIndex:20,fontSize:'40px',marginTop:'130px'}}>Develop</h3>
                 </div>
               </Link>
             
@@ -46,40 +50,7 @@ function OptionsFreelance({ className }) {
                 </div>
               </Link>
       </Container>
-      {/* <Container style={{ marginTop: 100 }}>
-
-
-        <h1>Type For Freelance</h1>
-        <p>สำหรับผู้ที่ต้องการหางานจากผู้ประกอบการ</p>
-        <div className="optioncontainer">
-       
-              <Link to="/findjob" state={{ type: "develop" }}>
-                <div className="options">
-                  <h3>Develop</h3>
-                </div>
-              </Link>
-            
-              <Link to="/findjob" state={{ type: "graphic" }}>
-                <div className="options">
-                  <h3>Graphic</h3>
-                </div>
-              </Link>
-              <Link to="/findjob" state={{ type: "music" }}>
-                <div className="options">
-                  <h3>Music</h3>
-                </div>
-              </Link>
-           
-              <Link to="/FreelanceForm" state={{ type: "postf" }}>
-                <div className="options">
-                  <h3>Post for Enterprises</h3>
-                </div>
-              </Link>
-            
-        </div>
-
-
-      </Container> */}
+     
     </div>
   );
 }
@@ -89,6 +60,7 @@ OptionsFreelance.propTypes = {
 };
 
 export default styled(OptionsFreelance)`
+
 .div1{
   width:100%;
   height:500px;
@@ -196,21 +168,26 @@ export default styled(OptionsFreelance)`
     position: absolute;
     border-radius:10px;
   }
+
   .options2:hover{
     cursor: pointer;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+    color: #9C9C9C;
    }
    .options3:hover{
     cursor: pointer;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+    color: #9C9C9C;
    }
    .options4:hover{
     cursor: pointer;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+    color: #9C9C9C;
    }
    .options1:hover{
     cursor: pointer;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+    color: #9C9C9C;
    }
 .logo{
   max-width: 50px;
