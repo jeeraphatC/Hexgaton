@@ -7,10 +7,13 @@ import { Link, useLocation } from 'react-router-dom';
 import getCookies from '../hook/getCookies';
 
 const Develop = ({ className }) => {
-  const [enterprises, setEnterprises] = useState([]);
-  const [freelance, setFreelance] = useState([]);
+ 
+
   const [fetchData, setFetchData] = useState('enterprises'); // Default to enterprises
+  
+  const [freelance, setFreelance] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
+  const [enterprises, setEnterprises] = useState([]);
   const cookieValue = getCookies("id");
 
   const handleClearSelected = () => {
@@ -45,9 +48,7 @@ const Develop = ({ className }) => {
       axios.get(pathenterprise)
         .then(response => {
           setEnterprises(response.data);
-
           const enterprise = response.data;
-
         })
 
         .catch(error => {

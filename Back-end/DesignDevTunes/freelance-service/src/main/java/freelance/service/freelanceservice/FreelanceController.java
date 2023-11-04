@@ -44,10 +44,7 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
     }
 
     @PutMapping("/{id}")
-    public Freelance updateFreelance(@PathVariable Long id, @RequestBody Freelance updatedFreelance) { // เปลี่ยนชื่อเมทอดจาก
-                                                                                                       // updateEnterprise
-                                                                                                       // เป็น
-                                                                                                       // updateFreelance
+    public Freelance updateFreelance(@PathVariable Long id, @RequestBody Freelance updatedFreelance) { 
         Freelance existingFreelance = freelanceRepository.findById(id).orElse(null);
 
         if (existingFreelance != null) {

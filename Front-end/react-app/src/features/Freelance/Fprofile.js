@@ -59,9 +59,8 @@ function Fprofile({ className }) {
   // }, []);
 
   useEffect(() => {
-    const idfromCookies = getCookies('id');
-    console.log(idfromCookies);
-    axios.get(`http://localhost:8090/enterprises`)
+    
+    axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
       .then(response => {
         if (Array.isArray(response.data)) {
           const filteredData = response.data.filter(item => item.account && item.account.accountid == idfromCookies);

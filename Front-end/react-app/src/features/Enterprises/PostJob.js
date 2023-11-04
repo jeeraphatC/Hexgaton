@@ -1,3 +1,4 @@
+// window.location.href = '/'; ใช้ไม่ได้ ถ้าใช้รูปจะไม่ส่ง
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Container } from 'react-bootstrap';
@@ -12,7 +13,7 @@ const PostJob = () => {
     time: '',
     description: '',
     type: '',
-    subtype:'',
+    subtype: '',
     location: '',
     workprocess: '',
     examplejob: '',
@@ -39,7 +40,8 @@ const PostJob = () => {
       formData.type.location === '' ||
       formData.workprocess === '' ||
       formData.examplejob === '' ||
-      formData.fixtime === ''
+      formData.fixtime === '' ||
+      !selectedImage
     ) {
       alert('Please fill in all the required fields.');
       return;
@@ -47,7 +49,7 @@ const PostJob = () => {
 
     try {
       const response = await axios.post('http://localhost:8090/enterprises', formData);
-      console.log('Freelance created:', response.data);
+      console.log('Enterprises created:', response.data);
 
       const accoun_id = getCookies('id');
       axios.get(`http://localhost:8085/api/v1/accounts/list/${accoun_id}`)
@@ -62,7 +64,7 @@ const PostJob = () => {
             time: response.data.time,
             description: response.data.description,
             type: response.data.type,
-            subtype:response.data.subtype,
+            subtype: response.data.subtype,
             location: response.data.location,
             workprocess: response.data.workprocess,
             examplejob: response.data.examplejob,
@@ -81,7 +83,7 @@ const PostJob = () => {
             .then((jobResponse) => {
               console.log('Job updated successfully!', jobResponse.data);
               const updatedJobId = jobResponse.data.id;
-              window.location.href = '/';
+
 
               if (selectedImage) {
                 const formData = new FormData();
@@ -142,6 +144,7 @@ const PostJob = () => {
 
     // Clear selectedImage
     setSelectedImage(null);
+    
   };
   const [selectedImage, setSelectedImage] = useState(null);
   const handleImageChange = (event) => {
@@ -165,7 +168,7 @@ const PostJob = () => {
           <div>
             <label>Price:</label>
             <input
-              type="number" min="1"
+              type="number" min="500"
               name="price"
               value={formData.price}
               onChange={handleInputChange}
@@ -228,48 +231,48 @@ const PostJob = () => {
           </div>
           {formData.type === 'develop' && (
             <>
-            <label>Subtype for develop:</label>
-            <select
-              name="subtype"
-              value={formData.subtype}
-              onChange={handleInputChange}
-            >
-              <option value=" ">Select Type</option>
-              <option value="web">Web</option>
-              <option value="mobile">Mobile</option>
-              <option value="desktop">Desktop</option>
-            </select>
+              <label>Subtype for develop:</label>
+              <select
+                name="subtype"
+                value={formData.subtype}
+                onChange={handleInputChange}
+              >
+                <option value=" ">Select Type</option>
+                <option value="web">Web</option>
+                <option value="mobile">Mobile</option>
+                <option value="desktop">Desktop</option>
+              </select>
             </>
           )}
           {formData.type === 'graphic' && (
             <>
-            <label>Subtype for graphic:</label>
-            <select
-              name="subtype"
-              value={formData.subtype}
-              onChange={handleInputChange}
-            >
-              <option value=" ">Select Type</option>
-              <option value="logos">Logo Design</option>
-              <option value="sticker">Sticker Design</option>
-              <option value="character">Character Design</option>
-              <option value="draw-cartoon">Draw cartoons</option>
-              <option value="3d-models">3D Models</option>
-              <option value="banner">Banner advertising design</option>
-            </select>
+              <label>Subtype for graphic:</label>
+              <select
+                name="subtype"
+                value={formData.subtype}
+                onChange={handleInputChange}
+              >
+                <option value=" ">Select Type</option>
+                <option value="logos">Logo Design</option>
+                <option value="sticker">Sticker Design</option>
+                <option value="character">Character Design</option>
+                <option value="draw-cartoon">Draw cartoons</option>
+                <option value="3d-models">3D Models</option>
+                <option value="banner">Banner advertising design</option>
+              </select>
             </>
           )}
           {formData.type === 'music' && (
             <>
-            <label>Subtype for music:</label>
-            <select
-              name="subtype"
-              value={formData.subtype}
-              onChange={handleInputChange}
-            >
-              <option value=" ">Select Type</option>
-              <option value="beat">Beat</option>
-            </select>
+              <label>Subtype for music:</label>
+              <select
+                name="subtype"
+                value={formData.subtype}
+                onChange={handleInputChange}
+              >
+                <option value=" ">Select Type</option>
+                <option value="beat">Beat</option>
+              </select>
             </>
           )}
 

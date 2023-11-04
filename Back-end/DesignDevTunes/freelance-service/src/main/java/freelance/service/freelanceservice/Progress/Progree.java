@@ -1,5 +1,4 @@
-
-package freelance.service.freelanceservice;
+package freelance.service.freelanceservice.Progress;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -10,34 +9,37 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import freelance.service.freelanceservice.Enterprise;
+import freelance.service.freelanceservice.Freelance;
+
 @Entity
-@Table(name = "Historys")
-public class HistoryEntity {
-    
+@Table(name = "Progress")
+public class Progree {
+ 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name =  "workEnter_id", referencedColumnName = "id")
+    @JoinColumn(name =  "enterprise_id", referencedColumnName = "id")
     private  Enterprise enterprise ;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name =  "workFreelance_id", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name =  "freelancer_id", referencedColumnName = "id")
     private Freelance freelancer ;
 
+    private String status;
    
-    public HistoryEntity() {
-    }
-
-    public HistoryEntity(Long id, Account account, Enterprise enterprise) {
-        this.id = id;
-        this.enterprise = enterprise;
-        
-    }
-
     public Enterprise getEnterprise() {
         return enterprise;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setEnterprise(Enterprise enterprise) {
@@ -60,10 +62,4 @@ public class HistoryEntity {
         this.id = id;
     }
 
-  
-    
-
-    
-
-    
 }

@@ -5,7 +5,7 @@ import freelance from "./pic/freelance.png";
 import enter from "./pic/enter.png";
 import chat from "./pic/chat.png";
 import workpro from "./pic/workpro.png";
-import { Container } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
@@ -13,49 +13,64 @@ import { Link } from 'react-router-dom';
 
 function Options({ className }) {
   return (
-    
+
     <div className={className}>
-      <Container style={{marginTop: 60}}>
-      <h1>Option</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id bibendum nulla. Sed suscipit urna non posuere volutpat.</p>
-      <div className="optioncontainer">
-      <Link to="/profile">
-        <div className="options">
-          <h3>Profile Freelance </h3>
-          <img src={freelance} alt="" className="logo" />   
+      <Container style={{ marginTop: 60 }}>
+        <h1>Option</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec id bibendum nulla. Sed suscipit urna non posuere volutpat.</p>
+        <div className="optioncontainer">
+          <Row>
+            <Col md={3}>
+              <Link to="/profile">
+                <div className="options">
+                  <h3>Profile Freelance </h3>
+                  <img src={freelance} alt="" className="logo" />
+                </div>
+              </Link>
+            </Col>
+            <Col md={3}>
+              <Link to="/profile">
+                <div className="options">
+                  <h3>Profile Entrepreneur </h3>
+                  <img src={enter} alt="" className="logo2" />
+                </div>
+              </Link>
+              </Col>
+            <Col md={3}>
+              <Link to="/chatroom">
+                <div className="options">
+                  <h3>Chat </h3>
+                  <img src={chat} alt="" className="logo3" />
+                </div>
+              </Link>
+              </Col>
+            <Col md={3}>
+              <Link to="/home">
+                <div className="options">
+                  <h3>Work status </h3>
+                  <img src={workpro} alt="" className="logo" />
+                </div>
+              </Link>
+              </Col>
+            <Col md={3}>
+              <Link to="/mywork">
+                <div className="options">
+                  <h3>My Post Freelance </h3>
+                </div>
+              </Link>
+              </Col>
+            <Col md={3}>
+              <Link to="/myworkenterpise">
+                <div className="options">
+                  <h3>My Post Enterprise</h3>
+                </div>
+              </Link>
+              </Col>
+          </Row>
         </div>
-      </Link>
-      <Link to="/profile">
-        <div className="options">
-        <h3>Profile Entrepreneur </h3>  
-        <img src={enter} alt="" className="logo2" />   
-        </div>
-      </Link>
-      <Link to="/chatroom">
-        <div className="options">
-        <h3>Chat </h3>
-        <img src={chat} alt="" className="logo3" />   
-        </div>
-      </Link>
-      <Link to="/home">
-        <div className="options">
-        <h3>Work status </h3>
-        <img src={workpro} alt="" className="logo" />   
-        </div>
-      </Link>
-      <Link to="/mywork">
-        <div className="options">
-        <h3>My Post Freelance </h3>
-        </div>
-      </Link>
-      <Link to="/myworkenterpise">
-        <div className="options">
-        <h3>My Post Enterprise</h3>
-        </div>
-        </Link>
-      </div>
+
       </Container>
-    </div>
+    </div >
   );
 }
 
