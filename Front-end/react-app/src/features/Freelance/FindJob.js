@@ -143,7 +143,28 @@ function FindJob({ className }) {
       });
   }, [enterpriseImages,type, type2]);
 
-
+  const handleCardClick = (item) => {
+    setSelectedItems(prevSelectedItems => {
+      const itemIndex = prevSelectedItems.findIndex(selectedItem => selectedItem.id === item.id);
+      if (itemIndex === -1 && prevSelectedItems.length < 2) {
+        return [...prevSelectedItems, item];
+      } else if (itemIndex !== -1) {
+        const updatedItems = [...prevSelectedItems];
+        updatedItems.splice(itemIndex, 1);
+        return updatedItems;
+      } else {
+        return prevSelectedItems;
+      }
+    });
+  };
+  const handleCompareClick = () => {
+    const selectedIds = selectedItems.map(item => item.id);
+    const url = `/compare?ids=${selectedIds.join(',')}`;
+    window.location.href = url; // Manually navigate to the URL
+  };
+  const handleClearSelected2 = () => {
+    setSelectedItems([]);
+  };
 
 
   return (
