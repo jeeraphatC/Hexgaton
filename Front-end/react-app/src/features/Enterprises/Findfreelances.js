@@ -169,7 +169,7 @@ function FindFreelances({ className }) {
         <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
         <Link to="/optionenter" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>enterprise</Link>
         <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
-        <Link to="/findfreelance" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{type}</Link>
+        <Link to="/findfreelance" state={{ type: type }} style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{type}</Link>
 
         <h1 style={{ margin: '30px 20px 20px 0px', color: '#0196FC' }}>Find Freelance (ALL)</h1>
         <Row style={{ marginBottom: 20 }}>
@@ -183,26 +183,22 @@ function FindFreelances({ className }) {
         <Row >
           {freelances.map(freelance => (
             <Col md={4} key={freelance.id}>
-              <Card
+            <Card
                 style={{
-                  padding: 20,
-                  width: 400,
-                  marginBottom: 20,
-                  border: selectedItems.includes(freelance) ? '2px solid green' : 'none'
+                  width: "18rem",
                 }}
                 onClick={() => handleCardClick(freelance)}
               >
+                <Card.Img variant="top" style={{ width: 286, height: 180 }} src={freelancerImages[freelance.id]} />
                 <Card.Body>
-                  <Card.Img className="picture" variant="top" style={{ width: 300, height: 200 }} src={freelancerImages[freelance.id]} />
-                  <br />
-                  <br />
-                  <Link to={`/Freelance/${freelance.id}`}>
-                    <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px', margin: '105px 0px 0px 300px', position: 'absolute' }} />
-                  </Link>
-                  <Card.Title><strong>Name:</strong> {freelance.name}</Card.Title>
-                  <Card.Text><strong>Price:</strong>{freelance.price}Baht</Card.Text>
-                  <Card.Text><strong>Time:</strong>{freelance.time}Days</Card.Text>
-                  <Card.Text><strong>Description:</strong>{truncateText(freelance.description, 40)}</Card.Text>
+                  <Card.Title>{freelance.name}</Card.Title>
+                  <Card.Subtitle>{truncateText(freelance.description,40)}</Card.Subtitle>
+                  <Card.Text><strong>Time to work :</strong> {freelance.time} DAYS</Card.Text>
+                  <Card.Footer style={{ textAlign: "right" }}>${freelance.price}
+                   <Link to={`/freelance/${freelance.id}`}>
+                      <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px' }} />
+                    </Link>
+                  </Card.Footer>
                 </Card.Body>
               </Card>
             </Col>

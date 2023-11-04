@@ -19,7 +19,7 @@ function OptionsEnterprise({ className }) {
       <Container style={{ marginTop: 50 }}>
       <Link to="/" style={{fontSize:'30px',marginTop:'30px',color:'#0071BE'}}>Home</Link>
         <img src={arrow} alt=""style={{width:'30px',marginLeft:'10px',marginBottom:'10px'}} />
-        <Link to="/optionfree" style={{fontSize:'30px',marginTop:'30px',marginLeft:'10px',color:'#808080'}}>Enterprises</Link>
+        <Link to="/optionenter" style={{fontSize:'30px',marginTop:'30px',marginLeft:'10px',color:'#808080'}}>Enterprises</Link>
         <h1>Type For Enterprises</h1>
         <p>สำหรับผู้ประกอบการที่ต้องการหาFreelanceมาช่วยทำงาน</p>
           

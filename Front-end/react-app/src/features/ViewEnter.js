@@ -6,7 +6,8 @@ import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import getCookies from './hook/getCookies';
-function ViewEnter({className}) {
+import arrow from "./pic/barrow.png";
+function ViewEnter({ className }) {
   const { id } = useParams();
   const [enterprise, setEnterprise] = useState(null);
   const [isChatButtonClicked, setChatButtonClicked] = useState(false);
@@ -89,44 +90,64 @@ function ViewEnter({className}) {
   const isOwner = getCookies("id") == enterprise.account.accountid;
 
   return (
-    <Container style={{ marginTop: 50, marginLeft: 400, width: 800 }}>
+    <Container style={{ marginTop: 50, width: 800 }}>
       <div className={className}>
-        <Card style={{ alignItems: "center" }}>
-          <Card.Body>
-          <h1 style={{ textAlign: 'center' }}>{enterprise.name}</h1>            <Card.Img variant="top" style={{ width: 420, height: 300 }} src={enterpriseImages[id]} />
-            <br />
-            <br />
-            <br />
-            <Card.Text><p><strong>Price:&emsp;</strong> {enterprise.price}&nbsp;&nbsp;Baht</p></Card.Text>
-            <Card.Text><p><strong>Time:&emsp;</strong> {enterprise.time}&nbsp;&nbsp;&nbsp;Days</p></Card.Text>
-            <Card.Text><p><strong>Description:&emsp;</strong> {enterprise.description}</p></Card.Text>
+        <Link to="/" style={{ fontSize: '30px', marginTop: '30px', color: '#0071BE' }}>Home</Link>
+        <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
+        <Link to="/optionfree" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>freelance</Link>
+        <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
+        <Link to="/findjob" state={{ type: enterprise.type }} style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{enterprise.type}</Link>
 
-            {isChatButtonClicked ? (
-              <Link to="/chatroom">Chat</Link>
-            ) : (
-              isOwner ? (
-                <Link to={`/edit/${enterprise.id}`} className="edit"> edit </Link>
+        <Row>
+          <Col md={6}>
+            <Card style={{ borderRadius: 10, backgroundColor: '#FFFBF5' }}>
+              
+              <Card.Body>
+
+              <Card.Img variant="top" style={{ width: 420, height: 300,marginLeft:70 }} src={enterpriseImages[id]} />
+                <h1 style={{ textAlign: 'center' }}>{enterprise.name}</h1>
+                <Card.Subtitle>{enterprise.description}</Card.Subtitle>
+                <Card.Text><p><strong>ExampleJob:&emsp;</strong> {enterprise.examplejob}</p></Card.Text>
+                <Card.Text><p><strong>Workprocress:&emsp;</strong> {enterprise.workprocess}</p></Card.Text>
+                <Card.Text><p><strong>Location:&emsp;</strong> {enterprise.location}</p></Card.Text>
+
+
+              </Card.Body>
+            </Card>
+
+            <Card>
+              <Card.Body>
+                <Row>
+                  <Col md={3}>
+                    <div className='container-profile'>
+                      <Card.Img src={image} alt="" className="user1" />
+                    </div>
+                  </Col>
+                  <Col md={3} style={{ marginTop: 30 }}>
+                    <Card.Text><strong>Name:</strong> {enterprise.account.accountname}</Card.Text>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={6} >
+            <Card style={{ marginLeft: 250, width: "20rem", padding: 20 }}>
+              <Card.Text><p>{enterprise.price}&nbsp;&nbsp;Baht</p></Card.Text>
+              <Card.Text><p><strong>Time:&emsp;</strong> {enterprise.time}&nbsp;&nbsp;&nbsp;Days</p></Card.Text>
+              <Card.Text><p>{enterprise.type}({enterprise.subtype})</p></Card.Text>
+
+              {isChatButtonClicked ? (
+                <Link to="/chatroom">Chat</Link>
               ) : (
-                <button onClick={handleConfirmButtonClick} className="edit">Accept</button>
-              )
-            )}
-          </Card.Body>
-        </Card>
-
-        <Card>
-          <Card.Body>
-            <Row>
-              <Col md={3}>
-                <div className='container-profile'>
-                  <Card.Img src={image} alt="" className="user1" />
-                </div>
-              </Col>
-              <Col md={3} style={{ marginTop: 30 }}>
-                <Card.Text><strong>Name:</strong> {enterprise.account.accountname}</Card.Text>
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
+                isOwner ? (
+                  <Link to={`/edit/${enterprise.id}`} className="edit"> edit </Link>
+                ) : (
+                  <button onClick={handleConfirmButtonClick} className="edit">Accept</button>
+                )
+              )}
+            </Card>
+          </Col>
+        </Row>
       </div>
     </Container>
   );
@@ -172,6 +193,7 @@ p{
   transition: all 0.3s;
   border-radius: 5px;
   font-size:25px;
+  text-align: center;
 }
 
 .edit:hover{

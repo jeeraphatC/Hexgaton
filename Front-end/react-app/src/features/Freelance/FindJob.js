@@ -33,7 +33,7 @@ function FindJob({ className }) {
     return text;
   }
 
-// if for fetch subdata
+  // if for fetch subdata
   function develop() {
     if (type === 'develop') {
       return (
@@ -85,14 +85,14 @@ function FindJob({ className }) {
         <div style={{
           marginTop: 0
         }}>
-        <Col md={4} >
-          <Link to="/findjob" state={{ type: "music" }}>
-            <Button style={{ marginBottom: 10 }}>Music</Button>
-          </Link>
-          <Link to="/findjob" state={{ type: "music", type2: "beat" }}>
-            <Button style={{ marginBottom: 10 }}>beat</Button>
-          </Link>
-        </Col>
+          <Col md={4} >
+            <Link to="/findjob" state={{ type: "music" }}>
+              <Button style={{ marginBottom: 10 }}>Music</Button>
+            </Link>
+            <Link to="/findjob" state={{ type: "music", type2: "beat" }}>
+              <Button style={{ marginBottom: 10 }}>beat</Button>
+            </Link>
+          </Col>
         </div>
       )
     }
@@ -106,7 +106,7 @@ function FindJob({ className }) {
     }
     return text;
   }
-//data and picture
+  //data and picture
   useEffect(() => {
     axios.get(path)
       .then(response => {
@@ -148,7 +148,7 @@ function FindJob({ className }) {
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-  }, [enterpriseImages,type, type2]);
+  }, [enterpriseImages, type, type2]);
 
   //Compare
   const handleCardClick = (item) => {
@@ -178,15 +178,15 @@ function FindJob({ className }) {
   return (
     <div className={className}>
       <Container style={{ marginTop: 10 }}>
-      <Link to="/" style={{fontSize:'30px',marginTop:'30px',color:'#0071BE'}}>Home</Link>
-        <img src={arrow} alt=""style={{width:'30px',marginLeft:'10px',marginBottom:'10px'}} />
-        <Link to="/optionfree" style={{fontSize:'30px',marginTop:'30px',marginLeft:'10px',color:'#808080'}}>Freelance</Link>
-        <img src={arrow} alt=""style={{width:'30px',marginLeft:'10px',marginBottom:'10px'}} />
-        <Link to="/findjob" style={{fontSize:'30px',marginTop:'30px',marginLeft:'10px',color:'#808080'}}>{type}</Link>
+        <Link to="/" style={{ fontSize: '30px', marginTop: '30px', color: '#0071BE' }}>Home</Link>
+        <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
+        <Link to="/optionfree" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>Freelance</Link>
+        <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
+        <Link to="/findjob" state={{ type: type }} style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{type}</Link>
 
         <h1 style={{ margin: '30px 10px 20px 0px', color: '#0196FC' }}>Find jobs (ALL)</h1>
         <Row style={{ marginBottom: 20 }}>
-          <Col md={10} style={{paddingLeft : 0}}>
+          <Col md={10} style={{ paddingLeft: 0 }}>
             {develop()}
             {/* <Button variant="success" className='btn-add-first'>
               <Link to='/FreelanceForm' className='btn-add-sec'>For Freelance ADD Job</Link>
@@ -195,48 +195,44 @@ function FindJob({ className }) {
         </Row>
         <Row>
           {enterprises.map(enterprise => (
-            <Col md={4} key={enterprise.id}>
+            <Col md={3} key={enterprise.id}>
               <Card
-                    style={{
-                      padding: 20,
-                      width: 400,
-                      marginBottom: 20,
-
-                    }}
-                    onClick={() => handleCardClick(enterprise)}
-                  >
+                style={{
+                  width: "18rem",
+                }}
+                onClick={() => handleCardClick(enterprise)}
+              >
+                <Card.Img variant="top" style={{ width: 286, height: 180 }} src={enterpriseImages[enterprise.id]} />
                 <Card.Body>
-                  <Card.Img className="picture" variant="top" style={{ width: 300, height: 200 }} src={enterpriseImages[enterprise.id]} />
-                  <br />
-                  <br />
-                  <Link to={`/enterprises/${enterprise.id}`}>
-                    <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px', margin: '105px 0px 0px 300px', position: 'absolute' }} />
-                  </Link>
-                  <Card.Title><strong>Name:</strong> {enterprise.name}</Card.Title>
-                  <Card.Text><strong>Price:</strong> {enterprise.price}</Card.Text>
-                  <Card.Text><strong>Time:</strong> {enterprise.time}</Card.Text>
-                  <Card.Text><strong>Description:</strong>{truncateText(enterprise.description, 40)}</Card.Text>
+                  <Card.Title>{enterprise.name}</Card.Title>
+                  <Card.Subtitle>{truncateText(enterprise.description,40)}</Card.Subtitle>
+                  <Card.Text><strong>Time to work :</strong> {enterprise.time} DAYS</Card.Text>
+                  <Card.Footer style={{ textAlign: "right" }}>${enterprise.price}
+                   <Link to={`/enterprises/${enterprise.id}`}>
+                      <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px' }} />
+                    </Link>
+                  </Card.Footer>
                 </Card.Body>
               </Card>
             </Col>
           ))}
         </Row>
         <div className="selected-items">
-            <h4>Selected job to compare</h4>
-            {selectedItems.map((selectedItem, index) => (
-              <div key={index}>
-                <p>Job {index + 1} :{selectedItem.name}</p>
-              </div>
-            ))}
-            {selectedItems.length > 0 && (
-              <button onClick={handleClearSelected2}>Clear Selected Items</button>
-            )}
-            {selectedItems.length === 2 && (
-              <button onClick={handleCompareClick}>Compare</button>
-            )}
+          <h4>Selected job to compare</h4>
+          {selectedItems.map((selectedItem, index) => (
+            <div key={index}>
+              <p>Job {index + 1} :{selectedItem.name}</p>
+            </div>
+          ))}
+          {selectedItems.length > 0 && (
+            <button onClick={handleClearSelected2}>Clear Selected Items</button>
+          )}
+          {selectedItems.length === 2 && (
+            <button onClick={handleCompareClick}>Compare</button>
+          )}
 
 
-          </div>
+        </div>
       </Container>
     </div>
   );
@@ -259,8 +255,8 @@ export default styled(FindJob)`
 }
 .selected-items {
   position: fixed;
-  top:70px; /* Adjust the value as needed */
-  right: 20px; /* Adjust the value as needed */
+  top:70px; 
+  right: 20px; 
   background-color: white;
   padding: 10px;
   border: 1px solid #ccc;
@@ -271,10 +267,7 @@ export default styled(FindJob)`
 .jobdetail{
   padding: 5px;
 }
-.picture{
-  
-  border: 2px solid black;
-}
+
 .selected-items button {
   margin: 5px; 
   color: #FFFFFF;

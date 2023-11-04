@@ -6,6 +6,8 @@ import { Container, Card, Row, Col } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import getCookies from './hook/getCookies';
+import arrow from "./pic/barrow.png";
+
 function ViewFreelance({ className }) {
   const { id } = useParams();
   const [freelance, setFreelance] = useState(null);
@@ -75,50 +77,63 @@ function ViewFreelance({ className }) {
 
 
   return (
-    <div className={className}>
-      <Container style={{ marginTop: 50, marginLeft: 400, width: 800 }}>
-        <div>
-          <Card style={{ alignItems: "center", borderRadius: 10, backgroundColor: '#FFFBF5' }}>
-            <Card.Body>
-              <h1 style={{ textAlign: 'center' }}>{freelance.name}</h1>
-              <Card.Img variant="top" style={{ width: 420, height: 300 }} src={freelanceImages[id]} />
-              <br />
-              <br />
-              <br />
+    <Container style={{ marginTop: 50, width: 800 }}>
+       <Link to="/" style={{ fontSize: '30px', marginTop: '30px', color: '#0071BE' }}>Home</Link>
+        <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
+        <Link to="/optionenter" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>enterprise</Link>
+        <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
+        <Link to="/findfreelance" state={{ type: freelance.type }} style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{freelance.type}</Link>
 
+      <div className={className}>
+        <Row>
+          <Col md={6}>
+            <Card style={{ borderRadius: 10, backgroundColor: '#FFFBF5' }}>
+              <Card.Body>
+                <Card.Img variant="top" style={{ width: 420, height: 300 }} src={freelanceImages[id]} />
+                <br />
+                <br />
+                <br />
+                <h1 style={{ textAlign: 'center' }}>{freelance.name}</h1>
+                <Card.Text>{freelance.description}</Card.Text>
+                <Card.Text><p><strong>companyName:&emsp;</strong> {freelance.companyName}</p></Card.Text>
+               
+              </Card.Body>
+            </Card>
+            <Card>
+              <Card.Body>
+                <Row>
+                  <Col md={3}>
+                    <div className='container-profile'>
+                      <Card.Img src={image} alt="" className="user1" />
+                    </div>
+                  </Col>
+                  <Col md={3} style={{ marginTop: 30 }}>
+                    <Card.Text><strong>Name:</strong> {freelance.account.accountname}</Card.Text>
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col md={6} >
+            <Card style={{ marginLeft: 250, width: "20rem", padding: 20 }}>
               <Card.Text><p><strong>Price:&emsp;</strong> {freelance.price}&nbsp;&nbsp;Baht</p></Card.Text>
+              <Card.Text><p>{freelance.type}</p></Card.Text>
               <Card.Text><p><strong>Time:&emsp;</strong> {freelance.time}&nbsp;&nbsp;&nbsp;Days</p></Card.Text>
-              <Card.Text><p><strong>Description:&emsp;</strong> {freelance.description}</p></Card.Text>
-              <Card.Text><p><strong>companyName:&emsp;</strong> {freelance.companyName}</p></Card.Text>
-              <Card.Text><p><strong>Type:&emsp;</strong>{freelance.type}</p></Card.Text>
               {isChatButtonClicked ? (
-                <Link to="/chatroom">Chat</Link> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
-              ) : (
-                isOwner ? (
-                  <Link to={`/editfreelance/${freelance.id}`} className="edit"> edit </Link>
+                  <Link to="/chatroom">Chat</Link> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
                 ) : (
-                  <button onClick={handleConfirmButtonClick} className="edit">Accept</button>
-                )
-              )}
-            </Card.Body>
-          </Card>
-          <Card>
-            <Card.Body>
-              <Row>
-                <Col md={3}>
-                  <div className='container-profile'>
-                    <Card.Img src={image} alt="" className="user1" />
-                  </div>
-                </Col>
-                <Col md={3} style={{marginTop : 30}}>
-                  <Card.Text><strong>Name:</strong> {freelance.account.accountname}</Card.Text>
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card>
-        </div>
-      </Container>
-    </div>
+                  isOwner ? (
+                    <Link to={`/editfreelance/${freelance.id}`} className="edit"> edit </Link>
+                  ) : (
+                    <button onClick={handleConfirmButtonClick} className="edit">Accept</button>
+                  )
+                )}
+            </Card>
+          </Col>
+        </Row>
+      </div>
+    </Container>
+
   );
 }
 
@@ -163,6 +178,7 @@ p{
   transition: all 0.3s;
   border-radius: 5px;
   font-size:25px;
+  text-align: center;
 }
 
 .edit:hover{
