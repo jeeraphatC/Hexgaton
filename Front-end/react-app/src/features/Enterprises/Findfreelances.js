@@ -278,7 +278,7 @@ export default styled(FindFreelances)`
   border-radius: 3px;
   width: 240px;
   text-align: center;
-} 100%;
+} 
   margin-top: 50px;
   background-color: azure;
 
