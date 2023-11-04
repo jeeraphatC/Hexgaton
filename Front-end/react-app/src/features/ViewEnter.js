@@ -5,6 +5,7 @@ import { Container, Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
+import getCookies from './hook/getCookies';
 function ViewEnter() {
   const { id } = useParams();
   const [enterprise, setEnterprise] = useState(null);
@@ -57,7 +58,7 @@ function ViewEnter() {
         console.error('Error updating status:', error);
       });
   };
-
+  const isOwner = getCookies("id") == enterprise.account.accountid;
 
   return (
     <Container style={{ marginTop: 50, marginLeft: 400, width: 800 }}>
@@ -76,7 +77,11 @@ function ViewEnter() {
             {isChatButtonClicked ? (
               <Link to="/chatroom">Chat</Link>
             ) : (
-              <button onClick={handleConfirmButtonClick}>ยืนยัน</button>
+              isOwner ? (
+                <Link to={`/edit/${enterprise.id}`}> edit </Link>
+              ) : (
+                <button onClick={handleConfirmButtonClick}>ยืนยัน</button>
+              )
             )}
           </Card.Body>
         </Card>

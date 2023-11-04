@@ -52,6 +52,7 @@ function Home({ className }) {
           </Link>
         </div>
         <h1>Do you have a job?</h1>
+        <img src={astronaut} alt="" className="astronaut" />
         <h3>
           Let{" "}
           <p1>
@@ -59,12 +60,23 @@ function Home({ className }) {
           </p1>{" "}
           help you to find your job.
         </h3>
-        <img src={astronaut} alt="" className="astronaut" />
-        <div className="searchbar">
-          <div className="bluebar">
-            <img src={search} alt="" className="searchlogo" />
+        <Link to="/optionfree">
+          <div>
+            <h3 className="needajob">Need a job?</h3>
           </div>
-        </div>
+        </Link>
+        <Link to="/optionenter">
+          <div>
+            <h3 className="needafreelance">Search a freelance</h3>
+          </div>
+        </Link>
+      </div>
+      <div className="t2">
+      <h2 className="t2text"></h2>
+
+
+
+
       </div>
 
       <img src={mlogo} alt="" className="mini_logo" />
@@ -117,10 +129,53 @@ Home.propTypes = {
 };
 
 export default styled(Home)`
+.t2text{
+  font-size:55px;
+  top: 65%;
+  position: absolute;
+  color: #0196FC;
+}
+.t2{
+  width:100%;
+  background: #D9D9D9;
+  height: 1075px;
+}
+.needafreelance{
+  position: absolute;
+  color: #FFF;
+  top: 65%;
+  left: 56%;
+  padding:10px 40px 10px 40px ;
+  border: 2px solid #FFF;
+  transition: all 0.3s;
+  border-radius: 5px;
+  font-size:25px;
+}
+.needafreelance:hover{
+  color: #FFF;
+  background: #0196FC;
+  border: 2px solid #0196FC;
+}
+.needajob{
+  position: absolute;
+  color: #FFF;
+  top: 65%;
+  left: 42%;
+  padding:10px 40px 10px 40px ;
+  border: 2px solid #FFF;
+  transition: all 0.3s;
+  border-radius: 5px;
+  font-size:25px;
+}
+.needajob:hover{
+  color: #FFF;
+  background: #0196FC;
+  border: 2px solid #0196FC;
+}
 .bgcom{
   height: 600px;
     width: 100%;
-    box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25);
 }
   .footer-content {
   }
