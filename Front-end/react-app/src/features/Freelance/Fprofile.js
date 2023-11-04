@@ -51,7 +51,7 @@ function Fprofile({ className }) {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
         const imageSrc = `data:image/jpeg;base64,${base64}`;
         setImage(imageSrc);
-        
+       
       })
       .catch(error => {
         console.error('Error fetching image:', error);
@@ -90,7 +90,7 @@ function Fprofile({ className }) {
       <div className='container'>
       <div className="c1">
         <div className='container-profile'>
-          <img src={null} alt="" className="user1" />
+          <img src={image} alt="" className="user1" />
           <div class="overlay"><Link to="/editprofile/:id" className='link-edit'>Edit Profile</Link></div>
         </div>
         <div className="username">{userName} </div>

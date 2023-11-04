@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams , useNavigate  } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import styled from "styled-components";
 import PropTypes from 'prop-types';
@@ -18,12 +18,13 @@ function EditJob({ className }) {
     examplejob: '',
     fixtime: '',
   });
-
+  const navigate=useNavigate();
   useEffect(() => {
     // เรียก API ดึงข้อมูล Enterprise ตาม ID ที่ถูกส่งมาจาก URL
     axios.get(`http://localhost:8090/enterprises/${id}`)
       .then(response => {
         setEnterprise(response.data);
+        
       })
       .catch(error => {
         console.error('เกิดข้อผิดพลาดในการดึงข้อมูล Enterprise:', error);
@@ -76,6 +77,7 @@ function EditJob({ className }) {
       .then(response => {
         // อัปเดตสถานะหรือทำสิ่งที่คุณต้องการหลังจากการอัปเดตข้อมูลเสร็จสมบูรณ์
         console.log('อัปเดตข้อมูลเรียบร้อยแล้ว');
+        navigate(`/enterprises/${id}`)
       })
       .catch(error => {
         console.error('เกิดข้อผิดพลาดในการอัปเดตข้อมูล:', error);

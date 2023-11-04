@@ -169,18 +169,6 @@ const Develop = ({ className }) => {
           </div>
           <br />
           <h3 style={{ textAlign: 'center' }}>DO you need Develop?</h3>
-          {fetchData === 'enterprises' && (
-            <Button variant="success" className='btn-add-first'>
-              <Link to='/Postjob' className='btn-add-sec'>ADD</Link>
-            </Button>
-          )}
-
-          {fetchData === 'freelance' && (
-            <Button variant="success" className='btn-add-first'>
-              <Link to='/FreelanceForm' className='btn-add-sec'>ADD</Link>
-            </Button>
-          )}
-
           <br />
           <Row>
             {fetchData === 'enterprises' && (

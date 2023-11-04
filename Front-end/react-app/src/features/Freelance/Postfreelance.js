@@ -183,6 +183,7 @@ const PostFreelance = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
+              placeholder='ชื่องาน'
             />
           </div>
           <div>
@@ -191,6 +192,7 @@ const PostFreelance = () => {
               name="description"
               value={formData.description}
               onChange={handleInputChange}
+              placeholder='แนะนำบริษัท ex: ประวัติการทำงาน เคยร่วมงานกับใครมาบ้าง'
             />
           </div>
           <div>
@@ -277,6 +279,7 @@ const PostFreelance = () => {
               name="companyName"
               value={formData.companyName}
               onChange={handleInputChange}
+              placeholder='กรอกชื่อบริษัท หรือ สถานที่ทำงาน ex.ไทยจำกัด ถนน.XXX ต.XXX อ.XXX จ.XXX'
             />
           </div>
 

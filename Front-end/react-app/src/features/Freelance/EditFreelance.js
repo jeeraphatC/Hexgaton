@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams , useNavigate } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import styled from "styled-components";
 import PropTypes from 'prop-types';
@@ -15,7 +15,7 @@ function EditFreelance({className}) {
     subtype: '',
     companyName: '',
   });
-
+const navigate=useNavigate();
   useEffect(() => {
     axios.get(`http://localhost:8082/freelances/${id}`)
       .then(response => {
@@ -58,6 +58,7 @@ function EditFreelance({className}) {
     axios.put(`http://localhost:8082/freelances/${id}`, freelance)
       .then(response => {
         console.log('บันทึกข้อมูลสำเร็จ');
+        navigate(`/Freelance/${id}`)
       })
       .catch(error => {
         console.error('เกิดข้อผิดพลาดในการบันทึกข้อมูล:', error);
@@ -79,7 +80,9 @@ function EditFreelance({className}) {
           </div>
           <div>
             <label>Description:</label>
-            <textarea value={description} onChange={handleDescriptionChange} />
+            <textarea value={description} 
+            onChange={handleDescriptionChange} 
+            />
           </div>
 
           <div>

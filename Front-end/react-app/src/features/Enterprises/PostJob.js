@@ -177,6 +177,7 @@ const PostJob = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
+              placeholder='ชื่องาน'
             />
           </div>
           <div>
@@ -186,6 +187,7 @@ const PostJob = () => {
               name="price"
               value={formData.price}
               onChange={handleInputChange}
+              
             />
           </div>
           <div>
@@ -195,6 +197,7 @@ const PostJob = () => {
               name="time"
               value={formData.time}
               onChange={handleInputChange}
+              placeholder='จำนวนวันที่ต้องทำงาน'
             />
           </div>
           <div>
@@ -203,6 +206,7 @@ const PostJob = () => {
               name="description"
               value={formData.description}
               onChange={handleInputChange}
+              placeholder='แนะนำตัวเอง ex: ประวัติการทำงาน'
             />
           </div>
           <div>
@@ -211,6 +215,7 @@ const PostJob = () => {
               name="workprocess"
               value={formData.workprocess}
               onChange={handleInputChange}
+              placeholder='การทำงานของงานนี้คร่าว'
             />
           </div>
           <div>
@@ -219,6 +224,7 @@ const PostJob = () => {
               name="examplejob"
               value={formData.examplejob}
               onChange={handleInputChange}
+              placeholder='ตัวอย่างงาน'
             />
           </div>
           <div>
@@ -228,6 +234,7 @@ const PostJob = () => {
               name="fixtime"
               value={formData.fixtime}
               onChange={handleInputChange}
+              placeholder='จำนวนครั้งในการแก้ไขงาน'
             />
           </div>
           <div>
