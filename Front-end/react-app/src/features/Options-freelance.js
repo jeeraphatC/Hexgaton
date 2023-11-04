@@ -15,7 +15,7 @@ function OptionsFreelance({ className }) {
   return (
 
     <div className={className}>
-      <Container style={{ marginTop: 60 }}>
+      <Container style={{ marginTop: 100 }}>
 
 
         <h1>Type For Freelance</h1>
@@ -26,7 +26,6 @@ function OptionsFreelance({ className }) {
               <Link to="/findjob" state={{ type: "develop" }}>
                 <div className="options">
                   <h3>Develop</h3>
-                  <img src={freelance} alt="" className="logo" />
                 </div>
               </Link>
             </Col>
@@ -34,14 +33,12 @@ function OptionsFreelance({ className }) {
               <Link to="/findjob" state={{ type: "graphic" }}>
                 <div className="options">
                   <h3>Graphic</h3>
-                  <img src={enter} alt="" className="logo2" />
                 </div>
               </Link></Col>
             <Col md={3}>
               <Link to="/findjob" state={{ type: "music" }}>
                 <div className="options">
                   <h3>Music</h3>
-                  <img src={chat} alt="" className="logo3" />
                 </div>
               </Link>
             </Col>
@@ -49,7 +46,6 @@ function OptionsFreelance({ className }) {
               <Link to="/FreelanceForm" state={{ type: "postf" }}>
                 <div className="options">
                   <h3>Post for Enterprises</h3>
-                  <img src={chat} alt="" className="logo3" />
                 </div>
               </Link>
             </Col>
