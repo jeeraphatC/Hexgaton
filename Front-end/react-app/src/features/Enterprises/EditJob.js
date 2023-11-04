@@ -3,13 +3,20 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import styled from "styled-components";
-function EditJob() {
+import PropTypes from 'prop-types';
+function EditJob({ className }) {
   const { id } = useParams();
   const [enterprise, setEnterprise] = useState({
     name: '',
     price: '',
     time: '',
     description: '',
+    type: '',
+    subtype: '',
+    location: '',
+    workprocess: '',
+    examplejob: '',
+    fixtime: '',
   });
 
   useEffect(() => {
@@ -39,6 +46,30 @@ function EditJob() {
     setEnterprise({ ...enterprise, description: event.target.value });
   };
 
+  const handleTypeionChange = (event) => {
+    setEnterprise({ ...enterprise, type: event.target.value });
+  };
+
+  const handleSubTypeChange = (event) => {
+    setEnterprise({ ...enterprise, subtype: event.target.value });
+  };
+
+  const handleLocationChange = (event) => {
+    setEnterprise({ ...enterprise, location: event.target.value });
+  };
+
+  const handleWorkChange = (event) => {
+    setEnterprise({ ...enterprise, workprocess: event.target.value });
+  };
+
+  const handleExampleChange = (event) => {
+    setEnterprise({ ...enterprise, examplejob: event.target.value });
+  };
+
+  const handleFixtimeChange = (event) => {
+    setEnterprise({ ...enterprise, fixtime: event.target.value });
+  };
+
   // ฟังก์ชันที่จะอัปเดตข้อมูลในเซิร์ฟเวอร์
   const updateEnterprise = () => {
     axios.put(`http://localhost:8090/enterprises/${id}`, enterprise)
@@ -52,35 +83,181 @@ function EditJob() {
   };
 
   return (
-    <Container style={{width : 800 , marginTop : 50}}>
-    <div>
-      <h1 className='Edith1'>Edit Enterprise</h1>
-      <form>
+    <div className={className}>
+      <Container style={{ width: 800, marginTop: 50 }}>
         <div>
-          <label>Name:</label>
-          <input type="text" value={enterprise.name} onChange={handleNameChange} />
+          <h1 className='Edith1'>Edit Enterprise</h1>
+          <form>
+            <div>
+              <label>Name:</label>
+              <input type="text" value={enterprise.name} onChange={handleNameChange} />
+            </div>
+            <div>
+              <label>Price:</label>
+              <input type="number" min="500" value={enterprise.price} onChange={handlePriceChange} />
+            </div>
+            <div>
+              <label>Time:</label>
+              <input type="number" value={enterprise.time} onChange={handleTimeChange} />
+            </div>
+            <div>
+              <label>Description:</label>
+              <textarea value={enterprise.description} onChange={handleDescriptionChange} />
+            </div>
+            <div>
+              <label>Workprocess:</label>
+              <textarea
+                name="workprocess"
+                value={enterprise.workprocess}
+                onChange={handleWorkChange}
+              />
+            </div>
+            <div>
+              <label>examplejob:</label>
+              <textarea
+                name="examplejob"
+                value={enterprise.examplejob}
+                onChange={handleExampleChange}
+              />
+            </div>
+            <div>
+              <label>Fix time:</label>
+              <input
+                type="number"
+                name="fixtime"
+                value={enterprise.fixtime}
+                onChange={handleFixtimeChange}
+              />
+            </div>
+            <div>
+              <label>Type:</label>
+              <select
+                name="type"
+                value={enterprise.type}
+                onChange={handleTypeionChange}
+              >
+                <option value=" ">Select Type</option>
+                <option value="develop">Develop</option>
+                <option value="graphic">Graphic</option>
+                <option value="music">Music</option>
+              </select>
+            </div>
+            {enterprise.type === 'develop' && (
+              <>
+                <label>Subtype for develop:</label>
+                <select
+                  name="subtype"
+                  value={enterprise.subtype}
+                  onChange={handleSubTypeChange}
+                >
+                  <option value=" ">Select Type</option>
+                  <option value="web">Web</option>
+                  <option value="mobile">Mobile</option>
+                  <option value="desktop">Desktop</option>
+                </select>
+              </>
+            )}
+            {enterprise.type === 'graphic' && (
+              <>
+                <label>Subtype for graphic:</label>
+                <select
+                  name="subtype"
+                  value={enterprise.subtype}
+                  onChange={handleSubTypeChange}
+                >
+                  <option value=" ">Select Type</option>
+                  <option value="logos">Logo Design</option>
+                  <option value="sticker">Sticker Design</option>
+                  <option value="character">Character Design</option>
+                  <option value="draw-cartoon">Draw cartoons</option>
+                  <option value="3d-models">3D Models</option>
+                  <option value="banner">Banner advertising design</option>
+                </select>
+              </>
+            )}
+            {enterprise.type === 'music' && (
+              <>
+                <label>Subtype for music:</label>
+                <select
+                  name="subtype"
+                  value={enterprise.subtype}
+                  onChange={handleSubTypeChange}
+                >
+                  <option value=" ">Select Type</option>
+                  <option value="beat">Beat</option>
+                </select>
+              </>
+            )}
+
+            <div>
+              <label>Location:</label>
+              <select
+                name="location"
+                value={enterprise.location}
+                onChange={handleLocationChange}
+              >
+                <option value=" ">Select Location</option>
+                <option value="onsite">onsite</option>
+                <option value="online">online</option>
+              </select>
+            </div>
+
+            <button type="button" onClick={updateEnterprise}>Save</button>
+          </form>
         </div>
-        <div>
-          <label>Price:</label>
-          <input type="number" value={enterprise.price} onChange={handlePriceChange} />
-        </div>
-        <div>
-          <label>Time:</label>
-          <input type="date" value={enterprise.time} onChange={handleTimeChange} />
-        </div>
-        <div>
-          <label>Description:</label>
-          <textarea value={enterprise.description} onChange={handleDescriptionChange} />
-        </div>
-        <button type="button" onClick={updateEnterprise}>Save</button>
-      </form>
+      </Container>
     </div>
-    </Container>
   );
 }
 
+
+EditJob.propTypes = {
+  className: PropTypes.string.isRequired,
+};
+
 export default styled(EditJob)`
-.Edith1{
-  
+margin:50px 400px 0px 400px;
+.custom-button {
+  margin-top: 30px;
+  margin-left: 900px;
 }
+input[type="file"] {
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+select {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+  h2 {
+    margin-top: 60px;
+    color: #0196FC;
+    font-size: 80px;
+  }
+
+  p {
+    color: #9C9C9C;
+    font-size: 50px;
+    
+  }
+  label{
+    font-size: 20px;
+    margin-top: 20px;
+    
+  }
+  textarea {
+    width: 100%;
+    height: 100px;
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+  }
 `;
