@@ -29,6 +29,7 @@ import Myworkenterpise from './features/Enterprises/Myworkenterpise';
 import Mywork from './features/Freelance/Mywork';
 import OptionsFreelance from './features/Options-freelance';
 import OptionsEnter from './features/Options-enter';
+import Status from './features/Status';
 function App() {
   const location = useLocation();
   const showNavbar = location.pathname !== '/login';
@@ -71,6 +72,7 @@ function App() {
           <Route path="/optionfree" element={isUserLoggedIn ? <OptionsFreelance /> : <Navigate to="/login" />} />
           <Route path="/optionenter" element={isUserLoggedIn ? <OptionsEnter /> : <Navigate to="/login" />} />
           <Route path="/mywork" element={isUserLoggedIn ? <Mywork /> : <Navigate to="/login" />} />
+          <Route path="/status" element={isUserLoggedIn ? <Status /> : <Navigate to="/login" />} />
         </Routes>
       </Container>
 
