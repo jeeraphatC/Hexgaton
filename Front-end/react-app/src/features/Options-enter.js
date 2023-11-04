@@ -70,13 +70,6 @@ OptionsEnterprise.propTypes = {
 };
 
 export default styled(OptionsEnterprise)`
-.div1{
-  width:100%;
-  height:500px;
-  background: #0196FC;
-  margin-top:700px;
-}
-
 .musicbg:hover{
 
 }
@@ -141,7 +134,7 @@ export default styled(OptionsEnterprise)`
     text-align: left;
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 500px;
     border-radius:10px;
 
    }
@@ -153,7 +146,7 @@ export default styled(OptionsEnterprise)`
     transition: all 0.2s;
     text-align: left;
     position: absolute;
-    top: 50%;
+    top: 500px;
     border-radius:10px;
    }
    .options2{
@@ -177,21 +170,26 @@ export default styled(OptionsEnterprise)`
     position: absolute;
     border-radius:10px;
   }
+
   .options2:hover{
     cursor: pointer;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+    color: #9C9C9C;
    }
    .options3:hover{
     cursor: pointer;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+    color: #9C9C9C;
    }
    .options4:hover{
     cursor: pointer;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+    color: #9C9C9C;
    }
    .options1:hover{
     cursor: pointer;
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.5);
+    color: #9C9C9C;
    }
 .logo{
   max-width: 50px;

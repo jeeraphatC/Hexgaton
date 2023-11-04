@@ -93,53 +93,59 @@ function FindJob({ className }) {
     return null;
   }
 
+  function truncateText(text, maxLength) {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + '...';
+    }
+    return text;
+  }
+
   useEffect(() => {
-    axios.get(`http://localhost:8090/enterprises/type/${type}`)
+    axios.get(path)
       .then(response => {
         setEnterprises(response.data);
+        const enterprises = response.data;
+        const fetchAllImages = async (enterprises) => {
+          const imagePromises = enterprises.map((enterprise) =>
+            fetchImageByImagelocation(enterprise.id)
+          );
+
+          try {
+            const images = await Promise.all(imagePromises);
+            const imageMap = {};
+            images.forEach((image, index) => {
+              imageMap[enterprises[index].id] = image;
+            });
+            setEnterprisesimage(imageMap);
+          } catch (error) {
+            console.error('Error fetching images:', error);
+          }
+        };
+
+        const fetchImageByImagelocation = (imagelocation) => {
+          return axios.get(`http://localhost:2023/getByNameAndImagelocation/enterprises/${imagelocation}`, { responseType: 'arraybuffer' })
+            .then(imageResponse => {
+              const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
+              const imageSrc = `data:image/jpeg;base64,${base64}`;
+              return imageSrc;
+            })
+            .catch(error => {
+              console.error('Error fetching image:', error);
+              return null;
+            });
+        };
+        if (enterprises.length > 0) {
+          fetchAllImages(enterprises);
+        }
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-  }, [type]);
+  }, [enterpriseImages,type, type2]);
 
-
-  const fetchAllImages = async (enterprises) => {
-    const imagePromises = enterprises.map((enterprise) =>
-      fetchImageByImagelocation(enterprise.id)
-    );
-
-    try {
-      const images = await Promise.all(imagePromises);
-      const imageMap = {};
-      images.forEach((image, index) => {
-        imageMap[enterprises[index].id] = image;
-      });
-      setEnterprisesimage(imageMap);
-    } catch (error) {
-      console.error('Error fetching images:', error);
-    }
-  };
-
-  const fetchImageByImagelocation = (imagelocation) => {
-    return axios.get(`http://localhost:2023/getByNameAndImagelocation/enterprises/${imagelocation}`, { responseType: 'arraybuffer' })
-      .then(imageResponse => {
-        const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
-        const imageSrc = `data:image/jpeg;base64,${base64}`;
-        return imageSrc;
-      })
-      .catch(error => {
-        console.error('Error fetching image:', error);
-        return null;
-      });
-  };
-  if (enterprises.length > 0) {
-    fetchAllImages(enterprises);
-  }
   const handleCardClick = (item) => {
     setSelectedItems(prevSelectedItems => {
       const itemIndex = prevSelectedItems.findIndex(selectedItem => selectedItem.id === item.id);
-
       if (itemIndex === -1 && prevSelectedItems.length < 2) {
         return [...prevSelectedItems, item];
       } else if (itemIndex !== -1) {
@@ -159,6 +165,8 @@ function FindJob({ className }) {
   const handleClearSelected2 = () => {
     setSelectedItems([]);
   };
+
+
   return (
     <div className={className}>
       <Container style={{ marginTop: 50 }}>
@@ -220,12 +228,7 @@ function FindJob({ className }) {
   );
 }
 
-function truncateText(text, maxLength) {
-  if (text.length > maxLength) {
-    return text.substring(0, maxLength) + '...';
-  }
-  return text;
-}
+
 
 FindJob.propTypes = {
   className: PropTypes.string.isRequired,

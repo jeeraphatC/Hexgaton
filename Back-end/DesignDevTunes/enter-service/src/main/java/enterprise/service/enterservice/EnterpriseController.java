@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import freelance.service.freelanceservice.Enterprise;
+import freelance.service.freelanceservice.Freelance;
 
 import java.util.List;
 
@@ -30,6 +31,11 @@ public class EnterpriseController {
     @GetMapping("/type/{type}")
     public List<Enterprise> findEnterprisesByType(@PathVariable String type) {
         return enterpriseRepository.findByType(type);
+    }
+
+    @GetMapping("/type/{type}/{subtype}")
+    public List<Enterprise> findFreelanceByTypeandSubtype(@PathVariable String type, @PathVariable String subtype) {
+        return enterpriseRepository.findByTypeAndSubtype(type, subtype);
     }
 
     @PostMapping

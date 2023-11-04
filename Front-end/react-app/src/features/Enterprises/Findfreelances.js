@@ -14,7 +14,7 @@ function FindFreelances({ className }) {
   const [freelances, setFreelance] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [freelancerImages, setFreelancerImages] = useState({});
-  const [enterprises, setEnterprises] = useState([]);
+
   let path;
   if (type2 == null) {
     path = `http://localhost:8082/freelances/type/${type}`
@@ -125,14 +125,13 @@ function FindFreelances({ className }) {
             });
         };
         if (freelancers.length > 0) {
-          // Fetch images for freelancers
           fetchAllImages(freelancers);
         }
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-  }, [type, type2]);
+  }, [type, type2,freelancerImages]);
 
   const handleCardClick = (item) => {
     setSelectedItems(prevSelectedItems => {
@@ -279,7 +278,7 @@ export default styled(FindFreelances)`
   border-radius: 3px;
   width: 240px;
   text-align: center;
-} 100%;
+} 
   margin-top: 50px;
   background-color: azure;
 
