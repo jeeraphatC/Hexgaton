@@ -44,7 +44,7 @@ class Mywork extends Component {
             {this.state.freelances.map(freelances => (
               <Col md={4} key={freelances.id}>
                 {getCookies("id") == freelances.account.accountid ? (
-                  <Card className="cardWithCSS">
+                  <Card style={{ width: 400, padding: 20, marginBottom: 20 }}>
                     <Card.Body>
                       <Link to={`/edit/${freelances.id}`}>
                         <img src={pen2} alt="View Details" className='jobdetail' style={{ width: '40px', height: '40px', margin: '115px 0px 0px 255px', position: 'absolute' }} />

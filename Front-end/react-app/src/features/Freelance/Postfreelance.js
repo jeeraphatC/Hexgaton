@@ -113,8 +113,7 @@ const PostFreelance = () => {
               if (selectedImage) {
                 const formData = new FormData();
                 formData.append('image', selectedImage);
-
-                axios.post('http://localhost:2023/add', formData)
+                  axios.post('http://localhost:2023/add', formData)
                   .then(imageResponse => {
                     console.log('Image uploaded successfully.');
                     const imageId = imageResponse.data;
