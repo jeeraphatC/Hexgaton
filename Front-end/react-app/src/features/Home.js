@@ -71,6 +71,13 @@ function Home({ className }) {
           </div>
         </Link>
       </div>
+      <div className="t2">
+      <h2 className="t2text"></h2>
+
+
+
+
+      </div>
 
       <img src={mlogo} alt="" className="mini_logo" />
       <h1 className="btext1">Become a DesignDevTunes</h1>
@@ -122,6 +129,17 @@ Home.propTypes = {
 };
 
 export default styled(Home)`
+.t2text{
+  font-size:55px;
+  top: 65%;
+  position: absolute;
+  color: #0196FC;
+}
+.t2{
+  width:100%;
+  background: #D9D9D9;
+  height: 1075px;
+}
 .needafreelance{
   position: absolute;
   color: #FFF;
@@ -157,7 +175,7 @@ export default styled(Home)`
 .bgcom{
   height: 600px;
     width: 100%;
-    box-shadow: 2px 2px 2px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.25);
 }
   .footer-content {
   }
