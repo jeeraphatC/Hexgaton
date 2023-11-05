@@ -19,6 +19,7 @@ function ViewFreelance({ className }) {
 
   const [account, setaccount] = useState(' ');
   useEffect(() => {
+    setaccId(getCookies("id"))
     axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
       .then(response => {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
@@ -97,21 +98,19 @@ function ViewFreelance({ className }) {
       }
     };
     console.log(historyData)
-    // axios
-    //   .post(`http://localhost:8082/historys/freelance`, historyData)
-    //   .then((historyResponse) => {
-    //     // Handle the response if needed
-    //     console.log("History Data:", historyResponse.data);
-    //   });
-
-
-    axios.post(`http://localhost:8082/status`, statusData)
-      .then((statusResponse) => {
-        const status = statusResponse.data;
-        console.log(status);
-      })
-      .catch(error => {
-        console.error('Error updating status:', error);
+    axios
+      .post(`http://localhost:8082/historys/freelance`, historyData)
+      .then((historyResponse) => {
+        // Handle the response if needed
+        console.log("History Data:", historyResponse.data);
+        axios.post(`http://localhost:8082/status`, statusData)
+        .then((statusResponse) => {
+          const status = statusResponse.data;
+          console.log(status);
+        })
+        .catch(error => {
+          console.error('Error updating status:', error);
+        });
       });
 
   };
