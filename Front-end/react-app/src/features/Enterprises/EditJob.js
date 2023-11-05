@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams , useNavigate  } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import styled from "styled-components";
+import big_logo from "../pic/big_logo.png";
 import PropTypes from 'prop-types';
 function EditJob({ className }) {
   const { id } = useParams();
@@ -86,9 +87,10 @@ function EditJob({ className }) {
 
   return (
     <div className={className}>
-      <Container style={{ width: 800, marginTop: 50 }}>
+      <Container>
         <div>
-          <h1 className='Edith1'>Edit Enterprise</h1>
+        <h1 className='EditFreelanceh1'>Edit Your job</h1>
+        <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}> เปลี่ยนแปลงข้อมูลงานของเรา เพื่อให้freelanceมารับงาน</h2>
           <form>
             <div>
               <label>Name:</label>
@@ -204,10 +206,21 @@ function EditJob({ className }) {
               </select>
             </div>
 
-            <button type="button" onClick={updateEnterprise}>Save</button>
+            <button type="button" className="custom-button3" onClick={updateEnterprise}>Save</button>
           </form>
         </div>
       </Container>
+      <footer>
+        <div class="footer-content" style={{marginTop:'1500px'}}>
+          <img src={big_logo} alt="" className="big_logofooter" />
+          <p className="footertext1">
+            Norrapat Sai-ai 652110289<br></br>
+            Samitthichai Peeragun 652110309<br></br>
+            Sivasith Singkaew 652110308<br></br>
+            Jeeraphat Chantra 652110318<br></br>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
@@ -218,7 +231,22 @@ EditJob.propTypes = {
 };
 
 export default styled(EditJob)`
-margin:50px 400px 0px 400px;
+margin:50px 300px 0px 400px;
+.custom-button3{
+  margin-left: 1000px;
+  margin-top: 60px;
+  width: 130px;
+  height:40px;
+  border: 0px;
+  border-radius: 10px;
+background: #0071BE;
+color: #FFF;
+position: absolute;
+}
+.EditFreelanceh1{
+  font-size: 80px;
+  color: #0071BE;
+}
 .custom-button {
   margin-top: 30px;
   margin-left: 900px;

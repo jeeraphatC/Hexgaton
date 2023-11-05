@@ -168,7 +168,8 @@ const PostJob = () => {
     <div >
       <PostJobContainer>
 
-        <h2 style={{ marginTop: 60, }}>Post a Job</h2>
+        <h2 style={{ marginTop: 60,color: '#0071BE' }}>Post a Job</h2>
+        <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}>โพสงานเพื่อหาFreelanceมาทำงานให้เรา</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Name:</label>
@@ -187,7 +188,7 @@ const PostJob = () => {
               name="price"
               value={formData.price}
               onChange={handleInputChange}
-              
+              placeholder='งบประมาณ'
             />
           </div>
           <div>
@@ -319,7 +320,7 @@ const PostJob = () => {
         </form>
       </PostJobContainer>
       <footer>
-        <div class="footer-content">
+        <div class="footer-content" style={{marginTop:'1400px'}}>
           <img src={big_logo} alt="" className="big_logofooter" />
           <p className="footertext1">
             Norrapat Sai-ai 652110289<br></br>

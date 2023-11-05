@@ -113,7 +113,7 @@ h4:hover{
   width: 100%;
   background-color: #ffffff;
   border-bottom: 1px solid #dee2e6;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  box-shadow: 0 0.2px 0.25px rgba(0, 0, 0, 0.25);
   top: 0;
   /* padding: 2rem; */
   position: fixed;

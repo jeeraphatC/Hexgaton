@@ -4,6 +4,7 @@ import { useParams , useNavigate } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import styled from "styled-components";
 import PropTypes from 'prop-types';
+import big_logo from "../pic/big_logo.png";
 function EditFreelance({className}) {
   const { id } = useParams();
   const [freelance, setFreelance] = useState({
@@ -67,8 +68,9 @@ const navigate=useNavigate();
 
   return (
     <div className={className}>
-      <Container style={{ width: 800, marginTop: 50 }}>
-        <h1 className='EditFreelanceh1'>Edit Freelance</h1>
+      <Container style={{}}>
+        <h1 className='EditFreelanceh1'>Edit Your Profile</h1>
+        <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}> เปลี่ยนแปลงโปรไฟลของเรา เพื่อให้Enterpriseเห็นโปรไฟลของเรา</h2>
         <form>
           <div>
             <label>Name:</label>
@@ -161,11 +163,23 @@ const navigate=useNavigate();
               onChange={handleCompanyChange}
             />
           </div>
-
-          <button type="button" onClick={handleSave}>Save</button>
+          
         </form>
       </Container>
+      <button type="button" className="custom-button2" onClick={handleSave}>Save</button>
+      <footer>
+        <div class="footer-content" style={{marginTop:'1000px'}}>
+          <img src={big_logo} alt="" className="big_logofooter" />
+          <p className="footertext1">
+            Norrapat Sai-ai 652110289<br></br>
+            Samitthichai Peeragun 652110309<br></br>
+            Sivasith Singkaew 652110308<br></br>
+            Jeeraphat Chantra 652110318<br></br>
+          </p>
+        </div>
+      </footer>
     </div>
+    
   );
 }
 
@@ -175,7 +189,22 @@ EditFreelance.propTypes = {
 };
 
 export default styled(EditFreelance)`
- margin: 50px 400px 0px 400px;
+.custom-button2 {
+  margin-left: 1000px;
+  margin-top: 60px;
+  width: 130px;
+  height:40px;
+  border: 0px;
+  border-radius: 10px;
+background: #0071BE;
+color: #FFF;
+position: absolute;
+}
+.EditFreelanceh1{
+  font-size: 80px;
+  color: #0071BE;
+}
+margin:50px 300px 0px 400px;
   .custom-button {
     margin-top: 30px;
     margin-left: 900px;
@@ -207,4 +236,5 @@ export default styled(EditFreelance)`
     border-radius: 4px;
     resize: none;
   }
+  
 `;
