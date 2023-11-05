@@ -194,30 +194,32 @@ function FindJob({ className }) {
           </Col>
         </Row>
         <Row>
-          {enterprises.map(enterprise => (
-            <Col md={3} key={enterprise.id}>
-               {enterprise.shows == null ? (
-              <Card
-                style={{
-                  width: "18rem",marginBottom:20
-                }}
-                onClick={() => handleCardClick(enterprise)}
-              >
-                <Card.Img variant="top" style={{ width: 286, height: 180 }} src={enterpriseImages[enterprise.id]} />
-                <Card.Body>
-                  <Card.Title>{enterprise.name}</Card.Title>
-                  <Card.Subtitle>{truncateText(enterprise.description,40)}</Card.Subtitle>
-                  <Card.Text><strong>Time to work :</strong> {enterprise.time} DAYS</Card.Text>
-                  <Card.Footer style={{ textAlign: "right" }}>${enterprise.price}
-                   <Link to={`/enterprises/${enterprise.id}`}>
-                      <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px' }} />
-                    </Link>
-                  </Card.Footer>
-                </Card.Body>
-              </Card>
-                ) : ""}
-            </Col>
-          ))}
+        {enterprises.map(enterprise => (
+  enterprise.shows == null ? (
+    <Col md={3} key={enterprise.id}>
+      <Card
+        style={{
+          width: "18rem",
+          marginBottom: 20
+        }}
+        onClick={() => handleCardClick(enterprise)}
+      >
+        <Card.Img variant="top" style={{ width: 286, height: 180 }} src={enterpriseImages[enterprise.id]} />
+        <Card.Body>
+          <Card.Title>{enterprise.name}</Card.Title>
+          <Card.Subtitle>{truncateText(enterprise.description, 40)}</Card.Subtitle>
+          <Card.Text><strong>Time to work :</strong> {enterprise.time} DAYS</Card.Text>
+          <Card.Footer style={{ textAlign: "right" }}>${enterprise.price}
+           <Link to={`/enterprises/${enterprise.id}`}>
+              <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px' }} />
+            </Link>
+          </Card.Footer>
+        </Card.Body>
+      </Card>
+    </Col>
+  ) : null
+))}
+
         </Row>
         <div className="selected-items">
           <h4>Selected job to compare</h4>

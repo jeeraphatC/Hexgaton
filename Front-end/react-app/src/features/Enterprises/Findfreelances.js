@@ -153,29 +153,31 @@ function FindFreelances({ className }) {
           </Col>
         </Row>
         <Row >
-          {freelances.map(freelance => (
-            <Col md={3} key={freelance.id}>
-               {freelance.shows == null ? (
-              <Card
-                style={{
-                  width: "18rem",marginBottom:20
-                }}
-              >
-                <Card.Img variant="top" style={{ width: 286, height: 180 }} src={freelancerImages[freelance.id]} />
-                <Card.Body>
-                  <Card.Title>{freelance.name}</Card.Title>
-                  <Card.Subtitle>{truncateText(freelance.description, 40)}</Card.Subtitle>
-                  <Card.Text><strong>Time to work :</strong> {freelance.time} DAYS</Card.Text>
-                  <Card.Footer style={{ textAlign: "right" }}>${freelance.price}
-                    <Link to={`/freelance/${freelance.id}`}>
-                      <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px' }} />
-                    </Link>
-                  </Card.Footer>
-                </Card.Body>
-              </Card>
-               ) : ""}
-            </Col>
-          ))}
+        {freelances.map(freelance => (
+  freelance.shows !== "no" ? (
+    <Col md={3} key={freelance.id}>
+      <Card
+        style={{
+          width: "18rem",
+          marginBottom: 20
+        }}
+      >
+        <Card.Img variant="top" style={{ width: 286, height: 180 }} src={freelancerImages[freelance.id]} />
+        <Card.Body>
+          <Card.Title>{freelance.name}</Card.Title>
+          <Card.Subtitle>{truncateText(freelance.description, 40)}</Card.Subtitle>
+          <Card.Text><strong>Time to work :</strong> {freelance.time} DAYS</Card.Text>
+          <Card.Footer style={{ textAlign: "right" }}>${freelance.price}
+            <Link to={`/freelance/${freelance.id}`}>
+              <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px' }} />
+            </Link>
+          </Card.Footer>
+        </Card.Body>
+      </Card>
+    </Col>
+  ) : null
+))}
+
         </Row>
       </Container>
     </div>

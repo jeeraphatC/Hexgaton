@@ -120,10 +120,6 @@ function ViewEnter({ className }) {
     });
 };
 
-
-
-
-
   const isOwner = getCookies("id") == enterprise.account.accountid;
 
   return (
