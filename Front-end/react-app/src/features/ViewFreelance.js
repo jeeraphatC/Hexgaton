@@ -59,6 +59,7 @@ function ViewFreelance({ className }) {
 
   const handleConfirmButtonClick = () => {
     const test_id = getCookies("id");
+    const test_name = getCookies("username");
     console.log("hello",test_id)
     
     const patchData = {
