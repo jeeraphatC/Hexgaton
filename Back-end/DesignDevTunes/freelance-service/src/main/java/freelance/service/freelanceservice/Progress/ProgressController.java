@@ -64,6 +64,12 @@ public class ProgressController {
             if (patchedProgress.getFreelancer() != null) {
                 existingProgress.setFreelancer(patchedProgress.getFreelancer());
             }
+            if (patchedProgress.getAccount_name() != null) {
+                existingProgress.setAccount_name(patchedProgress.getAccount_name());
+            }
+            if (patchedProgress.getAccount_id() != null) {
+                existingProgress.setAccount_id(patchedProgress.getAccount_id());
+            }
             return progressRepository.save(existingProgress);
         }
         return null;

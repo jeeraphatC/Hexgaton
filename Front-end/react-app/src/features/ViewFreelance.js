@@ -61,7 +61,7 @@ function ViewFreelance({ className }) {
     const test_id = getCookies("id");
     const test_name = getCookies("username");
     console.log("hello",test_id)
-    
+
     const patchData = {
       shows: "no"
     };
@@ -82,38 +82,43 @@ function ViewFreelance({ className }) {
       status: "process",
       freelancer: {
         id: id
-      }
+      },
+      account_name:test_name,
+      account_id:test_id
     };
 
+    console.log(id);
     const historyData = {
       account: {
         accountid: accId,
       },
-      enterprise: {
+      freelance: {
         id: id
       }
     };
+    console.log(historyData)
+    // axios
+    //   .post(`http://localhost:8082/historys/freelance`, historyData)
+    //   .then((historyResponse) => {
+    //     // Handle the response if needed
+    //     console.log("History Data:", historyResponse.data);
+    //   });
 
-    axios
-      .post(`http://localhost:8082/historys/freelance`, historyData)
-      .then((historyResponse) => {
-        // Handle the response if needed
-        console.log("History Data:", historyResponse.data);
 
-        axios.post(`http://localhost:8082/status`, statusData)
-          .then((statusResponse) => {
-            const status = statusResponse.data;
-            console.log(status);
-          })
-          .catch(error => {
-            console.error('Error updating status:', error);
-          });
+    axios.post(`http://localhost:8082/status`, statusData)
+      .then((statusResponse) => {
+        const status = statusResponse.data;
+        console.log(status);
+      })
+      .catch(error => {
+        console.error('Error updating status:', error);
       });
 
   };
+
   const isOwner = getCookies("id") == freelance.account.accountid;
 
-  
+
 
 
   return (

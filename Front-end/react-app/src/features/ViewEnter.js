@@ -85,9 +85,6 @@ function ViewEnter({ className }) {
       enterprise: {
         id: id
       }
-
-
-
     };
 
 
