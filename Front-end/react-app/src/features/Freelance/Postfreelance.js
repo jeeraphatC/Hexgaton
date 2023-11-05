@@ -9,7 +9,6 @@ const PostFreelanceContainer = styled.div`
   margin: 50px 400px 0px 400px;
   .custom-button {
     margin-top: 30px;
-    margin-left: 900px;
   }
   input[type="file"] {
     font-size: 16px;
@@ -296,7 +295,7 @@ const PostFreelance = () => {
         </form>
       </PostFreelanceContainer>
       <footer >
-        <div class="footer-content" style={{ marginTop: '1200px' }}>
+        <div class="footer-content" style={{ marginTop: '1800px' }}>
           <img src={big_logo} alt="" className="big_logofooter" />
           <p className="footertext1">
             Norrapat Sai-ai 652110289<br></br>

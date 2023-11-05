@@ -211,7 +211,7 @@ function EditJob({ className }) {
         </div>
       </Container>
       <footer>
-        <div class="footer-content" style={{marginTop:'1500px'}}>
+        <div class="footer-content" style={{marginTop:'1800px'}}>
           <img src={big_logo} alt="" className="big_logofooter" />
           <p className="footertext1">
             Norrapat Sai-ai 652110289<br></br>
@@ -233,15 +233,14 @@ EditJob.propTypes = {
 export default styled(EditJob)`
 margin:50px 300px 0px 400px;
 .custom-button3{
-  margin-left: 1000px;
+  margin-left: 300px;
   margin-top: 60px;
   width: 130px;
   height:40px;
   border: 0px;
   border-radius: 10px;
-background: #0071BE;
-color: #FFF;
-position: absolute;
+  background: #0071BE;
+  color: #FFF;
 }
 .EditFreelanceh1{
   font-size: 80px;

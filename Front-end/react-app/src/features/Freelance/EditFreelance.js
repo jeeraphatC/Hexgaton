@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams , useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import styled from "styled-components";
 import PropTypes from 'prop-types';
 import big_logo from "../pic/big_logo.png";
-function EditFreelance({className}) {
+function EditFreelance({ className }) {
   const { id } = useParams();
   const [freelance, setFreelance] = useState({
     name: '',
@@ -16,7 +16,7 @@ function EditFreelance({className}) {
     subtype: '',
     companyName: '',
   });
-const navigate=useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     axios.get(`http://localhost:8082/freelances/${id}`)
       .then(response => {
@@ -27,7 +27,7 @@ const navigate=useNavigate();
       });
   }, [id]);
 
-  const { name, price, time, description,type,subtype,companyName } = freelance;
+  const { name, price, time, description, type, subtype, companyName } = freelance;
 
   const handleNameChange = (event) => {
     setFreelance({ ...freelance, name: event.target.value });
@@ -70,7 +70,7 @@ const navigate=useNavigate();
     <div className={className}>
       <Container style={{}}>
         <h1 className='EditFreelanceh1'>Edit Your Profile</h1>
-        <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}> เปลี่ยนแปลงโปรไฟลของเรา เพื่อให้Enterpriseเห็นโปรไฟลของเรา</h2>
+        <h2 style={{ marginTop: 10, color: '#9C9C9C', fontSize: '30px' }}> เปลี่ยนแปลงโปรไฟลของเรา เพื่อให้Enterpriseเห็นโปรไฟลของเรา</h2>
         <form>
           <div>
             <label>Name:</label>
@@ -82,8 +82,8 @@ const navigate=useNavigate();
           </div>
           <div>
             <label>Description:</label>
-            <textarea value={description} 
-            onChange={handleDescriptionChange} 
+            <textarea value={description}
+              onChange={handleDescriptionChange}
             />
           </div>
 
@@ -150,7 +150,7 @@ const navigate=useNavigate();
             <label>Number of Day:</label>
             <input
               type="number" min="1"
-              name="time" 
+              name="time"
               value={time}
               onChange={handleTimeChange}
             />
@@ -163,12 +163,12 @@ const navigate=useNavigate();
               onChange={handleCompanyChange}
             />
           </div>
-          
+
         </form>
       </Container>
       <button type="button" className="custom-button2" onClick={handleSave}>Save</button>
       <footer>
-        <div class="footer-content" style={{marginTop:'1000px'}}>
+        <div class="footer-content" style={{ marginTop: '1800px' }}>
           <img src={big_logo} alt="" className="big_logofooter" />
           <p className="footertext1">
             Norrapat Sai-ai 652110289<br></br>
@@ -179,7 +179,7 @@ const navigate=useNavigate();
         </div>
       </footer>
     </div>
-    
+
   );
 }
 
@@ -190,15 +190,15 @@ EditFreelance.propTypes = {
 
 export default styled(EditFreelance)`
 .custom-button2 {
-  margin-left: 1000px;
+  margin-left: 300px;
   margin-top: 60px;
   width: 130px;
   height:40px;
   border: 0px;
   border-radius: 10px;
-background: #0071BE;
-color: #FFF;
-position: absolute;
+  background: #0071BE;
+  color: #FFF;
+
 }
 .EditFreelanceh1{
   font-size: 80px;

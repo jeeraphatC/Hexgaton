@@ -320,7 +320,7 @@ const PostJob = () => {
         </form>
       </PostJobContainer>
       <footer>
-        <div class="footer-content" style={{marginTop:'1400px'}}>
+        <div class="footer-content" style={{marginTop:'1800px'}}>
           <img src={big_logo} alt="" className="big_logofooter" />
           <p className="footertext1">
             Norrapat Sai-ai 652110289<br></br>
@@ -338,7 +338,7 @@ const PostJobContainer = styled.div`
 margin:50px 400px 0px 400px;
 .custom-button {
   margin-top: 30px;
-  margin-left: 900px;
+  margin-bottom: 100px;
 }
 input[type="file"] {
   font-size: 16px;
