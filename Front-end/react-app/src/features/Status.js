@@ -53,56 +53,132 @@ class Status extends Component {
     return (
       <div >
         <Container style={{ marginTop: 50 }}>
+          <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>My Work</h1>
+          <Row>
+          {this.state.status.map(status => (
+   status.enterprise !== null && getCookies("id") == status.enterprise.account.accountid && status.status === "process" ? (
+    <Col md={4} key={status.id}>
+      <Card style={{ width: 400, padding: 20, marginBottom: 20 }}>
+        <Card.Body>
+          <Card.Title><strong>Name:</strong> {status.enterprise.name}</Card.Title>
+          <Card.Title><strong>Price:</strong> {status.enterprise.price}</Card.Title>
+          <Card.Title><strong>Time:</strong> {status.enterprise.time}</Card.Title>
+          <Card.Title><strong>Type:</strong> {status.enterprise.type}</Card.Title>
+          <Card.Title><strong>Subtype:</strong> {status.enterprise.subtype}</Card.Title>
+          <Card.Title><strong>CompanyName:</strong> {status.enterprise.companyName}</Card.Title>
+          <Card.Title><strong>Description:</strong> {status.enterprise.description}</Card.Title>
+          <Card.Title><strong>Enterprise:</strong> {status.account_name}</Card.Title>
+        </Card.Body>
+      </Card>
+    </Col>
+  ) : (
+    status.freelancer != null && getCookies("id") == status.account_id && status.status == "process" ? (
+      <Col md={4} key={status.id}>
+        <Card style={{ width: 400, padding: 20, marginBottom: 20 }}>
+          <Card.Body>
+          <Card.Title><strong>Name:</strong> {status.freelancer.name}</Card.Title>
+          <Card.Title><strong>Price:</strong> {status.freelancer.price}</Card.Title>
+          <Card.Title><strong>Time:</strong> {status.freelancer.time}</Card.Title>
+          <Card.Title><strong>Type:</strong> {status.freelancer.type}</Card.Title>
+          <Card.Title><strong>Subtype:</strong> {status.freelancer.subtype}</Card.Title>
+          <Card.Title><strong>CompanyName:</strong> {status.freelancer.companyName}</Card.Title>
+          <Card.Title><strong>Description:</strong> {status.freelancer.description}</Card.Title>
+          <Card.Title><strong>Freelance:</strong> {status.account_name}</Card.Title>
+          </Card.Body>
+        </Card>
+      </Col>
+    ) : null
+  )
+))}
+          </Row>
+        </Container>
+
+        <Container style={{ marginTop: 50 }}>
           <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>In process</h1>
           <Row>
-            {this.state.status.map(status => (
-              <Col md={4} key={status.id}>
-                 {getCookies("id") == status.enterprise.account.accountid && status.status === "process" ? (
-                  <Card style={{ width: 400, padding: 20, marginBottom: 20 }} >
-                    <Card.Body>
-                      <Card.Title><strong>Name:</strong> {status.enterprise.name}</Card.Title>
-                      <Card.Title><strong>Price:</strong> {status.enterprise.price}</Card.Title>
-                      <Card.Title><strong>Time:</strong> {status.enterprise.time}</Card.Title>
-                      <Card.Title><strong>Workprocess:</strong> {status.enterprise.workprocess}</Card.Title>
-                      <Card.Title><strong>Type:</strong> {status.enterprise.type}</Card.Title>
-                      <Card.Title><strong>Subtype:</strong> {status.enterprise.subtype}</Card.Title>
-                      <Card.Title><strong>Location:</strong> {status.enterprise.location}</Card.Title>
-                      <Card.Title><strong>Description:</strong> {status.enterprise.description}</Card.Title>
-                      <Card.Title><strong>Freelance:</strong> {status.freelancer}</Card.Title>
-                      <Card.Title><strong>Status:</strong> {status.status}</Card.Title>
-                      <Button onClick={() => this.FinishEnterprise(status.id)} variant="danger">Finish</Button>
-                    </Card.Body>
-                  </Card>
-                 ) : null}
-              </Col>
-            ))}
+          {this.state.status.map(status => (
+  status.freelancer != null && getCookies("id") == status.freelancer.account.accountid && status.status == "process" ? (
+    <Col md={4} key={status.id}>
+      <Card style={{ width: 400, padding: 20, marginBottom: 20 }}>
+        <Card.Body>
+          <Card.Title><strong>Name:</strong> {status.freelancer.name}</Card.Title>
+          <Card.Title><strong>Price:</strong> {status.freelancer.price}</Card.Title>
+          <Card.Title><strong>Time:</strong> {status.freelancer.time}</Card.Title>
+          <Card.Title><strong>Type:</strong> {status.freelancer.type}</Card.Title>
+          <Card.Title><strong>Subtype:</strong> {status.freelancer.subtype}</Card.Title>
+          <Card.Title><strong>CompanyName:</strong> {status.freelancer.companyName}</Card.Title>
+          <Card.Title><strong>Description:</strong> {status.freelancer.description}</Card.Title>
+          <Card.Title><strong>Freelance:</strong> {status.account_name}</Card.Title>
+          <Button onClick={() => this.FinishEnterprise(status.id)} variant="danger">Finish</Button>
+        </Card.Body>
+      </Card>
+    </Col>
+  ) : (
+    status.enterprise != null && getCookies("id") == status.account_id && status.status == "process" ? (
+      <Col md={4} key={status.id}>
+        <Card style={{ width: 400, padding: 20, marginBottom: 20 }}>
+          <Card.Body>
+            <Card.Title><strong>Name:</strong> {status.enterprise.name}</Card.Title>
+            <Card.Title><strong>Price:</strong> {status.enterprise.price}</Card.Title>
+            <Card.Title><strong>Time:</strong> {status.enterprise.time}</Card.Title>
+            <Card.Title><strong>Type:</strong> {status.enterprise.type}</Card.Title>
+            <Card.Title><strong>Subtype:</strong> {status.enterprise.subtype}</Card.Title>
+            <Card.Title><strong>CompanyName:</strong> {status.enterprise.companyName}</Card.Title>
+            <Card.Title><strong>Description:</strong> {status.enterprise.description}</Card.Title>
+            <Card.Title><strong>Enterprise:</strong> {status.account_name}</Card.Title>
+            <Button onClick={() => this.FinishEnterprise(status.id)} variant="danger">Finish</Button>
+          </Card.Body>
+        </Card>
+      </Col>
+    ) : null
+  )
+))}
+
           </Row>
         </Container>
-        <Container style={{ marginTop: 50 }}>
-          <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>Finished</h1>
+
+
+<Container style={{ marginTop: 50 }}>
+          <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>Complete</h1>
           <Row>
-            {this.state.status.map(status => (
-              <Col md={4} key={status.id}>
-                 {getCookies("id") == status.enterprise.account.accountid && status.status !== "process" ? (
-                  <Card style={{ width: 400, padding: 20, marginBottom: 20 }} >
-                    <Card.Body>
-                      <Card.Title><strong>Name:</strong> {status.enterprise.name}</Card.Title>
-                      <Card.Title><strong>Price:</strong> {status.enterprise.price}</Card.Title>
-                      <Card.Title><strong>Time:</strong> {status.enterprise.time}</Card.Title>
-                      <Card.Title><strong>Workprocess:</strong> {status.enterprise.workprocess}</Card.Title>
-                      <Card.Title><strong>Type:</strong> {status.enterprise.type}</Card.Title>
-                      <Card.Title><strong>Subtype:</strong> {status.enterprise.subtype}</Card.Title>
-                      <Card.Title><strong>Location:</strong> {status.enterprise.location}</Card.Title>
-                      <Card.Title><strong>Description:</strong> {status.enterprise.description}</Card.Title>
-                      <Card.Title><strong>Freelance:</strong> {status.freelancer}</Card.Title>
-                      <Card.Title><strong>Status:</strong> {status.status}</Card.Title>
-                    </Card.Body>
-                  </Card>
-                 ) : null}
-              </Col>
-            ))}
+          {this.state.status.map(status => (
+  status.freelancer != null && getCookies("id") == status.freelancer.account.accountid && status.status == "Finish" ? (
+    <Col md={4} key={status.id}>
+      <Card style={{ width: 400, padding: 20, marginBottom: 20 }}>
+        <Card.Body>
+        <Card.Title><strong>Name:</strong> {status.freelancer.name}</Card.Title>
+          <Card.Title><strong>Price:</strong> {status.freelancer.price}</Card.Title>
+          <Card.Title><strong>Time:</strong> {status.freelancer.time}</Card.Title>
+          <Card.Title><strong>Type:</strong> {status.freelancer.type}</Card.Title>
+          <Card.Title><strong>Subtype:</strong> {status.freelancer.subtype}</Card.Title>
+          <Card.Title><strong>CompanyName:</strong> {status.freelancer.companyName}</Card.Title>
+          <Card.Title><strong>Description:</strong> {status.freelancer.description}</Card.Title>
+          <Card.Title><strong>Freelance:</strong> {status.account_name}</Card.Title>
+        </Card.Body>
+      </Card>
+    </Col>
+  ) : (
+    status.enterprise != null && getCookies("id") == status.account_id && status.status == "Finish" ? (
+      <Col md={4} key={status.id}>
+        <Card style={{ width: 400, padding: 20, marginBottom: 20 }}>
+          <Card.Body>
+            <Card.Title><strong>Name:</strong> {status.enterprise.name}</Card.Title>
+            <Card.Title><strong>Price:</strong> {status.enterprise.price}</Card.Title>
+            <Card.Title><strong>Time:</strong> {status.enterprise.time}</Card.Title>
+            <Card.Title><strong>Type:</strong> {status.enterprise.type}</Card.Title>
+            <Card.Title><strong>Subtype:</strong> {status.enterprise.subtype}</Card.Title>
+            <Card.Title><strong>CompanyName:</strong> {status.enterprise.companyName}</Card.Title>
+            <Card.Title><strong>Description:</strong> {status.enterprise.description}</Card.Title>
+            <Card.Title><strong>Enterprise:</strong> {status.account_name}</Card.Title>
+          </Card.Body>
+        </Card>
+      </Col>
+    ) : null
+  )
+))}
           </Row>
         </Container>
+          
       </div>
       
     );
