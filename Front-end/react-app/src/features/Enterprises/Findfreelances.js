@@ -17,7 +17,6 @@ function FindFreelances({ className }) {
   const [freelances, setFreelance] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
   const [freelancerImages, setFreelancerImages] = useState({});
-
   let path;
   if (type2 == null) {
     path = `http://localhost:8082/freelances/type/${type}`
@@ -151,14 +150,11 @@ function FindFreelances({ className }) {
         <Row style={{ marginBottom: 20 }}>
           <Col md={10} style={{paddingLeft : 0}}>
             {develop()}
-            {/* <Button variant="success" className='btn-add-first'>
-              <Link to='/Postjob' className='btn-add-sec'>For Freelance ADD Job</Link>
-            </Button> */}
           </Col>
         </Row>
         <Row >
           {freelances.map(freelance => (
-            <Col md={4} key={freelance.id}>
+            <Col md={3} key={freelance.id}>
             <Card
                 style={{
                   width: "18rem",
@@ -179,7 +175,6 @@ function FindFreelances({ className }) {
             </Col>
           ))}
         </Row>
-        
       </Container>
     </div>
   );
