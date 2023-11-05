@@ -44,7 +44,7 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
     }
 
     @PutMapping("/{id}")
-    public Freelance updateFreelance(@PathVariable Long id, @RequestBody Freelance updatedFreelance) { 
+    public Freelance updateFreelance(@PathVariable Long id, @RequestBody Freelance updatedFreelance) {
         Freelance existingFreelance = freelanceRepository.findById(id).orElse(null);
 
         if (existingFreelance != null) {
@@ -93,7 +93,9 @@ public class FreelanceController { // เปลี่ยนชื่อ class �
             if (patchedFreelance.getAccount() != null) {
                 existingFreelance.setAccount(patchedFreelance.getAccount());
             }
-
+            if (patchedFreelance.getShows() != null) {
+                existingFreelance.setShows(patchedFreelance.getShows());
+            }
             return freelanceRepository.save(existingFreelance);
         }
 

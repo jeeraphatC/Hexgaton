@@ -2,7 +2,6 @@ package freelance.service.freelanceservice;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "enterprise")
 public class Enterprise {
@@ -20,12 +19,12 @@ public class Enterprise {
     private String workprocess;
     private String examplejob;
     private int fixtime;
-    
+    private String shows;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
-     
+
     public Account getAccount() {
         return account;
     }
@@ -33,10 +32,9 @@ public class Enterprise {
     public void setAccount(Account account) {
         this.account = account;
     }
+
     public Enterprise() {
     }
-
-    
 
     public Enterprise(Long id, String name, String price, int time, String description, String type, String subtype,
             String location, String workprocess, String examplejob, int fixtime, Account account) {
@@ -141,4 +139,13 @@ public class Enterprise {
     public void setSubtype(String subtype) {
         this.subtype = subtype;
     }
+
+    public String getShows() {
+        return shows;
+    }
+
+    public void setShows(String shows) {
+        this.shows = shows;
+    }
+
 }

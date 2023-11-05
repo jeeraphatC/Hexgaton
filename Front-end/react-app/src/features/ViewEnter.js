@@ -63,8 +63,21 @@ function ViewEnter({ className }) {
   }
 
   const handleConfirmButtonClick = () => {
+    
+    const patchData = {
+     shows : "no"
+    };
 
-
+    axios
+      .patch(`http://localhost:8090/enterprises/${id}`, patchData)
+      .then((patchResponse) => {
+        // Handle the PATCH response if needed
+        console.log("PATCH Data:", patchResponse.data);
+      })
+      .catch((patchError) => {
+        console.error("Error sending PATCH request:", patchError);
+      });
+  
 
     setChatButtonClicked(true);
     const statusData = {

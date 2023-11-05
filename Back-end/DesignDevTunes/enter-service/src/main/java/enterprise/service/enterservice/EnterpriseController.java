@@ -94,6 +94,10 @@ public class EnterpriseController {
                 existingEnterprise.setLocation(patchedEnterprise.getLocation());
             }
 
+            if (patchedEnterprise.getShows() != null) {
+                existingEnterprise.setShows(patchedEnterprise.getShows());
+            }
+
             return enterpriseRepository.save(existingEnterprise);
         }
 
@@ -108,7 +112,7 @@ public class EnterpriseController {
     @DeleteMapping("id/{id}")
     public ResponseEntity<String> deleteEnterprises(@PathVariable Long id) {
         try {
-            
+
             Enterprise enterprise = enterpriseRepository.findById(id).orElse(null);
             if (enterprise != null) {
                 // Set the foreign key value to null (assuming the relationship allows this)
@@ -118,10 +122,8 @@ public class EnterpriseController {
             enterpriseRepository.deleteById(id);
             return ResponseEntity.ok("Enterprise deleted successfully.");
         } catch (Exception e) {
-             return ResponseEntity.ok("Enterprise deleted notsuccessfully.");
+            return ResponseEntity.ok("Enterprise deleted notsuccessfully.");
         }
     }
-
-    
 
 }
