@@ -24,34 +24,34 @@ function OptionsEnterprise({ className }) {
         <p>สำหรับผู้ประกอบการที่ต้องการหาFreelanceมาช่วยทำงาน</p>
         <Row>
           <Col md={6}>
-          <Link to="/findfreelance" state={{ type: "develop" }}>
-            <div className="options1">
-              <img src={webdevbg} alt="" className="webdevbg" />
-              <h3 style={{ zIndex: 20, fontSize: '40px', marginTop: '130px' }} >Develop</h3>
-            </div>
-          </Link>
+            <Link to="/findfreelance" state={{ type: "develop" }}>
+              <div className="options1">
+                <img src={webdevbg} alt="" className="webdevbg" />
+                <h3 style={{ zIndex: 20, fontSize: '40px', marginTop: '130px' }} >Develop</h3>
+              </div>
+            </Link>
           </Col><Col md={6}>
-          <Link to="/findfreelance" state={{ type: "graphic" }}>
-            <div className="options2">
-              <img src={designbg2} alt="" className="designop" />
-              <h3 style={{ zIndex: 20, fontSize: '40px', marginTop: '130px' }}>Graphic</h3>
-            </div>
-          </Link>
+            <Link to="/findfreelance" state={{ type: "graphic" }}>
+              <div className="options2">
+                <img src={designbg2} alt="" className="designop" />
+                <h3 style={{ zIndex: 20, fontSize: '40px', marginTop: '130px' }}>Graphic</h3>
+              </div>
+            </Link>
           </Col>
           <Col md={6}>
-          <Link to="/findfreelance" state={{ type: "music" }}>
-            <div className="options3">
-              <img src={musicbg} alt="" className="musicbg" />
-              <h3 style={{ zIndex: 20, fontSize: '40px', marginTop: '130px' }}>Music</h3>
-            </div>
-          </Link>
+            <Link to="/findfreelance" state={{ type: "music" }}>
+              <div className="options3">
+                <img src={musicbg} alt="" className="musicbg" />
+                <h3 style={{ zIndex: 20, fontSize: '40px', marginTop: '130px' }}>Music</h3>
+              </div>
+            </Link>
           </Col>
           <Col md={6}>
-          <Link to="/FreelanceForm" state={{ type: "postf" }}>
-            <div className="options4">
-              <h3 style={{ zIndex: 20, fontSize: '40px', marginTop: '130px' }}>ADD Post for Freelance</h3>
-            </div>
-          </Link>
+            <Link to="/FreelanceForm" state={{ type: "postf" }}>
+              <div className="options4">
+                <h3 style={{ zIndex: 20, fontSize: '40px', marginTop: '130px' }}>ADD Post for Freelance</h3>
+              </div>
+            </Link>
           </Col>
         </Row>
       </Container>
@@ -94,6 +94,7 @@ export default styled(OptionsEnterprise)`
   letter-spacing: -0.22px;
   text-align: center;
   }
+}
 .musicbg:hover{
 
 }
