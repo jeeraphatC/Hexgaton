@@ -149,8 +149,8 @@ const navigate=useNavigate();
           <div>
             <label>Number of Day:</label>
             <input
-              type="number"
-              name="time"
+              type="number" min="1"
+              name="time" 
               value={time}
               onChange={handleTimeChange}
             />

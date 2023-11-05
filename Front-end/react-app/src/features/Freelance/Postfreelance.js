@@ -269,7 +269,7 @@ const PostFreelance = () => {
           <div style={{ marginBottom: 20 }}>
             <label>Number of Day:</label>
             <input
-              type="number"
+              type="number" min="1"
               name="time"
               value={formData.time}
               onChange={handleInputChange}

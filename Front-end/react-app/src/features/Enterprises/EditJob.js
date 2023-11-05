@@ -102,7 +102,7 @@ function EditJob({ className }) {
             </div>
             <div>
               <label>Time:</label>
-              <input type="number" value={enterprise.time} onChange={handleTimeChange} />
+              <input type="number" min="1" value={enterprise.time} onChange={handleTimeChange} />
             </div>
             <div>
               <label>Description:</label>

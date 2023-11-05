@@ -194,8 +194,8 @@ const PostJob = () => {
           <div>
             <label>Number of Day:</label>
             <input
-              type="number"
-              name="time"
+              type="number" min="1"
+              name="time" 
               value={formData.time}
               onChange={handleInputChange}
               placeholder='จำนวนวันที่ต้องทำงาน'
