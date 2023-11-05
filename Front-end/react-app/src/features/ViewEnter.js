@@ -13,12 +13,16 @@ function ViewEnter({ className }) {
   const [isChatButtonClicked, setChatButtonClicked] = useState(false);
   const [enterpriseImages, setEnterpriseImages] = useState({});
   const [image, setImage] = useState(null);
+  const [workData,setWorkdata] = useState([]);
   const [status, setStatus] = useState({
     status: '',
   });
   const [account, setaccount] = useState();
+  const [accId,setaccId] = useState();
 
   useEffect(() => {
+    setaccId(getCookies('id'));
+
     axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
       .then(response => {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
@@ -72,21 +76,41 @@ function ViewEnter({ className }) {
 
 
     };
-    const response = axios.post('http://localhost:8082/historys/freelance')
-      .then((responsedata) => {
+
+
+    const historyData = {
+      account: {
+        accountid: accId,
+      },
+      enterprise: {
+        id: id
+      }
+    };
+    axios
+    .post(`http://localhost:8082/historys/enterprise`, historyData)
+    .then((historyResponse) => {
+      // Handle the response if needed
+      console.log("History Data:", historyResponse.data);
+      
+      // After saving history, update the status
+      axios.post(`http://localhost:8082/status`, statusData)
+        .then((statusResponse) => {
+          // Handle the status response if needed
+          console.log("Status Data:", statusResponse.data);
+        })
+        .catch(error => {
+          console.error('Error updating status:', error);
+        });
+    })
+    .catch(error => {
+      console.error('Error saving history:', error);
+    });
+};
 
 
 
-      })
-    axios.post(`http://localhost:8082/status`, statusData)
-      .then((statusResponse) => {
-        const status = statusResponse.data;
-        console.log(status);
-      })
-      .catch(error => {
-        console.error('Error updating status:', error);
-      });
-  };
+
+
   const isOwner = getCookies("id") == enterprise.account.accountid;
 
   return (

@@ -15,6 +15,8 @@ function ViewFreelance({ className }) {
   const [freelanceImages, setFreelanceImages] = useState({});
   const [image, setImage] = useState(null);
   const imagelocation = getCookies("id");
+  const [accId,setaccId] = useState();
+  
   const [account, setaccount] = useState(' ');
   useEffect(() => {
     axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
@@ -64,6 +66,21 @@ function ViewFreelance({ className }) {
       }
     };
 
+    const historyData = {
+      account: {
+        accountid: accId,
+      },
+      enterprise: {
+        id: id
+      }
+    };
+
+    axios
+    .post(`http://localhost:8082/historys/freelance`, historyData)
+    .then((historyResponse) => {
+      // Handle the response if needed
+      console.log("History Data:", historyResponse.data);
+
     axios.post(`http://localhost:8082/status`, statusData)
       .then((statusResponse) => {
         const status = statusResponse.data;
@@ -72,7 +89,9 @@ function ViewFreelance({ className }) {
       .catch(error => {
         console.error('Error updating status:', error);
       });
-  };
+  });
+
+};
   const isOwner = getCookies("id") == freelance.account.accountid;
 
 

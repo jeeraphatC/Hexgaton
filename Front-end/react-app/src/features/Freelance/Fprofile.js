@@ -65,7 +65,7 @@ function Fprofile({ className }) {
       .get(`http://localhost:8082/historys/enterprise`)
       .then((response) => {
         if (Array.isArray(response.data)) {
-          const filteredData = response.data.filter((item) => item.enterprise.account.accountid == idFromCookies);
+          const filteredData = response.data.filter((item) => item.account.accountid == idFromCookies);
           console.log('History', filteredData);
   
           setWorkData(filteredData);

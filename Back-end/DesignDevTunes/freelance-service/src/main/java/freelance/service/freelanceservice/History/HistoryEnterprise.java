@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import freelance.service.freelanceservice.Account;
 import freelance.service.freelanceservice.Enterprise;
 
 @Entity
@@ -20,6 +21,9 @@ public class HistoryEnterprise {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name =  "account_id", referencedColumnName = "id")
+    private  Account account ;
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name =  "workEnter_id", referencedColumnName = "id")
@@ -31,12 +35,15 @@ public class HistoryEnterprise {
         
     }
 
-    public HistoryEnterprise(Long id, Enterprise enterprise) {
+
+
+    public HistoryEnterprise(Long id, Account account, Enterprise enterprise) {
         this.id = id;
-  
+        this.account = account;
         this.enterprise = enterprise;
- 
     }
+
+
 
     public Enterprise getEnterprise() {
         return enterprise;
@@ -48,7 +55,19 @@ public class HistoryEnterprise {
 
 
 
+    public Account getAccount() {
+        return account;
+    }
 
+
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+
+
+    
     
   
     
