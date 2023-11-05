@@ -173,8 +173,8 @@ const PostFreelance = () => {
   return (
     <div>
       <PostFreelanceContainer>
-      <h2 style={{ marginTop: 60,color: '#0071BE',fontSize:'70px'}}>Post your Profile</h2>
-        <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}>โพสโปรไฟลของเรา เพื่อให้Enterpriseเห็นโปรไฟลของเรา</h2>
+      <h2 style={{ marginTop: 60,color: '#0071BE',fontSize:'70px'}}>From for enterprise</h2>
+        <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}>โพสงานเพื่อหาFreelanceมาทำงานให้เรา</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Name:</label>

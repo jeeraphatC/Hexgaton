@@ -198,7 +198,7 @@ function FindJob({ className }) {
             <Col md={3} key={enterprise.id}>
               <Card
                 style={{
-                  width: "18rem",
+                  width: "18rem",marginBottom:20
                 }}
                 onClick={() => handleCardClick(enterprise)}
               >

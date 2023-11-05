@@ -44,9 +44,9 @@ function OptionsFreelance({ className }) {
                 </div>
               </Link>
             
-              <Link to="/FreelanceForm" state={{ type: "postf" }}>
+              <Link to="/PostJob" state={{ type: "postf" }}>
                 <div className="options4">
-                  <h3 style={{zIndex:20,fontSize:'40px',marginTop:'130px'}}>ADD your profile</h3>
+                  <h3 style={{zIndex:20,fontSize:'40px',marginTop:'130px'}}>ADD Post for enterprises</h3>
                 </div>
               </Link>
       </Container>

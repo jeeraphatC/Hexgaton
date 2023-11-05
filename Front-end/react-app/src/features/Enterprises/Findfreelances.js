@@ -157,7 +157,7 @@ function FindFreelances({ className }) {
             <Col md={3} key={freelance.id}>
               <Card
                 style={{
-                  width: "18rem",
+                  width: "18rem",marginBottom:20
                 }}
               >
                 <Card.Img variant="top" style={{ width: 286, height: 180 }} src={freelancerImages[freelance.id]} />

@@ -168,8 +168,8 @@ const PostJob = () => {
     <div >
       <PostJobContainer>
 
-        <h2 style={{ marginTop: 60,color: '#0071BE' }}>Post a Job</h2>
-        <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}>โพสงานเพื่อหาFreelanceมาทำงานให้เรา</h2>
+        <h2 style={{ marginTop: 60,color: '#0071BE' }}>From for freelance</h2>
+        <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}>โพสโปรไฟลของเรา เพื่อให้Enterpriseเห็นโปรไฟลของเรา</h2>
         <form onSubmit={handleSubmit}>
           <div>
             <label>Name:</label>
