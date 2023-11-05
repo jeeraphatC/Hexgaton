@@ -6,7 +6,7 @@ import designbg2 from "./pic/designbg2.jpg";
 import musicbg from "./pic/musicbg.jpg";
 import big_logo from "./pic/big_logo.png";
 import arrow from "./pic/barrow.png";
-import { Container ,Col ,Row} from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
@@ -17,41 +17,46 @@ function OptionsEnterprise({ className }) {
 
     <div className={className}>
       <Container style={{ marginTop: 50 }}>
-      <Link to="/" style={{fontSize:'30px',marginTop:'30px',color:'#0071BE'}}>Home</Link>
-        <img src={arrow} alt=""style={{width:'30px',marginLeft:'10px',marginBottom:'10px'}} />
-        <Link to="/optionenter" style={{fontSize:'30px',marginTop:'30px',marginLeft:'10px',color:'#808080'}}>Enterprises</Link>
+        <Link to="/" style={{ fontSize: '30px', marginTop: '30px', color: '#0071BE' }}>Home</Link>
+        <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
+        <Link to="/optionenter" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>Enterprises</Link>
         <h1>Type For Enterprises</h1>
         <p>สำหรับผู้ประกอบการที่ต้องการหาFreelanceมาช่วยทำงาน</p>
-          
-              <Link to="/findfreelance" state={{ type: "develop" }}>
-                <div className="options1">
-                  <img src={webdevbg} alt="" className="webdevbg" />
-                  <h3 style={{zIndex:20,fontSize:'40px',marginTop:'130px'}} >Develop</h3>
-                </div>
-              </Link>
-            
-              <Link to="/findfreelance" state={{ type: "graphic" }}>
-                <div className="options2">
-                <img src={designbg2} alt="" className="designop" />
-                  <h3 style={{zIndex:20,fontSize:'40px',marginTop:'130px'}}>Graphic</h3>
-                </div>
-              </Link>
-              
-              <Link to="/findfreelance" state={{ type: "music" }}>
-                <div className="options3">
-                <img src={musicbg} alt="" className="musicbg" />
-                  <h3 style={{zIndex:20,fontSize:'40px',marginTop:'130px'}}>Music</h3>
-                </div>
-              </Link>
-            
-              <Link to="/FreelanceForm" state={{ type: "postf" }}>
-                <div className="options4">
-                  <h3 style={{zIndex:20,fontSize:'40px',marginTop:'130px'}}>ADD Post for Freelance</h3>
-                </div>
-              </Link>
+        <Row>
+          <Col md={6}>
+          <Link to="/findfreelance" state={{ type: "develop" }}>
+            <div className="options1">
+              <img src={webdevbg} alt="" className="webdevbg" />
+              <h3 style={{ zIndex: 20, fontSize: '40px', marginTop: '130px' }} >Develop</h3>
+            </div>
+          </Link>
+          </Col><Col md={6}>
+          <Link to="/findfreelance" state={{ type: "graphic" }}>
+            <div className="options2">
+              <img src={designbg2} alt="" className="designop" />
+              <h3 style={{ zIndex: 20, fontSize: '40px', marginTop: '130px' }}>Graphic</h3>
+            </div>
+          </Link>
+          </Col>
+          <Col md={6}>
+          <Link to="/findfreelance" state={{ type: "music" }}>
+            <div className="options3">
+              <img src={musicbg} alt="" className="musicbg" />
+              <h3 style={{ zIndex: 20, fontSize: '40px', marginTop: '130px' }}>Music</h3>
+            </div>
+          </Link>
+          </Col>
+          <Col md={6}>
+          <Link to="/FreelanceForm" state={{ type: "postf" }}>
+            <div className="options4">
+              <h3 style={{ zIndex: 20, fontSize: '40px', marginTop: '130px' }}>ADD Post for Freelance</h3>
+            </div>
+          </Link>
+          </Col>
+        </Row>
       </Container>
       <footer>
-        <div class="footer-content" style={{marginTop:'800px'}}>
+        <div class="footer-content" style={{ marginTop: '1300px' }}>
           <img src={big_logo} alt="" className="big_logofooter" />
           <p className="footertext1">
             Norrapat Sai-ai 652110289<br></br>
@@ -83,23 +88,48 @@ export default styled(OptionsEnterprise)`
 .webdevbg:hover{
 
 }
-.webdevbg{
-  width: 100%;
-  height: 100%;
+.musicbg{
+  width: 550px;
+  height: 190px;
   position: absolute;
-  z-index: 1; /* Make sure z-index is lower than .options1 */
+  z-index: 1;
   border-radius:10px;
+  
+}
+.webdevbg:hover{
+
+}
+.musicbg{
+  width: 550px;
+  height: 190px;
+  position: absolute;
+  z-index: 1;
+  border-radius:10px;
+  
+}
+.webdevbg:hover{
+
+}
+.webdevbg{
+  width: 550px;
+  height: 190px;
+  position: absolute;
+  z-index: 1; 
+  border-radius:10px;
+  
 }
 .designop:hover {
   
 }
 .designop {
-  width: 100%;
-  height: 100%;
+  width: 550px;
+  height: 190px;
   position: absolute;
-  z-index: 1; /* Make sure z-index is lower than .options1 */
+  z-index: 1; 
   border-radius:10px;
 }
+
+
   h1{
     font-size: 45px;
     font-weight: bold;
@@ -115,59 +145,52 @@ export default styled(OptionsEnterprise)`
     font-size: 20px;
     color:#959595;
   }
+
+
   .optioncontainer{
     width: 80%;
     height: 40%;
-    background: #FFF;
-    position: absolute;
-    display: flex;
-    
-  justify-content: left;
-  flex-wrap:wrap;
+    background: #FFF;   
+    justify-content: left;
    }
    .options4{
+  
     width: 550px;
     height: 190px;
     background:#0196FC;
-    display: flex;
     transition: all 0.2s;
     text-align: left;
-    position: absolute;
-    left: 50%;
-    top: 500px;
+    display: flex;
     border-radius:10px;
 
    }
    .options3{
+    margin-bottom: 30px;
     width: 550px;
     height: 190px;
-    background:;
     display: flex;
     transition: all 0.2s;
     text-align: left;
-    position: absolute;
-    top: 500px;
     border-radius:10px;
    }
+
    .options2{
+    margin-bottom: 30px;
     width: 550px;
     height: 190px;
-    background:;
     display: flex;
     transition: all 0.2s;
     text-align: left;
-    position: absolute;
-    left: 50%;
     border-radius:10px;
    }
    .options1 {
+    margin-bottom: 30px;
+    margin-right: 40px;
     width: 550px;
     height: 190px;
-    background:;
     display: flex;
     transition: all 0.2s;
     text-align: left;
-    position: absolute;
     border-radius:10px;
   }
 
