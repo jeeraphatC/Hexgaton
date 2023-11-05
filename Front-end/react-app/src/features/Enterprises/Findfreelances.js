@@ -39,19 +39,19 @@ function FindFreelances({ className }) {
           marginTop: 0
         }}>
           <Col md={6} >
-            <Link to="/findfreelance" state={{ type: "develop" }}>
-              <Button style={{ marginBottom: 10 }}>Developer</Button>
+            <Link to="/findfreelance" className="needajob" state={{ type: "develop" }}>
+              <span  style={{ marginBottom: 10 }}>Developer</span>
             </Link>
-            <Link to="/findfreelance" state={{ type: "develop", type2: "web" }}>
-              <Button style={{ marginBottom: 10 }}>Web</Button>
-            </Link>
-
-            <Link to="/findfreelance" state={{ type: "develop", type2: "mobile" }}>
-              <Button style={{ marginBottom: 10 }}>Mobile</Button>
+            <Link to="/findfreelance"className="needajob" state={{ type: "develop", type2: "web" }}>
+              <span  style={{ marginBottom: 10 }}>Web</span>
             </Link>
 
-            <Link to="/findfreelance" state={{ type: "develop", type2: "desktop" }}>
-              <Button style={{ marginBottom: 10 }}>Desktop</Button>
+            <Link to="/findfreelance"className="needajob" state={{ type: "develop", type2: "mobile" }}>
+              <span  style={{ marginBottom: 10 }}>Mobile</span>
+            </Link>
+
+            <Link to="/findfreelance"className="needajob" state={{ type: "develop", type2: "desktop" }}>
+              <span  style={{ marginBottom: 10 }}>Desktop</span>
             </Link>
           </Col>
         </div>
@@ -63,17 +63,17 @@ function FindFreelances({ className }) {
           marginTop: 0
         }}>
           <Col md={10}>
-            <Link to="/findfreelance" state={{ type: "graphic" }}>
-              <Button style={{ marginBottom: 10 }}>Graphic</Button>
+            <Link to="/findfreelance" className="needajob" state={{ type: "graphic" }}>
+              <span style={{ marginBottom: 10 }}>Graphic</span>
             </Link>
-            <Link to="/findfreelance" state={{ type: "graphic", type2: "logos" }}>
-              <Button style={{ marginBottom: 10 }}>Logo Design</Button>
+            <Link to="/findfreelance" className="needajob" state={{ type: "graphic", type2: "logos" }}>
+              <span style={{ marginBottom: 10 }}>Logo Design</span>
             </Link>
-            <Link to="/findfreelance" state={{ type: "graphic", type2: "sticker" }}> <Button style={{ marginBottom: 10 }}>Sticker Design</Button></Link>
-            <Link to="/findfreelance" state={{ type: "graphic", type2: "character" }}> <Button style={{ marginBottom: 10 }}>Character Design</Button></Link>
-            <Link to="/findfreelance" state={{ type: "graphic", type2: "draw-cartoon" }}> <Button style={{ marginBottom: 10 }}>Draw cartoons</Button></Link>
-            <Link to="/findfreelance" state={{ type: "graphic", type2: "3d-models" }}> <Button style={{ marginBottom: 10 }}>3D Models</Button></Link>
-            <Link to="/findfreelance" state={{ type: "graphic", type2: "banner" }}> <Button style={{ marginBottom: 10 }}>Banner advertising design</Button></Link>
+            <Link to="/findfreelance" className="needajob" state={{ type: "graphic", type2: "sticker" }}> <span style={{ marginBottom: 10 }}>Sticker Design</span></Link>
+            <Link to="/findfreelance" className="needajob" state={{ type: "graphic", type2: "character" }}> <span style={{ marginBottom: 10 }}>Character Design</span></Link>
+            <Link to="/findfreelance" className="needajob" state={{ type: "graphic", type2: "draw-cartoon" }}> <span style={{ marginBottom: 10 }}>Draw cartoons</span></Link>
+            <Link to="/findfreelance" className="needajob" state={{ type: "graphic", type2: "3d-models" }}> <span style={{ marginBottom: 10 }}>3D Models</span></Link>
+            <Link to="/findfreelance" className="needajob" state={{ type: "graphic", type2: "banner" }}> <span style={{ marginBottom: 10 }}>Banner advertising design</span></Link>
           </Col>
         </div>
       );
@@ -81,11 +81,11 @@ function FindFreelances({ className }) {
     else if (type === 'music') {
       return (
         <Col md={4} >
-          <Link to="/findfreelance" state={{ type: "music" }}>
-            <Button style={{ marginBottom: 10 }}>Music</Button>
+          <Link to="/findfreelance" className="needajob" state={{ type: "music" }}>
+            <span style={{ marginBottom: 10 }}>Music</span>
           </Link>
-          <Link to="/findfreelance" state={{ type: "music", type2: "beat" }}>
-            <Button style={{ marginBottom: 10 }}>beat</Button>
+          <Link to="/findfreelance" className="needajob" state={{ type: "music", type2: "beat" }}>
+            <span style={{ marginBottom: 10 }}>beat</span>
           </Link>
         </Col>
       )
@@ -148,14 +148,14 @@ function FindFreelances({ className }) {
 
         <h1 style={{ margin: '30px 20px 20px 0px', color: '#0196FC' }}>Find Freelance (ALL)</h1>
         <Row style={{ marginBottom: 20 }}>
-          <Col md={10} style={{paddingLeft : 0}}>
+          <Col md={10} style={{ paddingLeft: 0 }}>
             {develop()}
           </Col>
         </Row>
         <Row >
           {freelances.map(freelance => (
             <Col md={3} key={freelance.id}>
-            <Card
+              <Card
                 style={{
                   width: "18rem",
                 }}
@@ -163,10 +163,10 @@ function FindFreelances({ className }) {
                 <Card.Img variant="top" style={{ width: 286, height: 180 }} src={freelancerImages[freelance.id]} />
                 <Card.Body>
                   <Card.Title>{freelance.name}</Card.Title>
-                  <Card.Subtitle>{truncateText(freelance.description,40)}</Card.Subtitle>
+                  <Card.Subtitle>{truncateText(freelance.description, 40)}</Card.Subtitle>
                   <Card.Text><strong>Time to work :</strong> {freelance.time} DAYS</Card.Text>
                   <Card.Footer style={{ textAlign: "right" }}>${freelance.price}
-                   <Link to={`/freelance/${freelance.id}`}>
+                    <Link to={`/freelance/${freelance.id}`}>
                       <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px' }} />
                     </Link>
                   </Card.Footer>
@@ -265,5 +265,19 @@ export default styled(FindFreelances)`
     margin-top: 0px;
     margin-right: 5px;
   }
+  .needajob{
+  color: #000;
+  padding:5px 20px 5px 20px ;
+  border: 2px solid #000;
+  transition: all 0.3s;
+  border-radius: 5px;
+  font-size:15px;
+  margin-right: 2px;
+}
+.needajob:hover , .needajob:focus{
+  color: #FFF;
+  background: #0196FC;
+  border: 2px solid #0196FC;
+}
   
 `;

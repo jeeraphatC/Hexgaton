@@ -41,19 +41,19 @@ function FindJob({ className }) {
           marginTop: 0
         }}>
           <Col md={6} s>
-            <Link to="/findjob" state={{ type: "develop" }}>
-              <Button style={{ marginBottom: 10 }}>Developer</Button>
+            <Link to="/findjob" className="needajob" state={{ type: "develop" }}>
+              <span style={{ marginBottom: 10 }}>Developer</span>
             </Link>
-            <Link to="/findjob" state={{ type: "develop", type2: "web" }}>
-              <Button style={{ marginBottom: 10 }}>Web</Button>
-            </Link>
-
-            <Link to="/findjob" state={{ type: "develop", type2: "mobile" }}>
-              <Button style={{ marginBottom: 10 }}>Mobile</Button>
+            <Link to="/findjob" className="needajob" state={{ type: "develop", type2: "web" }}>
+              <span style={{ marginBottom: 10 }}>Web</span>
             </Link>
 
-            <Link to="/findjob" state={{ type: "develop", type2: "desktop" }}>
-              <Button style={{ marginBottom: 10 }}>Desktop</Button>
+            <Link to="/findjob" className="needajob" state={{ type: "develop", type2: "mobile" }}>
+              <span style={{ marginBottom: 10 }}>Mobile</span>
+            </Link>
+
+            <Link to="/findjob" className="needajob" state={{ type: "develop", type2: "desktop" }}>
+              <span style={{ marginBottom: 10 }}>Desktop</span>
             </Link>
           </Col>
         </div>
@@ -65,17 +65,17 @@ function FindJob({ className }) {
           marginTop: 0
         }}>
           <Col md={10}>
-            <Link to="/findjob" state={{ type: "graphic" }}>
-              <Button style={{ marginBottom: 10 }}>Graphic</Button>
+            <Link to="/findjob" className="needajob" state={{ type: "graphic" }}>
+              <span style={{ marginBottom: 10 }}>Graphic</span>
             </Link>
-            <Link to="/findjob" state={{ type: "graphic", type2: "logos" }}>
-              <Button style={{ marginBottom: 10 }}>Logo Design</Button>
+            <Link to="/findjob" className="needajob" state={{ type: "graphic", type2: "logos" }}>
+              <span style={{ marginBottom: 10 }}>Logo Design</span>
             </Link>
-            <Link to="/findjob" state={{ type: "graphic", type2: "sticker" }}> <Button style={{ marginBottom: 10 }}>Sticker Design</Button></Link>
-            <Link to="/findjob" state={{ type: "graphic", type2: "character" }}> <Button style={{ marginBottom: 10 }}>Character Design</Button></Link>
-            <Link to="/findjob" state={{ type: "graphic", type2: "draw-cartoon" }}> <Button style={{ marginBottom: 10 }}>Draw cartoons</Button></Link>
-            <Link to="/findjob" state={{ type: "graphic", type2: "3d-models" }}> <Button style={{ marginBottom: 10 }}>3D Models</Button></Link>
-            <Link to="/findjob" state={{ type: "graphic", type2: "banner" }}> <Button style={{ marginBottom: 10 }}>Banner advertising design</Button></Link>
+            <Link to="/findjob" className="needajob" state={{ type: "graphic", type2: "sticker" }}> <span style={{ marginBottom: 10 }}>Sticker Design</span></Link>
+            <Link to="/findjob" className="needajob" state={{ type: "graphic", type2: "character" }}> <span style={{ marginBottom: 10 }}>Character Design</span></Link>
+            <Link to="/findjob" className="needajob" state={{ type: "graphic", type2: "draw-cartoon" }}> <span style={{ marginBottom: 10 }}>Draw cartoons</span></Link>
+            <Link to="/findjob" className="needajob" state={{ type: "graphic", type2: "3d-models" }}> <span style={{ marginBottom: 10 }}>3D Models</span></Link>
+            <Link to="/findjob" className="needajob" state={{ type: "graphic", type2: "banner" }}> <span style={{ marginBottom: 10 }}>Banner advertising design</span></Link>
           </Col>
         </div>
       );
@@ -86,11 +86,11 @@ function FindJob({ className }) {
           marginTop: 0
         }}>
           <Col md={4} >
-            <Link to="/findjob" state={{ type: "music" }}>
-              <Button style={{ marginBottom: 10 }}>Music</Button>
+            <Link to="/findjob" className="needajob" state={{ type: "music" }}>
+              <span style={{ marginBottom: 10 }}>Music</span>
             </Link>
-            <Link to="/findjob" state={{ type: "music", type2: "beat" }}>
-              <Button style={{ marginBottom: 10 }}>beat</Button>
+            <Link to="/findjob" className="needajob" state={{ type: "music", type2: "beat" }}>
+              <span style={{ marginBottom: 10 }}>beat</span>
             </Link>
           </Col>
         </div>
@@ -302,7 +302,18 @@ export default styled(FindJob)`
   float : right ;
   border: 2px solid #0071BE;
   }
-  Button{
-    margin-right: 5px;
-  }
+  .needajob{
+  color: #000;
+  padding:5px 20px 5px 20px ;
+  border: 2px solid #000;
+  transition: all 0.3s;
+  border-radius: 5px;
+  font-size:15px;
+  margin-right: 2px;
+}
+.needajob:hover , .needajob:focus{
+  color: #FFF;
+  background: #0196FC;
+  border: 2px solid #0196FC;
+}
 `;
