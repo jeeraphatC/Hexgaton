@@ -16,6 +16,7 @@ class UserData {
     this.location = data.location;
     this.workprocess = data.workprocess;
     this.fixtime = data.fixtime;
+    this.examplejob = data.examplejob;
   }
 }
 
@@ -89,6 +90,7 @@ function Compare({ className }) {
         user1.location = data.location;
         user1.workprocess = data.workprocess;
         user1.fixtime = data.fixtime;
+        user1.examplejob = data.examplejob;
         setUserData1(user1);
         setShowClearButton(true);
       })
@@ -117,6 +119,7 @@ function Compare({ className }) {
         user2.location = data.location;
         user2.workprocess = data.workprocess;
         user2.fixtime = data.fixtime;
+        user2.examplejob = data.examplejob;
         setUserData2(user2);
         setShowClearButton(true);
         
@@ -172,7 +175,7 @@ function Compare({ className }) {
         {userData1 && (
           <div>
             <div className="userContentContainer1">
-              <h2 className="userDataName">{userData1.name}</h2>
+              <h2 className="userDataName">Job 1 Name : {userData1.name}</h2>
             </div>
             <div className="FirstDataContainer1">
               <h3 className="datacontent">Time</h3>
@@ -191,16 +194,20 @@ function Compare({ className }) {
               <h3 className="data1">{userData1.location}</h3>
             </div>
             <div className="FirstDataContainer5">
-              <h3 className="workcontent">workprocess</h3>
+              <h3 className="workcontent">First job workprocess</h3>
               <h3 className="workprocessdata">{userData1.workprocess}</h3>
             </div>
             <div className="FirstDataContainer6">
-              <h3 className="workcontent">Description</h3>
+              <h3 className="workcontent">First job Description</h3>
               <h3 className="workprocessdata">{userData1.description}</h3>
             </div>
             <div className="FirstDataContainer7">
               <h3 className="datacontent">Fix time</h3>
               <h3 className="data1">{userData1.fixtime}</h3>
+            </div>
+            <div className="FirstDataContainer8">
+              <h3 className="workcontent">First job Example</h3>
+              <h3 className="workprocessdata">{userData1.examplejob}</h3>
             </div>
           </div>
         )}
@@ -209,7 +216,7 @@ function Compare({ className }) {
       {userData2 && (
         <div>
           <div className="userContentContainer2">
-            <h2 className="userDataName2">{userData2.name}</h2>
+            <h2 className="userDataName2">Job 2 Name : {userData2.name}</h2>
           </div>
           <div className="SecondDataContainer1">
             <h3 className="data2">{userData2.time} Day</h3>
@@ -224,29 +231,33 @@ function Compare({ className }) {
             <h3 className="data2">{userData2.location}</h3>
           </div>
           <div className="SecondDataContainer5">
-            <h3 className="workcontent2">workprocess</h3>
+            <h3 className="workcontent2">Second job workprocess</h3>
             <h3 className="workprocessdata2">{userData2.workprocess}</h3>
           </div>
           <div className="SecondDataContainer6">
-              <h3 className="workcontent">Description</h3>
+              <h3 className="workcontent">Second job Description</h3>
               <h3 className="workprocessdata">{userData2.description}</h3>
             </div>
           <div className="SecondDataContainer7">
             <h3 className="data2">{userData2.fixtime}</h3>
           </div>
+          <div className="SecondDataContainer8">
+              <h3 className="workcontent">Second job Example</h3>
+              <h3 className="workprocessdata">{userData2.examplejob}</h3>
+            </div>
         </div>
       )}
 
       {showClearButton && (
         <Link to="/">
-        <button className="clearbtn" style={{ width: '150px', height: '50px',fontSize:'20px'}}>
+        <button className="clearbtn" style={{ width: '150px', height: '50px',fontSize:'20px',marginTop:'200px'}}>
           Back
         </button>
       </Link>
       )}
 
       <footer>
-        <div class="footer-content">
+        <div class="footer-content" style={{ marginTop: '4000px' }}>
           <img src={big_logo} alt="" className="big_logofooter" />
           <p className="footertext1">
             Norrapat Sai-ai 652110289<br></br>
@@ -265,6 +276,30 @@ Compare.propTypes = {
 };
 
 export default styled(Compare)`
+.FirstDataContainer8 {
+  position: absolute;
+    border-radius: 10px;
+    background: #0071be;
+    top: 3100px;
+    left: 900px;
+    transform: translate(-50%, -50%);
+    width: 1400px;
+    height: 200px;
+    margin-top: 120px;
+    text-align: center;
+}
+.SecondDataContainer8{
+  position: absolute;
+    border-radius: 10px;
+    background: #0196fc;
+    top: 3350px;
+    left: 900px;
+    transform: translate(-50%, -50%);
+    width: 1400px;
+    height: 200px;
+    margin-top: 120px;
+    text-align: center;
+}
 .SecondDataContainer7{
   position: absolute;
   border-radius: 10px;
@@ -290,28 +325,26 @@ export default styled(Compare)`
 }
 .FirstDataContainer6 {
   position: absolute;
-  border-radius: 10px;
-  background: #0071be;
-  top: 2100px;
-  left: 600px;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 200px;
-  margin-top: 50px;
-  text-align: center;
+    border-radius: 10px;
+    background: #0071be;
+    top: 2500px;
+    left: 900px;
+    transform: translate(-50%, -50%);
+    width: 1400px;
+    height: 200px;
+    margin-top: 120px;
+    text-align: center;
 }
 .SecondDataContainer6{
   position: absolute;
     border-radius: 10px;
     background: #0196fc;
-    top: 2100px;
-    left: 1150px;
+    top: 2750px;
+    left: 900px;
     transform: translate(-50%, -50%);
-    width: 600px;
+    width: 1400px;
     height: 200px;
-    z-index: -1;
-    margin-top: 50px;
-    margin-left: 90px;
+    margin-top: 120px;
     text-align: center;
 }
   .workprocessdata {
@@ -342,24 +375,22 @@ export default styled(Compare)`
     position: absolute;
     border-radius: 10px;
     background: #0196fc;
-    top: 1800px;
-    left: 1150px;
+    top: 2150px;
+    left: 900px;
     transform: translate(-50%, -50%);
-    width: 600px;
+    width: 1400px;
     height: 200px;
-    z-index: -1;
     margin-top: 120px;
-    margin-left: 90px;
     text-align: center;
   }
   .FirstDataContainer5 {
     position: absolute;
     border-radius: 10px;
     background: #0071be;
-    top: 1800px;
-    left: 600px;
+    top: 1900px;
+    left: 900px;
     transform: translate(-50%, -50%);
-    width: 600px;
+    width: 1400px;
     height: 200px;
     margin-top: 120px;
     text-align: center;
