@@ -78,7 +78,24 @@ OptionsFreelance.propTypes = {
 };
 
 export default styled(OptionsFreelance)`
-
+.big_logofooter{
+  width: 300px;
+}
+.footer-content{
+  margin-top: 1600px;
+}
+.footertext1{
+  left: 50%;
+  margin-top:300px;
+  color: #9C9C9C;
+font-family: Bebas Neue;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+letter-spacing: -0.22px;
+text-align: center;
+}
 .musicbg:hover{
 
 }
