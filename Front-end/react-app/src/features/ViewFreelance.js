@@ -15,8 +15,8 @@ function ViewFreelance({ className }) {
   const [freelanceImages, setFreelanceImages] = useState({});
   const [image, setImage] = useState(null);
   const imagelocation = getCookies("id");
-  const [accId,setaccId] = useState();
-  
+  const [accId, setaccId] = useState();
+
   const [account, setaccount] = useState(' ');
   useEffect(() => {
     axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
@@ -58,21 +58,25 @@ function ViewFreelance({ className }) {
   }
 
   const handleConfirmButtonClick = () => {
+    const test_id = getCookies("id");
+    console.log("hello",test_id)
+    
     const patchData = {
-      shows : "no"
-     };
- 
-     axios
-       .patch(`http://localhost:8082/freelances/${id}`, patchData)
-       .then((patchResponse) => {
-         // Handle the PATCH response if needed
-         console.log("PATCH Data:", patchResponse.data);
-       })
-       .catch((patchError) => {
-         console.error("Error sending PATCH request:", patchError);
-       });
+      shows: "no"
+    };
+
+    axios
+      .patch(`http://localhost:8082/freelances/${id}`, patchData)
+      .then((patchResponse) => {
+        // Handle the PATCH response if needed
+        console.log("PATCH Data:", patchResponse.data);
+      })
+      .catch((patchError) => {
+        console.error("Error sending PATCH request:", patchError);
+      });
 
     setChatButtonClicked(true);
+
     const statusData = {
       status: "process",
       freelancer: {
@@ -90,32 +94,34 @@ function ViewFreelance({ className }) {
     };
 
     axios
-    .post(`http://localhost:8082/historys/freelance`, historyData)
-    .then((historyResponse) => {
-      // Handle the response if needed
-      console.log("History Data:", historyResponse.data);
+      .post(`http://localhost:8082/historys/freelance`, historyData)
+      .then((historyResponse) => {
+        // Handle the response if needed
+        console.log("History Data:", historyResponse.data);
 
-    axios.post(`http://localhost:8082/status`, statusData)
-      .then((statusResponse) => {
-        const status = statusResponse.data;
-        console.log(status);
-      })
-      .catch(error => {
-        console.error('Error updating status:', error);
+        axios.post(`http://localhost:8082/status`, statusData)
+          .then((statusResponse) => {
+            const status = statusResponse.data;
+            console.log(status);
+          })
+          .catch(error => {
+            console.error('Error updating status:', error);
+          });
       });
-  });
 
-};
+  };
   const isOwner = getCookies("id") == freelance.account.accountid;
+
+  
 
 
   return (
     <Container style={{ marginTop: 50, width: 800 }}>
-       <Link to="/" style={{ fontSize: '30px', marginTop: '30px', color: '#0071BE' }}>Home</Link>
-        <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
-        <Link to="/optionenter" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>enterprise</Link>
-        <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
-        <Link to="/findfreelance" state={{ type: freelance.type }} style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{freelance.type}</Link>
+      <Link to="/" style={{ fontSize: '30px', marginTop: '30px', color: '#0071BE' }}>Home</Link>
+      <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
+      <Link to="/optionenter" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>enterprise</Link>
+      <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
+      <Link to="/findfreelance" state={{ type: freelance.type }} style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{freelance.type}</Link>
       <div className={className}>
         <Row>
           <Col md={6}>
@@ -128,7 +134,7 @@ function ViewFreelance({ className }) {
                 <h1 style={{ textAlign: 'center' }}>{freelance.name}</h1>
                 <Card.Text>{freelance.description}</Card.Text>
                 <Card.Text><p><strong>companyName:&emsp;</strong> {freelance.companyName}</p></Card.Text>
-               
+
               </Card.Body>
             </Card>
             <Card>
@@ -152,14 +158,14 @@ function ViewFreelance({ className }) {
               <Card.Text><p>{freelance.type}</p></Card.Text>
               <Card.Text><p><strong>Time:&emsp;</strong> {freelance.time}&nbsp;&nbsp;&nbsp;Days</p></Card.Text>
               {isChatButtonClicked ? (
-                  <Link to="/chatroom">Chat</Link> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
+                <Link to="/chatroom">Chat</Link> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
+              ) : (
+                isOwner ? (
+                  <Link to={`/editfreelance/${freelance.id}`} className="edit"> edit </Link>
                 ) : (
-                  isOwner ? (
-                    <Link to={`/editfreelance/${freelance.id}`} className="edit"> edit </Link>
-                  ) : (
-                    <button onClick={handleConfirmButtonClick} className="edit">Accept</button>
-                  )
-                )}
+                  <button onClick={handleConfirmButtonClick} className="edit">Accept</button>
+                )
+              )}
             </Card>
           </Col>
         </Row>
