@@ -184,7 +184,7 @@ const PostFreelance = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              placeholder='ชื่องาน'
+              placeholder='ชื่อ'
             />
           </div>
           <div>

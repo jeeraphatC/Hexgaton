@@ -259,7 +259,7 @@ export default styled(FindJob)`
   right: 20px; 
   background-color: white;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #0196FC;
   border-radius: 3px;
   width: 240px;
   text-align: center;

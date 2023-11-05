@@ -238,7 +238,7 @@ function Compare({ className }) {
       )}
 
       {showClearButton && (
-        <Link to="/findjob">
+        <Link to="/">
         <button className="clearbtn" style={{ width: '150px', height: '50px',fontSize:'20px'}}>
           Back
         </button>

@@ -136,30 +136,6 @@ function FindFreelances({ className }) {
       });
   }, [type, type2, freelancerImages]);
 
-  const handleCardClick = (item) => {
-    setSelectedItems(prevSelectedItems => {
-      const itemIndex = prevSelectedItems.findIndex(selectedItem => selectedItem.id === item.id);
-
-      if (itemIndex === -1 && prevSelectedItems.length < 2) {
-        return [...prevSelectedItems, item];
-      } else if (itemIndex !== -1) {
-        const updatedItems = [...prevSelectedItems];
-        updatedItems.splice(itemIndex, 1);
-        return updatedItems;
-      } else {
-        return prevSelectedItems;
-      }
-    });
-  };
-  const handleCompareClick = () => {
-    const selectedIds = selectedItems.map(item => item.id);
-    const url = `/compare?ids=${selectedIds.join(',')}`;
-    window.location.href = url; // Manually navigate to the URL
-  };
-  const handleClearSelected2 = () => {
-    setSelectedItems([]);
-  };
-
 
 
   return (
@@ -187,7 +163,6 @@ function FindFreelances({ className }) {
                 style={{
                   width: "18rem",
                 }}
-                onClick={() => handleCardClick(freelance)}
               >
                 <Card.Img variant="top" style={{ width: 286, height: 180 }} src={freelancerImages[freelance.id]} />
                 <Card.Body>
@@ -204,22 +179,7 @@ function FindFreelances({ className }) {
             </Col>
           ))}
         </Row>
-        <div className="selected-items">
-          <h4>Selected job to compare</h4>
-          {selectedItems.map((selectedItem, index) => (
-            <div key={index}>
-              <p>Job {index + 1} :{selectedItem.name}</p>
-            </div>
-          ))}
-          {selectedItems.length > 0 && (
-            <button onClick={handleClearSelected2}>Clear Selected Items</button>
-          )}
-          {selectedItems.length === 2 && (
-            <button onClick={handleCompareClick}>Compare</button>
-          )}
-
-
-        </div>
+        
       </Container>
     </div>
   );
