@@ -116,7 +116,6 @@ function ViewFreelance({ className }) {
         <Link to="/optionenter" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>enterprise</Link>
         <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
         <Link to="/findfreelance" state={{ type: freelance.type }} style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{freelance.type}</Link>
-
       <div className={className}>
         <Row>
           <Col md={6}>

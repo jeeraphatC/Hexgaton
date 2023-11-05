@@ -136,7 +136,7 @@ function Fprofile({ className }) {
             
 
             setSuccessMessage('Account updated successfully'); // Set the success message
-            window.location.reload();
+            // window.location.reload();
             if (selectedImage) {
               const formData = new FormData();
               formData.append('image', selectedImage);
