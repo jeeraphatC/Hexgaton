@@ -72,8 +72,10 @@ function Home({ className }) {
         </Link>
       </div>
       <div className="t2">
-      <h2 className="t2text"></h2>
-
+      <h2 className="t2text"> ทำต้องต้องใช้เว็บของเรา
+      
+      </h2>
+       
 
 
 
@@ -110,7 +112,7 @@ function Home({ className }) {
       </div>
 
       <footer>
-        <div class="footer-content">
+        <div class="footer-content" style={{ marginTop: '3200px' }} >
           <img src={big_logo} alt="" className="big_logofooter" />
           <p className="footertext1">
             Norrapat Sai-ai 652110289<br></br>
