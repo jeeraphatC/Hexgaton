@@ -11,7 +11,7 @@ import { Container, Row, Col, Card, Button, CardBody } from 'react-bootstrap';
 import { useCookies } from 'react-cookie';
 
 
-function Fprofile({ className }) {
+function Eprofile({ className }) {
   const [workData, setWorkData] = useState([]);
   const [id, setId] = useState();
   const [cookies, setCookie, removeCookie] = useCookies();
@@ -93,7 +93,7 @@ function Fprofile({ className }) {
     const idFromCookies = getCookies("id");
   
     axios
-      .get(`http://localhost:8082/historys/enterprise`)
+      .get(`http://localhost:8082/historys/freelance`)
       
       .then((response) => {
         if (Array.isArray(response.data)) {
@@ -136,7 +136,7 @@ function Fprofile({ className }) {
             
 
             setSuccessMessage('Account updated successfully'); // Set the success message
-            // window.location.reload();
+            window.location.reload();
             if (selectedImage) {
               const formData = new FormData();
               formData.append('image', selectedImage);
@@ -252,11 +252,11 @@ function Fprofile({ className }) {
   );
 }
 
-Fprofile.propTypes = {
+Eprofile.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default styled(Fprofile)`
+export default styled(Eprofile)`
 
 .edit .link-edit{
   color:#9c9c9c;
