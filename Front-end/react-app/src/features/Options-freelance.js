@@ -58,7 +58,7 @@ function OptionsFreelance({ className }) {
         </Row>
       
       <footer>
-        <div class="footer-content" style={{ marginTop: '1300px' }}>
+        <div class="footer-content" style={{ marginTop: '1600px' }}>
           <img src={big_logo} alt="" className="big_logofooter" />
           <p className="footertext1">
             Norrapat Sai-ai 652110289<br></br>
