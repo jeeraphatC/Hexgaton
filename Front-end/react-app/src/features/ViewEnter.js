@@ -63,7 +63,9 @@ function ViewEnter({ className }) {
   }
 
   const handleConfirmButtonClick = () => {
-    
+    const test_id = getCookies("id");
+    const test_name = getCookies("username");
+    console.log("hello",test_id)
     const patchData = {
      shows : "no"
     };
@@ -84,7 +86,9 @@ function ViewEnter({ className }) {
       status: "process",
       enterprise: {
         id: id
-      }
+      },
+      account_name:test_name,
+      account_id:test_id
     };
 
 
