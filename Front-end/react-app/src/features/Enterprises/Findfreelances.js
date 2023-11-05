@@ -155,6 +155,7 @@ function FindFreelances({ className }) {
         <Row >
           {freelances.map(freelance => (
             <Col md={3} key={freelance.id}>
+               {freelance.shows == null ? (
               <Card
                 style={{
                   width: "18rem",marginBottom:20
@@ -172,6 +173,7 @@ function FindFreelances({ className }) {
                   </Card.Footer>
                 </Card.Body>
               </Card>
+               ) : ""}
             </Col>
           ))}
         </Row>

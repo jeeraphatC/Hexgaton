@@ -58,6 +58,20 @@ function ViewFreelance({ className }) {
   }
 
   const handleConfirmButtonClick = () => {
+    const patchData = {
+      shows : "no"
+     };
+ 
+     axios
+       .patch(`http://localhost:8082/freelances/${id}`, patchData)
+       .then((patchResponse) => {
+         // Handle the PATCH response if needed
+         console.log("PATCH Data:", patchResponse.data);
+       })
+       .catch((patchError) => {
+         console.error("Error sending PATCH request:", patchError);
+       });
+
     setChatButtonClicked(true);
     const statusData = {
       status: "process",

@@ -196,6 +196,7 @@ function FindJob({ className }) {
         <Row>
           {enterprises.map(enterprise => (
             <Col md={3} key={enterprise.id}>
+               {enterprise.shows == null ? (
               <Card
                 style={{
                   width: "18rem",marginBottom:20
@@ -214,6 +215,7 @@ function FindJob({ className }) {
                   </Card.Footer>
                 </Card.Body>
               </Card>
+                ) : ""}
             </Col>
           ))}
         </Row>
