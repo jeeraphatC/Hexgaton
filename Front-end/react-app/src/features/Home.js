@@ -10,44 +10,46 @@ import inter from "./pic/inter.png";
 import big_logo from "./pic/big_logo.png";
 import bgcom2 from "./pic/bgcom2.jpg";
 import { Link } from "react-router-dom";
+import { Container, Card, Row, Col } from 'react-bootstrap';
+
 function Home({ className }) {
   return (
     <div className={className}>
       <div className="homebg">
-      <img src={bgcom2} alt="" className="bgcom" />
+        <img src={bgcom2} alt="" className="bgcom" />
         <div className="mini">
-          <Link to="/develop" state={{  type: "graphic",type2:  "logos" }}>
+          <Link to="/develop" state={{ type: "graphic", type2: "logos" }}>
             <h4>Logo design</h4>
           </Link>
-          <Link to="/develop" state={{  type: "graphic",type2:  "sticker" }}>
+          <Link to="/develop" state={{ type: "graphic", type2: "sticker" }}>
             <h4>Sticker design</h4>
           </Link>
-          <Link to="/develop" state={{  type:  "chat-ckient" }}>
+          <Link to="/develop" state={{ type: "chat-ckient" }}>
             <h4>ChatClientharacter design</h4>
           </Link>
-          <Link to="/develop" state={{  type: "graphic",type2: "banner" }}>
+          <Link to="/develop" state={{ type: "graphic", type2: "banner" }}>
             <h4>Banner advertising design</h4>
           </Link>
-          <Link to="/develop" state={{  type: "graphic",type2:  "draw-cartoon" }}> 
+          <Link to="/develop" state={{ type: "graphic", type2: "draw-cartoon" }}>
             <h4>Draw cartoons</h4>
           </Link>
-          <Link to="/develop" state={{  type: "graphic",type2:  "3d-models" }}>
+          <Link to="/develop" state={{ type: "graphic", type2: "3d-models" }}>
             <h4>3D model</h4>
           </Link>
-          <Link to="/develop" state={{  type: "develop",type2:  "web" }}>
+          <Link to="/develop" state={{ type: "develop", type2: "web" }}>
             <h4>Web development</h4>
           </Link>
-          <Link to="/develop" state={{  type:  "game" }}>
+          <Link to="/develop" state={{ type: "game" }}>
             <h4>Game development</h4>
           </Link>
-          <Link to="/develop" state={{  type:  "chatbot" }}>
+          <Link to="/develop" state={{ type: "chatbot" }}>
             <h4>Making chatbotS</h4>
           </Link>
-          <Link to="/develop" state={{  type:  "beat" }}>
+          <Link to="/develop" state={{ type: "beat" }}>
             <h4>Beat</h4>
           </Link>
 
-          <Link to="/develop" state={{  type:  "mobile" }}>
+          <Link to="/develop" state={{ type: "mobile" }}>
             <h4>Mobile App</h4>
           </Link>
         </div>
@@ -72,10 +74,10 @@ function Home({ className }) {
         </Link>
       </div>
       <div className="t2">
-      <h2 className="t2text"> ทำต้องต้องใช้เว็บของเรา
-      
-      </h2>
-       
+        <h2 className="t2text"> ทำต้องต้องใช้เว็บของเรา
+
+        </h2>
+
 
 
 
@@ -113,16 +115,38 @@ function Home({ className }) {
 
       <footer>
         <div class="footer-content" style={{ marginTop: '3200px' }} >
-          <img src={big_logo} alt="" className="big_logofooter" />
-          <p className="footertext1">
-            Norrapat Sai-ai 652110289<br></br>
-            Samitthichai Peeragun 652110309<br></br>
-            Sivasith Singkaew 652110308<br></br>
-            Jeeraphat Chantra 652110318<br></br>
-          </p>
+          <Row>
+            <Col md={4}>
+              <img src={big_logo} alt="" className="big_logofooter" />
+            </Col>
+            <Col md={4}>
+              <p className="footertext1">
+                Norrapat Sai-ai 652110289<br></br>
+                Samitthichai Peeragun 652110309<br></br>
+                Sivasith Singkaew 652110308<br></br>
+                Jeeraphat Chantra 652110318<br></br>
+              </p>
+            </Col>
+            <Col md={4}>
+              <p className="footertext1">
+                Sign up to our newsletter
+              </p>
+              <div class="form-outline form-white mb-4">
+                <input type="email" id="form5Example2" class="form-control" />
+                <label class="form-label" for="form5Example2">Email address</label>
+              </div>
+              <button type="submit" class="btn btn-outline-white btn-block">Subscribe</button>
+
+            </Col>
+          </Row>
+
+
         </div>
-      </footer>
-    </div>
+      </footer >
+
+
+
+    </div >
   );
 }
 
@@ -131,6 +155,67 @@ Home.propTypes = {
 };
 
 export default styled(Home)`
+
+.form-outline {
+  position: relative;
+}
+
+.form-control {
+  border: 2px solid #ced4da;
+  border-radius: 0.25rem;
+width: 400px;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-label {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.75rem;
+  transition: all 0.1s ease-in-out;
+  color: #6c757d;
+}
+
+/* Move the label up when the input is focused */
+.form-control:focus + .form-label {
+  top: -1rem;
+  font-size: 0.85rem;
+  color: #007bff;
+}
+
+.btn.btn-outline-white.btn-block {
+  margin-left: 150px;
+  width: 100px;
+  color: #FFF; 
+  background-color: #000; 
+  border-color: #000; 
+}
+
+.btn.btn-outline-white.btn-block:hover{
+ 
+  color: #000; 
+  background-color: #FFF; 
+  border-color: #FFF; 
+}
+
+.footertext1{
+  margin-top: 100px;
+  color: #9C9C9C;
+font-family: Bebas Neue;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+letter-spacing: -0.22px;
+}
 .t2text{
   font-size:55px;
   top: 65%;

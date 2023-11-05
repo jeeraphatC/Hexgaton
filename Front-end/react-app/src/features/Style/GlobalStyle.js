@@ -377,17 +377,7 @@ a:active { text-decoration: none; }
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.footertext1{
-  margin: 400px 0px 0px 50px;
-  padding-bottom:50px;
-  color: #9C9C9C;
-font-family: Bebas Neue;
-font-size: 20px;
-font-style: normal;
-font-weight: 400;
-line-height: 150%; /* 30px */
-letter-spacing: -0.22px;
-}
+
 
 
 //feature-bar
