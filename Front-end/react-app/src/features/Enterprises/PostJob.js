@@ -310,6 +310,9 @@ const PostJob = () => {
               <option value="online">online</option>
             </select>
           </div>
+
+ 
+
           <div >
             <input type="file" onChange={handleImageChange} />
           </div>

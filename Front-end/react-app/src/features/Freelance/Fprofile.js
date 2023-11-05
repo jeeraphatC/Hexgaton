@@ -8,9 +8,19 @@ import getCookies from '../hook/getCookies';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import { Container, Row, Col, Card, Button, CardBody } from 'react-bootstrap';
+import { useCookies } from 'react-cookie';
+
 
 function Fprofile({ className }) {
   const [workData, setWorkData] = useState([]);
+  const [id, setId] = useState();
+  const [cookies, setCookie, removeCookie] = useCookies();
+  const [formData, setFormData] = useState({
+    accountid: '',
+    accountname: '',
+    descrip: '',
+    email: '',
+  });
 
   const [userdata, setUserdata] = useState(
     {
@@ -22,6 +32,27 @@ function Fprofile({ className }) {
 
   const [userName, setuserName] = useState();
   
+
+  const [successMessage, setSuccessMessage] = useState(''); // State for success message
+  const [selectedImage, setSelectedImage] = useState(null);
+  useEffect(() => {
+    const setIdFromCookies = getCookies('id');
+    setFormData({
+      ...formData,
+      accountid: setIdFromCookies,
+    });
+    setId(setIdFromCookies);
+
+    // Make sure to include id in the dependency array to trigger the effect when id changes.
+    axios.get(`http://localhost:8085/api/v1/accounts/list/${setIdFromCookies}`)
+      .then(response => {
+        setFormData(response.data);
+      })
+      .catch(error => {
+        console.error('Error fetching Account data:', error);
+      });
+  }, [id]);
+
 
   useEffect(() => {
     setuserName(getCookies('username'));
@@ -63,9 +94,10 @@ function Fprofile({ className }) {
   
     axios
       .get(`http://localhost:8082/historys/enterprise`)
+      
       .then((response) => {
         if (Array.isArray(response.data)) {
-          const filteredData = response.data.filter((item) => item.account.accountid == idFromCookies);
+          const filteredData = response.data.filter((item) => item.account && item.account.accountid == idFromCookies);
           console.log('History', filteredData);
   
           setWorkData(filteredData);
@@ -80,7 +112,78 @@ function Fprofile({ className }) {
       });
   }, []);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const account_id = id;
+
+
+    try {
+      if (account_id) {
+        axios.put(`http://localhost:8085/api/v1/accounts/list/${account_id}`, formData)
+          .then((accountResponse) => {
+            console.log('Account updated successfully!', accountResponse.data);
+            console.log(formData);
+            setCookie('username', formData.accountname);
+            setCookie('email', formData.email);
+            
+
+            setSuccessMessage('Account updated successfully'); // Set the success message
+            window.location.reload();
+            if (selectedImage) {
+              const formData = new FormData();
+              formData.append('image', selectedImage);
+              axios.post('http://localhost:2023/add', formData)
+                .then(imageResponse => {
+                  console.log('Image uploaded successfully.');
+                  const imageId = imageResponse.data;
+                  console.log(imageId);
+
+                  if (imageId) {
+                    const imageFormData = new FormData();
+                    imageFormData.append('image', selectedImage);
+                    imageFormData.append('imagelocation', account_id);
+                    imageFormData.append('name', "account");
+
+                    axios.put(`http://localhost:2023/update?id=${imageId}`, imageFormData)
+                      .then(response => {
+                        console.log('Image updated successfully.');
+                      })
+                      .catch(error => {
+                        console.error('Error updating image:', error);
+                      });
+                  } else {
+                    console.error('imageId is null or invalid. Cannot update the image.');
+                  }
+                })
+                .catch(error => {
+                  console.error('Error uploading image:', error);
+                });
+            }
+
+          })
+          .catch((error) => {
+            console.error('Error updating', error.message);
+          });
+      } else {
+        console.error('Account ID is undefined');
+      }
+    } catch (error) {
+      console.error('Error updating account:', error);
+    }
+  };
+
+
+  const handleImageChange = (event) => {
+    setSelectedImage(event.target.files[0]);
+  };
 
 
   return (
@@ -91,12 +194,11 @@ function Fprofile({ className }) {
       <div className="c1">
         <div className='container-profile'>
           <img src={image} alt="" className="user1" />
-          <div class="overlay"><Link to="/editprofile/:id" className='link-edit'>Edit Profile</Link></div>
+          <div class="overlay"></div>
         </div>
         <div className="username">{userName} </div>
 
-        <div className="rating">Rating</div>
-        <img src={star} alt="" className="star" />
+       
 
         <div className="phead1">Description
         <div className="pbody1">
@@ -104,7 +206,6 @@ function Fprofile({ className }) {
        </div>
         </div>
 
-        <div className='edit'><Link to="/editprofile/:id" className='edit'>Edit Profile</Link></div>
       </div>
 
       <div className='block-work-review'>
@@ -139,18 +240,58 @@ function Fprofile({ className }) {
 
       </div>
 
-      <div className='block-review'>
-<div className='review'>
-  <h3>REVIEW</h3>
-  </div>
-  <div className='review-comment'>
-
-
-
-</div>
 
       </div>
-      </div>
+
+      <div className="container-edit">
+          {successMessage && <div className="success-message">{successMessage}</div>}
+          <div className="edit-Box">
+            <form onSubmit={handleSubmit}>
+              <div>
+                <label>Username :</label>
+                <input
+                  type="text"
+                  name="accountname"
+                  value={formData.accountname}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label>Your Description :</label>
+                <input
+                  type="text"
+                  name="descrip"
+                  value={formData.descrip}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div>
+                <label>Email :</label>
+                <input
+                  type="text"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+
+              <div >
+                <label >Your Picture</label>
+              <input type="file" onChange={handleImageChange} />
+              </div>
+
+              <div style={{ textAlign: 'center' }}>
+                <Button variant="success" type="submit" style={{ width: 150 }}>
+                  Confirm
+                </Button>
+              </div>
+            </form>
+
+
+          </div>
+        </div>
   
       </div>
       
@@ -163,6 +304,43 @@ Fprofile.propTypes = {
 };
 
 export default styled(Fprofile)`
+
+
+.container-edit{
+  top:60%;
+ margin-left:40%;
+ width:100%;
+
+ margin-top:10px;
+ border-radius:30px;
+ box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+}
+.edit-Box {
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .success-message {
+    color: green;
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
 
 
 .card-history{
@@ -190,10 +368,10 @@ height: 240px;
 .block-work-of{
     
     overflow:auto;
-    border:1px solid black;
+   
 
     width: 600px;
-    height: 500px ;
+    height: 300px ;
     border-radius: 10px;
     background: #fff;
 
@@ -211,6 +389,8 @@ height: 240px;
   flex-direction:row;
  }
 .container-profile {
+ 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   margin: 15px 43px;
   position: relative;
   border-radius: 50%;
@@ -220,16 +400,17 @@ height: 240px;
 }
 .block-work-review{
   position: absolute;
-    border:1px solid black;
+  
     margin-top:10px ;
     width: auto;
-    height: 100%;
+   
     border-radius: 10px;
     background: #fff;
    display:flex;
    flex-direction: column;
     margin-left: 38%;
-    top: 55%;
+    top: 15%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 .head-band{
 display: flex;
@@ -244,6 +425,7 @@ flex-direction:column;
   height: 100%;
   object-fit: cover;
   margin-top:0
+  
 }
 
 .overlay {
@@ -272,7 +454,7 @@ flex-direction:column;
 }
 .c1{
     width: 280px;
-    height: 700px;
+    height: auto;
     border-radius: 10px;
     background: #fff;
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);

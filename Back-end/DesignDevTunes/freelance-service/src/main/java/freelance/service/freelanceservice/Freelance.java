@@ -23,6 +23,8 @@ public class Freelance {
     private String type;
     private String subtype;
     private String companyName;
+
+    
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id", referencedColumnName = "id")
     private Account account;
