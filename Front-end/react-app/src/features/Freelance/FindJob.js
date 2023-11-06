@@ -222,7 +222,7 @@ function FindJob({ className }) {
 
         </Row>
         <div className="selected-items">
-          <h4>Selected job to compare</h4>
+          <h4 className="selected-header">Selected job to compare</h4>
           {selectedItems.map((selectedItem, index) => (
             <div key={index}>
               <p>Job {index + 1} :{selectedItem.name}</p>
@@ -249,25 +249,35 @@ FindJob.propTypes = {
 };
 
 export default styled(FindJob)`
-.selected-items button {
-  margin: 5px; 
-  color: #FFFFFF;
-  background-color : #0196FC;
-  border: 0px;
-  border-radius: 3px;
-  padding: 5px;
+@media (max-width: 600px) {
+  .selected-header{
+      font-size:16px;
+
+  }
+  .selected-items button {
+    margin: 5px; 
+    color: #FFFFFF;
+    background-color : #0196FC;
+    border: 0px;
+    border-radius: 3px;
+    padding: 5px;
+
+    font-size:15px;
+  }
+  .selected-items {
+    position: fixed;
+    top:70px; 
+    right: 20px; 
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 150px;
+    text-align: center;
+    font-size:15  px;
+  }
 }
-.selected-items {
-  position: fixed;
-  top:70px; 
-  right: 20px; 
-  background-color: white;
-  padding: 10px;
-  border: 1px solid #0196FC;
-  border-radius: 3px;
-  width: 240px;
-  text-align: center;
-}
+@media (min-width: 601px) {
 .jobdetail{
   padding: 5px;
 }
@@ -319,5 +329,6 @@ export default styled(FindJob)`
   color: #FFF;
   background: #0196FC;
   border: 2px solid #0196FC;
+}
 }
 `;
