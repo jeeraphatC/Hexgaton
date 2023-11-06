@@ -10,6 +10,8 @@ import chat from "./pic/chat.png";
 import login from "./pic/login.png";
 import getCookies from './hook/getCookies';
 import removeAllCookies from './hook/removeAllCookies';
+import {signOut} from "firebase/auth"
+import { auth } from ".//chatSystem/firebase";
 
 function Navbar({ className }) {
   const [developmentHovered, setDevelopmentHovered] = useState(false);
@@ -28,6 +30,7 @@ function Navbar({ className }) {
  
 
   const handleRemoveAllCookies = () => {
+    signOut(auth)
     removeAllCookies();
   }
 
@@ -47,8 +50,9 @@ function Navbar({ className }) {
       <Link to="/options">
         <img src={ologo} alt="" className="ologo" />
       </Link>
-      <Link to="/chatroom">
+      <Link to="/ChatRoom" className="notice">
         <img src={chat} alt="" className="ologo" />
+
       </Link>
 
 
@@ -91,6 +95,10 @@ h4{
   margin-top: 10px;
   color:#0196FC;
 }
+.notice{
+
+}
+
 h4:hover{
   color:#0071BE;
 }

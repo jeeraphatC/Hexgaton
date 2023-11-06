@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import getCookies from './hook/getCookies';
 import arrow from "./pic/barrow.png";
+import { useCookies } from 'react-cookie';
 
 function ViewFreelance({ className }) {
   const { id } = useParams();
@@ -16,8 +17,10 @@ function ViewFreelance({ className }) {
   const [image, setImage] = useState(null);
   const imagelocation = getCookies("id");
   const [accId, setaccId] = useState();
-
+  const [cookies, setCookie, removeCookie] = useCookies();
+  const [senderTochat,setSendertoChat] = useState();
   const [account, setaccount] = useState(' ');
+
   useEffect(() => {
     setaccId(getCookies("id"))
     axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
@@ -37,6 +40,7 @@ function ViewFreelance({ className }) {
       .then(response => {
         setFreelance(response.data);
         setaccount(response.data.account.accountid)
+        setSendertoChat(response.data.account.accountname)
         console.log(response.data.account.accountid)
         axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/freelance/${id}`, { responseType: 'arraybuffer' })
           .then(imageResponse => {
@@ -61,6 +65,7 @@ function ViewFreelance({ className }) {
   const handleConfirmButtonClick = () => {
     const test_id = getCookies("id");
     const test_name = getCookies("username");
+    setCookie('senderNameToChat',senderTochat)
     console.log("hello",test_id)
 
     const patchData = {
@@ -163,7 +168,7 @@ function ViewFreelance({ className }) {
               <Card.Text><p>{freelance.type}</p></Card.Text>
               <Card.Text><p><strong>Time:&emsp;</strong> {freelance.time}&nbsp;&nbsp;&nbsp;Days</p></Card.Text>
               {isChatButtonClicked ? (
-                <Link to="/chatroom">Chat</Link> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
+                <Link to="/ChatRoom">Chat</Link> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
               ) : (
                 isOwner ? (
                   <Link to={`/editfreelance/${freelance.id}`} className="edit"> edit </Link>

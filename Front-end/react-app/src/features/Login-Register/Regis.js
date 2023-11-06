@@ -5,6 +5,10 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import mlogo from "../pic/mini_logo.png";
 import blogo from "../pic/big_logo.png";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth, db, storage } from "../chatSystem/firebase";
+import { ref, uploadBytesResumable } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
 
 function Register({ className }) {
   const [accountname, setAccountname] = useState("");
@@ -40,6 +44,7 @@ function Register({ className }) {
   async function save(event) {
     event.preventDefault();
 
+
     const isFormValid = validateForm(); // Define isFormValid here
 
     if (!isFormValid) {
@@ -60,6 +65,8 @@ function Register({ className }) {
         numberCard: numberCard,
         password: password,
       });
+
+
       alert("Account Registration Successful");
       navigate("/login");
     } catch (err) {
@@ -69,6 +76,47 @@ function Register({ className }) {
         console.error(err);
       }
     }
+
+    const displayName = accountname; // Use the state variables directly
+  const userEmail = email;
+  const userPassword = password;
+
+    /*------ fierbase ------*/
+    try {
+      // Create user
+      const res = await createUserWithEmailAndPassword(auth, userEmail, userPassword);
+
+      // Create a unique image name
+      const date = new Date().getTime();
+      const storageRef = ref(storage, `${displayName + date}`);
+
+      // Upload the image
+      await uploadBytesResumable(storageRef).then(async () => {
+        try {
+          // Update profile
+          await updateProfile(res.user, {
+            displayName,
+          });
+
+          // Create user on firestore
+          await setDoc(doc(db, "users", res.user.uid), {
+            uid: res.user.uid,
+            displayName,
+            email,
+          });
+
+          // Create empty user chats on firestore
+          await setDoc(doc(db, "userChats", res.user.uid), {});
+          navigate("/");
+        } catch (err) {
+          console.log(err);
+       
+        }
+      });
+    } catch (err) {
+      
+    }
+
   }
 
   return (
@@ -187,7 +235,7 @@ function Register({ className }) {
                   type="email"
                   class="form-control"
                   id="email"
-                  placeholder="Email"
+                  placeholder="Email : example@gmail.com"
                   value={email}
                   onChange={(event) => {
                     setEmail(event.target.value);
@@ -202,7 +250,7 @@ function Register({ className }) {
                   type="text"
                   class="form-control"
                   id="idcard"
-                  placeholder="IDCard"
+                  placeholder="IDCard 13 characters"
                   value={numberCard}
                   onChange={(event) => {
                     setnumberCard(event.target.value);
@@ -217,7 +265,7 @@ function Register({ className }) {
                   type="password"
                   class="form-control"
                   id="password"
-                  placeholder="Password"
+                  placeholder="Password 6 characters"
                   value={password}
                   onChange={(event) => {
                     setPassword(event.target.value);

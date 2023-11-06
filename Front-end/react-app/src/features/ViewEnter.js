@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import getCookies from './hook/getCookies';
 import arrow from "./pic/barrow.png";
+import { useCookies } from 'react-cookie';
+
 function ViewEnter({ className }) {
   const { id } = useParams();
   const [enterprise, setEnterprise] = useState(null);
@@ -19,6 +21,8 @@ function ViewEnter({ className }) {
   });
   const [account, setaccount] = useState();
   const [accId,setaccId] = useState();
+  const [senderTochat,setSendertoChat] = useState();
+      const [cookies, setCookie, removeCookie] = useCookies();
 
   useEffect(() => {
     setaccId(getCookies('id'));
@@ -41,6 +45,7 @@ function ViewEnter({ className }) {
       .then(response => {
         setEnterprise(response.data);
         setaccount(response.data.account.accountid)
+        setSendertoChat(response.data.account.accountname)
 
         // Fetch enterprise image
         axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/enterprises/${id}`, { responseType: 'arraybuffer' })
@@ -65,6 +70,8 @@ function ViewEnter({ className }) {
   const handleConfirmButtonClick = () => {
     const test_id = getCookies("id");
     const test_name = getCookies("username");
+    setCookie('senderNameToChat',senderTochat)
+  
     console.log("hello",test_id)
     const patchData = {
      shows : "no"
@@ -171,7 +178,7 @@ function ViewEnter({ className }) {
               <Card.Text><p>{enterprise.type}({enterprise.subtype})</p></Card.Text>
 
               {isChatButtonClicked ? (
-                <Link to="/chatroom">Chat</Link>
+                <Link to="/ChatRoom" >Chat</Link>
               ) : (
                 isOwner ? (
                   <Link to={`/edit/${enterprise.id}`} className="edit"> edit </Link>

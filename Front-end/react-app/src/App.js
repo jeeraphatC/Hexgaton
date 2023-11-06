@@ -9,7 +9,6 @@ import Develop from './features/features-navbar/develop';
 import Register from './features/Login-Register/Regis';
 import FindFreelance from './features/Enterprises/Findfreelances';
 import FindJob from './features/Freelance/FindJob';
-import ChatRoom from './features/chatRoom';
 import FreelanceForm from './features/Freelance/Postfreelance';
 import PostJob from './features/Enterprises/PostJob';
 import EditJob from './features/Enterprises/EditJob';
@@ -31,6 +30,8 @@ import OptionsFreelance from './features/Options-freelance';
 import OptionsEnter from './features/Options-enter';
 import BasicExample from './features/Example';
 import Status from './features/Status';
+import HomeChat from './features/chatSystem/components/Home';
+import chatStyle from './features/chatStyle';
 function App() {
   const location = useLocation();
   const showNavbar = location.pathname !== '/login';
@@ -63,7 +64,7 @@ function App() {
           <Route path="/editfreelance/:id" element={isUserLoggedIn ? <EditFreelance /> : <Navigate to="/login" />} />
           <Route path="/Profile" element={isUserLoggedIn ? <Profile /> : <Navigate to="/login" />} />
           <Route path="/Options" element={isUserLoggedIn ? <Options /> : <Navigate to="/login" />} />
-          <Route path="/ChatRoom" element={isUserLoggedIn ? <ChatRoom /> : <Navigate to="/login" />}></Route>
+          <Route path="/ChatRoom" element={isUserLoggedIn ? <HomeChat /> : <Navigate to="/login" />}></Route>
           <Route path="/fix" element={isUserLoggedIn ? <Pro /> : <Navigate to="/login" />}></Route>
           <Route path="/Compare" element={isUserLoggedIn ? <Compare /> : <Navigate to="/login" />}></Route>
           <Route path="/Freelance/:id" element={isUserLoggedIn ? <ViewFreelance /> : <Navigate to="/login" />} />
