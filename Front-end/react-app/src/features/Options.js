@@ -5,6 +5,7 @@ import freelance from "./pic/freelance.png";
 import enter from "./pic/enter.png";
 import chat from "./pic/chat.png";
 import workpro from "./pic/workpro.png";
+import big_logo from "./pic/big_logo.png";
 import post from "./pic/post.png";
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -73,6 +74,17 @@ function Options({ className }) {
         </div>
 
       </Container>
+      <footer>
+        <div class="footer-content" >
+          <img src={big_logo} alt="" className="big_logofooter" />
+          <p className="footertext1">
+            Norrapat Sai-ai 652110289<br></br>
+            Samitthichai Peeragun 652110309<br></br>
+            Sivasith Singkaew 652110308<br></br>
+            Jeeraphat Chantra 652110318<br></br>
+          </p>
+        </div>
+      </footer>
     </div >
   );
 }
@@ -83,6 +95,24 @@ Options.propTypes = {
 
 export default styled(Options)`
 @media (max-width: 600px) {
+  .footer-content{
+    margin-top: 1500px;
+  }
+  .footertext1{
+    left: 50%;
+    margin-top:300px;
+    color: #9C9C9C;
+  font-family: Bebas Neue;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; 
+  letter-spacing: -0.22px;
+  text-align: center;
+  }
+  .big_logofooter{
+    width: 300px;
+  }
   .optioncontainer{
     width: 60%;
     height: 40%;
@@ -111,7 +141,7 @@ export default styled(Options)`
     color:#959595;
   }
   .optioncontainer{
-    width: 60%;
+    width: 80%;
     height: 40%;
     background: #FFF;
     position: absolute;

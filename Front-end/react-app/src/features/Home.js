@@ -576,7 +576,8 @@ export default styled(Home)`
     margin-top: 3200px;
   }
 .footertext1{
-  margin-top: 100px;
+  margin-top: 380px;
+  margin-left: 20px;
   color: #9C9C9C;
 font-family: Bebas Neue;
 font-size: 20px;
@@ -600,7 +601,7 @@ letter-spacing: -0.22px;
   position: absolute;
   color: #FFF;
   top: 65%;
-  left: 56%;
+  left: 59%;
   padding:10px 40px 10px 40px ;
   border: 2px solid #FFF;
   transition: all 0.3s;
@@ -616,7 +617,7 @@ letter-spacing: -0.22px;
   position: absolute;
   color: #FFF;
   top: 65%;
-  left: 42%;
+  left: 40%;
   padding:10px 40px 10px 40px ;
   border: 2px solid #FFF;
   transition: all 0.3s;
@@ -691,7 +692,7 @@ letter-spacing: -0.22px;
   .d1 {
     position: absolute;
     top: 50%;
-    left: 35%;
+    left: 30%;
     transform: translate(-50%, -50%);
     margin-top: 1200px;
     width: 250px;
@@ -714,11 +715,10 @@ letter-spacing: -0.22px;
   .d3 {
     position: absolute;
     top: 50%;
-    left: 65%;
+    left: 70%;
     transform: translate(-50%, -50%);
     font-size: 30px;
     margin-top: 1200px;
-
     width: 250px;
     height: 150px;
     border-radius: 10px;
