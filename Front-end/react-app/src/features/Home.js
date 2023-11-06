@@ -10,6 +10,7 @@ import inter from "./pic/inter.png";
 import big_logo from "./pic/big_logo.png";
 import bgcom2 from "./pic/bgcom2.jpg";
 import { Link } from "react-router-dom";
+import { Button } from 'react-bootstrap';
 function Home({ className }) {
   return (
     <div className={className}>
@@ -111,6 +112,10 @@ function Home({ className }) {
             Sivasith Singkaew 652110308<br></br>
             Jeeraphat Chantra 652110318<br></br>
           </p>
+          <label className="footertext1">Enter email</label>
+          <input type="text" className="footertext1" />
+          <Button >Subscribe</Button>
+          <Link to="/">Link to donate</Link>
         </div>
       </footer>
     </div>
