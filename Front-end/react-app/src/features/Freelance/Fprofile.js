@@ -5,7 +5,7 @@ import bg2 from "../pic/bg2.jpg";
 import user1 from "../pic/woman.jpg";
 import star from "../pic/star.png";
 import getCookies from '../hook/getCookies';
-import { useParams,Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from 'axios';
 import { Container, Row, Col, Card, Button, CardBody } from 'react-bootstrap';
 import { useCookies } from 'react-cookie';
@@ -22,20 +22,21 @@ function Fprofile({ className }) {
     descrip: '',
     email: '',
   });
-console.log(ids)
+  console.log(ids)
   let config_id;
-  if(ids == null)
-  {
-    config_id=getCookies('id');
+  if (ids == null) {
+    config_id = getCookies('id');
   }
-  else{
-    config_id=ids;
+  else {
+    config_id = ids;
   }
+  const image_id = getCookies('id');
+
   const [userdata, setUserdata] = useState(
     {
-      username : '',
-      description : '',
-      rating : 0,
+      username: '',
+      description: '',
+      rating: 0,
     }
   );
 
@@ -58,13 +59,13 @@ console.log(ids)
       .catch(error => {
         console.error('Error fetching Account data:', error);
       });
-  }, [id,config_id]);
+  }, [id, config_id]);
 
 
   useEffect(() => {
     // const usernameFromCookies = getCookies("username");
     // setUserdata({ ...userdata, "username": usernameFromCookies });
-   const account_id = getCookies('id');
+    const account_id = getCookies('id');
     axios
       .get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${config_id}`)
       .then(response => {
@@ -80,13 +81,13 @@ console.log(ids)
   const [image, setImage] = useState(null);
   const imagelocation = getCookies("id");
   useEffect(() => {
-    
+
     axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/account/${config_id}`, { responseType: 'arraybuffer' })
       .then(response => {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
         const imageSrc = `data:image/jpeg;base64,${base64}`;
         setImage(imageSrc);
-       
+
       })
       .catch(error => {
         console.error('Error fetching image:', error);
@@ -97,12 +98,12 @@ console.log(ids)
     const idFromCookies = getCookies("id");
     axios
       .get(`https://smart-egg-production.up.railway.app/historys/enterprise`)
-      
+
       .then((response) => {
         if (Array.isArray(response.data)) {
           const filteredData = response.data.filter((item) => item.account && item.account.accountid == config_id);
           console.log('History', filteredData);
-  
+
           setWorkData(filteredData);
           // Handle the filtered data here
         } else {
@@ -136,7 +137,7 @@ console.log(ids)
             console.log(formData);
             setCookie('username', formData.accountname);
             setCookie('email', formData.email);
-            
+
 
             setSuccessMessage('Account updated successfully'); // Set the success message
             // window.location.reload();
@@ -163,7 +164,9 @@ console.log(ids)
                         console.error('Error updating image:', error);
                       });
                   } else {
+
                     console.error('imageId is null or invalid. Cannot update the image.');
+
                   }
                 })
                 .catch(error => {
@@ -191,66 +194,73 @@ console.log(ids)
 
   return (
     <div className={className}>
-  
+
       <img src={bg2} alt="" className="bg1" />
       <div className='container'>
-      <div className="c1">
-        <div className='container-profile'>
-          <img src={image} alt="" className="user1" />
-          <div class="overlay"><Link to="/editprofile/:id" className='link-edit'>Edit Profile</Link></div>
+        <div className="c1">
+          <div className='container-profile'>
+            <img src={image} alt="" className="user1" />
+            {config_id === id ? (
+              <div className="overlay">
+                <Link to={`/profilefree/${image_id}`} className='link-edit'>Edit Profile</Link>
+              </div>
+            ) : null}
+          </div>
+
+
+          <div className="username">{userName} </div>
+
+
+
+          <div className="phead1">Description
+            <div className="pbody1">
+              {userdata.description}
+            </div>
+          </div>
+          {config_id === id ? (
+            <div className='edit'><Link to="/editprofile/:id" className='link-edit'>Edit Profile</Link></div>
+          ) : null}
         </div>
-        <div className="username">{userName} </div>
 
-       
+        <div className='block-work-review'>
+          <div className='block-work-of'>
+            <div className='head-band'>
+              <h3 >Work of {userName}</h3>
+              <Link to="/editprofile" className='link-history'>PRESS TO SEE MORE HISTORY</Link>
+            </div>
 
-        <div className="phead1">Description
-        <div className="pbody1">
-       {userdata.description} 
-       </div>
+
+
+            {/* fetch from database that user worked  */}
+            <div className='content-work'>
+              {workData.slice(0, 5).map((item) => (
+                <Card className='card-history' >
+                  <CardBody>
+                    <Card.Title><strong>Name : </strong> {item.enterprise.name}</Card.Title>
+                    <Card.Text><strong>Type : </strong> {item.enterprise.type}</Card.Text>
+                    <Card.Text><strong>Price : </strong> {item.enterprise.price}</Card.Text>
+                    <Card.Text><strong>Description : </strong> {item.enterprise.description}</Card.Text>
+                    <Card.Text><strong>Owner : </strong> {item.enterprise.account.accountname}</Card.Text>
+                    {/* Add more properties as needed */}
+                  </CardBody>
+                </Card>
+              ))}
+            </div>
+
+
+
+
+
+
+          </div>
+
+
         </div>
 
-<div className='edit'><Link to="/editprofile/:id" className='link-edit'>Edit Profile</Link></div>
-      </div>
-
-      <div className='block-work-review'>
-      <div className='block-work-of'>
-      <div className='head-band'>
-        <h3 >Work of {userName}</h3>
-        <Link to="/editprofile" className='link-history'>PRESS TO SEE MORE HISTORY</Link>
-        </div>
-
-  
-
-{/* fetch from database that user worked  */}
-<div className='content-work'>
-  {workData.slice(0, 5).map((item ) => (
-    <Card className='card-history' >
-      <CardBody>
-        <Card.Title><strong>Name : </strong> {item.enterprise.name}</Card.Title>
-        <Card.Text><strong>Type : </strong> {item.enterprise.type}</Card.Text>
-        <Card.Text><strong>Price : </strong> {item.enterprise.price}</Card.Text>
-        <Card.Text><strong>Description : </strong> {item.enterprise.description}</Card.Text>
-        <Card.Text><strong>Owner : </strong> {item.enterprise.account.accountname}</Card.Text>
-        {/* Add more properties as needed */}
-      </CardBody>
-    </Card>
-  ))}
-</div>
-
-
-
-
 
 
       </div>
 
-
-      </div>
-
-      
-  
-      </div>
-      
     </div>
   );
 }
