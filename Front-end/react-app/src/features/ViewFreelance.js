@@ -99,7 +99,7 @@ function ViewFreelance({ className }) {
     };
     console.log(historyData)
     axios
-      .post(`https://smart-egg-production.up.railway.app/historys/freelances`, historyData)
+      .post(`https://smart-egg-production.up.railway.app/historys/freelance`, historyData)
       .then((historyResponse) => {
         // Handle the response if needed
         console.log("History Data:", historyResponse.data);
