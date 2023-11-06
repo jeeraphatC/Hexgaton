@@ -68,7 +68,7 @@ function ViewFreelance({ className }) {
     };
 
     axios
-      .patch(`https://smart-egg-production.up.railway.app/freelance/${id}`, patchData)
+      .patch(`https://smart-egg-production.up.railway.app/freelances/${id}`, patchData)
       .then((patchResponse) => {
         // Handle the PATCH response if needed
         console.log("PATCH Data:", patchResponse.data);
@@ -99,7 +99,7 @@ function ViewFreelance({ className }) {
     };
     console.log(historyData)
     axios
-      .post(`https://smart-egg-production.up.railway.app/historys/freelance`, historyData)
+      .post(`https://smart-egg-production.up.railway.app/historys/freelances`, historyData)
       .then((historyResponse) => {
         // Handle the response if needed
         console.log("History Data:", historyResponse.data);
