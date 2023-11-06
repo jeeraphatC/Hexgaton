@@ -187,7 +187,7 @@ function Register({ className }) {
                   type="email"
                   class="form-control"
                   id="email"
-                  placeholder="Email"
+                  placeholder="Email : example@gmail.com"
                   value={email}
                   onChange={(event) => {
                     setEmail(event.target.value);
@@ -202,7 +202,7 @@ function Register({ className }) {
                   type="text"
                   class="form-control"
                   id="idcard"
-                  placeholder="IDCard"
+                  placeholder="IDCard 13 characters"
                   value={numberCard}
                   onChange={(event) => {
                     setnumberCard(event.target.value);
@@ -217,7 +217,7 @@ function Register({ className }) {
                   type="password"
                   class="form-control"
                   id="password"
-                  placeholder="Password"
+                  placeholder="Password 6 characters"
                   value={password}
                   onChange={(event) => {
                     setPassword(event.target.value);
