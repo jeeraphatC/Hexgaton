@@ -31,7 +31,6 @@ import OptionsEnter from './features/Options-enter';
 import BasicExample from './features/Example';
 import Status from './features/Status';
 import HomeChat from './features/chatSystem/components/Home';
-import chatStyle from './features/chatStyle';
 function App() {
   const location = useLocation();
   const showNavbar = location.pathname !== '/login';

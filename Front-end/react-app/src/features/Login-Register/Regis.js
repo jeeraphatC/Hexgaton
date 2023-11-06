@@ -212,7 +212,6 @@ function Register({ className }) {
           <Link to="/login">
             <a className="alogin">Login</a>
           </Link>
-          <div className="asignup">Signup</div>
           <div className="form-container">
             <form>
               <div class="form-group">
@@ -295,8 +294,50 @@ Register.propTypes = {
 };
 
 export default styled(Register)`
-  max-width: 500px;
+@media (max-width: 600px) {
+  .svg-container {
+    display: none;
+    flex-wrap: wrap;
+  }
+  
+  .svg-container svg {
+    width: 10%;
+    height: 10%;
+    
+  }
+  svg{
+    position:absolute;
+    
+  }
+  .svg2{
+    height: auto;
+    margin-top: 10%;
+  }
+  .svg3{
+    margin-top: 35%;
+    margin-left: 3%;
+  }
+  .svg4{
+    margin-top: 20%;
+    margin-left: 65%;
+  }
+  .svg5{
+
+    margin-top: 30%;
+    margin-left: 80%;
+  }
+  .svg6{
+    margin-top: 30%;
+    margin-left: 20%;
+  }
+  .svg7{
+    margin-top: -3%;
+    margin-left: 70%;
+  }
+}
+  max-width: 600px;
   margin: 0 auto;
   padding: 4rem 0;
-  
 `;
+
+
