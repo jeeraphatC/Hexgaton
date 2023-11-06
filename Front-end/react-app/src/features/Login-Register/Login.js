@@ -145,7 +145,7 @@ function Login({ className }) {
         <div class="row">
           <div class="col-sm-6">
 
-            <div class="card">
+            <div class="card" className="card">
               <div className="biglogo-container">
                 <img src={blogo} alt="โลโก้" className="big-logo" />
               </div>
@@ -200,25 +200,15 @@ Login.propTypes = {
 };
 
 export default styled(Login)`
-  margin: 0 auto;
- 
-  justify-content: center;
-  align-items: center;
-
- .container{
-  display: flex;
-    justify-content: center;
-    padding:20px;
- }
-
-
- form button {
+@media (max-width: 600px) {
+  margin-Top: 300px;
+  width:80%;
+  form button {
     font-size: 1rem;
     line-height: 1.5;
     padding: 0.5rem 0.7rem 0.7rem 0.7rem;
     margin-bottom: 20px;
     cursor: pointer;
-   
     color: #ffffff;
     background-color: #28a745;
     border-radius: 0.25rem;
@@ -230,48 +220,84 @@ export default styled(Login)`
   form button:hover{
     background-color: blue;
   }
-
-  .form-group{
-    width: 500px;
-    margin-left:40px;
-    margin-top:30px;
-  }
-  .svg-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
   
-  .svg-container svg {
-    width: 10%;
-    height: 10%;
-  }
-  svg{
-    position:absolute;
-    
-  }
-  .svg2{
-    height: auto;
-    margin-top: 10%;
-  }
-  .svg3{
-    margin-top: 35%;
-    margin-left: 3%;
-  }
-  .svg4{
-    margin-top: 20%;
-    margin-left: 65%;
-  }
-  .svg5{
+}
 
-    margin-top: 30%;
-    margin-left: 80%;
+  @media (min-width: 601px) {
+    margin: 0 auto;
+ 
+    justify-content: center;
+    align-items: center;
+  
+   .container{
+    display: flex;
+      justify-content: center;
+      padding:20px;
+   }
+  
+  
+   form button {
+      font-size: 1rem;
+      line-height: 1.5;
+      padding: 0.5rem 0.7rem 0.7rem 0.7rem;
+      margin-bottom: 20px;
+      cursor: pointer;
+     
+      color: #ffffff;
+      background-color: #28a745;
+      border-radius: 0.25rem;
+      border: none;
+      margin-left:150px;
+      width: 250px;
+    }
+  
+    form button:hover{
+      background-color: blue;
+    }
+  
+    .form-group{
+      width: 500px;
+      margin-left:40px;
+      margin-top:30px;
+    }
+    .svg-container {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .svg-container svg {
+      width: 10%;
+      height: 10%;
+    }
+    svg{
+      position:absolute;
+      
+    }
+    .svg2{
+      height: auto;
+      margin-top: 10%;
+    }
+    .svg3{
+      margin-top: 35%;
+      margin-left: 3%;
+    }
+    .svg4{
+      margin-top: 20%;
+      margin-left: 65%;
+    }
+    .svg5{
+  
+      margin-top: 30%;
+      margin-left: 80%;
+    }
+    .svg6{
+      margin-top: 30%;
+      margin-left: 20%;
+    }
+    .svg7{
+      margin-top: -3%;
+      margin-left: 70%;
+    }
   }
-  .svg6{
-    margin-top: 30%;
-    margin-left: 20%;
-  }
-  .svg7{
-    margin-top: -3%;
-    margin-left: 70%;
-  }
+ 
 `;
