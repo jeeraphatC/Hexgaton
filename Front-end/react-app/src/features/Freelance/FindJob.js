@@ -5,6 +5,7 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import styled from "styled-components";
 import search4 from "../pic/search4.png";
 import PropTypes from 'prop-types';
+import big_logo from "../pic/big_logo.png";
 import arrow from ".././pic/barrow.png";
 
 function FindJob({ className }) {
@@ -238,6 +239,17 @@ function FindJob({ className }) {
 
         </div>
       </Container>
+      <footer>
+        <div class="footer-content" >
+          <img src={big_logo} alt="" className="big_logofooter" />
+          <p className="footertext1">
+            Norrapat Sai-ai 652110289<br></br>
+            Samitthichai Peeragun 652110309<br></br>
+            Sivasith Singkaew 652110308<br></br>
+            Jeeraphat Chantra 652110318<br></br>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
@@ -250,6 +262,24 @@ FindJob.propTypes = {
 
 export default styled(FindJob)`
 @media (max-width: 600px) {
+  .footer-content{
+    margin-top: 1500px;
+  }
+  .footertext1{
+    left: 50%;
+    margin-top:300px;
+    color: #9C9C9C;
+  font-family: Bebas Neue;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; 
+  letter-spacing: -0.22px;
+  text-align: center;
+  }
+  .big_logofooter{
+    width: 300px;
+  }
   .selected-header{
       font-size:16px;
 
