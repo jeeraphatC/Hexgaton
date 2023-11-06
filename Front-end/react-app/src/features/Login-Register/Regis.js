@@ -9,13 +9,15 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth, db, storage } from "../chatSystem/firebase";
 import { ref, uploadBytesResumable } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
-
+import { useCookies } from 'react-cookie';
 function Register({ className }) {
   const [accountname, setAccountname] = useState("");
   const [email, setEmail] = useState("");
   const [numberCard, setnumberCard] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [cookies, setCookie, removeCookie] = useCookies();
   const navigate = useNavigate();
   const namePattern = /^[A-Za-z\s]+$/; // Allows only letters and spaces
   const emailPattern = /.*@gmail\.com$/;
@@ -30,7 +32,9 @@ function Register({ className }) {
     );
   };
 
-
+  const handleImageChange = (event) => {
+    setSelectedImage(event.target.files[0]);
+  };
 
   const validateForm2 = () => {
     const validName = namePattern.test(accountname);
@@ -45,7 +49,7 @@ function Register({ className }) {
     event.preventDefault();
 
 
-    const isFormValid = validateForm(); // Define isFormValid here
+    const isFormValid = validateForm();
 
     if (!isFormValid) {
       setErrorMessage("Please fill out all fields.");
@@ -59,12 +63,68 @@ function Register({ className }) {
     }
 
     try {
-      await axios.post("https://smart-egg-production.up.railway.app/api/v1/accounts/save", {
+      const loginResponse = await axios.post("https://smart-egg-production.up.railway.app/api/v1/accounts/save", {
         accountname: accountname,
         email: email,
         numberCard: numberCard,
         password: password,
       });
+
+      console.log(loginResponse.data.email)
+
+      const accountsResponse = await axios.get("https://smart-egg-production.up.railway.app/api/v1/accounts/list");
+      console.log(accountsResponse.data)
+      const accounts = accountsResponse.data;
+      const accountWithMatchingEmail = accounts.find((account) => account.email === email);
+      let id_image_regis;
+      if (accountWithMatchingEmail) {
+        id_image_regis = accountWithMatchingEmail.accountid;
+        console.log(id_image_regis)
+      }
+
+
+      try {
+        if (id_image_regis) {
+          if (selectedImage) {
+            const formData = new FormData();
+            formData.append('image', selectedImage);
+            axios.post('https://domineering-hobbies-production.up.railway.app/add', formData)
+              .then(imageResponse => {
+                console.log('Image uploaded successfully.');
+                const imageId = imageResponse.data;
+                console.log(imageId);
+
+                if (imageId) {
+                  const imageFormData = new FormData();
+                  imageFormData.append('image', selectedImage);
+                  imageFormData.append('imagelocation', id_image_regis);
+                  imageFormData.append('name', "account");
+
+                  axios.put(`https://domineering-hobbies-production.up.railway.app/update?id=${imageId}`, imageFormData)
+                    .then(response => {
+                      console.log('Image updated successfully.');
+                      setCookie("image_id", imageId)
+                    })
+                    .catch(error => {
+                      console.error('Error updating image:', error);
+                    });
+                } else {
+
+                  console.error('imageId is null or invalid. Cannot update the image.');
+
+                }
+              })
+              .catch(error => {
+                console.error('Error uploading image:', error);
+              });
+          }
+
+        } else {
+          console.error('Account ID is undefined');
+        }
+      } catch (error) {
+        console.error('Error updating account:', error);
+      }
 
 
       alert("Account Registration Successful");
@@ -78,8 +138,8 @@ function Register({ className }) {
     }
 
     const displayName = accountname; // Use the state variables directly
-  const userEmail = email;
-  const userPassword = password;
+    const userEmail = email;
+    const userPassword = password;
 
     /*------ fierbase ------*/
     try {
@@ -110,14 +170,16 @@ function Register({ className }) {
           navigate("/");
         } catch (err) {
           console.log(err);
-       
+
         }
       });
     } catch (err) {
-      
+
     }
 
   }
+
+
 
   return (
     <div>
@@ -272,6 +334,10 @@ function Register({ className }) {
                   required
                 />
               </div>
+              <div class="form-group">
+                <input type="file" onChange={handleImageChange} />
+              </div>
+
               <div class="btnrge">
                 <buttonrge
                   type="submit"

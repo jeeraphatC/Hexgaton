@@ -93,7 +93,6 @@ function EditProfile({ className }) {
                   console.error('Error uploading image:', error);
                 });
             }
-
           })
           .catch((error) => {
             console.error('Error updating', error.message);
