@@ -54,6 +54,7 @@ class Status extends Component {
       <div >
         <Container style={{ marginTop: 50 }}>
           <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>My Work</h1>
+          <p>งานที่รับทำ</p>
           <Row>
           {this.state.status.map(status => (
    status.enterprise !== null && getCookies("id") == status.enterprise.account.accountid && status.status === "process" ? (
@@ -95,6 +96,7 @@ class Status extends Component {
 
         <Container style={{ marginTop: 50 }}>
           <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>In process</h1>
+          <p>งานที่จ้าง</p>
           <Row>
           {this.state.status.map(status => (
   status.freelancer != null && getCookies("id") == status.freelancer.account.accountid && status.status == "process" ? (
@@ -140,6 +142,7 @@ class Status extends Component {
 
 <Container style={{ marginTop: 50 }}>
           <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>Complete</h1>
+          <p>งานที่เสร็จแล้ว</p>
           <Row>
           {this.state.status.map(status => (
   status.freelancer != null && getCookies("id") == status.freelancer.account.accountid && status.status == "Finish" ? (
