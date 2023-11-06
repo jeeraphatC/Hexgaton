@@ -5,6 +5,7 @@ import freelance from "./pic/freelance.png";
 import enter from "./pic/enter.png";
 import chat from "./pic/chat.png";
 import workpro from "./pic/workpro.png";
+import post from "./pic/post.png";
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -48,7 +49,7 @@ function Options({ className }) {
               <Link to="/status">
                 <div className="options">
                   <h3>Work status </h3>
-                  <img src={workpro} alt="" className="logo" />
+                  <img src={workpro} alt="" className="logo4" />
                 </div>
               </Link>
               </Col>
@@ -56,6 +57,7 @@ function Options({ className }) {
               <Link to="/mywork">
                 <div className="options">
                   <h3>My Post Freelance </h3>
+                  <img src={post} alt="" className="logo5" />
                 </div>
               </Link>
               </Col>
@@ -63,6 +65,7 @@ function Options({ className }) {
               <Link to="/myworkenterpise">
                 <div className="options">
                   <h3>My Post Enterprise</h3>
+                  <img src={post} alt="" className="logo5" />
                 </div>
               </Link>
               </Col>
@@ -79,6 +82,18 @@ Options.propTypes = {
 };
 
 export default styled(Options)`
+@media (max-width: 600px) {
+  .optioncontainer{
+    width: 60%;
+    height: 40%;
+    background: #FFF;
+    position: absolute;
+    display: flex;
+    margin: 0 0 0 50px;
+  justify-content: left;
+  flex-wrap:wrap;
+   }
+}
   text-align: center;
   h1{
     font-size: 45px;
@@ -96,7 +111,7 @@ export default styled(Options)`
     color:#959595;
   }
   .optioncontainer{
-    width: 80%;
+    width: 60%;
     height: 40%;
     background: #FFF;
     position: absolute;
@@ -110,7 +125,7 @@ export default styled(Options)`
     height: 190px;
     background: #0196FC;
     display: flex;
-    margin: 20px;
+    margin:20px;
     transition: all 0.2s;
     text-align: left;
    }
@@ -119,21 +134,34 @@ export default styled(Options)`
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.5);
    }
 .logo{
-  max-width: 50px;
-  max-height: 50px;
+  width: 50px;
+  height: 50px;
   margin: 20px;
-  margin-top: 120px;
+  margin-top: 130px;
 }
 .logo2{
-  max-width: 50px;
-  max-height: 50px;
-  margin-top: 120px;
-  margin-right: 20px;
+  idth: 50px;
+ height: 50px;
+  margin-top: 130px;
+  margin-right: 10px;
 }
 .logo3{
-  max-width: 50px;
-  max-height: 50px;
-  margin-top: 120px;
-  margin-left: 100px;
+  width: 50px;
+  height: 50px;
+  margin-top: 130px;
+  margin-left: 130px;
 }
+.logo4{
+  width: 50px;
+  height: 50px;
+  margin-top: 130px;
+  margin-left: 65px;
+}
+.logo5{
+  width: 50px;
+  height: 50px;
+  margin-top: 130px;
+  margin-left: 10px;
+}
+
 `;
