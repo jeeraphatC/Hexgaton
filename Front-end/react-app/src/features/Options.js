@@ -57,19 +57,19 @@ function Options({ className }) {
             <Col md={3}>
               <Link to="/mywork">
                 <div className="options">
-                  <h3>My Post Freelance </h3>
+                  <h3>My Work </h3>
                   <img src={post} alt="" className="logo5" />
                 </div>
               </Link>
               </Col>
-            <Col md={3}>
+            {/* <Col md={3}>
               <Link to="/myworkenterpise">
                 <div className="options">
                   <h3>My Post Enterprise</h3>
                   <img src={post} alt="" className="logo5" />
                 </div>
               </Link>
-              </Col>
+              </Col> */}
           </Row>
         </div>
 
@@ -191,7 +191,7 @@ export default styled(Options)`
   width: 50px;
   height: 50px;
   margin-top: 130px;
-  margin-left: 10px;
+  margin-left: 100px;
 }
 
 `;
