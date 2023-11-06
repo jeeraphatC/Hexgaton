@@ -164,9 +164,9 @@ function Fprofile({ className }) {
                         console.error('Error updating image:', error);
                       });
                   } else {
-                   
+
                     console.error('imageId is null or invalid. Cannot update the image.');
-                    
+
                   }
                 })
                 .catch(error => {
@@ -200,9 +200,11 @@ function Fprofile({ className }) {
         <div className="c1">
           <div className='container-profile'>
             <img src={image} alt="" className="user1" />
-            <div className="overlay">
-              <Link to={`/profilefree/${image_id}`} className='link-edit'>Edit Profile</Link>
-            </div>
+            {config_id === id ? (
+              <div className="overlay">
+                <Link to={`/profilefree/${image_id}`} className='link-edit'>Edit Profile</Link>
+              </div>
+            ) : null}
           </div>
 
 
@@ -215,8 +217,9 @@ function Fprofile({ className }) {
               {userdata.description}
             </div>
           </div>
-
-          <div className='edit'><Link to="/editprofile/:id" className='link-edit'>Edit Profile</Link></div>
+          {config_id === id ? (
+            <div className='edit'><Link to="/editprofile/:id" className='link-edit'>Edit Profile</Link></div>
+          ) : null}
         </div>
 
         <div className='block-work-review'>
