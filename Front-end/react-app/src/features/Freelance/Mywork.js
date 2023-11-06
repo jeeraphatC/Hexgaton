@@ -42,8 +42,8 @@ class Mywork extends Component {
           <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>My Postfreelance</h1>
           <Row>
             {this.state.freelances.map(freelances => (
+              getCookies("id") == freelances.account.accountid && freelances.shows != "no" ? (
               <Col md={4} key={freelances.id}>
-                {getCookies("id") == freelances.account.accountid ? (
                   <Card style={{ width: 400, padding: 20, marginBottom: 20 }}>
                     <Card.Body>
                       <Link to={`/edit/${freelances.id}`}>
@@ -59,8 +59,8 @@ class Mywork extends Component {
                       <Button onClick={() => this.deleteEnterprise(freelances.id)} variant="danger">Delete</Button>
                     </Card.Body>
                   </Card>
-                ) : ""}
               </Col>
+                 ) : ""
             ))}
 
 
