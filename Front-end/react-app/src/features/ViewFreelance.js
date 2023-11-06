@@ -68,7 +68,7 @@ function ViewFreelance({ className }) {
     };
 
     axios
-      .patch(`https://smart-egg-production.up.railway.app/${id}`, patchData)
+      .patch(`https://smart-egg-production.up.railway.app/freelance/${id}`, patchData)
       .then((patchResponse) => {
         // Handle the PATCH response if needed
         console.log("PATCH Data:", patchResponse.data);
