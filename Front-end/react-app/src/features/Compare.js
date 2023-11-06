@@ -141,8 +141,8 @@ function Compare({ className }) {
   return (
     <div className={className}>
       <img src={bgcom} alt="" className="bgcom" />
-      <h1>Compare jobs for freelane</h1>
-      <h3>Freelancers can compare jobs to make a decision.</h3>
+      <h1 className="h1compare">Compare jobs for freelane</h1>
+      <h3 className="h3compare">Freelancers can compare jobs to make a decision.</h3>
       <div className="formcon">
       <button
   type="submit"
@@ -276,24 +276,413 @@ Compare.propTypes = {
 };
 
 export default styled(Compare)`
+@media (max-width: 600px) {
+  .big_logofooter{
+    width: 300px;
+  }
+  .footer-content{
+    width: 120%;
+  }
+  .footertext1{
+    margin-top: 380px;
+    margin-left: 20px;
+    color: #9C9C9C;
+  font-family: Bebas Neue;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; 
+  letter-spacing: -0.22px;
+  }
+
+  .h3compare{
+    font-size:30px;
+    top:50%;
+    text-align:center;
+    display:none;
+  }
+  
+  .h1compare{
+    font-size:80px;
+    top:40%;
+  }
+  
+  .FirstDataContainer8 {
+    position: absolute;
+      border-radius: 10px;
+      background: #0071be;
+      top: 2000px;
+      left: 210px;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 200px;
+      margin-top: 120px;
+      text-align: center;
+  }
+  
+  .SecondDataContainer8{
+    position: absolute;
+      border-radius: 10px;
+      background: #0196fc;
+      top: 2300px;
+      left: 210px;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 200px;
+      margin-top: 120px;
+      text-align: center;
+  }
+  .SecondDataContainer7{
+    position: absolute;
+      border-radius: 10px;
+      background: #0196fc;
+      top: 1350px;
+      left: 300px;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 53px;
+      z-index: -1;
+      margin-top: 120px;
+  }
+  .FirstDataContainer7 {
+    position: absolute;
+      border-radius: 10px 0px 0px 10px;
+      background: #0071be;
+      top: 1350px;
+      left: 120px;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 53px;
+      margin-top: 120px;
+  }
+  .FirstDataContainer6 {
+    position: absolute;
+      border-radius: 10px;
+      background: #0071be;
+      top: 2000px;
+      left: 210px;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 200px;
+      margin-top: 120px;
+      text-align: center;
+  }
+  .SecondDataContainer6{
+    position: absolute;
+      border-radius: 10px;
+      background: #0196fc;
+      top: 2300px;
+      left: 210px;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 200px;
+      margin-top: 120px;
+      text-align: center;
+  }
+    .workprocessdata {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 400;
+      margin-top: 80px;
+    }
+  
+    .workprocessdata2 {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 400;
+      margin-top: 80px;
+      width: 500px; /* Adjust the width as needed */
+    }
+    .workcontent2 {
+      color: #fff;
+      font-size: 40px;
+      font-weight: 400;
+    }
+    .workcontent {
+      color: #fff;
+      font-size: 40px;
+      font-weight: 400;
+    }
+    .SecondDataContainer5 {
+      position: absolute;
+      border-radius: 10px;
+      background: #0196fc;
+      top: 1750px;
+      left: 210px;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 200px;
+      margin-top: 120px;
+      text-align: center;
+      text-align: center;
+    }
+    .FirstDataContainer5 {
+      position: absolute;
+      border-radius: 10px;
+      background: #0071be;
+      top: 1500px;
+      left: 210px;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 200px;
+      margin-top: 120px;
+      text-align: center;
+    }
+    .SecondDataContainer4 {
+      position: absolute;
+      border-radius: 10px;
+      background: #0196fc;
+      top: 1250px;
+      left: 300px;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 53px;
+      z-index: -1;
+      margin-top: 120px;
+    }
+    .FirstDataContainer4 {
+      position: absolute;
+      border-radius: 10px 0px 0px 10px;
+      background: #0071be;
+      top: 1250px;
+      left: 120px;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 53px;
+      margin-top: 120px;
+    }
+    .clearbtn {
+      background-color: red;
+      position: absolute;
+      top: 520px;
+      left: 20px;
+      padding: 8px 40px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .clearbtn:hover {
+      box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+      background-color: grey;
+    }
+  
+    .SecondDataContainer3 {
+      position: absolute;
+      border-radius: 10px;
+      background: #0196fc;
+      top: 1150px;
+      left: 300px;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 53px;
+      z-index: -1;
+      margin-top: 120px;
+    }
+    .FirstDataContainer3 {
+      position: absolute;
+      border-radius: 10px 0px 0px 10px;
+      background: #0071be;
+      top: 1150px;
+      left: 120px;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 53px;
+      margin-top: 120px;
+    }
+    .SecondDataContainer2 {
+      position: absolute;
+      border-radius: 10px;
+      background: #0196fc;
+      top: 1050px;
+      left: 300px;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 53px;
+      z-index: -1;
+      margin-top: 120px;
+    }
+    .FirstDataContainer2 {
+      position: absolute;
+      border-radius: 10px 0px 0px 10px;
+      background: #0071be;
+      top: 1050px;
+      left: 120px;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 53px;
+      margin-top: 120px;
+    }
+    .data2 {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 400;
+      margin: 10px 0 0 20px;
+    }
+    .SecondDataContainer1 {
+      position: absolute;
+      border-radius: 10px;
+      background: #0196fc;
+      top: 950px;
+      left: 300px;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 53px;
+      z-index: -1;
+      margin-top: 120px;
+    }
+    .data1 {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 400;
+      margin: 10px 0 0 20px;
+    }
+    .datacontent {
+      color: #fff;
+      font-size: 20px;
+      font-weight: 400;
+      margin: 10px 0 0 -70px;
+    }
+    .FirstDataContainer1 {
+      position: absolute;
+      border-radius: 10px 0px 0px 10px;
+      background: #0071be;
+      top: 950px;
+      left: 120px;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 53px;
+      margin-top: 120px;
+    }
+    h3 {
+      margin: auto;
+      margin-top: 15px;
+      position: absolute;
+      color: #0196fc;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: bold;
+      font-size: 30px;
+    }
+  
+    h1 {
+      margin: auto;
+      position: absolute;
+      color: white;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-weight: bold;
+      font-size: 100px;
+    }
+  
+    .formcon {
+      text-align: center;
+      margin-top: 120px;
+    }
+  
+    form {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0 150px;
+    }
+  
+    input {
+      padding: 20px 30px;
+      margin-right: 10px;
+      border-radius: 10px;
+      color: #0196fc;
+      font-size: 23px;
+    }
+    input:hover {
+      box-shadow: 0px 2px px 0px rgba(0, 0, 0, 0.15);
+    }
+  
+    .bgcom {
+      height: 600px;
+      width: 100%;
+    }
+  
+    button {
+      margin-top: 20px;
+      padding: 8px 40px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #0196fc;
+      color: white;
+      border-radius: 10px;
+      border: 1px solid #fff;
+    }
+  
+    .userContentContainer1 {
+      top: 800px;
+      left: 80px;
+      transform: translate(-50%, -50%);
+      margin: 20px;
+      position: absolute;
+    }
+    .userContentContainer2 {
+      top: 800px;
+      left: 240px;
+      transform: translate(-50%, -50%);
+      margin: 20px 20px 20px 40px;
+      position: absolute;
+    }
+    .userDataName {
+      font-size: 20px;
+      color: #0071be;
+      font-weight: 400;
+      margin-top: 250px;
+    }
+    .userDataName2 {
+      font-size: 20px;
+      color: #0196fc;
+      font-weight: 400;
+      margin-top: 250px;
+    }
+}
+@media (min-width: 601px) {
+.footertext1{
+  margin-top: 380px;
+  margin-left: 20px;
+  color: #9C9C9C;
+font-family: Bebas Neue;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+letter-spacing: -0.22px;
+}
+.h3compare{
+  font-size:30px;
+  top:50%;
+  text-align:center;
+}
+
+.h1compare{
+  font-size:80px;
+  top:40%;
+}
+
 .FirstDataContainer8 {
   position: absolute;
     border-radius: 10px;
     background: #0071be;
     top: 3100px;
-    left: 900px;
+    left: 800px;
     transform: translate(-50%, -50%);
     width: 1400px;
     height: 200px;
     margin-top: 120px;
     text-align: center;
 }
+
 .SecondDataContainer8{
   position: absolute;
     border-radius: 10px;
     background: #0196fc;
     top: 3350px;
-    left: 900px;
+    left: 800px;
     transform: translate(-50%, -50%);
     width: 1400px;
     height: 200px;
@@ -305,7 +694,7 @@ export default styled(Compare)`
   border-radius: 10px;
   background: #0196fc;
   top: 1600px;
-  left: 1150px;
+  left: 1050px;
   transform: translate(-50%, -50%);
   width: 773px;
   height: 93px;
@@ -317,7 +706,7 @@ export default styled(Compare)`
   border-radius: 10px 0px 0px 10px;
   background: #0071be;
   top: 1600px;
-  left: 600px;
+  left: 500px;
   transform: translate(-50%, -50%);
   width: 750px;
   height: 93px;
@@ -328,7 +717,7 @@ export default styled(Compare)`
     border-radius: 10px;
     background: #0071be;
     top: 2500px;
-    left: 900px;
+    left: 800px;
     transform: translate(-50%, -50%);
     width: 1400px;
     height: 200px;
@@ -340,7 +729,7 @@ export default styled(Compare)`
     border-radius: 10px;
     background: #0196fc;
     top: 2750px;
-    left: 900px;
+    left: 800px;
     transform: translate(-50%, -50%);
     width: 1400px;
     height: 200px;
@@ -376,7 +765,7 @@ export default styled(Compare)`
     border-radius: 10px;
     background: #0196fc;
     top: 2150px;
-    left: 900px;
+    left: 800px;
     transform: translate(-50%, -50%);
     width: 1400px;
     height: 200px;
@@ -388,7 +777,7 @@ export default styled(Compare)`
     border-radius: 10px;
     background: #0071be;
     top: 1900px;
-    left: 900px;
+    left: 800px;
     transform: translate(-50%, -50%);
     width: 1400px;
     height: 200px;
@@ -401,7 +790,7 @@ export default styled(Compare)`
     border-radius: 10px;
     background: #0196fc;
     top: 1450px;
-    left: 1150px;
+    left: 1050px;
     transform: translate(-50%, -50%);
     width: 773px;
     height: 93px;
@@ -413,7 +802,7 @@ export default styled(Compare)`
     border-radius: 10px 0px 0px 10px;
     background: #0071be;
     top: 1450px;
-    left: 600px;
+    left: 500px;
     transform: translate(-50%, -50%);
     width: 750px;
     height: 93px;
@@ -439,7 +828,7 @@ export default styled(Compare)`
     border-radius: 10px;
     background: #0196fc;
     top: 1250px;
-    left: 1150px;
+    left: 1050px;
     transform: translate(-50%, -50%);
     width: 773px;
     height: 93px;
@@ -451,7 +840,7 @@ export default styled(Compare)`
     border-radius: 10px 0px 0px 10px;
     background: #0071be;
     top: 1250px;
-    left: 600px;
+    left: 500px;
     transform: translate(-50%, -50%);
     width: 750px;
     height: 93px;
@@ -462,7 +851,7 @@ export default styled(Compare)`
     border-radius: 10px;
     background: #0196fc;
     top: 1100px;
-    left: 1150px;
+    left: 1050px;
     transform: translate(-50%, -50%);
     width: 773px;
     height: 93px;
@@ -474,7 +863,7 @@ export default styled(Compare)`
     border-radius: 10px 0px 0px 10px;
     background: #0071be;
     top: 1100px;
-    left: 600px;
+    left: 500px;
     transform: translate(-50%, -50%);
     width: 750px;
     height: 93px;
@@ -491,7 +880,7 @@ export default styled(Compare)`
     border-radius: 10px;
     background: #0196fc;
     top: 950px;
-    left: 1150px;
+    left: 1050px;
     transform: translate(-50%, -50%);
     width: 773px;
     height: 93px;
@@ -515,7 +904,7 @@ export default styled(Compare)`
     border-radius: 10px 0px 0px 10px;
     background: #0071be;
     top: 950px;
-    left: 600px;
+    left: 500px;
     transform: translate(-50%, -50%);
     width: 750px;
     height: 93px;
@@ -537,7 +926,7 @@ export default styled(Compare)`
     margin: auto;
     position: absolute;
     color: white;
-    top: 27%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;
@@ -584,16 +973,16 @@ export default styled(Compare)`
 
   .userContentContainer1 {
     top: 800px;
-    left: 700px;
+    left: 500px;
     transform: translate(-50%, -50%);
     margin: 20px;
     position: absolute;
   }
   .userContentContainer2 {
     top: 800px;
-    left: 1170px;
+    left: 1070px;
     transform: translate(-50%, -50%);
-    margin: 20px;
+    margin: 20px 20px 20px 40px;
     position: absolute;
   }
   .userDataName {
@@ -608,4 +997,5 @@ export default styled(Compare)`
     font-weight: 400;
     margin-top: 250px;
   }
+}
 `;

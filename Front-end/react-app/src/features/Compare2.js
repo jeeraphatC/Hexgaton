@@ -343,7 +343,7 @@ margin:19px 0 0 -300px;
     margin: auto;
     position: absolute;
     color: white;
-    top: 27%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-weight: bold;
