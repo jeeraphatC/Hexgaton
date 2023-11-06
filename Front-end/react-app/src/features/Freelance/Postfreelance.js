@@ -172,8 +172,8 @@ const PostFreelance = () => {
 
   return (
     <div>
-      <PostFreelanceContainer>
-      <h2 style={{ marginTop: 60,color: '#0071BE',fontSize:'70px'}}>From for enterprise</h2>
+      <PostJobContainer>
+      <h2 className="h2postfreelance" style={{ marginTop: 60,color: '#0071BE',fontSize:'50px'}}>From for enterprise</h2>
         <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}>โพสงานเพื่อหาFreelanceมาทำงานให้เรา</h2>
         <form onSubmit={handleSubmit}>
           <div>
@@ -293,7 +293,7 @@ const PostFreelance = () => {
             <Button variant="success" type="submit" className="custom-button" style={{ width: 150 }}>Submit</Button>
           </div>
         </form>
-      </PostFreelanceContainer>
+      </PostJobContainer>
       <footer >
         <div class="footer-content" style={{ marginTop: '1800px' }}>
           <img src={big_logo} alt="" className="big_logofooter" />
@@ -308,5 +308,52 @@ const PostFreelance = () => {
     </div>
   );
 }
+const PostJobContainer = styled.div`
+margin:20px 20px 20px 20px;
+.custom-button {
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+input[type="file"] {
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+select {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+  h2 {
+    margin-top: 60px;
+    color: #0196FC;
+    font-size: 80px;
+  }
 
-export default PostFreelance;
+  p {
+    color: #9C9C9C;
+    font-size: 50px;
+    
+  }
+  label{
+    font-size: 20px;
+    margin-top: 20px;
+    
+  }
+  textarea {
+    width: 100%;
+    height: 100px;
+    font-size: 16px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+  }
+`;
+export default styled(PostFreelance)`
+
+`;

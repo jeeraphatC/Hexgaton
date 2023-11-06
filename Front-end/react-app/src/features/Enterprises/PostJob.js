@@ -338,7 +338,7 @@ const PostJob = () => {
 }
 
 const PostJobContainer = styled.div`
-margin:50px 400px 0px 400px;
+margin:20px 20px 20px 20px;
 .custom-button {
   margin-top: 30px;
   margin-bottom: 100px;
