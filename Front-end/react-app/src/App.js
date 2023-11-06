@@ -62,6 +62,7 @@ function App() {
           <Route path="/Postjob" element={isUserLoggedIn ? <PostJob /> : <Navigate to="/login" />} />
           <Route path="/edit/:id" element={isUserLoggedIn ? <EditJob /> : <Navigate to="/login" />} />
           <Route path="/editfreelance/:id" element={isUserLoggedIn ? <EditFreelance /> : <Navigate to="/login" />} />
+          <Route path="/Profile/:ids" element={isUserLoggedIn ? <Profile /> : <Navigate to="/login" />} />
           <Route path="/Profile" element={isUserLoggedIn ? <Profile /> : <Navigate to="/login" />} />
           <Route path="/Options" element={isUserLoggedIn ? <Options /> : <Navigate to="/login" />} />
           <Route path="/ChatRoom" element={isUserLoggedIn ? <HomeChat /> : <Navigate to="/login" />}></Route>

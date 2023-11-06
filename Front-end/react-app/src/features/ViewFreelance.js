@@ -73,7 +73,7 @@ function ViewFreelance({ className }) {
     };
 
     axios
-      .patch(`https://smart-egg-production.up.railway.app/${id}`, patchData)
+      .patch(`https://smart-egg-production.up.railway.app/freelances/${id}`, patchData)
       .then((patchResponse) => {
         // Handle the PATCH response if needed
         console.log("PATCH Data:", patchResponse.data);
@@ -152,7 +152,7 @@ function ViewFreelance({ className }) {
                 <Row>
                   <Col md={3}>
                     <div className='container-profile'>
-                      <Card.Img src={image} alt="" className="user1" />
+                      <Link to={`/profile/${freelance.account.accountid}`}><Card.Img src={image} alt="" className="user1" /></Link>
                     </div>
                   </Col>
                   <Col md={3} style={{ marginTop: 30 }}>

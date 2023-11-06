@@ -43,13 +43,11 @@ class MyworkEnter extends Component {
         <Container style={{ marginTop: 50 }}>
           <h1 style={{ margin: '100px 20px 20px 20px', color: '#0196FC' }}>My Post Enterpise</h1>
           <Row>
-            {this.state.enterprises.map(enterprises => (
+          {this.state.enterprises.map(enterprises => (
+              getCookies("id") == enterprises.account.accountid && enterprises.shows != "no" ? (
               <Col md={4} key={enterprises.id}>
-                {getCookies("id") == enterprises?.account?.accountid ? (
-                  <Card style={{ width: 400, padding: 20, marginBottom: 20 }} >
+                  <Card style={{ width: 400, padding: 20, marginBottom: 20 }}>
                     <Card.Body>
-                      <br />
-                      <br />
                       <Link to={`/edit/${enterprises.id}`}>
                         <img src={pen2} alt="View Details" className='jobdetail' style={{ width: '40px', height: '40px', margin: '115px 0px 0px 255px', position: 'absolute' }} />
                       </Link>
@@ -63,8 +61,8 @@ class MyworkEnter extends Component {
                       <Button onClick={() => this.deleteEnterprise(enterprises.id)} variant="danger">Delete</Button>
                     </Card.Body>
                   </Card>
-                ) : null}
               </Col>
+                 ) : ""
             ))}
 
 

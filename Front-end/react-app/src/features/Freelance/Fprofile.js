@@ -5,13 +5,14 @@ import bg2 from "../pic/bg2.jpg";
 import user1 from "../pic/woman.jpg";
 import star from "../pic/star.png";
 import getCookies from '../hook/getCookies';
-import { Link } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import axios from 'axios';
 import { Container, Row, Col, Card, Button, CardBody } from 'react-bootstrap';
 import { useCookies } from 'react-cookie';
 
 
 function Fprofile({ className }) {
+  const { ids } = useParams();
   const [workData, setWorkData] = useState([]);
   const [id, setId] = useState();
   const [cookies, setCookie, removeCookie] = useCookies();
@@ -21,7 +22,15 @@ function Fprofile({ className }) {
     descrip: '',
     email: '',
   });
-
+console.log(ids)
+  let config_id;
+  if(ids == null)
+  {
+    config_id=getCookies('id');
+  }
+  else{
+    config_id=ids;
+  }
   const [userdata, setUserdata] = useState(
     {
       username : '',
@@ -31,8 +40,6 @@ function Fprofile({ className }) {
   );
 
   const [userName, setuserName] = useState();
-  
-
   const [successMessage, setSuccessMessage] = useState(''); // State for success message
   const [selectedImage, setSelectedImage] = useState(null);
   useEffect(() => {
@@ -42,27 +49,24 @@ function Fprofile({ className }) {
       accountid: setIdFromCookies,
     });
     setId(setIdFromCookies);
-
     // Make sure to include id in the dependency array to trigger the effect when id changes.
-    axios.get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${setIdFromCookies}`)
+    axios.get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${config_id}`)
       .then(response => {
         setFormData(response.data);
+        setuserName(response.data.accountname);
       })
       .catch(error => {
         console.error('Error fetching Account data:', error);
       });
-  }, [id]);
+  }, [id,config_id]);
 
 
   useEffect(() => {
-    setuserName(getCookies('username'));
-
     // const usernameFromCookies = getCookies("username");
     // setUserdata({ ...userdata, "username": usernameFromCookies });
-
    const account_id = getCookies('id');
     axios
-      .get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${account_id}`)
+      .get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${config_id}`)
       .then(response => {
 
         setUserdata({ ...userdata, description: response.data.descrip });
@@ -70,14 +74,14 @@ function Fprofile({ className }) {
       .catch(error => {
         console.error("Error fetching data: ", error);
       });
-  }, []);
+  }, [config_id]);
 
 
   const [image, setImage] = useState(null);
   const imagelocation = getCookies("id");
   useEffect(() => {
     
-    axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
+    axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/account/${config_id}`, { responseType: 'arraybuffer' })
       .then(response => {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
         const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -87,17 +91,16 @@ function Fprofile({ className }) {
       .catch(error => {
         console.error('Error fetching image:', error);
       });
-  }, []);
+  }, [config_id]);
 
   useEffect(() => {
     const idFromCookies = getCookies("id");
-  
     axios
       .get(`https://smart-egg-production.up.railway.app/historys/enterprise`)
       
       .then((response) => {
         if (Array.isArray(response.data)) {
-          const filteredData = response.data.filter((item) => item.account && item.account.accountid == idFromCookies);
+          const filteredData = response.data.filter((item) => item.account && item.account.accountid == config_id);
           console.log('History', filteredData);
   
           setWorkData(filteredData);
@@ -110,7 +113,7 @@ function Fprofile({ className }) {
         // Handle errors if the request fails
         console.error(error);
       });
-  }, []);
+  }, [config_id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -127,7 +130,7 @@ function Fprofile({ className }) {
 
     try {
       if (account_id) {
-        axios.put(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${account_id}`, formData)
+        axios.put(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${ids}`, formData)
           .then((accountResponse) => {
             console.log('Account updated successfully!', accountResponse.data);
             console.log(formData);
