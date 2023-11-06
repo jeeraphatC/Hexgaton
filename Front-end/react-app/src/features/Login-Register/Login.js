@@ -22,7 +22,7 @@ function Login({ className }) {
 
     event.preventDefault();
     try {
-      const loginResponse = await axios.post("http://localhost:8085/api/v1/accounts/login", {
+      const loginResponse = await axios.post("https://smart-egg-production.up.railway.app/api/v1/accounts/login", {
         email: email,
         password: password,
        
@@ -33,7 +33,7 @@ function Login({ className }) {
       if (responseData.message === "Email not exists") {
         alert("Email does not exist");
       } else if (responseData.message === "Login Success") {
-        const accountsResponse = await axios.get("http://localhost:8085/api/v1/accounts/list");
+        const accountsResponse = await axios.get("https://smart-egg-production.up.railway.app/api/v1/accounts/list");
         const accounts = accountsResponse.data;
   
         const accountWithMatchingEmail = accounts.find((account) => account.email === email);

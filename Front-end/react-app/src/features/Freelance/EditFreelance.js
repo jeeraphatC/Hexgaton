@@ -18,7 +18,7 @@ function EditFreelance({ className }) {
   });
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get(`http://localhost:8082/freelances/${id}`)
+    axios.get(`https://smart-egg-production.up.railway.app/freelances/${id}`)
       .then(response => {
         setFreelance(response.data);
       })
@@ -56,7 +56,7 @@ function EditFreelance({ className }) {
 
   // สร้างฟังก์ชันเพื่ออัปเดตข้อมูลไปยังเซิร์ฟเวอร์
   const handleSave = () => {
-    axios.put(`http://localhost:8082/freelances/${id}`, freelance)
+    axios.put(`https://smart-egg-production.up.railway.app/freelances/${id}`, freelance)
       .then(response => {
         console.log('บันทึกข้อมูลสำเร็จ');
         navigate(`/Freelance/${id}`)

@@ -19,10 +19,10 @@ function FindFreelances({ className }) {
   const [freelancerImages, setFreelancerImages] = useState({});
   let path;
   if (type2 == null) {
-    path = `http://localhost:8082/freelances/type/${type}`
+    path = `https://smart-egg-production.up.railway.app/freelances/type/${type}`
   }
   else {
-    path = `http://localhost:8082/freelances/type/${type}/${type2}`
+    path = `https://smart-egg-production.up.railway.app/freelances/type/${type}/${type2}`
   }
 
   function truncateText(text, maxLength) {
@@ -115,7 +115,7 @@ function FindFreelances({ className }) {
         };
 
         const fetchImageByImagelocation = (imagelocation) => {
-          return axios.get(`http://localhost:2023/getByNameAndImagelocation/freelance/${imagelocation}`, { responseType: 'arraybuffer' })
+          return axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/freelance/${imagelocation}`, { responseType: 'arraybuffer' })
             .then(imageResponse => {
               const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
               const imageSrc = `data:image/jpeg;base64,${base64}`;

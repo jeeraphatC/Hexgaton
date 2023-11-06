@@ -20,7 +20,7 @@ function ViewFreelance({ className }) {
   const [account, setaccount] = useState(' ');
   useEffect(() => {
     setaccId(getCookies("id"))
-    axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
+    axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
       .then(response => {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
         const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -33,12 +33,12 @@ function ViewFreelance({ className }) {
   }, [account]);
 
   useEffect(() => {
-    axios.get(`http://localhost:8082/freelances/${id}`)
+    axios.get(`https://smart-egg-production.up.railway.app/freelances/${id}`)
       .then(response => {
         setFreelance(response.data);
         setaccount(response.data.account.accountid)
         console.log(response.data.account.accountid)
-        axios.get(`http://localhost:2023/getByNameAndImagelocation/freelance/${id}`, { responseType: 'arraybuffer' })
+        axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/freelance/${id}`, { responseType: 'arraybuffer' })
           .then(imageResponse => {
             const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
             const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -68,7 +68,7 @@ function ViewFreelance({ className }) {
     };
 
     axios
-      .patch(`http://localhost:8082/freelances/${id}`, patchData)
+      .patch(`https://smart-egg-production.up.railway.app/${id}`, patchData)
       .then((patchResponse) => {
         // Handle the PATCH response if needed
         console.log("PATCH Data:", patchResponse.data);
@@ -99,11 +99,11 @@ function ViewFreelance({ className }) {
     };
     console.log(historyData)
     axios
-      .post(`http://localhost:8082/historys/freelance`, historyData)
+      .post(`https://smart-egg-production.up.railway.app/historys/freelance`, historyData)
       .then((historyResponse) => {
         // Handle the response if needed
         console.log("History Data:", historyResponse.data);
-        axios.post(`http://localhost:8082/status`, statusData)
+        axios.post(`https://smart-egg-production.up.railway.app/status`, statusData)
         .then((statusResponse) => {
           const status = statusResponse.data;
           console.log(status);

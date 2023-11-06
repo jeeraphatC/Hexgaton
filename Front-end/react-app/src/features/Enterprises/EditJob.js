@@ -22,7 +22,7 @@ function EditJob({ className }) {
   const navigate=useNavigate();
   useEffect(() => {
     // เรียก API ดึงข้อมูล Enterprise ตาม ID ที่ถูกส่งมาจาก URL
-    axios.get(`http://localhost:8090/enterprises/${id}`)
+    axios.get(`https://smart-egg-production.up.railway.app/enterprises/${id}`)
       .then(response => {
         setEnterprise(response.data);
         
@@ -74,7 +74,7 @@ function EditJob({ className }) {
 
   // ฟังก์ชันที่จะอัปเดตข้อมูลในเซิร์ฟเวอร์
   const updateEnterprise = () => {
-    axios.put(`http://localhost:8090/enterprises/${id}`, enterprise)
+    axios.put(`https://smart-egg-production.up.railway.app/enterprises/${id}`, enterprise)
       .then(response => {
         // อัปเดตสถานะหรือทำสิ่งที่คุณต้องการหลังจากการอัปเดตข้อมูลเสร็จสมบูรณ์
         console.log('อัปเดตข้อมูลเรียบร้อยแล้ว');

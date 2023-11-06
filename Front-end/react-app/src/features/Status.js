@@ -12,7 +12,7 @@ class Status extends Component {
 
   componentDidMount() {
     // เรียก API ที่มีข้อมูล Enterprises ที่คุณต้องการดึง
-    axios.get('http://localhost:8082/status')
+    axios.get('https://smart-egg-production.up.railway.app/status')
       .then(response => {
         this.setState({ status: response.data });
       })
@@ -34,7 +34,7 @@ class Status extends Component {
       };
   
       // ส่งคำขอ PUT ไปยัง API เพื่ออัพเดตสถานะของ Enterprise
-      axios.patch(`http://localhost:8082/status/${id}`, updatedStatus)
+      axios.patch(`https://smart-egg-production.up.railway.app/status/${id}`, updatedStatus)
         .then(response => {
           // หากอัพเดตสำเร็จ, คุณสามารถทำอะไรสักอย่าง (เช่น อัพเดตสถานะในสถานะของคอมโพนนี้)
           console.log('อัพเดตสถานะสำเร็จ');

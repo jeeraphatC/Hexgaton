@@ -23,7 +23,7 @@ function ViewEnter({ className }) {
   useEffect(() => {
     setaccId(getCookies('id'));
 
-    axios.get(`http://localhost:2023/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
+    axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
       .then(response => {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
         const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -37,13 +37,13 @@ function ViewEnter({ className }) {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:8090/enterprises/${id}`)
+    axios.get(`https://smart-egg-production.up.railway.app/enterprises/${id}`)
       .then(response => {
         setEnterprise(response.data);
         setaccount(response.data.account.accountid)
 
         // Fetch enterprise image
-        axios.get(`http://localhost:2023/getByNameAndImagelocation/enterprises/${id}`, { responseType: 'arraybuffer' })
+        axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/enterprises/${id}`, { responseType: 'arraybuffer' })
           .then(imageResponse => {
             const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
             const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -71,7 +71,7 @@ function ViewEnter({ className }) {
     };
 
     axios
-      .patch(`http://localhost:8090/enterprises/${id}`, patchData)
+      .patch(`https://smart-egg-production.up.railway.app/enterprises/${id}`, patchData)
       .then((patchResponse) => {
         // Handle the PATCH response if needed
         console.log("PATCH Data:", patchResponse.data);
@@ -101,13 +101,13 @@ function ViewEnter({ className }) {
       }
     };
     axios
-    .post(`http://localhost:8082/historys/enterprise`, historyData)
+    .post(`https://smart-egg-production.up.railway.app/historys/enterprise`, historyData)
     .then((historyResponse) => {
       // Handle the response if needed
       console.log("History Data:", historyResponse.data);
       
       // After saving history, update the status
-      axios.post(`http://localhost:8082/status`, statusData)
+      axios.post(`https://smart-egg-production.up.railway.app/status`, statusData)
         .then((statusResponse) => {
           // Handle the status response if needed
           console.log("Status Data:", statusResponse.data);

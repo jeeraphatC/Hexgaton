@@ -54,7 +54,7 @@ function Register({ className }) {
     }
 
     try {
-      await axios.post("http://localhost:8085/api/v1/accounts/save", {
+      await axios.post("https://smart-egg-production.up.railway.app/api/v1/accounts/save", {
         accountname: accountname,
         email: email,
         numberCard: numberCard,

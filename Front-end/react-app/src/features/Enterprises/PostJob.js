@@ -51,19 +51,19 @@ const PostJob = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8090/enterprises', formData);
+      const response = await axios.post('https://smart-egg-production.up.railway.app/enterprises', formData);
       console.log('Enterprises created:', response.data);
       const history = {
         enterprise: {
           id: response.data.id
         }
       }
-      axios.post('http://localhost:8082/historys/enterprise', history);
+      axios.post('https://smart-egg-production.up.railway.app/historys/enterprise', history);
       console.log('History creacte ',history.data);
       const accoun_id = getCookies('id');
 
       
-      axios.get(`http://localhost:8085/api/v1/accounts/list/${accoun_id}`)
+      axios.get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${accoun_id}`)
         .then((accountResponse) => {
           const accountData = accountResponse.data;
           console.log('Account data retrieved successfully:', accountData);
@@ -93,7 +93,7 @@ const PostJob = () => {
           };
 
 
-          axios.put(`http://localhost:8090/enterprises/${jobDataToUpdate.id}`, jobDataToUpdate)
+          axios.put(`https://smart-egg-production.up.railway.app/enterprises/${jobDataToUpdate.id}`, jobDataToUpdate)
             .then((jobResponse) => {
               console.log('Job updated successfully!', jobResponse.data);
               const updatedJobId = jobResponse.data.id;
@@ -103,7 +103,7 @@ const PostJob = () => {
                 const formData = new FormData();
                 formData.append('image', selectedImage);
 
-                axios.post('http://localhost:2023/add', formData)
+                axios.post('https://domineering-hobbies-production.up.railway.app/add', formData)
                   .then(imageResponse => {
                     console.log('Image uploaded successfully.');
                     const imageId = imageResponse.data;
@@ -115,7 +115,7 @@ const PostJob = () => {
                       imageFormData.append('imagelocation', updatedJobId);
                       imageFormData.append('name', "enterprises");
 
-                      axios.put(`http://localhost:2023/update?id=${imageId}`, imageFormData)
+                      axios.put(`https://domineering-hobbies-production.up.railway.app/update?id=${imageId}`, imageFormData)
                         .then(response => {
                           console.log('Image updated successfully.');
                         })

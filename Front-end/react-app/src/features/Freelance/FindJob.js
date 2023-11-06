@@ -20,10 +20,10 @@ function FindJob({ className }) {
   };
   let path;
   if (type2 == null) {
-    path = `http://localhost:8090/enterprises/type/${type}`
+    path = `https://smart-egg-production.up.railway.app/enterprises/type/${type}`
   }
   else {
-    path = `http://localhost:8090/enterprises/type/${type}/${type2}`
+    path = `https://smart-egg-production.up.railway.app/enterprises/type/${type}/${type2}`
   }
 
   function truncateText(text, maxLength) {
@@ -130,7 +130,7 @@ function FindJob({ className }) {
         };
 
         const fetchImageByImagelocation = (imagelocation) => {
-          return axios.get(`http://localhost:2023/getByNameAndImagelocation/enterprises/${imagelocation}`, { responseType: 'arraybuffer' })
+          return axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/enterprises/${imagelocation}`, { responseType: 'arraybuffer' })
             .then(imageResponse => {
               const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
               const imageSrc = `data:image/jpeg;base64,${base64}`;

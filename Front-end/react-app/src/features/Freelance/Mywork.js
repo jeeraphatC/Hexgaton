@@ -13,7 +13,7 @@ class Mywork extends Component {
 
   componentDidMount() {
     // เรียก API ที่มีข้อมูล Enterprises ที่คุณต้องการดึง
-    axios.get('http://localhost:8082/freelances')
+    axios.get('https://smart-egg-production.up.railway.app/freelances')
       .then(response => {
         this.setState({ freelances: response.data });
       })
@@ -23,7 +23,7 @@ class Mywork extends Component {
   }
 
   deleteEnterprise = (id) => {
-    axios.delete(`http://localhost:8082/freelances/id/${id}`)
+    axios.delete(`https://smart-egg-production.up.railway.app/freelances/id/${id}`)
       .then(response => {
         // Remove the deleted enterprise from the state
         this.setState(prevState => ({
