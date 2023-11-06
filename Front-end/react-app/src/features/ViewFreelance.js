@@ -147,7 +147,7 @@ function ViewFreelance({ className }) {
                 <Row>
                   <Col md={3}>
                     <div className='container-profile'>
-                      <Card.Img src={image} alt="" className="user1" />
+                      <Link to={`/profile/${freelance.account.accountid}`}><Card.Img src={image} alt="" className="user1" /></Link>
                     </div>
                   </Col>
                   <Col md={3} style={{ marginTop: 30 }}>
