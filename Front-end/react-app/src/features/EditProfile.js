@@ -18,6 +18,7 @@ function EditProfile({ className }) {
     email: '',
   });
 
+  const image_id = getCookies('image_id');
   const [successMessage, setSuccessMessage] = useState(''); // State for success message
   const [selectedImage, setSelectedImage] = useState(null);
   useEffect(() => {
@@ -79,6 +80,7 @@ function EditProfile({ className }) {
                     axios.put(`https://domineering-hobbies-production.up.railway.app/update?id=${imageId}`, imageFormData)
                       .then(response => {
                         console.log('Image updated successfully.');
+                        setCookie("image_id", imageId)
                       })
                       .catch(error => {
                         console.error('Error updating image:', error);
@@ -147,9 +149,13 @@ function EditProfile({ className }) {
                 />
               </div>
 
-              <div >
-                <input type="file" onChange={handleImageChange} />
-              </div>
+              {image_id ? (
+                null
+              ) : (
+                <div>
+                  <input type="file" onChange={handleImageChange} />
+                </div>
+              )}
 
               <div style={{ textAlign: 'center' }}>
                 <Button variant="success" type="submit" style={{ width: 150 }}>
