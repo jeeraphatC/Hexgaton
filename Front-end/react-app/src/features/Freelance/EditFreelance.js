@@ -16,6 +16,11 @@ function EditFreelance({ className }) {
     subtype: '',
     companyName: '',
   });
+  const [selectedImage, setSelectedImage] = useState(null);
+  const handleImageChange = (event) => {
+    setSelectedImage(event.target.files[0]);
+  };
+
   const navigate = useNavigate();
   useEffect(() => {
     axios.get(`https://smart-egg-production.up.railway.app/freelances/${id}`)
@@ -59,6 +64,23 @@ function EditFreelance({ className }) {
     axios.put(`https://smart-egg-production.up.railway.app/freelances/${id}`, freelance)
       .then(response => {
         console.log('บันทึกข้อมูลสำเร็จ');
+        console.log(response.data.id)
+        const imgfree_id = response.data.id;
+
+        const name = "freelance";
+        const imageFormData = new FormData();
+        imageFormData.append('image', selectedImage);
+        imageFormData.append('imagelocation', imgfree_id);
+        imageFormData.append('name', "freelance");
+        console.log("image", imgfree_id)
+        axios.put(`https://domineering-hobbies-production.up.railway.app/update/${name}/${imgfree_id}`, imageFormData)
+          .then(response => {
+            console.log('Image updated successfully.');
+          })
+          .catch(error => {
+            console.error('Error updating image:', error);
+          });
+
         navigate(`/Freelance/${id}`)
       })
       .catch(error => {
@@ -163,7 +185,9 @@ function EditFreelance({ className }) {
               onChange={handleCompanyChange}
             />
           </div>
-
+          <div class="form-group">
+            <input type="file" onChange={handleImageChange} />
+          </div>
         </form>
       </Container>
       <button type="button" className="custom-button2" onClick={handleSave}>Save</button>

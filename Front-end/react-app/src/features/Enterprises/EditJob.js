@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams , useNavigate  } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import styled from "styled-components";
 import big_logo from "../pic/big_logo.png";
@@ -19,13 +19,17 @@ function EditJob({ className }) {
     examplejob: '',
     fixtime: '',
   });
-  const navigate=useNavigate();
+  const [selectedImage, setSelectedImage] = useState(null);
+  const handleImageChange = (event) => {
+    setSelectedImage(event.target.files[0]);
+  };
+
+  const navigate = useNavigate();
   useEffect(() => {
     // เรียก API ดึงข้อมูล Enterprise ตาม ID ที่ถูกส่งมาจาก URL
     axios.get(`https://smart-egg-production.up.railway.app/enterprises/${id}`)
       .then(response => {
         setEnterprise(response.data);
-        
       })
       .catch(error => {
         console.error('เกิดข้อผิดพลาดในการดึงข้อมูล Enterprise:', error);
@@ -78,6 +82,23 @@ function EditJob({ className }) {
       .then(response => {
         // อัปเดตสถานะหรือทำสิ่งที่คุณต้องการหลังจากการอัปเดตข้อมูลเสร็จสมบูรณ์
         console.log('อัปเดตข้อมูลเรียบร้อยแล้ว');
+
+        const imgfree_id = response.data.id;
+
+        const name = "enterprises";
+        const imageFormData = new FormData();
+        imageFormData.append('image', selectedImage);
+        imageFormData.append('imagelocation', imgfree_id);
+        imageFormData.append('name', "enterprises");
+        console.log("image", imgfree_id)
+        axios.put(`https://domineering-hobbies-production.up.railway.app/update/${name}/${imgfree_id}`, imageFormData)
+          .then(response => {
+            console.log('Image updated successfully.');
+          })
+          .catch(error => {
+            console.error('Error updating image:', error);
+          });
+
         navigate(`/enterprises/${id}`)
       })
       .catch(error => {
@@ -89,8 +110,8 @@ function EditJob({ className }) {
     <div className={className}>
       <Container>
         <div>
-        <h1 className='EditFreelanceh1'>Edit Your job</h1>
-        <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}> เปลี่ยนแปลงข้อมูลงานของเรา เพื่อให้freelanceมารับงาน</h2>
+          <h1 className='EditFreelanceh1'>Edit Your job</h1>
+          <h2 style={{ marginTop: 10, color: '#9C9C9C', fontSize: '30px' }}> เปลี่ยนแปลงข้อมูลงานของเรา เพื่อให้freelanceมารับงาน</h2>
           <form>
             <div>
               <label>Name:</label>
@@ -206,12 +227,16 @@ function EditJob({ className }) {
               </select>
             </div>
 
+            <div class="form-group">
+              <input type="file" onChange={handleImageChange} />
+            </div>
+
             <button type="button" className="custom-button3" onClick={updateEnterprise}>Save</button>
           </form>
         </div>
       </Container>
       <footer>
-        <div class="footer-content" style={{marginTop:'1800px'}}>
+        <div class="footer-content" style={{ marginTop: '1800px' }}>
           <img src={big_logo} alt="" className="big_logofooter" />
           <p className="footertext1">
             Norrapat Sai-ai 652110289<br></br>

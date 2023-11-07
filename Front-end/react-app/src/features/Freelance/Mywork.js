@@ -66,6 +66,8 @@ class MyworkEnter extends Component {
   };
 
   render() {
+    
+    
     return (
       <div>
         <Container style={{ marginTop: 50 }}>
@@ -81,8 +83,8 @@ class MyworkEnter extends Component {
           <Row>
             {this.state.enterprises.map((enterprises) =>
               enterprises.account &&
-              getCookies("id") == enterprises.account.accountid &&
-              enterprises.shows != "no" ? (
+                getCookies("id") == enterprises.account.accountid &&
+                enterprises.shows != "no" ? (
                 <Col md={4} key={enterprises.id}>
                   <Card
                     className="cardbody1"
@@ -165,9 +167,9 @@ class MyworkEnter extends Component {
             My Postfreelance
           </h1>
           <Row>
-          {this.state.freelances.map((freelances) =>
-  freelances.account && getCookies("id") == freelances.account.accountid &&
-  freelances.shows != "no" ? (
+            {this.state.freelances.map((freelances) =>
+              freelances.account && getCookies("id") == freelances.account.accountid &&
+                freelances.shows != "no" ? (
                 <Col md={4} key={freelances.id}>
                   <Card style={{ width: 400, padding: 20, marginBottom: 20 }}>
                     <Card.Body>
@@ -212,7 +214,7 @@ class MyworkEnter extends Component {
                       </Button>
                       <button
                         onClick={() => {
-                          window.location.href = `/edit/${freelances.id}`;
+                          window.location.href = `/editfreelance/${freelances.id}`;
                         }}
                         style={{
                           padding: "7px 15px",
