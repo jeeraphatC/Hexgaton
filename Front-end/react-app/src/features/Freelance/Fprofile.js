@@ -226,7 +226,7 @@ function Fprofile({ className }) {
           <div className='block-work-of'>
             <div className='head-band'>
               <h3 >Work of {userName}</h3>
-              <Link to="/editprofile" className='link-history'>PRESS TO SEE MORE HISTORY</Link>
+              <Link to="/history" className='link-history'>PRESS TO SEE MORE HISTORY</Link>
             </div>
 
 
