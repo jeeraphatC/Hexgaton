@@ -128,6 +128,7 @@ function Fprofile({ className }) {
     e.preventDefault();
     const account_id = id;
 
+    
 
     try {
       if (account_id) {
@@ -191,7 +192,9 @@ function Fprofile({ className }) {
     setSelectedImage(event.target.files[0]);
   };
 
-
+  const Histoy =()=>{
+    setCookie("histo", ids);
+  }
   return (
     <div className={className}>
 
@@ -226,7 +229,7 @@ function Fprofile({ className }) {
           <div className='block-work-of'>
             <div className='head-band'>
               <h3 >Work of {userName}</h3>
-              <Link to="/history" className='link-history'>PRESS TO SEE MORE HISTORY</Link>
+              <Link to="/history"  onClick ={Histoy} className='link-history' >PRESS TO SEE MORE HISTORY</Link>
             </div>
 
 

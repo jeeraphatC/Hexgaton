@@ -3,10 +3,21 @@ import axios from "axios";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import styled from "styled-components";
 import getCookies from "./hook/getCookies";
+import { useCookies } from 'react-cookie'
 function History() {
   const [enterprises, setEnterprises] = useState([]);
   const [freelances, setFreelances] = useState([]);
+  
+  const [cookies, setCookie, removeCookie] = useCookies();
+  let cookiehis=getCookies("histo");
 
+  if(cookiehis=== "undefined")
+  {
+
+    cookiehis=getCookies("id");
+  }
+ 
+  console.log(cookiehis)
   useEffect(() => {
     axios
       .get("https://smart-egg-production.up.railway.app/historys/enterprise")
@@ -42,7 +53,7 @@ function History() {
         </h1>
         <Row>
         {freelances.map((freelance) =>
-    getCookies("id") == freelance.freelance.account.accountid  ? (
+    cookiehis == freelance.freelance.account.accountid  ? (
       <Card className="card-history" key={freelance.id}>
         <Card.Body>
           <Card.Title><strong>Name: </strong> {freelance.freelance.name}</Card.Title>
@@ -58,7 +69,7 @@ function History() {
   )}         
     
         {enterprises.map((enterprises) =>
-    enterprises.account != null  &&  getCookies("id") == enterprises.account.accountid  ?(
+    enterprises.account != null  &&  cookiehis == enterprises.account.accountid  ?(
       <Card className="card-history" key={enterprises.id}>
         <Card.Body>
           <Card.Title><strong>Name: </strong> {enterprises.enterprise.name}</Card.Title>
@@ -86,7 +97,7 @@ function History() {
         </h1>
         <Row>
         {freelances.map((freelance) =>
-    getCookies("id") == freelance.account.accountid  ? (
+   cookiehis == freelance.account.accountid  ? (
       <Card className="card-history" key={freelance.id}>
         <Card.Body>
           <Card.Title><strong>Name: </strong> {freelance.freelance.name}</Card.Title>
@@ -102,7 +113,7 @@ function History() {
   )}         
     
         {enterprises.map((enterprises) =>
-    enterprises.account != null  &&  getCookies("id") == enterprises.enterprise.account.accountid  ?(
+    enterprises.account != null  && cookiehis == enterprises.enterprise.account.accountid  ?(
       <Card className="card-history" key={enterprises.id}>
         <Card.Body>
           <Card.Title><strong>Name: </strong> {enterprises.enterprise.name}</Card.Title>
@@ -114,11 +125,12 @@ function History() {
         </Card.Body>
       </Card>
     ) : null
-  )}         
+)}      
         </Row>
       </Container>
     </div>
   );
+  
 }
 
 export default styled(History)`

@@ -156,7 +156,7 @@ function ViewFreelance({ className }) {
                     </div>
                   </Col>
                   <Col md={3} style={{ marginTop: 30 }}>
-                    <Card.Text><strong>Name:</strong> {freelance.account.accountname}</Card.Text>
+                  <Link to={`/profile/${freelance.account.accountid}`}><Card.Text><strong>Name:</strong> {freelance.account.accountname}</Card.Text></Link>
                   </Col>
                 </Row>
               </Card.Body>

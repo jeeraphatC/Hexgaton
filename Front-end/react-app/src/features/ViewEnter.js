@@ -165,7 +165,7 @@ function ViewEnter({ className }) {
                     </div>
                   </Col>
                   <Col md={3} style={{ marginTop: 30 }}>
-                    <Card.Text><strong>Name:</strong> {enterprise.account.accountname}</Card.Text>
+                  <Link to={`/profile/${enterprise.account.accountid}`}> <Card.Text><strong>Name:</strong> {enterprise.account.accountname}</Card.Text></Link>
                   </Col>
                 </Row>
               </Card.Body>
