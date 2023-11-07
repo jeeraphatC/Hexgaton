@@ -32,6 +32,7 @@ import BasicExample from './features/Example';
 import Status from './features/Status';
 import HomeChat from './features/chatSystem/components/Home';
 import EditpictureProfile from './features/EditpictureProfile';
+import History from './features/History';
 function App() {
   const location = useLocation();
   const showNavbar = location.pathname !== '/login';
@@ -77,6 +78,7 @@ function App() {
           <Route path="/mywork" element={isUserLoggedIn ? <Mywork /> : <Navigate to="/login" />} />
           <Route path="/status" element={isUserLoggedIn ? <Status /> : <Navigate to="/login" />} />
           <Route path="/profilefree/:id" element={isUserLoggedIn ? <EditpictureProfile /> : <Navigate to="/login" />} />
+          <Route path="/history" element={isUserLoggedIn ? < History/> : <Navigate to="/login" />} />
         </Routes>
       </Container>
 
