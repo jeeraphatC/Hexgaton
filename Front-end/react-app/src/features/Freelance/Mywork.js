@@ -80,6 +80,7 @@ class MyworkEnter extends Component {
           </h1>
           <Row>
             {this.state.enterprises.map((enterprises) =>
+              enterprises.account &&
               getCookies("id") == enterprises.account.accountid &&
               enterprises.shows != "no" ? (
                 <Col md={4} key={enterprises.id}>
@@ -102,16 +103,23 @@ class MyworkEnter extends Component {
                         />
                       </Link>
                       <Card.Title>
-                        <p style={{fontSize:'40px',color:'#0196FC'}}> {enterprises.name}</p>
+                        <p style={{ fontSize: "40px", color: "#0196FC" }}>
+                          {" "}
+                          {enterprises.name}
+                        </p>
                       </Card.Title>
                       <Card.Text>
-                        <strong style={{fontSize:'20px'}}>Price : </strong> {enterprises.price}
+                        <strong style={{ fontSize: "20px" }}>Price : </strong>{" "}
+                        {enterprises.price}
                       </Card.Text>
                       <Card.Text>
-                        <strong style={{fontSize:'20px'}}>Time : </strong> {enterprises.time}
+                        <strong style={{ fontSize: "20px" }}>Time : </strong>{" "}
+                        {enterprises.time}
                       </Card.Text>
                       <Card.Text>
-                        <strong style={{fontSize:'20px'}}>Description : </strong>{" "}
+                        <strong style={{ fontSize: "20px" }}>
+                          Description :{" "}
+                        </strong>{" "}
                         {truncateText(enterprises.description, 40)}
                       </Card.Text>
                       <Button
@@ -125,14 +133,14 @@ class MyworkEnter extends Component {
                           window.location.href = `/edit/${enterprises.id}`;
                         }}
                         style={{
-                          padding: '7px 15px',
-                          backgroundColor: '#0196FC',
-                          color: '#fff',
-                          border: 'none',
-                          borderRadius: '5px',
-                          cursor: 'pointer',
-                          fontSize: '17px',
-                          marginLeft: '10px',
+                          padding: "7px 15px",
+                          backgroundColor: "#0196FC",
+                          color: "#fff",
+                          border: "none",
+                          borderRadius: "5px",
+                          cursor: "pointer",
+                          fontSize: "17px",
+                          marginLeft: "10px",
                         }}
                       >
                         Edit
@@ -157,13 +165,12 @@ class MyworkEnter extends Component {
             My Postfreelance
           </h1>
           <Row>
-            {this.state.freelances.map((freelances) =>
-              getCookies("id") == freelances.account.accountid &&
-              freelances.shows != "no" ? (
+          {this.state.freelances.map((freelances) =>
+  freelances.account && getCookies("id") == freelances.account.accountid &&
+  freelances.shows != "no" ? (
                 <Col md={4} key={freelances.id}>
                   <Card style={{ width: 400, padding: 20, marginBottom: 20 }}>
                     <Card.Body>
-                      
                       <Link to={`/enterprises/${freelances.id}`}>
                         <img
                           src={search4}
@@ -178,16 +185,23 @@ class MyworkEnter extends Component {
                         />
                       </Link>
                       <Card.Title>
-                      <p style={{fontSize:'40px',color:'#0196FC'}}> {freelances.name}</p>
+                        <p style={{ fontSize: "40px", color: "#0196FC" }}>
+                          {" "}
+                          {freelances.name}
+                        </p>
                       </Card.Title>
                       <Card.Text>
-                        <strong style={{fontSize:'20px'}}>Price:</strong> {freelances.price}
-                      </Card.Text>
-                      <Card.Text >
-                        <strong style={{fontSize:'20px'}} >Time:</strong> {freelances.time}
+                        <strong style={{ fontSize: "20px" }}>Price:</strong>{" "}
+                        {freelances.price}
                       </Card.Text>
                       <Card.Text>
-                        <strong style={{fontSize:'20px'}}>Description:</strong>{" "}
+                        <strong style={{ fontSize: "20px" }}>Time:</strong>{" "}
+                        {freelances.time}
+                      </Card.Text>
+                      <Card.Text>
+                        <strong style={{ fontSize: "20px" }}>
+                          Description:
+                        </strong>{" "}
                         {truncateText(freelances.description, 40)}
                       </Card.Text>
                       <Button
@@ -201,16 +215,18 @@ class MyworkEnter extends Component {
                           window.location.href = `/edit/${freelances.id}`;
                         }}
                         style={{
-                          padding: '7px 15px',
-                          backgroundColor: '#0196FC',
-                          color: '#fff',
-                          border: 'none',
-                          borderRadius: '5px',
-                          cursor: 'pointer',
-                          fontSize: '17px',
-                          marginLeft: '10px',
+                          padding: "7px 15px",
+                          backgroundColor: "#0196FC",
+                          color: "#fff",
+                          border: "none",
+                          borderRadius: "5px",
+                          cursor: "pointer",
+                          fontSize: "17px",
+                          marginLeft: "10px",
                         }}
-                      >Edit</button>
+                      >
+                        Edit
+                      </button>
                     </Card.Body>
                   </Card>
                 </Col>
@@ -237,7 +253,7 @@ export default styled(MyworkEnter)`
       width: 200px;
     }
   }
-  .editbtn{
-    padding:20px;
+  .editbtn {
+    padding: 20px;
   }
 `;
