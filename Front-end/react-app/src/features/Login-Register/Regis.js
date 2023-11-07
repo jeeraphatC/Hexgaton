@@ -28,7 +28,8 @@ function Register({ className }) {
       accountname.length > 0 &&
       email.length > 0 &&
       numberCard.length > 0 &&
-      password.length > 0
+      password.length > 0 &&
+      !selectedImage
     );
   };
 
@@ -334,6 +335,7 @@ function Register({ className }) {
                   required
                 />
               </div>
+              <label className="form-text" style={{marginLeft : 50}}>Image Profile</label>
               <div class="form-group">
                 <input type="file" onChange={handleImageChange} />
               </div>
