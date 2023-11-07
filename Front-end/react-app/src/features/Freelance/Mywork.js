@@ -238,7 +238,7 @@ function MyworkEnter() {
             fontSize: "50px",
           }}
         >
-          My Postfreelance
+          My Post Freelance
         </h1>
         <Row>
           {freelances.map((freelances) =>
