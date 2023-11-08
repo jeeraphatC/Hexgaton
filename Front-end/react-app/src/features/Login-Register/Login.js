@@ -5,6 +5,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 import blogo from "../pic/big_logo.png";
 import mlogo from "../pic/mini_logo.png";
+import mail from "../pic/mail.png";
+import padlock from "../pic/padlock.png";
 import SockJS from 'sockjs-client';
 import { useCookies } from 'react-cookie';
 
@@ -149,14 +151,14 @@ function Login({ className }) {
               <div className="biglogo-container">
                 <img src={blogo} alt="โลโก้" className="big-logo" />
               </div>
-              <Link to="/register">
-                <a className="alogin">Signup</a>
-              </Link>
-              <div className="asignup">Login</div>
+              <a href="/register"  className="regtext2">Register</a>
+          <a href="/login" className="logintext2"style={{}}>Login</a>
+              
               <div className="form-container">
                 <form>
                   <div class="form-group">
                     {/* <label className="form-text">email</label> */}
+                    <img src={mail} alt="" className="mail-logo" />
                     <input
                       type="email"
                       class="form-control"
@@ -168,9 +170,11 @@ function Login({ className }) {
                       }}
                       required
                     />
+                    
                   </div>
                   <div class="form-group">
                     {/* <label className="form-text">password</label> */}
+                    <img src={padlock} alt="" className="mail-logo" />
                     <input
                       type="password"
                       class="form-control"
@@ -183,7 +187,16 @@ function Login({ className }) {
                       required
                     />
                   </div>
-                  <button type="submit" onClick={login} >Login</button>
+                  <div class="btnrge">
+                <buttonrge
+                  type="submit"
+                  class="btn btn-primary mt-4 btn-large"
+                  onClick={login}
+                >
+                  Login
+                </buttonrge>
+                
+              </div>
                 </form>
               </div>
             </div>
@@ -201,6 +214,7 @@ Login.propTypes = {
 
 export default styled(Login)`
 @media (max-width: 600px) {
+
   margin-Top: 300px;
   width:80%;
   form button {
@@ -247,8 +261,11 @@ export default styled(Login)`
       background-color: #28a745;
       border-radius: 0.25rem;
       border: none;
-      margin-left:150px;
+      margin-left:200px;
       width: 250px;
+      display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
     }
   
     form button:hover{
@@ -256,7 +273,7 @@ export default styled(Login)`
     }
   
     .form-group{
-      width: 500px;
+      width: 90%;
       margin-left:40px;
       margin-top:30px;
     }

@@ -59,18 +59,18 @@ a:active { text-decoration: none; }
     outline: none;
 
     border: 1px solid #ced4da;
-    border-radius: 0.25rem;
 
     width: 100%;
     
   }
 
 
-  .app-container {
-    max-width: auto;
+.mail-logo{
+  max-width:35px;
     position: absolute;
-  }
-  
+    margin-left: 85%;
+    margin-top: 10px;
+}
   .min-logo {
     max-width:150px;
     position: absolute;
@@ -81,31 +81,72 @@ a:active { text-decoration: none; }
     padding:20px;
   }
   .card{
-    width: 600px;
+    width: 800px;
     border:0px;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
   }
   .big-logo {
     position: relative;
     width: 300px;
-    
+    margin-top:20px;
   }
   .biglogo-container{
     display: flex;
     justify-content: center;
     margin:50px;
   }
-
+.logintext:hover{
+  color:  #0196FC;
+}
+.logintext{
+  position:absolute;
+  margin:20px;
+  font-size:25px;
+  color:#D9D9D9;
+  left:90%;
+}
+.regtext:hover{
+  color: #0196FC;
+}
+.regtext{
+  position:absolute;
+  margin:20px;
+  font-size:25px;
+  color:#0071BE;
+}
+.logintext2:hover{
+  color: #0196FC;
+}
+.logintext2{
+  position:absolute;
+  margin:20px;
+  font-size:25px;
+  
+ color:#0071BE;
+}
+.regtext2:hover{
+  color: #0196FC;
+}
+.regtext2{
+  position:absolute;
+  margin:20px;
+  font-size:25px;
+  left:85%;
+  color:#D9D9D9;
+}
   .form-text{
    
   }
 
   .form-control{
     border:0px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     padding:20px;
     height: 60px;
-    margin-top:30px;
+    margin-top:40px;
+    border-bottom:1px solid #D9D9D9;
+    border-radius:0;
+    color:#0071BE;
+    font-size:20px;
   }
   .form-group{
     margin-left:40px;
@@ -119,7 +160,7 @@ a:active { text-decoration: none; }
     position:absolute;
   }
   .form-container{
-    
+    margin-top:-50px;
   }
   .asignup{
     color: #9C9C9C;
@@ -159,14 +200,19 @@ a:active { text-decoration: none; }
     margin-left: 80%;
   }
   .svg6{
-    margin-top: 30%;
+    margin-top: 70%;
     margin-left: 20%;
   }
   .svg7{
     margin-top: -3%;
     margin-left: 70%;
   }
+.form-file{
+  margin-left:40px;
+    margin-right:40px;
+    margin-top:30px;
 
+}
   .btn btn-primary mt-4{
     display: block;
      margin: 0 auto;
