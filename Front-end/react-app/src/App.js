@@ -38,6 +38,7 @@ function App() {
   const location = useLocation();
   const showNavbar = location.pathname !== '/login';
   const showNavbar1 = location.pathname !== '/register';
+  const forget = location.pathname !== '/forget';
   const username = getCookies('username');
 
   const isUserLoggedIn = username !== undefined;
@@ -46,7 +47,7 @@ function App() {
     <>
 
       <GlobalStyle />
-      {showNavbar1 && showNavbar && <BasicExample />}
+      {showNavbar1 && showNavbar && forget&&<BasicExample />}
       <Container>
         <Routes>
           <Route path="/" element={<Home />} />
