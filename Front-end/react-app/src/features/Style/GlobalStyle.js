@@ -407,7 +407,7 @@ a:active { text-decoration: none; }
   }
 .footer-content{
   position: absolute;
-    top: 50%;
+    top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
@@ -415,11 +415,98 @@ a:active { text-decoration: none; }
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
     margin:2600px 0px 0px 0px;
+    z-index:105;
+}
+.footertext1{
+  margin-top: 0px;
+  top:50%;
+  left:400px;
+  color: #9C9C9C;
+font-family: Bebas Neue;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+letter-spacing: -0.22px;
+position: absolute;
+}
+.footertext2{
+  margin-top: 0px;
+  top:50%;
+  left:900px;
+  color: #9C9C9C;
+font-family: Bebas Neue;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+letter-spacing: -0.22px;
+position: absolute;
+}
+.footertext3{
+  margin-top: 0px;
+  left:10px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footertext4{
+  margin-top: 0px;
+  left:1090px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footertext5{
+  margin-top: 0px;
+  left:1220px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footertext6{
+  margin-top: 0px;
+  left:1320px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footer-content2{
+  position: absolute;
+  left: 50%;
+  top:100%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 50px;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  z-index:105;
+  background: #0071BE;
 }
 .big_logofooter{
-  max-width: 500px;
+  max-width: 300px;
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
 }

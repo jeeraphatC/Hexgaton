@@ -193,11 +193,14 @@ function Home({ className }) {
         <img src={arrow} alt="" className="arrow2" />
         <img src={inter} alt="" className="inter" />
       </div>
+
       <div className="container2">
-<Link to="/donate">
-  <Button className="donatebtn" style={{width:'200px',height:'40px',fontSize:'20px'}}>Donate here</Button>
-  </Link>
+  <a2  className="donate">Hello friends Help us support good projects. You can do this! We are working hard to resolve the issue. If you believe in what we do Please donate to be a part of building the project.</a2>
+  <Link to="/donate">
+  <Button className="donatebtn">Donate</Button>
+</Link>
 </div>
+
       <footer>
         <div class="footer-content" >
           <img src={big_logo} alt="" className="big_logofooter" />
@@ -207,7 +210,31 @@ function Home({ className }) {
             Sivasith Singkaew 652110308<br></br>
             Jeeraphat Chantra 652110318<br></br>
           </p>
-          
+          <p className="footertext2">
+          Contact us : siwasit_s@cmu.ac.th<br></br>
+          Call : 098-808-5395<br></br>
+          Address : 123 Sukhumvit Road, Bangkok 10110<br></br>
+          </p>
+          <div class="footer-content2" >
+          <p className="footertext3">
+          Thank you for visiting our web page.
+          </p>
+          <Link to="/home">
+          <p className="footertext4">
+          | Home page |
+          </p>
+          </Link>
+          <Link to="/optionfree">
+          <p className="footertext5">
+          Jobs page |
+          </p>
+          </Link>
+          <Link to="/optionenter">
+          <p className="footertext6">
+          Eenterprise page |
+          </p>
+          </Link>
+          </div>
         </div>
       </footer>
     </div>
@@ -669,19 +696,27 @@ export default styled(Home)`
 
 
 @media (min-width: 601px) {
-  .donatbtn{
-    
+  .donatebtn{
+    position: absolute;
+    margin-top:20px;
+    margin-left:90px;
+  }
+  .donate{
+    color:#0196FC;
   }
   .container2{
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  padding: 5px; /* ปรับแต่งค่า padding ตามต้องการ */
-  border-radius: 10px;
+  border-radius: 2px;
   position: fixed;
-  bottom: 10px;
-  left: 10px;
+  bottom: 50px;
+  left: 20px;
   background-color: #fff;
-  max-height: 150px; /* ปรับแต่งค่า max-height ตามต้องการ */
+  max-height: 150px;
     z-index:101;
+    font-size:15px;
+    width:300px;
+    height:300px;
+    padding:15px;
     
   }
   .floatContainer {
@@ -803,8 +838,9 @@ export default styled(Home)`
     margin-top: 3200px;
   }
 .footertext1{
-  margin-top: 380px;
-  margin-left: 20px;
+  margin-top: 0px;
+  top:50%;
+  left:400px;
   color: #9C9C9C;
 font-family: Bebas Neue;
 font-size: 20px;
@@ -812,6 +848,68 @@ font-style: normal;
 font-weight: 400;
 line-height: 150%; 
 letter-spacing: -0.22px;
+position: absolute;
+}
+.footertext2{
+  margin-top: 0px;
+  top:50%;
+  left:900px;
+  color: #9C9C9C;
+font-family: Bebas Neue;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+letter-spacing: -0.22px;
+position: absolute;
+}
+.footertext3{
+  margin-top: 0px;
+  left:10px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footertext4{
+  margin-top: 0px;
+  left:1090px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footertext5{
+  margin-top: 0px;
+  left:1220px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footertext6{
+  margin-top: 0px;
+  left:1320px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
 }
 .t2text{
   font-size:55px;
@@ -906,7 +1004,7 @@ border: 2px solid #FFF;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin-top: 2000px;
+    margin-top: 1200px;
     width: 100%;
     height: 1000px;
     background: #0196fc;
