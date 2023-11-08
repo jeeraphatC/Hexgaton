@@ -32,7 +32,7 @@ const PostJob = () => {
   }
 
   const navigate = useNavigate();
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -55,19 +55,19 @@ const PostJob = () => {
     }
 
     try {
-      const response = await axios.post('https://smart-egg-production.up.railway.app/enterprises', formData);
+      const response = await axios.post('https://apathetic-laborer-production.up.railway.app/enterprises', formData);
       console.log('Enterprises created:', response.data);
       const history = {
         enterprise: {
           id: response.data.id
         }
       }
-      axios.post('https://smart-egg-production.up.railway.app/historys/enterprise', history);
+      axios.post('https://apathetic-laborer-production.up.railway.app/historys/enterprise', history);
       console.log('History creacte ',history.data);
       const accoun_id = getCookies('id');
 
       
-      axios.get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${accoun_id}`)
+      axios.get(`https://apathetic-laborer-production.up.railway.app/api/v1/accounts/list/${accoun_id}`)
         .then((accountResponse) => {
           const accountData = accountResponse.data;
           console.log('Account data retrieved successfully:', accountData);
@@ -97,7 +97,7 @@ const PostJob = () => {
           };
 
 
-          axios.put(`https://smart-egg-production.up.railway.app/enterprises/${jobDataToUpdate.id}`, jobDataToUpdate)
+          axios.put(`https://apathetic-laborer-production.up.railway.app/enterprises/${jobDataToUpdate.id}`, jobDataToUpdate)
             .then((jobResponse) => {
               console.log('Job updated successfully!', jobResponse.data);
               const updatedJobId = jobResponse.data.id;
@@ -107,7 +107,7 @@ const PostJob = () => {
                 const formData = new FormData();
                 formData.append('image', selectedImage);
 
-                axios.post('https://domineering-hobbies-production.up.railway.app/add', formData)
+                axios.post('https://dapper-advertisement-production.up.railway.app/add', formData)
                   .then(imageResponse => {
                     console.log('Image uploaded successfully.');
                     const imageId = imageResponse.data;
@@ -119,7 +119,7 @@ const PostJob = () => {
                       imageFormData.append('imagelocation', updatedJobId);
                       imageFormData.append('name', "enterprises");
 
-                      axios.put(`https://domineering-hobbies-production.up.railway.app/update?id=${imageId}`, imageFormData)
+                      axios.put(`https://dapper-advertisement-production.up.railway.app/update?id=${imageId}`, imageFormData)
                         .then(response => {
                           console.log('Image updated successfully.');
                           navigate(`/enterprises/${jobDataToUpdate.id}`)

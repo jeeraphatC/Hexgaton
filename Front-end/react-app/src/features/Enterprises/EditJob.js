@@ -91,7 +91,7 @@ function EditJob({ className }) {
         imageFormData.append('imagelocation', imgfree_id);
         imageFormData.append('name', "enterprises");
         console.log("image", imgfree_id)
-        axios.put(`https://apathetic-laborer-production.up.railway.app/update/${name}/${imgfree_id}`, imageFormData)
+        axios.put(`https://dapper-advertisement-production.up.railway.app/update/${name}/${imgfree_id}`, imageFormData)
           .then(response => {
             console.log('Image updated successfully.');
           })
