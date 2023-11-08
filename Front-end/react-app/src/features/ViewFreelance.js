@@ -36,7 +36,7 @@ function ViewFreelance({ className }) {
   }, [account]);
 
   useEffect(() => {
-    axios.get(`https://smart-egg-production.up.railway.app/freelances/${id}`)
+    axios.get(`https://apathetic-laborer-production.up.railway.app/freelances/${id}`)
       .then(response => {
         setFreelance(response.data);
         setaccount(response.data.account.accountid)
@@ -73,7 +73,7 @@ function ViewFreelance({ className }) {
     };
 
     axios
-      .patch(`https://smart-egg-production.up.railway.app/freelances/${id}`, patchData)
+      .patch(`https://apathetic-laborer-production.up.railway.app/freelances/${id}`, patchData)
       .then((patchResponse) => {
         // Handle the PATCH response if needed
         console.log("PATCH Data:", patchResponse.data);
@@ -104,11 +104,11 @@ function ViewFreelance({ className }) {
     };
     console.log(historyData)
     axios
-      .post(`https://smart-egg-production.up.railway.app/historys/freelance`, historyData)
+      .post(`https://apathetic-laborer-production.up.railway.app/historys/freelance`, historyData)
       .then((historyResponse) => {
         // Handle the response if needed
         console.log("History Data:", historyResponse.data);
-        axios.post(`https://smart-egg-production.up.railway.app/status`, statusData)
+        axios.post(`https://apathetic-laborer-production.up.railway.app/status`, statusData)
         .then((statusResponse) => {
           const status = statusResponse.data;
           console.log(status);

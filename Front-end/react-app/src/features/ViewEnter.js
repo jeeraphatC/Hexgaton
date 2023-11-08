@@ -43,7 +43,7 @@ function ViewEnter({ className }) {
 
 
   useEffect(() => {
-    axios.get(`https://smart-egg-production.up.railway.app/enterprises/${id}`)
+    axios.get(`https://apathetic-laborer-production.up.railway.app/enterprises/${id}`)
       .then(response => {
         setEnterprise(response.data);
         setaccount(response.data.account.accountid)
@@ -80,7 +80,7 @@ function ViewEnter({ className }) {
     };
 
     axios
-      .patch(`https://smart-egg-production.up.railway.app/enterprises/${id}`, patchData)
+      .patch(`https://apathetic-laborer-production.up.railway.app/enterprises/${id}`, patchData)
       .then((patchResponse) => {
         // Handle the PATCH response if needed
         console.log("PATCH Data:", patchResponse.data);
@@ -110,14 +110,14 @@ function ViewEnter({ className }) {
       }
     };
     axios
-    .post(`https://smart-egg-production.up.railway.app/historys/enterprise`, historyData)
+    .post(`https://apathetic-laborer-production.up.railway.app/historys/enterprise`, historyData)
     .then((historyResponse) => {
       // Handle the response if needed
       console.log("History Data:", historyResponse.data);
       setnameTochat(historyResponse.data.accountname);
       setCookie('chatName',nameTochat)
       // After saving history, update the status
-      axios.post(`https://smart-egg-production.up.railway.app/status`, statusData)
+      axios.post(`https://apathetic-laborer-production.up.railway.app/status`, statusData)
         .then((statusResponse) => {
           // Handle the status response if needed
           console.log("Status Data:", statusResponse.data);

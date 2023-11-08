@@ -13,7 +13,7 @@ class MyworkEnter extends Component {
 
   componentDidMount() {
     // เรียก API ที่มีข้อมูล Enterprises ที่คุณต้องการดึง
-    axios.get('https://smart-egg-production.up.railway.app/enterprises')
+    axios.get('https://apathetic-laborer-production.up.railway.app/enterprises')
       .then(response => {
         this.setState({ enterprises: response.data });
       })
@@ -23,7 +23,7 @@ class MyworkEnter extends Component {
   }
 
   deleteEnterprise = (id) => {
-    axios.delete(`https://smart-egg-production.up.railway.app/enterprises/id/${id}`)
+    axios.delete(`https://apathetic-laborer-production.up.railway.app/enterprises/id/${id}`)
       .then(response => {
         // Remove the deleted enterprise from the state
         this.setState(prevState => ({

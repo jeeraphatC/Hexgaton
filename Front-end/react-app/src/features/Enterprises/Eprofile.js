@@ -44,7 +44,7 @@ function Eprofile({ className }) {
     setId(setIdFromCookies);
 
     // Make sure to include id in the dependency array to trigger the effect when id changes.
-    axios.get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${setIdFromCookies}`)
+    axios.get(`https://apathetic-laborer-production.up.railway.app/api/v1/accounts/list/${setIdFromCookies}`)
       .then(response => {
         setFormData(response.data);
       })
@@ -62,7 +62,7 @@ function Eprofile({ className }) {
 
    const account_id = getCookies('id');
     axios
-      .get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${account_id}`)
+      .get(`https://apathetic-laborer-production.up.railway.app/api/v1/accounts/list/${account_id}`)
       .then(response => {
 
         setUserdata({ ...userdata, description: response.data.descrip });
@@ -77,7 +77,7 @@ function Eprofile({ className }) {
   const imagelocation = getCookies("id");
   useEffect(() => {
     
-    axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/account/${imagelocation}`, { responseType: 'arraybuffer' })
+    axios.get(`https://dapper-advertisement-production.up.railway.app/account/${imagelocation}`, { responseType: 'arraybuffer' })
       .then(response => {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
         const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -93,7 +93,7 @@ function Eprofile({ className }) {
     const idFromCookies = getCookies("id");
   
     axios
-      .get(`https://smart-egg-production.up.railway.app/historys/freelance`)
+      .get(`https://apathetic-laborer-production.up.railway.app/historys/freelance`)
       
       .then((response) => {
         if (Array.isArray(response.data)) {
@@ -127,7 +127,7 @@ function Eprofile({ className }) {
 
     try {
       if (account_id) {
-        axios.put(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${account_id}`, formData)
+        axios.put(`https://apathetic-laborer-production.up.railway.app/api/v1/accounts/list/${account_id}`, formData)
           .then((accountResponse) => {
             console.log('Account updated successfully!', accountResponse.data);
             console.log(formData);
@@ -140,7 +140,7 @@ function Eprofile({ className }) {
             if (selectedImage) {
               const formData = new FormData();
               formData.append('image', selectedImage);
-              axios.post('https://domineering-hobbies-production.up.railway.app/add', formData)
+              axios.post('https://apathetic-laborer-production.up.railway.app/add', formData)
                 .then(imageResponse => {
                   console.log('Image uploaded successfully.');
                   const imageId = imageResponse.data;
@@ -152,7 +152,7 @@ function Eprofile({ className }) {
                     imageFormData.append('imagelocation', account_id);
                     imageFormData.append('name', "account");
 
-                    axios.put(`https://domineering-hobbies-production.up.railway.app/update?id=${imageId}`, imageFormData)
+                    axios.put(`https://apathetic-laborer-production.up.railway.app/update?id=${imageId}`, imageFormData)
                       .then(response => {
                         console.log('Image updated successfully.');
                       })

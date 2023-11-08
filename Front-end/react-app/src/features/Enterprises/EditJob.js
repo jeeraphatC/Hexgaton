@@ -27,7 +27,7 @@ function EditJob({ className }) {
   const navigate = useNavigate();
   useEffect(() => {
     // เรียก API ดึงข้อมูล Enterprise ตาม ID ที่ถูกส่งมาจาก URL
-    axios.get(`https://smart-egg-production.up.railway.app/enterprises/${id}`)
+    axios.get(`https://apathetic-laborer-production.up.railway.app/enterprises/${id}`)
       .then(response => {
         setEnterprise(response.data);
       })
@@ -78,7 +78,7 @@ function EditJob({ className }) {
 
   // ฟังก์ชันที่จะอัปเดตข้อมูลในเซิร์ฟเวอร์
   const updateEnterprise = () => {
-    axios.put(`https://smart-egg-production.up.railway.app/enterprises/${id}`, enterprise)
+    axios.put(`https://apathetic-laborer-production.up.railway.app/enterprises/${id}`, enterprise)
       .then(response => {
         // อัปเดตสถานะหรือทำสิ่งที่คุณต้องการหลังจากการอัปเดตข้อมูลเสร็จสมบูรณ์
         console.log('อัปเดตข้อมูลเรียบร้อยแล้ว');
@@ -91,7 +91,7 @@ function EditJob({ className }) {
         imageFormData.append('imagelocation', imgfree_id);
         imageFormData.append('name', "enterprises");
         console.log("image", imgfree_id)
-        axios.put(`https://domineering-hobbies-production.up.railway.app/update/${name}/${imgfree_id}`, imageFormData)
+        axios.put(`https://apathetic-laborer-production.up.railway.app/update/${name}/${imgfree_id}`, imageFormData)
           .then(response => {
             console.log('Image updated successfully.');
           })

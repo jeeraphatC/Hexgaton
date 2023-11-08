@@ -78,7 +78,7 @@ const ChatRoom = ({ className }) => {
 
   useEffect(() => {
     if (chatConnect) {
-      let Sock = new SockJS('http://localhost:8080/ws');
+      let Sock = new SockJS('https://wanted-question-production.up.railway.app/');
       stompClient = over(Sock);
       stompClient.connect({}, onConnected, onError);
       setIsLoggedIn(true);
