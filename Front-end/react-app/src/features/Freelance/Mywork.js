@@ -15,7 +15,7 @@ function MyworkEnter() {
   const [freelances, setFreelance] = useState([]);
   const deleteEnterprise2 = (id) => {
     axios
-      .delete(`https://smart-egg-production.up.railway.app/freelances/id/${id}`)
+      .delete(`https://apathetic-laborer-production.up.railway.app/freelances/id/${id}`)
       .then((response) => {
         // Remove the deleted enterprise from the state
         setFreelance((prevState) => ({
@@ -32,7 +32,7 @@ function MyworkEnter() {
   useEffect(() => {
     // เรียก API ที่มีข้อมูล Enterprises ที่คุณต้องการดึง
     axios
-      .get("https://smart-egg-production.up.railway.app/enterprises")
+      .get("https://apathetic-laborer-production.up.railway.app/enterprises")
       .then((response) => {
         setEnterprises(response.data);
 
@@ -56,7 +56,7 @@ function MyworkEnter() {
         };
 
         const fetchImageByImagelocation = (imagelocation) => {
-          return axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/enterprises/${imagelocation}`, { responseType: 'arraybuffer' })
+          return axios.get(`https://dapper-advertisement-production.up.railway.app/getByNameAndImagelocation/enterprises/${imagelocation}`, { responseType: 'arraybuffer' })
             .then(imageResponse => {
               const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
               const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -76,7 +76,7 @@ function MyworkEnter() {
         console.error("เกิดข้อผิดพลาดในการดึงข้อมูล:", error);
       });
     axios
-      .get("https://smart-egg-production.up.railway.app/freelances")
+      .get("https://apathetic-laborer-production.up.railway.app/freelances")
       .then((response) => {
         setFreelance(response.data);
 
@@ -98,7 +98,7 @@ function MyworkEnter() {
         };
 
         const fetchImageByImagelocation = (imagelocation) => {
-          return axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/enterprises/${imagelocation}`, { responseType: 'arraybuffer' })
+          return axios.get(`https://dapper-advertisement-production.up.railway.app/getByNameAndImagelocation/enterprises/${imagelocation}`, { responseType: 'arraybuffer' })
             .then(imageResponse => {
               const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
               const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -124,7 +124,7 @@ function MyworkEnter() {
   const deleteEnterprise = (id) => {
     axios
       .delete(
-        `https://smart-egg-production.up.railway.app/enterprises/id/${id}`
+        `https://apathetic-laborer-production.up.railway.app/enterprises/id/${id}`
       )
       .then((response) => {
         // Remove the deleted enterprise from the state

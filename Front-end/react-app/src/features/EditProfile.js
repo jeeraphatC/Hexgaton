@@ -30,7 +30,7 @@ function EditProfile({ className }) {
     setId(setIdFromCookies);
 
     // Make sure to include id in the dependency array to trigger the effect when id changes.
-    axios.get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${setIdFromCookies}`)
+    axios.get(`https://apathetic-laborer-production.up.railway.app/api/v1/accounts/list/${setIdFromCookies}`)
       .then(response => {
         setFormData(response.data);
         
@@ -55,7 +55,7 @@ function EditProfile({ className }) {
 
     try {
       if (account_id) {
-        axios.put(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${account_id}`, formData)
+        axios.put(`https://apathetic-laborer-production.up.railway.app/api/v1/accounts/list/${account_id}`, formData)
           .then((accountResponse) => {
             console.log('Account updated successfully!', accountResponse.data);
             console.log(formData);
@@ -66,7 +66,7 @@ function EditProfile({ className }) {
             if (selectedImage) {
               const formData = new FormData();
               formData.append('image', selectedImage);
-              axios.post('https://domineering-hobbies-production.up.railway.app/add', formData)
+              axios.post('https://dapper-advertisement-production.up.railway.app/add', formData)
                 .then(imageResponse => {
                   console.log('Image uploaded successfully.');
                   const imageId = imageResponse.data;
@@ -78,7 +78,7 @@ function EditProfile({ className }) {
                     imageFormData.append('imagelocation', account_id);
                     imageFormData.append('name', "account");
 
-                    axios.put(`https://domineering-hobbies-production.up.railway.app/update?id=${imageId}`, imageFormData)
+                    axios.put(`https://dapper-advertisement-production.up.railway.app/update?id=${imageId}`, imageFormData)
                       .then(response => {
                         console.log('Image updated successfully.');
                         setCookie("image_id", imageId)

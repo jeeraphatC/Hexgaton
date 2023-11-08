@@ -23,7 +23,7 @@ function ViewFreelance({ className }) {
 
   useEffect(() => {
     setaccId(getCookies("id"))
-    axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
+    axios.get(`https://dapper-advertisement-production.up.railway.app/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
       .then(response => {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
         const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -36,13 +36,13 @@ function ViewFreelance({ className }) {
   }, [account]);
 
   useEffect(() => {
-    axios.get(`https://smart-egg-production.up.railway.app/freelances/${id}`)
+    axios.get(`https://apathetic-laborer-production.up.railway.app/freelances/${id}`)
       .then(response => {
         setFreelance(response.data);
         setaccount(response.data.account.accountid)
         setSendertoChat(response.data.account.accountname)
         console.log(response.data.account.accountid)
-        axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/freelance/${id}`, { responseType: 'arraybuffer' })
+        axios.get(`https://dapper-advertisement-production.up.railway.app/getByNameAndImagelocation/freelance/${id}`, { responseType: 'arraybuffer' })
           .then(imageResponse => {
             const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
             const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -73,7 +73,7 @@ function ViewFreelance({ className }) {
     };
 
     axios
-      .patch(`https://smart-egg-production.up.railway.app/freelances/${id}`, patchData)
+      .patch(`https://apathetic-laborer-production.up.railway.app/freelances/${id}`, patchData)
       .then((patchResponse) => {
         // Handle the PATCH response if needed
         console.log("PATCH Data:", patchResponse.data);
@@ -104,11 +104,11 @@ function ViewFreelance({ className }) {
     };
     console.log(historyData)
     axios
-      .post(`https://smart-egg-production.up.railway.app/historys/freelance`, historyData)
+      .post(`https://apathetic-laborer-production.up.railway.app/historys/freelance`, historyData)
       .then((historyResponse) => {
         // Handle the response if needed
         console.log("History Data:", historyResponse.data);
-        axios.post(`https://smart-egg-production.up.railway.app/status`, statusData)
+        axios.post(`https://apathetic-laborer-production.up.railway.app/status`, statusData)
         .then((statusResponse) => {
           const status = statusResponse.data;
           console.log(status);

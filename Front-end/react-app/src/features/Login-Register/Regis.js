@@ -64,7 +64,7 @@ function Register({ className }) {
     }
 
     try {
-      const loginResponse = await axios.post("https://smart-egg-production.up.railway.app/api/v1/accounts/save", {
+      const loginResponse = await axios.post("https://apathetic-laborer-production.up.railway.app/api/v1/accounts/save", {
         accountname: accountname,
         email: email,
         numberCard: numberCard,
@@ -73,7 +73,7 @@ function Register({ className }) {
 
       console.log(loginResponse.data.email)
 
-      const accountsResponse = await axios.get("https://smart-egg-production.up.railway.app/api/v1/accounts/list");
+      const accountsResponse = await axios.get("https://apathetic-laborer-production.up.railway.app/api/v1/accounts/list");
       console.log(accountsResponse.data)
       const accounts = accountsResponse.data;
       const accountWithMatchingEmail = accounts.find((account) => account.email === email);
@@ -89,7 +89,7 @@ function Register({ className }) {
           if (selectedImage) {
             const formData = new FormData();
             formData.append('image', selectedImage);
-            axios.post('https://domineering-hobbies-production.up.railway.app/add', formData)
+            axios.post('https://dapper-advertisement-production.up.railway.app/add', formData)
               .then(imageResponse => {
                 console.log('Image uploaded successfully.');
                 const imageId = imageResponse.data;
@@ -101,7 +101,7 @@ function Register({ className }) {
                   imageFormData.append('imagelocation', id_image_regis);
                   imageFormData.append('name', "account");
 
-                  axios.put(`https://domineering-hobbies-production.up.railway.app/update?id=${imageId}`, imageFormData)
+                  axios.put(`https://dapper-advertisement-production.up.railway.app/update?id=${imageId}`, imageFormData)
                     .then(response => {
                       console.log('Image updated successfully.');
                       setCookie("image_id", imageId)

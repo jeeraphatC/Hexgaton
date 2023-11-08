@@ -29,7 +29,7 @@ function ViewEnter({ className }) {
   useEffect(() => {
     setaccId(getCookies('id'));
 
-    axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
+    axios.get(`https://dapper-advertisement-production.up.railway.app/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
       .then(response => {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
         const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -43,14 +43,14 @@ function ViewEnter({ className }) {
 
 
   useEffect(() => {
-    axios.get(`https://smart-egg-production.up.railway.app/enterprises/${id}`)
+    axios.get(`https://apathetic-laborer-production.up.railway.app/enterprises/${id}`)
       .then(response => {
         setEnterprise(response.data);
         setaccount(response.data.account.accountid)
         setSendertoChat(response.data.account.accountname)
 
         // Fetch enterprise image
-        axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/enterprises/${id}`, { responseType: 'arraybuffer' })
+        axios.get(`https://dapper-advertisement-production.up.railway.app/getByNameAndImagelocation/enterprises/${id}`, { responseType: 'arraybuffer' })
           .then(imageResponse => {
             const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
             const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -80,7 +80,7 @@ function ViewEnter({ className }) {
     };
 
     axios
-      .patch(`https://smart-egg-production.up.railway.app/enterprises/${id}`, patchData)
+      .patch(`https://apathetic-laborer-production.up.railway.app/enterprises/${id}`, patchData)
       .then((patchResponse) => {
         // Handle the PATCH response if needed
         console.log("PATCH Data:", patchResponse.data);
@@ -110,14 +110,14 @@ function ViewEnter({ className }) {
       }
     };
     axios
-    .post(`https://smart-egg-production.up.railway.app/historys/enterprise`, historyData)
+    .post(`https://apathetic-laborer-production.up.railway.app/historys/enterprise`, historyData)
     .then((historyResponse) => {
       // Handle the response if needed
       console.log("History Data:", historyResponse.data);
       setnameTochat(historyResponse.data.accountname);
       setCookie('chatName',nameTochat)
       // After saving history, update the status
-      axios.post(`https://smart-egg-production.up.railway.app/status`, statusData)
+      axios.post(`https://apathetic-laborer-production.up.railway.app/status`, statusData)
         .then((statusResponse) => {
           // Handle the status response if needed
           console.log("Status Data:", statusResponse.data);

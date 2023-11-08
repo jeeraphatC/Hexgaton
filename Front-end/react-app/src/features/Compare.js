@@ -75,7 +75,7 @@ function Compare({ className }) {
       return;
     }
 
-    fetch(`https://smart-egg-production.up.railway.app/enterprises/${userId1}`)
+    fetch(`https://apathetic-laborer-production.up.railway.app/enterprises/${userId1}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("User not found");
@@ -104,7 +104,7 @@ function Compare({ className }) {
       return;
     }
 
-    fetch(`https://smart-egg-production.up.railway.app/enterprises/${userId2}`)
+    fetch(`https://apathetic-laborer-production.up.railway.app/enterprises/${userId2}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("User not found");
