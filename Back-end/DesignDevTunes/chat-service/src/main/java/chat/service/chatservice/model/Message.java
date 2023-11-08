@@ -1,7 +1,7 @@
 package chat.service.chatservice.model;
 
-
 import lombok.*;
+
 import java.util.Date;
 
 @NoArgsConstructor

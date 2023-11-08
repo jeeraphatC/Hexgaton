@@ -26,10 +26,11 @@
 		<module>freelance-service</module>
 		<module>RegisandLogin</module>
 		<module>enter-service</module>
-		<module>chat-service</module>
+	
 		<module>picture</module>
 		<module>pictureenter</module>
 		<module>history</module>
+		<module>chat-service</module>
 	</modules>
 
 	<dependencies>
