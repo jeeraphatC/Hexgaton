@@ -185,7 +185,7 @@ function FindJob({ className }) {
         <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
         <Link to="/findjob" state={{ type: type }} style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{type}</Link>
 
-        <h1 style={{ margin: '30px 10px 20px 0px', color: '#0196FC' }}>Find jobs (ALL)</h1>
+        <h1 style={{ margin: '30px 10px 40px 0px', color: '#0196FC' }}>Find jobs (ALL)</h1>
         <Row style={{ marginBottom: 20 }}>
           <Col md={10} style={{ paddingLeft: 0 }}>
             {develop()}
@@ -244,12 +244,7 @@ function FindJob({ className }) {
       <footer>
         <div class="footer-content" >
           <img src={big_logo} alt="" className="big_logofooter" />
-          <p className="footertext1">
-            Norrapat Sai-ai 652110289<br></br>
-            Samitthichai Peeragun 652110309<br></br>
-            Sivasith Singkaew 652110308<br></br>
-            Jeeraphat Chantra 652110318<br></br>
-          </p>
+          
         </div>
       </footer>
     </div>
@@ -351,7 +346,7 @@ export default styled(FindJob)`
   .needajob{
   color: #808080;
   padding:5px 20px 5px 20px ;
-  border: 2px solid #808080;
+  border: 2px solid #CCC;
   transition: all 0.3s;
   border-radius: 5px;
   font-size:20px;
