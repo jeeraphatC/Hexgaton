@@ -236,7 +236,7 @@ const PostJob = () => {
           <div  style={{ marginTop: 20}}>
             <label>Fix time</label>
             <input
-              type="number"
+              type="number" min="0" max="5"
               name="fixtime"
               value={formData.fixtime}
               onChange={handleInputChange}
