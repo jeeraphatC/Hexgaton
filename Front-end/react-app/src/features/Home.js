@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import search from "./pic/search.png";
@@ -9,9 +9,71 @@ import arrow from "./pic/arrow.png";
 import inter from "./pic/inter.png";
 import big_logo from "./pic/big_logo.png";
 import bgcom2 from "./pic/bgcom2.jpg";
+import devbg1 from "./pic/devbg1.jpg";
 import { Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 function Home({ className }) {
+  const [devType, setDevType] = useState("I AM A D");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDevType((prevType) => {
+        switch (prevType) {
+          case "I AM A D":
+            return "I AM A DE";
+          case "I AM A DE":
+            return "I AM A DEV";
+          case "I AM A DEV":
+            return "I AM A DEVE";  
+            case "I AM A DEVE":
+              return "I AM A DEVEL";  
+              case "I AM A DEVEL":
+                return "I AM A DEVELO"; 
+                case "I AM A DEVELO":
+                  return "I AM A DEVELOP"; 
+                  case "I AM A DEVELOP":
+                    return "I AM A DEVELOPE";
+                    case "I AM A DEVELOPE":
+                      return "I AM A DEVELOPER";
+                      case "I AM A DEVELOPER":
+                        return "I AM A DES";
+                        case "I AM A DES":
+                          return "I AM A DESI";
+                          case "I AM A DESI":
+                            return "I AM A DESIG";
+                            case "I AM A DESIG":
+                              return "I AM A DESIGN";
+                              case "I AM A DESIGN":
+                                return "I AM A DESIGNE";
+                                case "I AM A DESIGNE":
+                                return "I AM A DESIGNER";
+                                case "I AM A DESIGNER":
+                                  return "I AM A M";
+                                  case "I AM A M":
+                                    return "I AM A MU";
+                                    case "I AM A MU":
+                                      return "I AM A MUS";
+                                      case "I AM A MUS":
+                                        return "I AM A MUSI";
+                                        case "I AM A MUSI":
+                                        return "I AM A MUSIC";
+                                        case "I AM A MUSIC":
+                                        return "I AM A MUSICA";
+                                        case "I AM A MUSICA":
+                                        return "I AM A MUSICAI";
+                                        case "I AM A MUSICAI":
+                                        return "I AM A MUSICAIN";
+                                        case "I AM A MUSICAIN":
+                                          return "I AM A D";
+          default:
+            return prevType;
+        }
+      });
+    }, 250);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className={className}>
       <div className="homebg">
@@ -52,7 +114,12 @@ function Home({ className }) {
             <h4>Mobile App</h4>
           </Link>
         </div>
-        <h1>Do you have a job?</h1>
+        <div className="animationtext1con" >
+        <h1 style={{ left: '25%'}} className="animationtext1">
+  {devType}
+</h1>
+      </div>
+
         <img src={astronaut} alt="" className="astronaut" />
         <h3>
           Let{" "}
@@ -71,6 +138,11 @@ function Home({ className }) {
             <h3 className="needafreelance">Search a freelance</h3>
           </div>
         </Link>
+      </div>
+      <div className="devpre">
+          <img src={devbg1} alt="" className="devprebg" />
+
+
       </div>
       
       <img src={mlogo} alt="" className="mini_logo" />
@@ -163,7 +235,7 @@ export default styled(Home)`
     color: #FFF;
     top: 55%;
     left: 50%;
-    padding:10px 40px 10px 40px ;
+    padding:10px 30px 10px 30px ;
     border: 2px solid #FFF;
     transition: all 0.3s;
     border-radius: 5px;
@@ -181,7 +253,7 @@ export default styled(Home)`
     color: #FFF;
     top: 75%;
     left: 50%;
-    padding:10px 40px 10px 40px ;
+    padding:10px 30px 10px 30px ;
     border: 2px solid #FFF;
     transition: all 0.3s;
     border-radius: 5px;
@@ -577,6 +649,42 @@ export default styled(Home)`
 
 
 @media (min-width: 601px) {
+  .devprebg{
+    width:700px;
+    height:500px;
+    margin-top:800px;
+    margin-left:750px;
+    border-radius:10px;
+  }
+  .devpre{
+    background: #111111;
+    width: 100%;
+    height: 1500px;
+    margin-bottom:100px;
+  }
+  .animationtext1 {
+    transition: transform 0.5s ease-in-out;
+  }
+  @keyframes slideIn {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  .animationtext1 {
+    animation: slideIn 1s forwards;
+    top : 20%;
+    font-size:150px;
+
+  }
+  
+  .animationtext2 {
+    animation: slideIn 1s forwards 0.5s; /* ทำ animation หลังจาก animationtext1 0.5 วินาที */
+  }
   .footer-content{
     margin-top: 3200px;
   }
@@ -606,33 +714,34 @@ letter-spacing: -0.22px;
   position: absolute;
   color: #FFF;
   top: 65%;
-  left: 59%;
+  left: 57%;
   padding:10px 40px 10px 40px ;
-  border: 2px solid #FFF;
+  
   transition: all 0.3s;
   border-radius: 5px;
   font-size:25px;
-}
-.needafreelance:hover{
   color: #FFF;
   background: #0196FC;
-  border: 2px solid #0196FC;
+}
+.needafreelance:hover{
+  border: 2px solid #FFF;
 }
 .needajob{
   position: absolute;
-  color: #FFF;
   top: 65%;
   left: 40%;
   padding:10px 40px 10px 40px ;
-  border: 2px solid #FFF;
+  
   transition: all 0.3s;
   border-radius: 5px;
   font-size:25px;
-}
-.needajob:hover{
-  color: #FFF;
   background: #0196FC;
   border: 2px solid #0196FC;
+}
+.needajob:hover{
+border: 2px solid #FFF;
+  
+  
 }
 .bgcom{
   height: 600px;
@@ -983,9 +1092,18 @@ letter-spacing: -0.22px;
     max-width: 150px;
     max-height: 150px;
     top: 35%;
-    left: 80%;
+    left: 82%;
     position: absolute;
-    transition: all 0.3s;
+    animation: astronautAnimation 2s infinite alternate;
+  }
+  
+  @keyframes astronautAnimation {
+    0% {
+      top: 30%;
+    }
+    100% {
+      top: 40%;
+    }
   }
   .astronaut:hover {
     top: 30%;
