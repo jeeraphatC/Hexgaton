@@ -5,7 +5,7 @@ import bg2 from "../pic/bg2.jpg";
 import user1 from "../pic/woman.jpg";
 import star from "../pic/star.png";
 import getCookies from '../hook/getCookies';
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link,useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { Container, Row, Col, Card, Button, CardBody } from 'react-bootstrap';
 import { useCookies } from 'react-cookie';
@@ -40,6 +40,7 @@ function Fprofile({ className }) {
     }
   );
 
+  const navigate=useNavigate();
   const [userName, setuserName] = useState();
   const [successMessage, setSuccessMessage] = useState(''); // State for success message
   const [selectedImage, setSelectedImage] = useState(null);
@@ -185,6 +186,7 @@ function Fprofile({ className }) {
     } catch (error) {
       console.error('Error updating account:', error);
     }
+
   };
 
 

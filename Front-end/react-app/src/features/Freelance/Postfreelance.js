@@ -5,7 +5,7 @@ import getCookies from '../hook/getCookies';
 import styled from 'styled-components';
 import big_logo from "../pic/big_logo.png";
 import bg1 from "../pic/bg1.jpg";
-
+import {  useNavigate } from "react-router-dom";
 const PostFreelanceContainer = styled.div`
   margin: 50px 400px 0px 400px;
   .custom-button {
@@ -51,7 +51,7 @@ const PostFreelance = () => {
     subtype: '',
     companyName: '',
   });
-
+  const navigate = useNavigate();
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -128,6 +128,7 @@ const PostFreelance = () => {
                       axios.put(`https://domineering-hobbies-production.up.railway.app/update?id=${imageId}`, imageFormData)
                         .then(response => {
                           console.log('Image updated successfully.');
+                          navigate(`/freelance/${jobDataToUpdate.id}`)
                         })
                         .catch(error => {
                           console.error('Error updating image:', error);
@@ -151,7 +152,7 @@ const PostFreelance = () => {
     } catch (error) {
       console.error('Error creating freelance:', error);
     }
-
+    
     setFormData({
       id: '',
       name: '',
@@ -164,6 +165,7 @@ const PostFreelance = () => {
     });
 
     setSelectedImage(null);
+    
   };
 
   const [selectedImage, setSelectedImage] = useState(null);
@@ -291,7 +293,7 @@ const PostFreelance = () => {
             <input type="file" onChange={handleImageChange} />
           </div>
           <div style={{ textAlign: "center" }}>
-            <Button variant="success" type="submit" className="custom-button" style={{ width: 150 }}>Submit</Button>
+            <Button variant="success" type="submit" className="custom-button" style={{ width: 150 }} >Submit</Button>
           </div>
         </form>
       </PostJobContainer>

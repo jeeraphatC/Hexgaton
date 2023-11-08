@@ -260,7 +260,7 @@ function MyworkEnter() {
                         }}
                       />
                     </Link>
-                    <Card.Img variant="top" style={{ width: 286, height: 180 }} src={enterpriseImages[enterprises.id]}/>
+                    <Card.Img variant="top" style={{ width: 286, height: 180 }} src={freelancerImages[freelances.id]}/>
 
                     <Card.Title>
                       <p style={{ fontSize: "40px", color: "#0196FC" }}>

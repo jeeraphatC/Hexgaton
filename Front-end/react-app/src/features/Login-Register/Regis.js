@@ -19,7 +19,7 @@ function Register({ className }) {
   const [selectedImage, setSelectedImage] = useState(null);
   const [cookies, setCookie, removeCookie] = useCookies();
   const navigate = useNavigate();
-  const namePattern = /^[A-Za-z\s]+$/; // Allows only letters and spaces
+  const namePattern = /^[A-Za-z0-9\s]+$/; // Allows only letters and spaces
   const emailPattern = /.*@gmail\.com$/;
   const passwordPattern = /^.{6,}$/;
   const numberCardPattern = /^\d{13}$/;
