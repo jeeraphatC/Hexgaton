@@ -297,7 +297,6 @@ select {
   label{
     font-size: 20px;
     margin-top: 20px;
-    
   }
   textarea {
     width: 100%;
