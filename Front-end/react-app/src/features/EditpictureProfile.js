@@ -62,7 +62,7 @@ function EditProfile({ className }) {
                         imageFormData.append('imagelocation', account_id);
                         imageFormData.append('name', "account");
 
-                        axios.put(`https://domineering-hobbies-production.up.railway.app/update?id=${image_id}`, imageFormData)
+                        axios.put(`https://domineering-hobbies-production.up.railway.app/update/account/${account_id}`, imageFormData)
                             .then(response => {
                                 console.log('Image updated successfully.');
                             })
