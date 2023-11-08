@@ -169,10 +169,10 @@ const PostJob = () => {
       <PostJobContainer>
 
         <h2 style={{ marginTop: 60,color: '#0071BE' }}>From for freelance</h2>
-        <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}>โพสโปรไฟลของเรา เพื่อให้Enterpriseเห็นโปรไฟลของเรา</h2>
+        <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}>Post our profile So that Enterprise can see our profile</h2>
         <form onSubmit={handleSubmit}>
           <div>
-            <label>Name:</label>
+            <label>Name</label>
             <input
               type="text"
               name="name"
@@ -182,7 +182,7 @@ const PostJob = () => {
             />
           </div>
           <div>
-            <label>Price:</label>
+            <label>Price</label>
             <input
               type="number" min="500"
               name="price"
@@ -192,7 +192,7 @@ const PostJob = () => {
             />
           </div>
           <div>
-            <label>Number of Day:</label>
+            <label>Number of Day</label>
             <input
               type="number" min="1"
               name="time" 
@@ -202,7 +202,7 @@ const PostJob = () => {
             />
           </div>
           <div>
-            <label>Description:</label>
+            <label>Description</label>
             <textarea
               name="description"
               value={formData.description}
@@ -211,7 +211,7 @@ const PostJob = () => {
             />
           </div>
           <div>
-            <label>Workprocess:</label>
+            <label>Workprocess</label>
             <textarea
               name="workprocess"
               value={formData.workprocess}
@@ -220,7 +220,7 @@ const PostJob = () => {
             />
           </div>
           <div>
-            <label>examplejob:</label>
+            <label>examplejob</label>
             <textarea
               name="examplejob"
               value={formData.examplejob}
@@ -229,7 +229,7 @@ const PostJob = () => {
             />
           </div>
           <div>
-            <label>Fix time:</label>
+            <label>Fix time</label>
             <input
               type="number"
               name="fixtime"
@@ -307,7 +307,7 @@ const PostJob = () => {
             >
               <option value=" ">Select Location</option>
               <option value="onsite">onsite</option>
-              <option value="online">online</option>
+            <option value="online">online</option>
             </select>
           </div>
 
@@ -325,12 +325,7 @@ const PostJob = () => {
       <footer>
         <div class="footer-content" style={{marginTop:'1800px'}}>
           <img src={big_logo} alt="" className="big_logofooter" />
-          <p className="footertext1">
-            Norrapat Sai-ai 652110289<br></br>
-            Samitthichai Peeragun 652110309<br></br>
-            Sivasith Singkaew 652110308<br></br>
-            Jeeraphat Chantra 652110318<br></br>
-          </p>
+         
         </div>
       </footer>
     </div >
@@ -338,7 +333,7 @@ const PostJob = () => {
 }
 
 const PostJobContainer = styled.div`
-margin:20px 20px 20px 20px;
+margin:50px 400px 50px 400px;
 .custom-button {
   margin-top: 30px;
   margin-bottom: 100px;
@@ -350,6 +345,7 @@ input[type="file"] {
   border-radius: 4px;
   margin-top: 20px;
 }
+
 select {
   width: 100%;
   padding: 8px;
@@ -359,13 +355,13 @@ select {
 }
   h2 {
     margin-top: 60px;
-    color: #0196FC;
+    color: #ccc;
     font-size: 80px;
   }
 
   p {
     color: #9C9C9C;
-    font-size: 50px;
+    font-size: 40px;
     
   }
   label{
@@ -382,6 +378,7 @@ select {
     border-radius: 4px;
     resize: none;
   }
+
 `;
 
 export default styled(PostJob)``;

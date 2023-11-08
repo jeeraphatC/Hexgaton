@@ -81,7 +81,7 @@ a:active { text-decoration: none; }
     padding:20px;
   }
   .card{
-    width: 800px;
+    width: 700px;
     border:0px;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
   }
@@ -103,7 +103,7 @@ a:active { text-decoration: none; }
   margin:20px;
   font-size:25px;
   color:#D9D9D9;
-  left:90%;
+  left:85%;
 }
 .regtext:hover{
   color: #0196FC;
@@ -131,7 +131,7 @@ a:active { text-decoration: none; }
   position:absolute;
   margin:20px;
   font-size:25px;
-  left:85%;
+  left:81%;
   color:#D9D9D9;
 }
   .form-text{
@@ -512,7 +512,12 @@ position: absolute;
 }
 
 
-
+.bg1{
+  width:800px;
+height:1200px;
+position:absolute;
+z-index:50;
+}
 //feature-bar
 .btn-add-first   {
     float : right ;
