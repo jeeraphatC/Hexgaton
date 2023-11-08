@@ -277,6 +277,9 @@ export default  styled(ChatRoom)`
 
 .container-chat{
   position: relative;
+  width: 80%;
+  margin: 130px;
+  
 }
 
 .register{
@@ -295,6 +298,7 @@ export default  styled(ChatRoom)`
   padding: 10px;
   display: flex;
   flex-direction: row;
+  border-radius:5px;
 }
 
 .member-list{
@@ -311,8 +315,10 @@ export default  styled(ChatRoom)`
 
 .chat-messages{
   height: 80%;
-  border: 1px solid #000;
+  border: 1px solid #ccc;
   overflow:auto;
+  border-radius: 5px;
+  margin: 20px;
 }
 
 .send-message{
@@ -323,7 +329,9 @@ export default  styled(ChatRoom)`
 
 .input-message{
   width:90%;
-  border-radius: 50px;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
 }
 
 ul {
@@ -332,9 +340,15 @@ ul {
 }
 .send-button{
   width:10%;
-  border-radius: 50px;
+  border-radius: 5px;
   margin-left: 5px;
   cursor: pointer;
+  border: 0px solid #ccc;
+  background: #0196FC;
+  color:#fff;
+}
+.send-button:hover{
+  background: #0071BE;
 }
 .member{
   padding: 10px;
@@ -343,12 +357,14 @@ ul {
   cursor: pointer;
   margin: 5px 2px;
   box-shadow: 0 8px 8px -4px lightblue;
+  border-radius:5px;
 
 }
 .member.active{
-  background: blueviolet;
+  background: #0196FC;
   color:#fff;
-
+  font-size:20px;
+  text-align:center;
 }
 .member:hover{
   background: grey;
