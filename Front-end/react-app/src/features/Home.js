@@ -15,57 +15,57 @@ import musicbg from "./pic/musicbg.jpg";
 import { Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 function Home({ className }) {
-  const [devType, setDevType] = useState("I AM A D");
+  const [devType, setDevType] = useState("I AM A D. .");
 
   useEffect(() => {
     const interval = setInterval(() => {
       setDevType((prevType) => {
         switch (prevType) {
-          case "I AM A D":
-            return "I AM A DE";
-          case "I AM A DE":
-            return "I AM A DEV";
-          case "I AM A DEV":
-            return "I AM A DEVE";  
-            case "I AM A DEVE":
-              return "I AM A DEVEL";  
-              case "I AM A DEVEL":
-                return "I AM A DEVELO"; 
-                case "I AM A DEVELO":
-                  return "I AM A DEVELOP"; 
-                  case "I AM A DEVELOP":
-                    return "I AM A DEVELOPE";
-                    case "I AM A DEVELOPE":
-                      return "I AM A DEVELOPER";
-                      case "I AM A DEVELOPER":
-                        return "I AM A DES";
-                        case "I AM A DES":
-                          return "I AM A DESI";
-                          case "I AM A DESI":
-                            return "I AM A DESIG";
-                            case "I AM A DESIG":
-                              return "I AM A DESIGN";
-                              case "I AM A DESIGN":
-                                return "I AM A DESIGNE";
-                                case "I AM A DESIGNE":
-                                return "I AM A DESIGNER";
-                                case "I AM A DESIGNER":
-                                  return "I AM A M";
-                                  case "I AM A M":
-                                    return "I AM A MU";
-                                    case "I AM A MU":
-                                      return "I AM A MUS";
-                                      case "I AM A MUS":
-                                        return "I AM A MUSI";
-                                        case "I AM A MUSI":
-                                        return "I AM A MUSIC";
-                                        case "I AM A MUSIC":
-                                        return "I AM A MUSICA";
-                                        case "I AM A MUSICA":
-                                        return "I AM A MUSICAI";
-                                        case "I AM A MUSICAI":
-                                        return "I AM A MUSICAIN";
-                                        case "I AM A MUSICAIN":
+          case "I AM A D. .":
+            return "I AM A DE. .";
+          case "I AM A DE. ." :
+            return "I AM A DEV. .";
+          case "I AM A DEV. .":
+            return "I AM A DEVE. .";  
+            case "I AM A DEVE. .":
+              return "I AM A DEVEL. .";  
+              case "I AM A DEVEL. .":
+                return "I AM A DEVELO. ."; 
+                case "I AM A DEVELO. .":
+                  return "I AM A DEVELOP. ."; 
+                  case "I AM A DEVELOP. .":
+                    return "I AM A DEVELOPE. .";
+                    case "I AM A DEVELOPE. .":
+                      return "I AM A DEVELOPER. .";
+                      case "I AM A DEVELOPER. .":
+                        return "I AM A DES. .";
+                        case "I AM A DES. .":
+                          return "I AM A DESI. .";
+                          case "I AM A DESI. .":
+                            return "I AM A DESIG. .";
+                            case "I AM A DESIG. .":
+                              return "I AM A DESIGN. .";
+                              case "I AM A DESIGN. .":
+                                return "I AM A DESIGNE. .";
+                                case "I AM A DESIGNE. .":
+                                return "I AM A DESIGNER. .";
+                                case "I AM A DESIGNER. .":
+                                  return "I AM A M. .";
+                                  case "I AM A M. .":
+                                    return "I AM A MU. .";
+                                    case "I AM A MU. .":
+                                      return "I AM A MUS. .";
+                                      case "I AM A MUS. .":
+                                        return "I AM A MUSI. .";
+                                        case "I AM A MUSI. .":
+                                        return "I AM A MUSIC. .";
+                                        case "I AM A MUSIC. .":
+                                        return "I AM A MUSICA. .";
+                                        case "I AM A MUSICA. .":
+                                        return "I AM A MUSICAI. .";
+                                        case "I AM A MUSICAI. .":
+                                        return "I AM A MUSICAIN. .";
+                                        case "I AM A MUSICAIN. .":
                                           return "I AM A D";
           default:
             return prevType;
