@@ -175,9 +175,9 @@ const PostFreelance = () => {
     <div>
       <PostJobContainer style={{marginLeft:'25%'}}>
       <h2 className="h2postfreelance" style={{color: '#0071BE',fontSize:'80px'}}>From for enterprise</h2>
-        <h2 style={{ color: '#9C9C9C',fontSize:'30px' }}>Post a job to find freelancers to work for us.</h2>
+        <h2 style={{ marginTop: 20,color: '#9C9C9C',fontSize:'30px' }}>Post a job to find freelancers to work for us.</h2>
         <form onSubmit={handleSubmit}>
-          <div>
+          <div style={{ marginTop: 20}}>
             <label>Name</label>
             <input
               type="text"
@@ -187,7 +187,7 @@ const PostFreelance = () => {
               placeholder='ชื่อ'
             />
           </div>
-          <div>
+          <div style={{ marginTop: 20}}>
             <label>Description</label>
             <textarea
               name="description"
@@ -196,7 +196,7 @@ const PostFreelance = () => {
               placeholder='แนะนำบริษัท ex: ประวัติการทำงาน เคยร่วมงานกับใครมาบ้าง'
             />
           </div>
-          <div>
+          <div style={{ marginTop: 10}}>
             <label>Type</label>
             <select
               name="type"
@@ -256,7 +256,7 @@ const PostFreelance = () => {
             </>
           )}
 
-          <div>
+          <div style={{ marginTop: 20}}>
             <label>Price</label>
             <input
               type="number" min="500"
@@ -266,7 +266,7 @@ const PostFreelance = () => {
               placeholder='ราคางานที่ต้องการ'
             />
           </div>
-          <div style={{ marginBottom: 20 }}>
+          <div style={{ marginTop: 20}}>
             <label>Number of Day</label>
             <input
               type="number" min="1"
@@ -277,7 +277,7 @@ const PostFreelance = () => {
               
             />
           </div>
-          <div>
+          <div style={{ marginTop: 20}}>
             <label>companyName</label>
             <textarea
               name="companyName"
@@ -287,7 +287,7 @@ const PostFreelance = () => {
             />
           </div>
 
-          <div style={{ marginBottom: 20 }}>
+          <div style={{ marginTop: 20}}>
             <input type="file" onChange={handleImageChange} />
           </div>
           <div style={{ textAlign: "center" }}>
@@ -310,53 +310,49 @@ const PostFreelance = () => {
   );
 }
 const PostJobContainer = styled.div`
-z-index:100;
-margin-left:200px;
-background-color:white;
-width:800px;
-height:1200px;
-padding:50px;
-
+margin:50px 400px 50px 400px;
 .custom-button {
   margin-top: 30px;
   margin-bottom: 100px;
 }
 input[type="file"] {
   font-size: 16px;
-  padding: 8px;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-top: 20px;
 }
+
 select {
   width: 100%;
   padding: 8px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-top: 10px;
 }
   h2 {
-    color: #0196FC;
+    margin-top: 60px;
+    color: #ccc;
     font-size: 80px;
   }
 
   p {
     color: #9C9C9C;
-    font-size: 50px;
+    font-size: 40px;
     
   }
   label{
-    font-size: 30px;
-    color: #0071BE;
+    font-size: 20px;
     margin-top: 20px;
-    
+    display: none;
   }
   textarea {
     width: 100%;
     height: 100px;
     font-size: 16px;
     padding: 8px;
-    border: 1px 1px 1px 1px solid #ccc;
+    border: 1px solid #ccc;
     border-radius: 4px;
     resize: none;
   }

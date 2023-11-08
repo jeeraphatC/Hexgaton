@@ -169,9 +169,9 @@ const PostJob = () => {
       <PostJobContainer>
 
         <h2 style={{ marginTop: 60,color: '#0071BE' }}>From for freelance</h2>
-        <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}>Post our profile So that Enterprise can see our profile</h2>
+        <h2 style={{ marginTop: 20,color: '#9C9C9C',fontSize:'30px' }}>Post our profile So that Enterprise can see our profile</h2>
         <form onSubmit={handleSubmit}>
-          <div>
+          <div style={{ marginTop: 20}}>
             <label>Name</label>
             <input
               type="text"
@@ -181,7 +181,7 @@ const PostJob = () => {
               placeholder='ชื่องาน'
             />
           </div>
-          <div>
+          <div  style={{ marginTop: 20}}>
             <label>Price</label>
             <input
               type="number" min="500"
@@ -191,7 +191,7 @@ const PostJob = () => {
               placeholder='งบประมาณ'
             />
           </div>
-          <div>
+          <div  style={{ marginTop: 20}}>
             <label>Number of Day</label>
             <input
               type="number" min="1"
@@ -201,7 +201,7 @@ const PostJob = () => {
               placeholder='จำนวนวันที่ต้องทำงาน'
             />
           </div>
-          <div>
+          <div  style={{ marginTop: 20}}>
             <label>Description</label>
             <textarea
               name="description"
@@ -210,7 +210,7 @@ const PostJob = () => {
               placeholder='แนะนำตัวเอง ex: ประวัติการทำงาน'
             />
           </div>
-          <div>
+          <div  style={{ marginTop: 20}}>
             <label>Workprocess</label>
             <textarea
               name="workprocess"
@@ -219,7 +219,7 @@ const PostJob = () => {
               placeholder='การทำงานของงานนี้คร่าว'
             />
           </div>
-          <div>
+          <div  style={{ marginTop: 20}}>
             <label>examplejob</label>
             <textarea
               name="examplejob"
@@ -228,7 +228,7 @@ const PostJob = () => {
               placeholder='ตัวอย่างงาน'
             />
           </div>
-          <div>
+          <div  style={{ marginTop: 20}}>
             <label>Fix time</label>
             <input
               type="number"
@@ -237,8 +237,8 @@ const PostJob = () => {
               onChange={handleInputChange}
               placeholder='จำนวนครั้งในการแก้ไขงาน'
             />
-          </div>
-          <div>
+          </div >
+          <div style={{ marginTop: 20}}>
             <label>Type:</label>
             <select
               name="type"
@@ -340,7 +340,7 @@ margin:50px 400px 50px 400px;
 }
 input[type="file"] {
   font-size: 16px;
-  padding: 8px;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-top: 20px;
@@ -352,6 +352,7 @@ select {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-top: 10px;
 }
   h2 {
     margin-top: 60px;
@@ -367,7 +368,7 @@ select {
   label{
     font-size: 20px;
     margin-top: 20px;
-    
+    display: none;
   }
   textarea {
     width: 100%;
