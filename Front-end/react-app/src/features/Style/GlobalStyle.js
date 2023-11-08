@@ -59,18 +59,18 @@ a:active { text-decoration: none; }
     outline: none;
 
     border: 1px solid #ced4da;
-    border-radius: 0.25rem;
 
     width: 100%;
     
   }
 
 
-  .app-container {
-    max-width: auto;
+.mail-logo{
+  max-width:35px;
     position: absolute;
-  }
-  
+    margin-left: 85%;
+    margin-top: 10px;
+}
   .min-logo {
     max-width:150px;
     position: absolute;
@@ -81,31 +81,72 @@ a:active { text-decoration: none; }
     padding:20px;
   }
   .card{
-    width: 600px;
+    width: 700px;
     border:0px;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
   }
   .big-logo {
     position: relative;
     width: 300px;
-    
+    margin-top:20px;
   }
   .biglogo-container{
     display: flex;
     justify-content: center;
     margin:50px;
   }
-
+.logintext:hover{
+  color:  #0196FC;
+}
+.logintext{
+  position:absolute;
+  margin:20px;
+  font-size:25px;
+  color:#D9D9D9;
+  left:85%;
+}
+.regtext:hover{
+  color: #0196FC;
+}
+.regtext{
+  position:absolute;
+  margin:20px;
+  font-size:25px;
+  color:#0071BE;
+}
+.logintext2:hover{
+  color: #0196FC;
+}
+.logintext2{
+  position:absolute;
+  margin:20px;
+  font-size:25px;
+  
+ color:#0071BE;
+}
+.regtext2:hover{
+  color: #0196FC;
+}
+.regtext2{
+  position:absolute;
+  margin:20px;
+  font-size:25px;
+  left:81%;
+  color:#D9D9D9;
+}
   .form-text{
    
   }
 
   .form-control{
     border:0px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     padding:20px;
     height: 60px;
-    margin-top:30px;
+    margin-top:40px;
+    border-bottom:1px solid #D9D9D9;
+    border-radius:0;
+    color:#0071BE;
+    font-size:20px;
   }
   .form-group{
     margin-left:40px;
@@ -119,7 +160,7 @@ a:active { text-decoration: none; }
     position:absolute;
   }
   .form-container{
-    
+    margin-top:-50px;
   }
   .asignup{
     color: #9C9C9C;
@@ -159,14 +200,19 @@ a:active { text-decoration: none; }
     margin-left: 80%;
   }
   .svg6{
-    margin-top: 30%;
+    margin-top: 70%;
     margin-left: 20%;
   }
   .svg7{
     margin-top: -3%;
     margin-left: 70%;
   }
+.form-file{
+  margin-left:40px;
+    margin-right:40px;
+    margin-top:30px;
 
+}
   .btn btn-primary mt-4{
     display: block;
      margin: 0 auto;
@@ -361,7 +407,7 @@ a:active { text-decoration: none; }
   }
 .footer-content{
   position: absolute;
-    top: 50%;
+    top: 10%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
@@ -369,17 +415,109 @@ a:active { text-decoration: none; }
     background: #FFF;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
     margin:2600px 0px 0px 0px;
+    z-index:105;
+}
+.footertext1{
+  margin-top: 0px;
+  top:50%;
+  left:400px;
+  color: #9C9C9C;
+font-family: Bebas Neue;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+letter-spacing: -0.22px;
+position: absolute;
+}
+.footertext2{
+  margin-top: 0px;
+  top:50%;
+  left:900px;
+  color: #9C9C9C;
+font-family: Bebas Neue;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+letter-spacing: -0.22px;
+position: absolute;
+}
+.footertext3{
+  margin-top: 0px;
+  left:10px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footertext4{
+  margin-top: 0px;
+  left:1090px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footertext5{
+  margin-top: 0px;
+  left:1220px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footertext6{
+  margin-top: 0px;
+  left:1320px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footer-content2{
+  position: absolute;
+  left: 50%;
+  top:100%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 50px;
+  background: #FFF;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+  z-index:105;
+  background: #0071BE;
 }
 .big_logofooter{
-  max-width: 500px;
+  max-width: 300px;
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
 
-
+.bg1{
+  width:800px;
+height:1200px;
+position:absolute;
+z-index:50;
+}
 //feature-bar
 .btn-add-first   {
     float : right ;

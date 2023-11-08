@@ -4,6 +4,7 @@ import { Button, Container } from 'react-bootstrap';
 import getCookies from '../hook/getCookies';
 import styled from 'styled-components';
 import big_logo from "../pic/big_logo.png";
+import bg1 from "../pic/bg1.jpg";
 
 const PostFreelanceContainer = styled.div`
   margin: 50px 400px 0px 400px;
@@ -24,7 +25,7 @@ const PostFreelanceContainer = styled.div`
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  label{
+  label {
     font-size: 20px;
     margin-top: 20px;
   }
@@ -172,12 +173,12 @@ const PostFreelance = () => {
 
   return (
     <div>
-      <PostJobContainer>
-      <h2 className="h2postfreelance" style={{ marginTop: 60,color: '#0071BE',fontSize:'50px'}}>From for enterprise</h2>
-        <h2 style={{ marginTop: 10,color: '#9C9C9C',fontSize:'30px' }}>โพสงานเพื่อหาFreelanceมาทำงานให้เรา</h2>
+      <PostJobContainer style={{marginLeft:'25%'}}>
+      <h2 className="h2postfreelance" style={{color: '#0071BE',fontSize:'80px'}}>From for enterprise</h2>
+        <h2 style={{ marginTop: 20,color: '#9C9C9C',fontSize:'30px' }}>Post a job to find freelancers to work for us.</h2>
         <form onSubmit={handleSubmit}>
-          <div>
-            <label>Name:</label>
+          <div style={{ marginTop: 20}}>
+            <label>Name</label>
             <input
               type="text"
               name="name"
@@ -186,8 +187,8 @@ const PostFreelance = () => {
               placeholder='ชื่อ'
             />
           </div>
-          <div>
-            <label>Description:</label>
+          <div style={{ marginTop: 20}}>
+            <label>Description</label>
             <textarea
               name="description"
               value={formData.description}
@@ -195,8 +196,8 @@ const PostFreelance = () => {
               placeholder='แนะนำบริษัท ex: ประวัติการทำงาน เคยร่วมงานกับใครมาบ้าง'
             />
           </div>
-          <div>
-            <label>Type:</label>
+          <div style={{ marginTop: 10}}>
+            <label>Type</label>
             <select
               name="type"
               value={formData.type}
@@ -255,8 +256,8 @@ const PostFreelance = () => {
             </>
           )}
 
-          <div>
-            <label>Price:</label>
+          <div style={{ marginTop: 20}}>
+            <label>Price</label>
             <input
               type="number" min="500"
               name="price"
@@ -265,8 +266,8 @@ const PostFreelance = () => {
               placeholder='ราคางานที่ต้องการ'
             />
           </div>
-          <div style={{ marginBottom: 20 }}>
-            <label>Number of Day:</label>
+          <div style={{ marginTop: 20}}>
+            <label>Number of Day</label>
             <input
               type="number" min="1"
               name="time"
@@ -276,8 +277,8 @@ const PostFreelance = () => {
               
             />
           </div>
-          <div>
-            <label>companyName:</label>
+          <div style={{ marginTop: 20}}>
+            <label>companyName</label>
             <textarea
               name="companyName"
               value={formData.companyName}
@@ -286,7 +287,7 @@ const PostFreelance = () => {
             />
           </div>
 
-          <div style={{ marginBottom: 20 }}>
+          <div style={{ marginTop: 20}}>
             <input type="file" onChange={handleImageChange} />
           </div>
           <div style={{ textAlign: "center" }}>
@@ -309,40 +310,42 @@ const PostFreelance = () => {
   );
 }
 const PostJobContainer = styled.div`
-margin:20px 20px 20px 20px;
+margin:50px 400px 50px 400px;
 .custom-button {
   margin-top: 30px;
   margin-bottom: 100px;
 }
 input[type="file"] {
   font-size: 16px;
-  padding: 8px;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
   margin-top: 20px;
 }
+
 select {
   width: 100%;
   padding: 8px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-top: 10px;
 }
   h2 {
     margin-top: 60px;
-    color: #0196FC;
+    color: #ccc;
     font-size: 80px;
   }
 
   p {
     color: #9C9C9C;
-    font-size: 50px;
+    font-size: 40px;
     
   }
   label{
     font-size: 20px;
     margin-top: 20px;
-    
+    display: none;
   }
   textarea {
     width: 100%;

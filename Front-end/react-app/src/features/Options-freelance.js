@@ -58,14 +58,8 @@ function OptionsFreelance({ className }) {
         </Row>
       
       <footer>
-        <div class="footer-content" style={{ marginTop: '1600px' }}>
+        <div class="footer-content" style={{ marginTop: '1200px'}}>
           <img src={big_logo} alt="" className="big_logofooter" />
-          <p className="footertext1">
-            Norrapat Sai-ai 652110289<br></br>
-            Samitthichai Peeragun 652110309<br></br>
-            Sivasith Singkaew 652110308<br></br>
-            Jeeraphat Chantra 652110318<br></br>
-          </p>
         </div>
       </footer>
       </Container>
@@ -81,8 +75,7 @@ export default styled(OptionsFreelance)`
 .big_logofooter{
   width: 300px;
 }
-.footer-content{
-  margin-top: 1600px;
+.footer-content{  margin-top: 1600px;
 }
 .footertext1{
   left: 50%;

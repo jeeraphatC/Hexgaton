@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import search from "./pic/search.png";
@@ -9,9 +9,73 @@ import arrow from "./pic/arrow.png";
 import inter from "./pic/inter.png";
 import big_logo from "./pic/big_logo.png";
 import bgcom2 from "./pic/bgcom2.jpg";
+import devbg1 from "./pic/devbg1.jpg";
+import drawbg1 from "./pic/drawbg1.jpg";
+import musicbg from "./pic/musicbg.jpg";
 import { Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 function Home({ className }) {
+  const [devType, setDevType] = useState("I AM A D. .");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setDevType((prevType) => {
+        switch (prevType) {
+          case "I AM A D. .":
+            return "I AM A DE. .";
+          case "I AM A DE. ." :
+            return "I AM A DEV. .";
+          case "I AM A DEV. .":
+            return "I AM A DEVE. .";  
+            case "I AM A DEVE. .":
+              return "I AM A DEVEL. .";  
+              case "I AM A DEVEL. .":
+                return "I AM A DEVELO. ."; 
+                case "I AM A DEVELO. .":
+                  return "I AM A DEVELOP. ."; 
+                  case "I AM A DEVELOP. .":
+                    return "I AM A DEVELOPE. .";
+                    case "I AM A DEVELOPE. .":
+                      return "I AM A DEVELOPER. .";
+                      case "I AM A DEVELOPER. .":
+                        return "I AM A DES. .";
+                        case "I AM A DES. .":
+                          return "I AM A DESI. .";
+                          case "I AM A DESI. .":
+                            return "I AM A DESIG. .";
+                            case "I AM A DESIG. .":
+                              return "I AM A DESIGN. .";
+                              case "I AM A DESIGN. .":
+                                return "I AM A DESIGNE. .";
+                                case "I AM A DESIGNE. .":
+                                return "I AM A DESIGNER. .";
+                                case "I AM A DESIGNER. .":
+                                  return "I AM A M. .";
+                                  case "I AM A M. .":
+                                    return "I AM A MU. .";
+                                    case "I AM A MU. .":
+                                      return "I AM A MUS. .";
+                                      case "I AM A MUS. .":
+                                        return "I AM A MUSI. .";
+                                        case "I AM A MUSI. .":
+                                        return "I AM A MUSIC. .";
+                                        case "I AM A MUSIC. .":
+                                        return "I AM A MUSICA. .";
+                                        case "I AM A MUSICA. .":
+                                        return "I AM A MUSICAI. .";
+                                        case "I AM A MUSICAI. .":
+                                        return "I AM A MUSICAIN. .";
+                                        case "I AM A MUSICAIN. .":
+                                          return "I AM A D. .";
+          default:
+            return prevType;
+        }
+      });
+    }, 250);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className={className}>
       <div className="homebg">
@@ -52,7 +116,12 @@ function Home({ className }) {
             <h4>Mobile App</h4>
           </Link>
         </div>
-        <h1>Do you have a job?</h1>
+        <div className="animationtext1con" >
+        <h1 style={{ left: '25%'}} className="animationtext1">
+  {devType}
+</h1>
+      </div>
+
         <img src={astronaut} alt="" className="astronaut" />
         <h3>
           Let{" "}
@@ -72,6 +141,28 @@ function Home({ className }) {
           </div>
         </Link>
       </div>
+      
+      <div className="devpre">
+      <Link to="/findjob" state={{ type: "develop" }} > 
+  <div className="textOverlay1">
+    DEVELOP
+  </div>
+  <img src={devbg1} alt="" className="devprebg" />
+  </Link>
+  <Link to="/findjob" state={{ type: "graphic" }}  >
+  <div className="textOverlay2">
+    DESIGN
+  </div>
+  </Link>
+  <Link to="/findjob" state={{ type: "music" }}>
+  <img src={drawbg1} alt="" className="designprebg" />
+  
+  <div className="textOverlay3">
+    Music
+  </div>
+  </Link>
+  <img src={musicbg} alt="" className="drawprebg" />
+</div>
       
       <img src={mlogo} alt="" className="mini_logo" />
       <h1 className="btext1">Become a DesignDevTunes</h1>
@@ -103,6 +194,13 @@ function Home({ className }) {
         <img src={inter} alt="" className="inter" />
       </div>
 
+      <div className="container2">
+  <a2  className="donate">Hello friends Help us support good projects. You can do this! We are working hard to resolve the issue. If you believe in what we do Please donate to be a part of building the project.</a2>
+  <Link to="/donate">
+  <Button className="donatebtn">Donate</Button>
+</Link>
+</div>
+
       <footer>
         <div class="footer-content" >
           <img src={big_logo} alt="" className="big_logofooter" />
@@ -112,10 +210,31 @@ function Home({ className }) {
             Sivasith Singkaew 652110308<br></br>
             Jeeraphat Chantra 652110318<br></br>
           </p>
-          <label className="footertext1">Enter email</label>
-          <input type="text" className="footertext1" />
-          <Button >Subscribe</Button>
-          <Link to="/">Link to donate</Link>
+          <p className="footertext2">
+          Contact us : siwasit_s@cmu.ac.th<br></br>
+          Call : 098-808-5395<br></br>
+          Address : 123 Sukhumvit Road, Bangkok 10110<br></br>
+          </p>
+          <div class="footer-content2" >
+          <p className="footertext3">
+          Thank you for visiting our web page.
+          </p>
+          <Link to="/home">
+          <p className="footertext4">
+          | Home page |
+          </p>
+          </Link>
+          <Link to="/optionfree">
+          <p className="footertext5">
+          Jobs page |
+          </p>
+          </Link>
+          <Link to="/optionenter">
+          <p className="footertext6">
+          Eenterprise page |
+          </p>
+          </Link>
+          </div>
         </div>
       </footer>
     </div>
@@ -163,7 +282,7 @@ export default styled(Home)`
     color: #FFF;
     top: 55%;
     left: 50%;
-    padding:10px 40px 10px 40px ;
+    padding:10px 30px 10px 30px ;
     border: 2px solid #FFF;
     transition: all 0.3s;
     border-radius: 5px;
@@ -181,7 +300,7 @@ export default styled(Home)`
     color: #FFF;
     top: 75%;
     left: 50%;
-    padding:10px 40px 10px 40px ;
+    padding:10px 30px 10px 30px ;
     border: 2px solid #FFF;
     transition: all 0.3s;
     border-radius: 5px;
@@ -577,12 +696,151 @@ export default styled(Home)`
 
 
 @media (min-width: 601px) {
+  .donatebtn{
+    position: absolute;
+    margin-top:20px;
+    margin-left:90px;
+  }
+  .donate{
+    color:#0196FC;
+  }
+  .container2{
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 2px;
+  position: fixed;
+  bottom: 50px;
+  left: 20px;
+  background-color: #fff;
+  max-height: 150px;
+    z-index:101;
+    font-size:15px;
+    width:300px;
+    height:300px;
+    padding:15px;
+    
+  }
+  .floatContainer {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .divshow1{
+    cursor: pointer;
+  }
+  .textOverlay3 {
+    position: absolute;
+    top: 1120px;
+    left: 1120px;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    color: white;
+    text-align: center;
+    z-index:100;
+
+  }
+  .textOverlay2 {
+    position: absolute;
+    top: 830px;
+    left: 1120px;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    color: white;
+    text-align: center;
+    z-index:100;
+  }
+  .textOverlay1 {
+    position: absolute;
+    top: 980px;
+    left: 450px;
+    transform: translate(-50%, -50%);
+    font-size: 150px;
+    color: white;
+    text-align: center;
+    z-index:100;
+  }
+  
+
+.drawprebg:hover, .designprebg:hover, .devprebg:hover {
+    filter: brightness(30%);
+}
+  .drawprebg{
+    width:450px;
+    height:250px;
+    margin-top:1000px;
+    margin-left:100px;
+    border-radius:10px;
+    position:absolute;
+    overflow: hidden;
+    transition: transform 0.5s, filter 0.5s;
+    filter: brightness(70%);
+  }
+
+ 
+  .designprebg{
+    width:450px;
+    height:250px;
+    margin-top:700px;
+    margin-left:100px;
+    border-radius:10px;
+    position:absolute;
+    overflow: hidden;
+    transition: transform 0.5s, filter 0.5s;
+    filter: brightness(70%);
+  }
+
+  .devprebg{
+    width:700px;
+    height:550px;
+    margin-top:700px;
+    margin-left:100px;
+    border-radius:10px;
+    overflow: hidden;
+    transition: transform 0.5s, filter 0.5s;
+    filter: brightness(70%);
+  }
+  .devpre{
+    background: #111111;
+    width: 100%;
+    height: 1400px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.25);
+    margin-bottom:100px;
+  }
+  .animationtext1 {
+    transition: transform 0.5s ease-in-out;
+  }
+  @keyframes slideIn {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  .animationtext1 {
+    animation: slideIn 1s forwards;
+    top : 20%;
+    font-size:150px;
+
+  }
+  
+  .animationtext2 {
+    animation: slideIn 1s forwards 0.5s; /* ทำ animation หลังจาก animationtext1 0.5 วินาที */
+  }
   .footer-content{
     margin-top: 3200px;
   }
 .footertext1{
-  margin-top: 380px;
-  margin-left: 20px;
+  margin-top: 0px;
+  top:50%;
+  left:400px;
   color: #9C9C9C;
 font-family: Bebas Neue;
 font-size: 20px;
@@ -590,6 +848,68 @@ font-style: normal;
 font-weight: 400;
 line-height: 150%; 
 letter-spacing: -0.22px;
+position: absolute;
+}
+.footertext2{
+  margin-top: 0px;
+  top:50%;
+  left:900px;
+  color: #9C9C9C;
+font-family: Bebas Neue;
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+letter-spacing: -0.22px;
+position: absolute;
+}
+.footertext3{
+  margin-top: 0px;
+  left:10px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footertext4{
+  margin-top: 0px;
+  left:1090px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footertext5{
+  margin-top: 0px;
+  left:1220px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
+}
+.footertext6{
+  margin-top: 0px;
+  left:1320px;
+  top:10px;
+  color: #FFF;
+font-family: Bebas Neue;
+font-size: 25px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; 
+position: absolute;
 }
 .t2text{
   font-size:55px;
@@ -606,33 +926,34 @@ letter-spacing: -0.22px;
   position: absolute;
   color: #FFF;
   top: 65%;
-  left: 59%;
+  left: 57%;
   padding:10px 40px 10px 40px ;
-  border: 2px solid #FFF;
+  
   transition: all 0.3s;
   border-radius: 5px;
   font-size:25px;
-}
-.needafreelance:hover{
   color: #FFF;
   background: #0196FC;
-  border: 2px solid #0196FC;
+}
+.needafreelance:hover{
+  border: 2px solid #FFF;
 }
 .needajob{
   position: absolute;
-  color: #FFF;
   top: 65%;
   left: 40%;
   padding:10px 40px 10px 40px ;
-  border: 2px solid #FFF;
+  
   transition: all 0.3s;
   border-radius: 5px;
   font-size:25px;
-}
-.needajob:hover{
-  color: #FFF;
   background: #0196FC;
   border: 2px solid #0196FC;
+}
+.needajob:hover{
+border: 2px solid #FFF;
+  
+  
 }
 .bgcom{
   height: 600px;
@@ -683,7 +1004,7 @@ letter-spacing: -0.22px;
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin-top: 2000px;
+    margin-top: 1200px;
     width: 100%;
     height: 1000px;
     background: #0196fc;
@@ -983,9 +1304,18 @@ letter-spacing: -0.22px;
     max-width: 150px;
     max-height: 150px;
     top: 35%;
-    left: 80%;
+    left: 82%;
     position: absolute;
-    transition: all 0.3s;
+    animation: astronautAnimation 2s infinite alternate;
+  }
+  
+  @keyframes astronautAnimation {
+    0% {
+      top: 30%;
+    }
+    100% {
+      top: 40%;
+    }
   }
   .astronaut:hover {
     top: 30%;

@@ -184,6 +184,7 @@ function Register({ className }) {
 
   return (
     <div>
+      
       <div class="svg-container">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -234,8 +235,8 @@ function Register({ className }) {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="290.533px"
-          height="400"
-          viewBox="0 0 156 150"
+          height="600"
+          viewBox="0 0 156 190"
           fill="none"
           class="svg6"
         >
@@ -258,8 +259,7 @@ function Register({ className }) {
           />
         </svg>
       </div>
-
-      <div className="app-container">
+      <div className="app-container" > 
         <a href="/">
           <img src={mlogo} alt="" className="homelogo" />
         </a>
@@ -269,14 +269,17 @@ function Register({ className }) {
           <div className="biglogo-container">
             <img src={blogo} alt="โลโก้" className="big-logo" />
           </div>
+          <a href="/register"  className="regtext">Register</a>
+          <a href="/login" className="logintext"style={{}}>Login</a>
+          
           {errorMessage && (
-            <div className="alert alert-danger">{errorMessage}</div>
+            <div className="alert alert-danger" style={{marginTop:'10px'}}>{errorMessage}</div>
           )}
-          <Link to="/login">
+          {/* <Link to="/login">
             <a className="alogin">Login</a>
-          </Link>
+          </Link> */}
           <div className="form-container">
-            <form>
+            <form >
               <div class="form-group">
                 {/* <label className="form-text">Employee name</label> */}
                 <input
@@ -335,9 +338,9 @@ function Register({ className }) {
                   required
                 />
               </div>
-              <label className="form-text" style={{marginLeft : 50}}>Image Profile</label>
-              <div class="form-group">
-                <input type="file" onChange={handleImageChange} />
+              <label className="form-text" style={{marginLeft : 50,marginTop:'100px',marginBottom:'-25px'}}>Image Profile</label>
+              <div class="form-file" >
+                <input type="file" className="file" onChange={handleImageChange}  style={{padding:'20px',borderRadius:'5px',backgroundColor:'#e9ecef',marginTop:'10px'}}/>
               </div>
 
               <div class="btnrge">
@@ -402,6 +405,10 @@ export default styled(Register)`
     margin-top: -3%;
     margin-left: 70%;
   }
+  .logintext:hover{
+    color: black;
+  }
+  
 }
   max-width: 600px;
   margin: 0 auto;

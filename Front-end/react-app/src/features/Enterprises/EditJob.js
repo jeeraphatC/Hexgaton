@@ -236,14 +236,8 @@ function EditJob({ className }) {
         </div>
       </Container>
       <footer>
-        <div class="footer-content" style={{ marginTop: '1800px' }}>
+        <div class="footer-content" style={{ marginTop: '2000px' }}>
           <img src={big_logo} alt="" className="big_logofooter" />
-          <p className="footertext1">
-            Norrapat Sai-ai 652110289<br></br>
-            Samitthichai Peeragun 652110309<br></br>
-            Sivasith Singkaew 652110308<br></br>
-            Jeeraphat Chantra 652110318<br></br>
-          </p>
         </div>
       </footer>
     </div>
