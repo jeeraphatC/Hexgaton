@@ -178,6 +178,7 @@ function Eprofile({ className }) {
     } catch (error) {
       console.error('Error updating account:', error);
     }
+    
   };
 
 

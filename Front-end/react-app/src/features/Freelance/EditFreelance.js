@@ -23,7 +23,7 @@ function EditFreelance({ className }) {
 
   const navigate = useNavigate();
   useEffect(() => {
-    axios.get(`https://smart-egg-production.up.railway.app/freelances/${id}`)
+    axios.get(`https://apathetic-laborer-production.up.railway.app/freelances/${id}`)
       .then(response => {
         setFreelance(response.data);
       })
@@ -61,7 +61,7 @@ function EditFreelance({ className }) {
 
   // สร้างฟังก์ชันเพื่ออัปเดตข้อมูลไปยังเซิร์ฟเวอร์
   const handleSave = () => {
-    axios.put(`https://smart-egg-production.up.railway.app/freelances/${id}`, freelance)
+    axios.put(`https://apathetic-laborer-production.up.railway.app/freelances/${id}`, freelance)
       .then(response => {
         console.log('บันทึกข้อมูลสำเร็จ');
         console.log(response.data.id)
@@ -73,7 +73,7 @@ function EditFreelance({ className }) {
         imageFormData.append('imagelocation', imgfree_id);
         imageFormData.append('name', "freelance");
         console.log("image", imgfree_id)
-        axios.put(`https://domineering-hobbies-production.up.railway.app/update/${name}/${imgfree_id}`, imageFormData)
+        axios.put(`https://dapper-advertisement-production.up.railway.app/update/${name}/${imgfree_id}`, imageFormData)
           .then(response => {
             console.log('Image updated successfully.');
           })

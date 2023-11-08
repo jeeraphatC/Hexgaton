@@ -56,7 +56,7 @@ function OptionsEnterprise({ className }) {
         </Row>
       </Container>
       <footer>
-        <div class="footer-content" style={{ marginTop: '1200px' }}>
+        <div class="footer-content" style={{ marginTop: '1200px',height:'300px'}}>
           <img src={big_logo} alt="" className="big_logofooter" />
         </div>
       </footer>

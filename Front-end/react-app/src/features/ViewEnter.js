@@ -29,7 +29,7 @@ function ViewEnter({ className }) {
   useEffect(() => {
     setaccId(getCookies('id'));
 
-    axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
+    axios.get(`https://dapper-advertisement-production.up.railway.app/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
       .then(response => {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
         const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -50,7 +50,7 @@ function ViewEnter({ className }) {
         setSendertoChat(response.data.account.accountname)
 
         // Fetch enterprise image
-        axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/enterprises/${id}`, { responseType: 'arraybuffer' })
+        axios.get(`https://dapper-advertisement-production.up.railway.app/getByNameAndImagelocation/enterprises/${id}`, { responseType: 'arraybuffer' })
           .then(imageResponse => {
             const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
             const imageSrc = `data:image/jpeg;base64,${base64}`;

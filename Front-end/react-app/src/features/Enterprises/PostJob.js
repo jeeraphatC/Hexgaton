@@ -5,6 +5,7 @@ import { Button, Container } from 'react-bootstrap';
 import getCookies from '../hook/getCookies';
 import styled from 'styled-components';
 import big_logo from "../pic/big_logo.png";
+import {  useNavigate } from "react-router-dom";
 const PostJob = () => {
 
 
@@ -30,7 +31,8 @@ const PostJob = () => {
     });
   }
 
-
+  const navigate = useNavigate();
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -120,6 +122,7 @@ const PostJob = () => {
                       axios.put(`https://domineering-hobbies-production.up.railway.app/update?id=${imageId}`, imageFormData)
                         .then(response => {
                           console.log('Image updated successfully.');
+                          navigate(`/enterprises/${jobDataToUpdate.id}`)
                         })
                         .catch(error => {
                           console.error('Error updating image:', error);

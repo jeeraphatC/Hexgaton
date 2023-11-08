@@ -5,7 +5,7 @@ import bg2 from "../pic/bg2.jpg";
 import user1 from "../pic/woman.jpg";
 import star from "../pic/star.png";
 import getCookies from '../hook/getCookies';
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link,useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { Container, Row, Col, Card, Button, CardBody } from 'react-bootstrap';
 import { useCookies } from 'react-cookie';
@@ -40,6 +40,7 @@ function Fprofile({ className }) {
     }
   );
 
+  const navigate=useNavigate();
   const [userName, setuserName] = useState();
   const [successMessage, setSuccessMessage] = useState(''); // State for success message
   const [selectedImage, setSelectedImage] = useState(null);
@@ -51,7 +52,7 @@ function Fprofile({ className }) {
     });
     setId(setIdFromCookies);
     // Make sure to include id in the dependency array to trigger the effect when id changes.
-    axios.get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${config_id}`)
+    axios.get(`https://apathetic-laborer-production.up.railway.app/api/v1/accounts/list/${config_id}`)
       .then(response => {
         setFormData(response.data);
         setuserName(response.data.accountname);
@@ -67,7 +68,7 @@ function Fprofile({ className }) {
     // setUserdata({ ...userdata, "username": usernameFromCookies });
     const account_id = getCookies('id');
     axios
-      .get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${config_id}`)
+      .get(`https://apathetic-laborer-production.up.railway.app/api/v1/accounts/list/${config_id}`)
       .then(response => {
 
         setUserdata({ ...userdata, description: response.data.descrip });
@@ -82,7 +83,7 @@ function Fprofile({ className }) {
   const imagelocation = getCookies("id");
   useEffect(() => {
 
-    axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/account/${config_id}`, { responseType: 'arraybuffer' })
+    axios.get(`https://dapper-advertisement-production.up.railway.app/getByNameAndImagelocation/account/${config_id}`, { responseType: 'arraybuffer' })
       .then(response => {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
         const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -97,7 +98,7 @@ function Fprofile({ className }) {
   useEffect(() => {
     const idFromCookies = getCookies("id");
     axios
-      .get(`https://smart-egg-production.up.railway.app/historys/enterprise`)
+      .get(`https://apathetic-laborer-production.up.railway.app/historys/enterprise`)
 
       .then((response) => {
         if (Array.isArray(response.data)) {
@@ -132,7 +133,7 @@ function Fprofile({ className }) {
 
     try {
       if (account_id) {
-        axios.put(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${ids}`, formData)
+        axios.put(`https://apathetic-laborer-production.up.railway.app/api/v1/accounts/list/${ids}`, formData)
           .then((accountResponse) => {
             console.log('Account updated successfully!', accountResponse.data);
             console.log(formData);
@@ -145,7 +146,7 @@ function Fprofile({ className }) {
             if (selectedImage) {
               const formData = new FormData();
               formData.append('image', selectedImage);
-              axios.post('https://domineering-hobbies-production.up.railway.app/add', formData)
+              axios.post('https://dapper-advertisement-production.up.railway.app/add', formData)
                 .then(imageResponse => {
                   console.log('Image uploaded successfully.');
                   const imageId = imageResponse.data;
@@ -157,7 +158,7 @@ function Fprofile({ className }) {
                     imageFormData.append('imagelocation', account_id);
                     imageFormData.append('name', "account");
 
-                    axios.put(`https://domineering-hobbies-production.up.railway.app/update?id=${imageId}`, imageFormData)
+                    axios.put(`https://dapper-advertisement-production.up.railway.app/update?id=${imageId}`, imageFormData)
                       .then(response => {
                         console.log('Image updated successfully.');
                       })
@@ -185,6 +186,7 @@ function Fprofile({ className }) {
     } catch (error) {
       console.error('Error updating account:', error);
     }
+
   };
 
 

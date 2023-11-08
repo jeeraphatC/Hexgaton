@@ -5,7 +5,7 @@ import getCookies from '../hook/getCookies';
 import styled from 'styled-components';
 import big_logo from "../pic/big_logo.png";
 import bg1 from "../pic/bg1.jpg";
-
+import {  useNavigate } from "react-router-dom";
 const PostFreelanceContainer = styled.div`
   margin: 50px 400px 0px 400px;
   .custom-button {
@@ -51,7 +51,7 @@ const PostFreelance = () => {
     subtype: '',
     companyName: '',
   });
-
+  const navigate = useNavigate();
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({
@@ -78,11 +78,11 @@ const PostFreelance = () => {
     }
 
     try {
-      const response = await axios.post('https://smart-egg-production.up.railway.app/freelances', formData);
+      const response = await axios.post('https://apathetic-laborer-production.up.railway.app/freelances', formData);
       console.log('Freelance created:', response.data);
 
       const accoun_id = getCookies('id');
-      axios.get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${accoun_id}`)
+      axios.get(`https://apathetic-laborer-production.up.railway.app/api/v1/accounts/list/${accoun_id}`)
         .then((accountResponse) => {
           const accountData = accountResponse.data;
           console.log('Account data retrieved successfully:', accountData);
@@ -105,7 +105,7 @@ const PostFreelance = () => {
             }
           };
 
-          axios.put(`https://smart-egg-production.up.railway.app/freelances/${jobDataToUpdate.id}`, jobDataToUpdate)
+          axios.put(`https://apathetic-laborer-production.up.railway.app/freelances/${jobDataToUpdate.id}`, jobDataToUpdate)
             .then((jobResponse) => {
               console.log('Job updated successfully!', jobResponse.data);
               const updatedJobId = jobResponse.data.id;
@@ -113,7 +113,7 @@ const PostFreelance = () => {
               if (selectedImage) {
                 const formData = new FormData();
                 formData.append('image', selectedImage);
-                  axios.post('https://domineering-hobbies-production.up.railway.app/add', formData)
+                  axios.post('https://dapper-advertisement-production.up.railway.app/add', formData)
                   .then(imageResponse => {
                     console.log('Image uploaded successfully.');
                     const imageId = imageResponse.data;
@@ -125,9 +125,10 @@ const PostFreelance = () => {
                       imageFormData.append('imagelocation', updatedJobId);
                       imageFormData.append('name', "freelance");
 
-                      axios.put(`https://domineering-hobbies-production.up.railway.app/update?id=${imageId}`, imageFormData)
+                      axios.put(`https://dapper-advertisement-production.up.railway.app/update?id=${imageId}`, imageFormData)
                         .then(response => {
                           console.log('Image updated successfully.');
+                          navigate(`/freelance/${jobDataToUpdate.id}`)
                         })
                         .catch(error => {
                           console.error('Error updating image:', error);
@@ -151,7 +152,7 @@ const PostFreelance = () => {
     } catch (error) {
       console.error('Error creating freelance:', error);
     }
-
+    
     setFormData({
       id: '',
       name: '',
@@ -164,6 +165,7 @@ const PostFreelance = () => {
     });
 
     setSelectedImage(null);
+    
   };
 
   const [selectedImage, setSelectedImage] = useState(null);
@@ -291,7 +293,7 @@ const PostFreelance = () => {
             <input type="file" onChange={handleImageChange} />
           </div>
           <div style={{ textAlign: "center" }}>
-            <Button variant="success" type="submit" className="custom-button" style={{ width: 150 }}>Submit</Button>
+            <Button variant="success" type="submit" className="custom-button" style={{ width: 150 }} >Submit</Button>
           </div>
         </form>
       </PostJobContainer>

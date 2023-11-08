@@ -21,10 +21,10 @@ function FindJob({ className }) {
   };
   let path;
   if (type2 == null) {
-    path = `https://smart-egg-production.up.railway.app/enterprises/type/${type}`
+    path = `https://apathetic-laborer-production.up.railway.app/enterprises/type/${type}`
   }
   else {
-    path = `https://smart-egg-production.up.railway.app/enterprises/type/${type}/${type2}`
+    path = `https://apathetic-laborer-production.up.railway.app/enterprises/type/${type}/${type2}`
   }
 
   function truncateText(text, maxLength) {
@@ -39,7 +39,7 @@ function FindJob({ className }) {
     if (type === 'develop') {
       return (
         <div className={className} style={{
-          marginTop: 0
+          marginTop: 0,backgroundColor: '#FFF'
         }}>
           <Col md={6} s>
             <Link to="/findjob" className="needajob" state={{ type: "develop" }}>
@@ -76,7 +76,6 @@ function FindJob({ className }) {
             <Link to="/findjob" className="needajob" state={{ type: "graphic", type2: "character" }}> <span style={{ marginBottom: 10 }}>Character Design</span></Link>
             <Link to="/findjob" className="needajob" state={{ type: "graphic", type2: "draw-cartoon" }}> <span style={{ marginBottom: 10 }}>Draw cartoons</span></Link>
             <Link to="/findjob" className="needajob" state={{ type: "graphic", type2: "3d-models" }}> <span style={{ marginBottom: 10 }}>3D Models</span></Link>
-            <Link to="/findjob" className="needajob" state={{ type: "graphic", type2: "banner" }}> <span style={{ marginBottom: 10 }}>Banner advertising design</span></Link>
           </Col>
         </div>
       );
@@ -131,7 +130,7 @@ function FindJob({ className }) {
         };
 
         const fetchImageByImagelocation = (imagelocation) => {
-          return axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/enterprises/${imagelocation}`, { responseType: 'arraybuffer' })
+          return axios.get(`https://dapper-advertisement-production.up.railway.app/getByNameAndImagelocation/enterprises/${imagelocation}`, { responseType: 'arraybuffer' })
             .then(imageResponse => {
               const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
               const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -177,15 +176,15 @@ function FindJob({ className }) {
 
 
   return (
-    <div className={className}>
-      <Container style={{ marginTop: 10 }}>
+    <div className={className} style={{backgroundColor:'#FFF'}}>
+      <Container style={{ marginTop: 10,backgroundColor:'#FFF'}}>
         <Link to="/" style={{ fontSize: '30px', marginTop: '30px', color: '#0071BE' }}>Home</Link>
         <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
         <Link to="/optionfree" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>Freelance</Link>
         <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
         <Link to="/findjob" state={{ type: type }} style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{type}</Link>
 
-        <h1 style={{ margin: '30px 10px 20px 0px', color: '#0196FC' }}>Find jobs (ALL)</h1>
+        <h1 style={{ margin: '30px 10px 40px 0px', color: '#0196FC' }}>Find jobs (ALL)</h1>
         <Row style={{ marginBottom: 20 }}>
           <Col md={10} style={{ paddingLeft: 0 }}>
             {develop()}
@@ -201,19 +200,21 @@ function FindJob({ className }) {
       <Card
         style={{
           width: "18rem",
-          marginBottom: 20
+          margin: 20
         }}
         onClick={() => handleCardClick(enterprise)}
       >
-        <Card.Img variant="top" style={{ width: 286, height: 180 }} src={enterpriseImages[enterprise.id]} />
+        <Card.Img variant="top" style={{ width: 290, height: 180,border:'0px' }} src={enterpriseImages[enterprise.id]} />
         <Card.Body>
-          <Card.Title>{enterprise.name}</Card.Title>
-          <Card.Subtitle>{truncateText(enterprise.description, 40)}</Card.Subtitle>
-          <Card.Text><strong>Time to work :</strong> {enterprise.time} DAYS</Card.Text>
-          <Card.Footer style={{ textAlign: "right" }}>${enterprise.price}
+          <Card.Title style={{ fontSize: '30px',border:'0px' }} >{enterprise.name}</Card.Title>
+          <Card.Subtitle style={{ fontSize: '15px',color:'#808080',border:'0px' }}>{truncateText(enterprise.description, 40)}</Card.Subtitle>
+          <Card.Text style={{ fontSize: '15px',color:'#808080',border:'0px' }}><strong style={{ fontSize: '12px',color:'#808080' }}>Time : </strong> {enterprise.time} DAYS</Card.Text>
+          <Card.Footer style={{ textAlign: "left",background:'#FFF',marginLeft:'-10px',fontSize: '20px',marginTop:'20px' }}>${enterprise.price}
+
            <Link to={`/enterprises/${enterprise.id}`}>
-              <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px' }} />
+              <img src={search4} alt="View Details" className='jobdetail' style={{ width: '45px', height: '45px',marginLeft:'160px',position:'absolute' }} />
             </Link>
+
           </Card.Footer>
         </Card.Body>
       </Card>
@@ -242,12 +243,7 @@ function FindJob({ className }) {
       <footer>
         <div class="footer-content" >
           <img src={big_logo} alt="" className="big_logofooter" />
-          <p className="footertext1">
-            Norrapat Sai-ai 652110289<br></br>
-            Samitthichai Peeragun 652110309<br></br>
-            Sivasith Singkaew 652110308<br></br>
-            Jeeraphat Chantra 652110318<br></br>
-          </p>
+          
         </div>
       </footer>
     </div>
@@ -347,13 +343,14 @@ export default styled(FindJob)`
   border: 2px solid #0071BE;
   }
   .needajob{
-  color: #000;
+  color: #808080;
   padding:5px 20px 5px 20px ;
-  border: 2px solid #000;
+  border: 2px solid #CCC;
   transition: all 0.3s;
   border-radius: 5px;
-  font-size:15px;
-  margin-right: 2px;
+  font-size:20px;
+  margin-right: 10px;
+
 }
 .needajob:hover , .needajob:focus{
   color: #FFF;

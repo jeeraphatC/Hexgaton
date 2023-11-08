@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom';
 import { Cookies, useCookies } from 'react-cookie';
 import getCookies from './hook/getCookies';
 import styled from 'styled-components';
+import big_logo from "./pic/big_logo.png";
 import PropTypes from 'prop-types' ;
 var stompClient =null;
 const ChatRoom = ({ className }) => {
@@ -189,15 +190,13 @@ const ChatRoom = ({ className }) => {
 
     return (
 <div className={className}>
-      <div className="container-chat">
+<img src={big_logo} alt="" className="big_logo" />
+      <div className="container-chat" style={{zIndex:'100'}}>
         {userData.connected }
         <div className="chat-box">
         <div className="member-list">
                 <ul>
                     <li onClick={()=>{setTab("CHATROOM")}} className={`member ${tab==="CHATROOM" && "active"}`}> PREES GREETING  TO {getCookies('senderNameToChat')}</li>
-                   
-                 
-                   
                     {[...privateChats.keys()].map((name,index)=>(
                         <li onClick={()=>{setTab(name)}} className={`member ${tab===name && "active"}`} key={index}>{name} </li>
                     ))}
@@ -274,9 +273,22 @@ const ChatRoom = ({ className }) => {
 
 
 export default  styled(ChatRoom)`
-
+.big_logo{
+  width:300px;
+  position:absolute;
+  top:120px;
+  left:8%;
+  z-index:101;
+}
 .container-chat{
   position: relative;
+  width: 80%;
+  margin: 130px;
+  background: #0196FC;
+  padding:20px;
+  border-radius:5px;
+  box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.034),0 6.7px 5.3px rgba(0, 0, 0, 0.048),0 12.5px 10px rgba(0, 0, 0, 0.06),0 22.3px 17.9px rgba(0, 0, 0, 0.072),0 41.8px 33.4px rgba(0, 0, 0, 0.086),0 100px 80px rgba(0, 0, 0, 0.12);
+
 }
 
 .register{
@@ -295,6 +307,8 @@ export default  styled(ChatRoom)`
   padding: 10px;
   display: flex;
   flex-direction: row;
+  border-radius:5px;
+  background-color:#fff;
 }
 
 .member-list{
@@ -304,15 +318,18 @@ export default  styled(ChatRoom)`
 
 .chat-content{
   width:80%;
-  margin-left: 10px;
- 
+  margin: 10px;
+  background: #FFF;
+  border-radius: 5px;
 
 }
 
 .chat-messages{
   height: 80%;
-  border: 1px solid #000;
   overflow:auto;
+  border-radius: 5px;
+  margin: 10px;
+  background: #f5ebe0;
 }
 
 .send-message{
@@ -322,8 +339,11 @@ export default  styled(ChatRoom)`
 }
 
 .input-message{
-  width:90%;
-  border-radius: 50px;
+  width:85%;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-left: 20px;
 }
 
 ul {
@@ -332,23 +352,33 @@ ul {
 }
 .send-button{
   width:10%;
-  border-radius: 50px;
+  border-radius: 5px;
   margin-left: 5px;
   cursor: pointer;
+  border: 0px solid #ccc;
+  background: #0196FC;
+  color:#fff;
+  font-size: 15px;
+}
+.send-button:hover{
+  background: #0071BE;
 }
 .member{
   padding: 10px;
-  background: #eee;
+  background: #ccc;
   border:#000;
   cursor: pointer;
   margin: 5px 2px;
   box-shadow: 0 8px 8px -4px lightblue;
+  border-radius:5px;
 
 }
 .member.active{
-  background: blueviolet;
+  background: #0196FC;
   color:#fff;
-
+  font-size:20px;
+  text-align:center;
+  margin:20px;
 }
 .member:hover{
   background: grey;

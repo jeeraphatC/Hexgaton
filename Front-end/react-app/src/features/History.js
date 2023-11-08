@@ -20,7 +20,7 @@ function History() {
   console.log(cookiehis)
   useEffect(() => {
     axios
-      .get("https://smart-egg-production.up.railway.app/historys/enterprise")
+      .get("https://apathetic-laborer-production.up.railway.app/historys/enterprise")
       .then((response) => {
         setEnterprises(response.data);
       })
@@ -29,7 +29,7 @@ function History() {
       });
 
     axios
-      .get("https://smart-egg-production.up.railway.app/historys/freelance")
+      .get("https://apathetic-laborer-production.up.railway.app/historys/freelance")
       .then((response) => {
         setFreelances(response.data);
       })

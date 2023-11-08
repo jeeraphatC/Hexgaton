@@ -75,7 +75,7 @@ function Compare({ className }) {
       return;
     }
 
-    fetch(`https://smart-egg-production.up.railway.app/enterprises/${userId1}`)
+    fetch(`https://apathetic-laborer-production.up.railway.app/enterprises/${userId1}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("User not found");
@@ -104,7 +104,7 @@ function Compare({ className }) {
       return;
     }
 
-    fetch(`https://smart-egg-production.up.railway.app/enterprises/${userId2}`)
+    fetch(`https://apathetic-laborer-production.up.railway.app/enterprises/${userId2}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("User not found");
@@ -175,7 +175,7 @@ function Compare({ className }) {
         {userData1 && (
           <div>
             <div className="userContentContainer1">
-              <h2 className="userDataName">Job 1 Name : {userData1.name}</h2>
+              <h2 className="userDataName">Job 1 : {userData1.name}</h2>
             </div>
             <div className="FirstDataContainer1">
               <h3 className="datacontent">Time</h3>
@@ -216,7 +216,7 @@ function Compare({ className }) {
       {userData2 && (
         <div>
           <div className="userContentContainer2">
-            <h2 className="userDataName2">Job 2 Name : {userData2.name}</h2>
+            <h2 className="userDataName2">Job 2 : {userData2.name}</h2>
           </div>
           <div className="SecondDataContainer1">
             <h3 className="data2">{userData2.time} Day</h3>

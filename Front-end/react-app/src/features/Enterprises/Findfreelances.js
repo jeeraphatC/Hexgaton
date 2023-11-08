@@ -36,7 +36,7 @@ function FindFreelances({ className }) {
     if (type === 'develop') {
       return (
         <div className={className} style={{
-          marginTop: 0
+          marginTop: 0,backgroundColor:'#FFF'
         }}>
           <Col md={6} >
             <Link to="/findfreelance" className="needajob" state={{ type: "develop" }}>
@@ -146,7 +146,7 @@ function FindFreelances({ className }) {
         <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
         <Link to="/findfreelance" state={{ type: type }} style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{type}</Link>
 
-        <h1 style={{ margin: '30px 20px 20px 0px', color: '#0196FC' }}>Find Freelance (ALL)</h1>
+        <h1 style={{ margin: '30px 20px 40px 0px', color: '#0196FC' }}>Find Freelance (ALL)</h1>
         <Row style={{ marginBottom: 20 }}>
           <Col md={10} style={{ paddingLeft: 0 }}>
             {develop()}
@@ -162,14 +162,14 @@ function FindFreelances({ className }) {
                     marginBottom: 20
                   }}
                 >
-                  <Card.Img variant="top" style={{ width: 286, height: 180 }} src={freelancerImages[freelance.id]} />
+                  <Card.Img variant="top" style={{ width: 290, height: 180,border:'0px' }} src={freelancerImages[freelance.id]} />
                   <Card.Body>
-                    <Card.Title>{freelance.name}</Card.Title>
-                    <Card.Subtitle>{truncateText(freelance.description, 40)}</Card.Subtitle>
-                    <Card.Text><strong>Time to work :</strong> {freelance.time} DAYS</Card.Text>
-                    <Card.Footer style={{ textAlign: "right" }}>${freelance.price}
+                    <Card.Title style={{ fontSize: '30px',border:'0px' }}>{freelance.name}</Card.Title>
+                    <Card.Subtitle style={{ fontSize: '15px',color:'#808080',border:'0px' }} >{truncateText(freelance.description, 40)}</Card.Subtitle>
+                    <Card.Text style={{ fontSize: '15px',color:'#808080',border:'0px' }}><strong>Time :</strong> {freelance.time} DAYS</Card.Text>
+                    <Card.Footer style={{ textAlign: "left",background:'#FFF',marginLeft:'-10px',fontSize: '20px',marginTop:'20px' }}>${freelance.price}
                       <Link to={`/freelance/${freelance.id}`}>
-                        <img src={search4} alt="View Details" className='jobdetail' style={{ width: '50px', height: '50px' }} />
+                        <img src={search4} alt="View Details" className='jobdetail' style={{ width: '45px', height: '45px',marginLeft:'160px',position:'absolute' }} />
                       </Link>
                     </Card.Footer>
                   </Card.Body>
@@ -191,41 +191,58 @@ FindFreelances.propTypes = {
   className: PropTypes.string.isRequired,
 };
 export default styled(FindFreelances)`
-  margin-top: 10px;
-  background-color: azure;
-.jobdetail{
-  padding: 5px;
-}
-.picture{
-  
-  border: 2px solid black;
-}
-.selected-items button {
-  margin: 5px; 
-  color: #FFFFFF;
-  background-color : #0196FC;
-  border: 0px;
-  border-radius: 3px;
-  padding: 5px;
-}
-.selected-items {
-  position: fixed;
-  top:70px; /* Adjust the value as needed */
-  right: 20px; /* Adjust the value as needed */
-  background-color: white;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  width: 240px;
+@media (max-width: 600px) {
+  .footer-content{
+    margin-top: 1500px;
+  }
+  .footertext1{
+    left: 50%;
+    margin-top:300px;
+    color: #9C9C9C;
+  font-family: Bebas Neue;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%; 
+  letter-spacing: -0.22px;
   text-align: center;
+  }
+  .big_logofooter{
+    width: 300px;
+  }
+  .selected-header{
+      font-size:16px;
+
+  }
+  .selected-items button {
+    margin: 5px; 
+    color: #FFFFFF;
+    background-color : #0196FC;
+    border: 0px;
+    border-radius: 3px;
+    padding: 5px;
+
+    font-size:15px;
+  }
+  .selected-items {
+    position: fixed;
+    top:70px; 
+    right: 20px; 
+    background-color: white;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 150px;
+    text-align: center;
+    font-size:15  px;
+  }
 }
+@media (min-width: 601px) {
+  backgroundColor: #FFF;
 .jobdetail{
   padding: 5px;
 }
-.picture{
-  
-  border: 2px solid black;
-}
+
 .selected-items button {
   margin: 5px; 
   color: #FFFFFF;
@@ -244,8 +261,9 @@ export default styled(FindFreelances)`
   border-radius: 3px;
   width: 240px;
   text-align: center;
-} 
-
+}
+  width: 100%;
+  margin-top: 50px;
 
   .btn-add-first   {
     float : right ;
@@ -255,33 +273,24 @@ export default styled(FindFreelances)`
   }
   .btn-add-first:active 
  {
- 
-    float : right ;
-    border: 2px solid #0071BE;
-    
-  }
-  Link{
-    color: #FFFFFF;
-  }
-
-  Button{
-    
-    margin-top: 0px;
-    margin-right: 5px;
+  float : right ;
+  border: 2px solid #0071BE;
   }
   .needajob{
-  color: #000;
+  color: #808080;
   padding:5px 20px 5px 20px ;
-  border: 2px solid #000;
+  border: 2px solid #CCC;
   transition: all 0.3s;
   border-radius: 5px;
-  font-size:15px;
-  margin-right: 2px;
+  font-size:20px;
+  margin-right: 10px;
+
 }
 .needajob:hover , .needajob:focus{
   color: #FFF;
   background: #0196FC;
   border: 2px solid #0196FC;
+}
 }
   
 `;

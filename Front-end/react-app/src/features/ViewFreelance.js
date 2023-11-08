@@ -23,7 +23,7 @@ function ViewFreelance({ className }) {
 
   useEffect(() => {
     setaccId(getCookies("id"))
-    axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
+    axios.get(`https://dapper-advertisement-production.up.railway.app/getByNameAndImagelocation/account/${account}`, { responseType: 'arraybuffer' })
       .then(response => {
         const base64 = btoa(new Uint8Array(response.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
         const imageSrc = `data:image/jpeg;base64,${base64}`;
@@ -42,7 +42,7 @@ function ViewFreelance({ className }) {
         setaccount(response.data.account.accountid)
         setSendertoChat(response.data.account.accountname)
         console.log(response.data.account.accountid)
-        axios.get(`https://domineering-hobbies-production.up.railway.app/getByNameAndImagelocation/freelance/${id}`, { responseType: 'arraybuffer' })
+        axios.get(`https://dapper-advertisement-production.up.railway.app/getByNameAndImagelocation/freelance/${id}`, { responseType: 'arraybuffer' })
           .then(imageResponse => {
             const base64 = btoa(new Uint8Array(imageResponse.data).reduce((data, byte) => data + String.fromCharCode(byte), ''));
             const imageSrc = `data:image/jpeg;base64,${base64}`;

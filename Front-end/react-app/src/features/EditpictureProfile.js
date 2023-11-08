@@ -5,7 +5,7 @@ import bg2 from './pic/bg2.jpg';
 import getCookies from './hook/getCookies';
 import { Button, Container } from 'react-bootstrap';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
 function EditProfile({ className }) {
@@ -18,7 +18,7 @@ function EditProfile({ className }) {
         descrip: '',
         email: '',
     });
-
+    const navigate=useNavigate();
     const [successMessage, setSuccessMessage] = useState(''); // State for success message
     const [selectedImage, setSelectedImage] = useState(null);
     const image_id = getCookies('image_id');
@@ -30,7 +30,7 @@ function EditProfile({ className }) {
         });
         setId(setIdFromCookies);
 
-        axios.get(`https://smart-egg-production.up.railway.app/api/v1/accounts/list/${setIdFromCookies}`)
+        axios.get(`https://apathetic-laborer-production.up.railway.app/api/v1/accounts/list/${setIdFromCookies}`)
             .then(response => {
                 setFormData(response.data);
             })
@@ -62,9 +62,10 @@ function EditProfile({ className }) {
                         imageFormData.append('imagelocation', account_id);
                         imageFormData.append('name', "account");
 
-                        axios.put(`https://domineering-hobbies-production.up.railway.app/update/account/${account_id}`, imageFormData)
+                        axios.put(`https://dapper-advertisement-production.up.railway.app/update/account/${account_id}`, imageFormData)
                             .then(response => {
                                 console.log('Image updated successfully.');
+                                navigate(`/profile`)
                             })
                             .catch(error => {
                                 console.error('Error updating image:', error);
