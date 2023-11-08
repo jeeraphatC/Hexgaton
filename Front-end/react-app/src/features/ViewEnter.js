@@ -24,6 +24,8 @@ function ViewEnter({ className }) {
   const [senderTochat,setSendertoChat] = useState();
       const [cookies, setCookie, removeCookie] = useCookies();
 
+  const [nameTochat,setnameTochat] = useState();
+
   useEffect(() => {
     setaccId(getCookies('id'));
 
@@ -112,7 +114,8 @@ function ViewEnter({ className }) {
     .then((historyResponse) => {
       // Handle the response if needed
       console.log("History Data:", historyResponse.data);
-      
+      setnameTochat(historyResponse.data.accountname);
+      setCookie('chatName',nameTochat)
       // After saving history, update the status
       axios.post(`https://smart-egg-production.up.railway.app/status`, statusData)
         .then((statusResponse) => {

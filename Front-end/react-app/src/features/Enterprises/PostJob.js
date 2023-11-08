@@ -34,6 +34,8 @@ const PostJob = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    
+
     if (
       formData.name === '' ||
       formData.price === '' ||

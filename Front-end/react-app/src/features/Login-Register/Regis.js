@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import mlogo from "../pic/mini_logo.png";
 import blogo from "../pic/big_logo.png";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth, db, storage } from "../chatSystem/firebase";
+import { auth, db, storage } from "../firebase";
 import { ref, uploadBytesResumable } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { useCookies } from 'react-cookie';

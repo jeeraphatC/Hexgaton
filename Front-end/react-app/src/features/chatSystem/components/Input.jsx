@@ -9,8 +9,10 @@ import {
   serverTimestamp,
   Timestamp,
   updateDoc,
+  
 } from "firebase/firestore";
-import { db, storage } from "../firebase";
+// "firebase/firestore"
+import { db, storage } from "../../firebase";
 import { v4 as uuid } from "uuid";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { useCookies } from 'react-cookie';

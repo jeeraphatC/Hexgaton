@@ -11,7 +11,7 @@ import login from "./pic/login.png";
 import getCookies from './hook/getCookies';
 import removeAllCookies from './hook/removeAllCookies';
 import {signOut} from "firebase/auth"
-import { auth } from ".//chatSystem/firebase";
+import { auth } from "./firebase";
 
 function Navbar({ className }) {
   const [developmentHovered, setDevelopmentHovered] = useState(false);
@@ -50,10 +50,10 @@ function Navbar({ className }) {
       <Link to="/options">
         <img src={ologo} alt="" className="ologo" />
       </Link>
-      <Link to="/ChatRoom" className="notice">
+      {/* <Link to="/ChatRoom" className="notice">
         <img src={chat} alt="" className="ologo" />
 
-      </Link>
+      </Link> */}
 
 
       {isUserLoggedIn ? (
