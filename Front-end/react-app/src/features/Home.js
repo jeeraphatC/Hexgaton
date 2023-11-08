@@ -66,7 +66,7 @@ function Home({ className }) {
                                         case "I AM A MUSICAI. .":
                                         return "I AM A MUSICAIN. .";
                                         case "I AM A MUSICAIN. .":
-                                          return "I AM A D";
+                                          return "I AM A D. .";
           default:
             return prevType;
         }
