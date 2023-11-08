@@ -326,7 +326,6 @@ export default  styled(ChatRoom)`
 
 .chat-messages{
   height: 80%;
-  border: 1px solid #ccc;
   overflow:auto;
   border-radius: 5px;
   margin: 10px;
@@ -359,7 +358,7 @@ ul {
   border: 0px solid #ccc;
   background: #0196FC;
   color:#fff;
-  font-size: 20px;
+  font-size: 15px;
 }
 .send-button:hover{
   background: #0071BE;
@@ -379,7 +378,7 @@ ul {
   color:#fff;
   font-size:20px;
   text-align:center;
-  margin:10px;
+  margin:20px;
 }
 .member:hover{
   background: grey;
