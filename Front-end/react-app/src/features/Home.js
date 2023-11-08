@@ -10,6 +10,8 @@ import inter from "./pic/inter.png";
 import big_logo from "./pic/big_logo.png";
 import bgcom2 from "./pic/bgcom2.jpg";
 import devbg1 from "./pic/devbg1.jpg";
+import drawbg1 from "./pic/drawbg1.jpg";
+import musicbg from "./pic/musicbg.jpg";
 import { Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
 function Home({ className }) {
@@ -139,11 +141,28 @@ function Home({ className }) {
           </div>
         </Link>
       </div>
+      
       <div className="devpre">
-          <img src={devbg1} alt="" className="devprebg" />
-
-
-      </div>
+      <Link to="/findjob" state={{ type: "develop" }} > 
+  <div className="textOverlay1">
+    DEVELOP
+  </div>
+  <img src={devbg1} alt="" className="devprebg" />
+  </Link>
+  <Link to="/findjob" state={{ type: "graphic" }}  >
+  <div className="textOverlay2">
+    DESIGN
+  </div>
+  </Link>
+  <Link to="/findjob" state={{ type: "music" }}>
+  <img src={drawbg1} alt="" className="designprebg" />
+  
+  <div className="textOverlay3">
+    Music
+  </div>
+  </Link>
+  <img src={musicbg} alt="" className="drawprebg" />
+</div>
       
       <img src={mlogo} alt="" className="mini_logo" />
       <h1 className="btext1">Become a DesignDevTunes</h1>
@@ -174,7 +193,11 @@ function Home({ className }) {
         <img src={arrow} alt="" className="arrow2" />
         <img src={inter} alt="" className="inter" />
       </div>
-
+      <div className="container2">
+<Link to="/donate">
+  <Button className="donatebtn" style={{width:'200px',height:'40px',fontSize:'20px'}}>Donate here</Button>
+  </Link>
+</div>
       <footer>
         <div class="footer-content" >
           <img src={big_logo} alt="" className="big_logofooter" />
@@ -184,10 +207,7 @@ function Home({ className }) {
             Sivasith Singkaew 652110308<br></br>
             Jeeraphat Chantra 652110318<br></br>
           </p>
-          <label className="footertext1">Enter email</label>
-          <input type="text" className="footertext1" />
-          <Button >Subscribe</Button>
-          <Link to="/">Link to donate</Link>
+          
         </div>
       </footer>
     </div>
@@ -649,17 +669,111 @@ export default styled(Home)`
 
 
 @media (min-width: 601px) {
+  .donatbtn{
+    
+  }
+  .container2{
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 5px; /* ปรับแต่งค่า padding ตามต้องการ */
+  border-radius: 10px;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background-color: #fff;
+  max-height: 150px; /* ปรับแต่งค่า max-height ตามต้องการ */
+    z-index:101;
+    
+  }
+  .floatContainer {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  .divshow1{
+    cursor: pointer;
+  }
+  .textOverlay3 {
+    position: absolute;
+    top: 1120px;
+    left: 1120px;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    color: white;
+    text-align: center;
+    z-index:100;
+
+  }
+  .textOverlay2 {
+    position: absolute;
+    top: 830px;
+    left: 1120px;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+    color: white;
+    text-align: center;
+    z-index:100;
+  }
+  .textOverlay1 {
+    position: absolute;
+    top: 980px;
+    left: 450px;
+    transform: translate(-50%, -50%);
+    font-size: 150px;
+    color: white;
+    text-align: center;
+    z-index:100;
+  }
+  
+
+.drawprebg:hover, .designprebg:hover, .devprebg:hover {
+    filter: brightness(30%);
+}
+  .drawprebg{
+    width:450px;
+    height:250px;
+    margin-top:1000px;
+    margin-left:100px;
+    border-radius:10px;
+    position:absolute;
+    overflow: hidden;
+    transition: transform 0.5s, filter 0.5s;
+    filter: brightness(70%);
+  }
+
+ 
+  .designprebg{
+    width:450px;
+    height:250px;
+    margin-top:700px;
+    margin-left:100px;
+    border-radius:10px;
+    position:absolute;
+    overflow: hidden;
+    transition: transform 0.5s, filter 0.5s;
+    filter: brightness(70%);
+  }
+
   .devprebg{
     width:700px;
-    height:500px;
-    margin-top:800px;
-    margin-left:750px;
+    height:550px;
+    margin-top:700px;
+    margin-left:100px;
     border-radius:10px;
+    overflow: hidden;
+    transition: transform 0.5s, filter 0.5s;
+    filter: brightness(70%);
   }
   .devpre{
     background: #111111;
     width: 100%;
-    height: 1500px;
+    height: 1400px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.25);
     margin-bottom:100px;
   }
   .animationtext1 {
