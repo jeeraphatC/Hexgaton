@@ -20,11 +20,18 @@ const ChatRoom = ({ className }) => {
         connected: isLoggedIn,
         message: ''
       });
+
+    const [userWithChat,setuserWithChat] = useState({
+        username: '',
+        receivername:'',
+        connected: isLoggedIn,
+        message: ''
+    });
     const [chatConnect,setChatConnect] = useState(false);
 
       const location = useLocation();
       const email = location.state?.email || 'guest';
-
+      const [chatTo,setchatTo] = useState('');
 
 
       
@@ -61,6 +68,8 @@ const ChatRoom = ({ className }) => {
     // Get the username from the cookie
     const usernameFromCookie = getCookies('username');
     const chatIsTrue = getCookies('connectChat');
+    const chatWith = getCookies('chatName');
+
     if (usernameFromCookie) {
       handleUsername({ target: { value: usernameFromCookie } });
     }
@@ -84,6 +93,7 @@ const ChatRoom = ({ className }) => {
 
     const onConnected = () => {
         setUserData({...userData,"connected": true});
+
         stompClient.subscribe('/chatroom/public', onMessageReceived);
         stompClient.subscribe('/user/'+userData.username+'/private', onPrivateMessage);
         userJoin();
@@ -172,7 +182,8 @@ const ChatRoom = ({ className }) => {
       const { value } = event.target;
       const usernameFromCookie = getCookies('username'); // ใช้ค่าจาก getCookies
       setUserData({ ...userData, "username": usernameFromCookie });
-    
+
+      
     }
 
 
@@ -183,9 +194,12 @@ const ChatRoom = ({ className }) => {
         <div className="chat-box">
         <div className="member-list">
                 <ul>
-                    <li onClick={()=>{setTab("CHATROOM")}} className={`member ${tab==="CHATROOM" && "active"}`}>Chatroom</li>
+                    <li onClick={()=>{setTab("CHATROOM")}} className={`member ${tab==="CHATROOM" && "active"}`}> PREES GREETING  TO {getCookies('senderNameToChat')}</li>
+                   
+                 
+                   
                     {[...privateChats.keys()].map((name,index)=>(
-                        <li onClick={()=>{setTab(name)}} className={`member ${tab===name && "active"}`} key={index}>{name}</li>
+                        <li onClick={()=>{setTab(name)}} className={`member ${tab===name && "active"}`} key={index}>{name} </li>
                     ))}
                 </ul>
             </div>

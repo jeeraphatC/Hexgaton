@@ -10,7 +10,7 @@ import {
   serverTimestamp,
   getDoc,
 } from "firebase/firestore";
-import { db } from "../firebase";
+import { db } from "../../firebase";
 import { AuthContext } from "../context/AuthContext";
 import getCookies from "../../hook/getCookies";
 
