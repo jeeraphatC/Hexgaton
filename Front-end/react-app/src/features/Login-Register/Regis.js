@@ -29,7 +29,7 @@ function Register({ className }) {
       email.length > 0 &&
       numberCard.length > 0 &&
       password.length > 0 &&
-      !selectedImage
+      selectedImage
     );
   };
 
