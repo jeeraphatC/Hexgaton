@@ -129,6 +129,8 @@ function Register({ className }) {
 
 
       alert("Account Registration Successful");
+      setEmail(' ');
+      setPassword(' ');
       navigate("/login");
     } catch (err) {
       if (err.response && err.response.status === 400) {
