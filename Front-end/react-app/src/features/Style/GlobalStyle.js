@@ -56,7 +56,7 @@ a:active { text-decoration: none; }
        color:#0071BE;
     }
     .divpostjob2 {
-      background-color: #FFF;
+      background-color: #f8f9fa;
       padding: 50px;
       box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
@@ -70,9 +70,9 @@ a:active { text-decoration: none; }
       transform: translate(-50%, -50%); /* Moves the element back by half of its own size */
     }
     .divpostjob {
-      background-color: #FFF;
+      background-color: #f8f9fa;
       padding: 50px;
-      box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
       z-index: 100;
       width: 60%;
@@ -243,7 +243,7 @@ a:active { text-decoration: none; }
   .card{
     width: 700px;
     border:0px;
-    height:550px;
+    height:360px;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
   }
   .big-logo {

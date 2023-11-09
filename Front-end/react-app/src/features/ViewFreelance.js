@@ -127,27 +127,28 @@ function ViewFreelance({ className }) {
 
   return (
     <Container style={{ marginTop: 50, width: 800 }}>
+      <div style={{marginBottom:'20px'}}>
       <Link to="/" style={{ fontSize: '30px', marginTop: '30px', color: '#0071BE' }}>Home</Link>
       <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
       <Link to="/optionenter" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>enterprise</Link>
       <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
       <Link to="/findfreelance" state={{ type: freelance.type }} style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{freelance.type}</Link>
-      <div className={className}>
+      </div><div className={className}>
         <Row>
           <Col md={6}>
-            <Card style={{ borderRadius: 10, backgroundColor: '#FFFBF5' }}>
+            <Card style={{ borderRadius: 10, backgroundColor: '#e9ecef',right:'20%' }}>
               <Card.Body>
-                <Card.Img variant="top" style={{ width: 420, height: 300 }} src={freelanceImages[id]} />
+                <Card.Img variant="top" style={{ width: 420, height: 300 , margin:'10px',borderRadius: 10,}} src={freelanceImages[id]} />
                 <br />
                 <br />
                 <br />
-                <h1 style={{ textAlign: 'center' }}>{freelance.name}</h1>
+                <h1 style={{ textAlign: 'center',fontSize:'70px' }}>{freelance.name}</h1>
                 <Card.Text>{freelance.description}</Card.Text>
                 <Card.Text><p><strong>companyName:&emsp;</strong> {freelance.companyName}</p></Card.Text>
 
               </Card.Body>
             </Card>
-            <Card>
+            <Card style={{ marginTop:'200px'}}>
               <Card.Body>
                 <Row>
                   <Col md={3}>
@@ -155,27 +156,31 @@ function ViewFreelance({ className }) {
                       <Link to={`/profile/${freelance.account.accountid}`}><Card.Img src={image} alt="" className="user1" /></Link>
                     </div>
                   </Col>
-                  <Col md={3} style={{ marginTop: 30 }}>
+                  <Col md={3} style={{ marginTop: 50 }}>
                   <Link to={`/profile/${freelance.account.accountid}`}><Card.Text><strong>Name:</strong> {freelance.account.accountname}</Card.Text></Link>
                   </Col>
                 </Row>
+              
               </Card.Body>
             </Card>
           </Col>
           <Col md={6} >
             <Card style={{ marginLeft: 250, width: "20rem", padding: 20 }}>
-              <Card.Text><p><strong>Price:&emsp;</strong> {freelance.price}&nbsp;&nbsp;Baht</p></Card.Text>
-              <Card.Text><p>{freelance.type}</p></Card.Text>
-              <Card.Text><p><strong>Time:&emsp;</strong> {freelance.time}&nbsp;&nbsp;&nbsp;Days</p></Card.Text>
+              <Card.Text><p><strong>Price : &emsp;</strong> {freelance.price}&nbsp;&nbsp;Baht</p></Card.Text>
+              <Card.Text><p><strong>Type : &emsp;</strong>{freelance.type}</p></Card.Text>
+              <Card.Text><p><strong>Time : &emsp;</strong> {freelance.time}&nbsp;&nbsp;&nbsp;Days</p></Card.Text>
+
               {isChatButtonClicked ? (
                 <Link to="/ChatRoom">Chat</Link> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
               ) : (
                 isOwner ? (
-                  <Link to={`/editfreelance/${freelance.id}`} className="edit"> edit </Link>
+                  <Link to={`/editfreelance/${freelance.id}`} className="edit" style={{marginTop:'100px'}}> edit </Link>
                 ) : (
                   <button onClick={handleConfirmButtonClick} className="edit">Accept</button>
                 )
               )}
+
+
             </Card>
           </Col>
         </Row>

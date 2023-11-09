@@ -210,8 +210,12 @@ const PostFreelance = () => {
       </div>
       <div className='divpostjob2'>
         <h1 style={{
-    fontSize: '40px', // Set the font size
-  }}>Post your Profile</h1>
+    fontSize: '50px', // Set the font size
+  }}>Form enterprise</h1>
+  <h1 style={{
+    color:'#6c757d',
+    fontSize: '20px', // Set the font size
+  }}>ฟรีแลนช์การสามารถกรอกข้อมูลและรายละเอียดงานต่างๆเพื่อหาผู้ประกอบการจ้างงาน</h1>
         <form onSubmit={handleSubmit}>
           <div style={{ marginTop: 20}}>
             <label2>Name</label2>
@@ -270,6 +274,17 @@ const PostFreelance = () => {
                 name="subtype"
                 value={formData.subtype}
                 onChange={handleInputChange}
+                style={{
+                  width: '100%', // Set the width to 100% of its container
+                  padding: '10px', // Add some padding
+                  fontSize: '16px', // Set the font size
+                  borderRadius: '5px', // Add rounded corners
+                  border: '0px', // Add a border
+                  backgroundColor: '#0196FC',
+                  color: '#FFFFFF',
+                  marginTop:'10px'
+                  
+                }}
               >
                 <option value=" ">Select Type</option>
                 <option value="web">Web</option>
@@ -285,6 +300,17 @@ const PostFreelance = () => {
                 name="subtype"
                 value={formData.subtype}
                 onChange={handleInputChange}
+                style={{
+                  width: '100%', // Set the width to 100% of its container
+                  padding: '10px', // Add some padding
+                  fontSize: '16px', // Set the font size
+                  borderRadius: '5px', // Add rounded corners
+                  border: '0px', // Add a border
+                  backgroundColor: '#0196FC',
+                  color: '#FFFFFF',
+                  marginTop:'10px'
+                  
+                }}
               >
                 <option value=" ">Select Type</option>
                 <option value="logos">Logo Design</option>
@@ -303,6 +329,17 @@ const PostFreelance = () => {
                 name="subtype"
                 value={formData.subtype}
                 onChange={handleInputChange}
+                style={{
+                  width: '100%', // Set the width to 100% of its container
+                  padding: '10px', // Add some padding
+                  fontSize: '16px', // Set the font size
+                  borderRadius: '5px', // Add rounded corners
+                  border: '0px', // Add a border
+                  backgroundColor: '#0196FC',
+                  color: '#FFFFFF',
+                  marginTop:'10px'
+                  
+                }}
               >
                 <option value=" ">Select Type</option>
                 <option value="beat">Beat</option>

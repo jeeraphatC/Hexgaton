@@ -239,8 +239,12 @@ const PostJob = () => {
       </div>
       <div className='divpostjob'>
         <h1 style={{
-    fontSize: '40px', // Set the font size
-  }}>Post job</h1>
+    fontSize: '50px', // Set the font size
+  }}>Form freelance</h1>
+  <h1 style={{
+      color:'#6c757d',
+      fontSize: '18px', // Set the font size
+  }}>ผู้ประกอบการสามารถกรอกข้อมูลและรายละเอียดงานต่างๆเพื่อหาฟรีแลนซ์สำหรับจ้างงาน</h1>
         <form onSubmit={handleSubmit}>
           <div style={{ marginTop: 20}}>
             <label2>Name</label2>

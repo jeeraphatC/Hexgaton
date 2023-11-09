@@ -205,7 +205,7 @@ function FindJob({ className }) {
         onClick={() => handleCardClick(enterprise)}
       >
         <Card.Img variant="top" style={{ width: 290, height: 180,border:'0px' }} src={enterpriseImages[enterprise.id]} />
-        <Card.Body>
+        <Card.Body >
           <Card.Title style={{ fontSize: '30px',border:'0px' }} >{enterprise.name}</Card.Title>
           <Card.Subtitle style={{ fontSize: '15px',color:'#808080',border:'0px' }}>{truncateText(enterprise.description, 40)}</Card.Subtitle>
           <Card.Text style={{ fontSize: '15px',color:'#808080',border:'0px' }}><strong style={{ fontSize: '12px',color:'#808080' }}>Time : </strong> {enterprise.time} DAYS</Card.Text>
