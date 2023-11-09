@@ -253,8 +253,8 @@ function Register({ className }) {
           <div className="biglogo-container">
             <img src={blogo} alt="โลโก้" className="big-logo" />
           </div>
-          <a href="/register"  className="regtext">Register</a>
-          <a href="/login" className="logintext"style={{}}>Login</a>
+          <Link to="/register"  className="regtext">Register</Link>
+          <Link to="/login" className="logintext"style={{}}>Login</Link>
           
           {errorMessage && (
             <div className="alert alert-danger" style={{marginTop:'10px'}}>{errorMessage}</div>

@@ -30,7 +30,7 @@ import OptionsFreelance from './features/Options-freelance';
 import OptionsEnter from './features/Options-enter';
 import BasicExample from './features/Example';
 import Status from './features/Status';
-import HomeChat from './features/chatRoom';
+import HomeChat from './features/chatSystem/components/Home';
 import EditpictureProfile from './features/EditpictureProfile';
 import History from './features/History';
 import Donate from './features/Donate';
