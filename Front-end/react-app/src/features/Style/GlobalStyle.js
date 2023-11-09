@@ -132,7 +132,9 @@ a:active { text-decoration: none; }
     .postjobdiv3:hover {
       background-color:#dee2e6;
     }
-
+.card2{
+  width:70%;  
+}
     .postjobdiv3 {
       width: 130px;
       height: 50px;
@@ -233,17 +235,25 @@ a:active { text-decoration: none; }
     justify-content: center;
     padding:20px;
   }
+  .card3{
+    width: 700px;
+    border:0px;
+    border-radius:10px;
+    height:850px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+    z-index:150;
+  }
   .card2{
     width: 700px;
     border:0px;
-    height:850px;
+    height:150px;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     z-index:150;
   }
   .card{
     width: 700px;
     border:0px;
-    height:360px;
+    height:550px;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
   }
   .big-logo {

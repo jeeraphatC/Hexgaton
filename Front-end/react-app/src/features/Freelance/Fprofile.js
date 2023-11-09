@@ -200,7 +200,7 @@ function Fprofile({ className }) {
   return (
     <div className={className}>
 
-      <img src={bg2} alt="" className="bg1" />
+      <img src={bg2} alt="" className="bgpro" />
       <div className='container'>
         <div className="c1">
           <div className='container-profile'>
@@ -228,10 +228,10 @@ function Fprofile({ className }) {
         </div>
 
         <div className='block-work-review'>
-          <div className='block-work-of'>
+          <div className='block-work-of' style={{backgroundColor:'#f8f9fa'}}>
             <div className='head-band'>
-              <h3 >Work of {userName}</h3>
-              <Link to="/history"  onClick ={Histoy} className='link-history' >PRESS TO SEE MORE HISTORY</Link>
+              <h3 style={{margin:'10px'}}>Work of {userName}</h3>
+              <Link to="/history"  onClick ={Histoy} className='link-history' style={{marginLeft:'10px'}} >PRESS TO SEE MORE HISTORY</Link>
             </div>
 
 
@@ -275,7 +275,10 @@ Fprofile.propTypes = {
 };
 
 export default styled(Fprofile)`
-
+.bgpro{
+width:100%;
+height:350px;
+}
 .edit .link-edit{
   color:#9c9c9c;
 }

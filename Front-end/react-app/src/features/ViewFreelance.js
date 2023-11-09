@@ -126,7 +126,9 @@ function ViewFreelance({ className }) {
 
 
   return (
+    
     <Container style={{ marginTop: 50, width: 800 }}>
+      
       <div style={{marginBottom:'20px'}}>
       <Link to="/" style={{ fontSize: '30px', marginTop: '30px', color: '#0071BE' }}>Home</Link>
       <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
@@ -142,22 +144,23 @@ function ViewFreelance({ className }) {
                 <br />
                 <br />
                 <br />
-                <h1 style={{ textAlign: 'center',fontSize:'70px' }}>{freelance.name}</h1>
-                <Card.Text>{freelance.description}</Card.Text>
-                <Card.Text><p><strong>companyName:&emsp;</strong> {freelance.companyName}</p></Card.Text>
+                <h1 style={{ textAlign: 'center',fontSize:'70px' ,color:'#0071BE'}}>{freelance.name}</h1>
+                <Card.Text><p style={{fontSize:'40px' }}>{freelance.description}</p></Card.Text>
+                <Card.Text><p style={{fontSize:'40px',}}><strong>companyName:&emsp;</strong> {freelance.companyName}</p></Card.Text>
 
               </Card.Body>
             </Card>
-            <Card style={{ marginTop:'200px'}}>
+            <Card style={{ marginTop:'300px',height:'80px'}} >
               <Card.Body>
                 <Row>
-                  <Col md={3}>
+                  <Col md={3}>  
                     <div className='container-profile'>
                       <Link to={`/profile/${freelance.account.accountid}`}><Card.Img src={image} alt="" className="user1" /></Link>
                     </div>
                   </Col>
-                  <Col md={3} style={{ marginTop: 50 }}>
-                  <Link to={`/profile/${freelance.account.accountid}`}><Card.Text><strong>Name:</strong> {freelance.account.accountname}</Card.Text></Link>
+                  <Col md={3} style={{ marginTop: 0 }}>
+                  <Link to={`/profile/${freelance.account.accountid}`}><Card.Text><p style={{fontSize:'30px',width:'200px',position:'absolute',marginLeft:'-100px',marginTop:'5px'}}>{freelance.account.accountname}</p></Card.Text></Link>
+                  <h1 style={{ marginLeft: 400,width:'200',position:'absolute',color:'#e9ecef',marginTop:'5px' }}>Poster</h1>
                   </Col>
                 </Row>
               
@@ -212,12 +215,12 @@ export default styled(ViewFreelance)`
 
 }
 .container-profile {
-  margin: 15px 43px;
   position: relative;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   overflow: hidden;
+
 }
 
 .user1{

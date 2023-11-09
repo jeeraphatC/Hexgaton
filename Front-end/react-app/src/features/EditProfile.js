@@ -116,7 +116,7 @@ function EditProfile({ className }) {
   return (
     <Container>
       <div className={className}>
-        <img src={bg2} alt="" className="bg1" />
+        <img src={bg2} alt="" className="bg11" />
         <div className="container-edit">
           {successMessage && <div className="success-message">{successMessage}</div>}
           <div className="edit-Box">
@@ -175,15 +175,19 @@ function EditProfile({ className }) {
 }
 
 export default styled(EditProfile)`
-  .bg1 {
-    height: 350px;
-  }
+.bg11 {
+  height: 350px;
+  width: 100%;
+  
+}
+
 
   .edit-Box {
-    background-color: #f7f7f7;
+    background-color: #f8f9fa;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom:100px;
   }
 
   .success-message {

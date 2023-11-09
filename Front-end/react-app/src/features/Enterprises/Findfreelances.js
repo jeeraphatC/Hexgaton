@@ -159,7 +159,8 @@ function FindFreelances({ className }) {
                 <Card
                   style={{
                     width: "18rem",
-                    marginBottom: 20
+                    marginBottom: 20,
+                    height: "360px",
                   }}
                 >
                   <Card.Img variant="top" style={{ width: 290, height: 180,border:'0px' }} src={freelancerImages[freelance.id]} />

@@ -150,17 +150,17 @@ function ViewEnter({ className }) {
               <Card.Body>
 
               <Card.Img variant="top" style={{ width: '100%', height: '100%',borderRadius: 10,}} src={enterpriseImages[id]} />
-                <h1 style={{ textAlign: 'center' }}>{enterprise.name}</h1>
-                <Card.Subtitle>{enterprise.description}</Card.Subtitle>
-                <Card.Text><p><strong>ExampleJob:&emsp;</strong> {enterprise.examplejob}</p></Card.Text>
-                <Card.Text><p><strong>Workprocress:&emsp;</strong> {enterprise.workprocess}</p></Card.Text>
-                <Card.Text><p><strong>Location:&emsp;</strong> {enterprise.location}</p></Card.Text>
+                <h1 style={{ textAlign: 'center',marginTop:'50px',fontSize:'70px',color:'#0071BE'}}>{enterprise.name}</h1>
+                <Card.Subtitle><p style={{fontSize:'30px' }}>{enterprise.description}</p></Card.Subtitle>
+                <Card.Text><p style={{fontSize:'30px' }}> <strong>ExampleJob:&emsp;</strong> {enterprise.examplejob}</p></Card.Text>
+                <Card.Text><p style={{fontSize:'30px' }}><strong>Workprocress:&emsp;</strong> {enterprise.workprocess}</p></Card.Text>
+                <Card.Text><p style={{fontSize:'30px' }}><strong>Location:&emsp;</strong> {enterprise.location}</p></Card.Text>
 
 
               </Card.Body>
             </Card>
 
-            <Card>
+            <Card style={{ marginTop:'400px',height:'80px'}}>
               <Card.Body>
                 <Row>
                   <Col md={3}>
@@ -168,8 +168,9 @@ function ViewEnter({ className }) {
                     <Link to={`/profile/${enterprise.account.accountid}`}><Card.Img src={image} alt="" className="user1" /></Link>
                     </div>
                   </Col>
-                  <Col md={3} style={{ marginTop: 30 }}>
-                  <Link to={`/profile/${enterprise.account.accountid}`}> <Card.Text><strong>Name:</strong> {enterprise.account.accountname}</Card.Text></Link>
+                  <Col md={3} style={{ marginTop: 0 }}>
+                  <Link to={`/profile/${enterprise.account.accountid}`}> <Card.Text><p style={{fontSize:'30px',width:'200px',position:'absolute',marginLeft:'-100px',marginTop:'5px'}}>{enterprise.account.accountname}</p></Card.Text></Link>
+                  <h1 style={{ marginLeft: 400,width:'200',position:'absolute',color:'#e9ecef',marginTop:'5px' }}>Poster</h1>
                   </Col>
                 </Row>
               </Card.Body>
