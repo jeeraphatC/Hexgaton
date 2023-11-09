@@ -52,6 +52,11 @@ export default styled(Donate)`
   left: 100px;
   font-size:25px;
   color:#495057;
+  transition: all 0.2s;
+}
+.qrcodebtn:hover{
+  font-size:26px;
+  background-color:#CCC;
 }
 .webdevbg2{
   width: 100%;  
