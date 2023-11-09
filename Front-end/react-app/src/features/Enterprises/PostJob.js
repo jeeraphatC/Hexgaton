@@ -333,17 +333,17 @@ const PostJob = () => {
   name="type"
   value={formData.type}
   onChange={handleInputChange}
-  style={{
-    width: '100%', // Set the width to 100% of its container
-    padding: '10px', // Add some padding
-    fontSize: '16px', // Set the font size
-    borderRadius: '5px', // Add rounded corners
-    border: '0px', // Add a border
-    backgroundColor: '#0196FC',
-    color: '#FFFFFF',
-    marginTop:'10px'
-    
-  }}
+    style={{
+      width: '100%', // Set the width to 100% of its container
+      padding: '10px', // Add some padding
+      fontSize: '16px', // Set the font size
+      borderRadius: '5px', // Add rounded corners
+      border: '0px', // Add a border
+      backgroundColor: '#0196FC',
+      color: '#FFFFFF',
+      marginTop:'10px'
+      
+    }}
 >
   <option value=" ">Select Type</option>
   <option value="develop">Develop</option>
