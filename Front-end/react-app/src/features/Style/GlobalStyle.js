@@ -116,14 +116,14 @@ a:active { text-decoration: none; }
   .card2{
     width: 700px;
     border:0px;
-    height:1000px;
+    height:850px;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     z-index:150;
   }
   .card{
     width: 700px;
     border:0px;
-    height:500px;
+    height:550px;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
   }
   .big-logo {

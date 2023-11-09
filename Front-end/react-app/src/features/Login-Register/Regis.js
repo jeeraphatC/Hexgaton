@@ -223,16 +223,7 @@ function Register({ className }) {
         >
           <ellipse cx="54.2358" cy="52" rx="53.7641" ry="52" fill="#0196FC" />
         </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="290.533px"
-          height="600"
-          viewBox="0 0 156 190"
-          fill="none"
-          class="svg6"
-        >
-          <ellipse cx="78.186" cy="75" rx="77.5444" ry="75" fill="#0196FC" />
-        </svg>
+        
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="132"
