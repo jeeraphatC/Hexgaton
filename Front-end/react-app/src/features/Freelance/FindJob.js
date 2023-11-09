@@ -200,7 +200,8 @@ function FindJob({ className }) {
       <Card
         style={{
           width: "18rem",
-          margin: 20
+          margin: 20,
+          height: "360px"
         }}
         onClick={() => handleCardClick(enterprise)}
       >

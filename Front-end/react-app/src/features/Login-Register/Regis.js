@@ -247,7 +247,7 @@ function Register({ className }) {
         </a>
       </div>
       <div class="containermt-4">
-        <div class="card2">
+        <div class="card3">
           <div className="biglogo-container">
             <img src={blogo} alt="โลโก้" className="big-logo" />
           </div>

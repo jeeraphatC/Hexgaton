@@ -126,7 +126,9 @@ function ViewFreelance({ className }) {
 
 
   return (
+    
     <Container style={{ marginTop: 50, width: 800 }}>
+      
       <div style={{marginBottom:'20px'}}>
       <Link to="/" style={{ fontSize: '30px', marginTop: '30px', color: '#0071BE' }}>Home</Link>
       <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
@@ -136,28 +138,29 @@ function ViewFreelance({ className }) {
       </div><div className={className}>
         <Row>
           <Col md={6}>
-            <Card style={{ borderRadius: 10, backgroundColor: '#e9ecef',right:'20%' }}>
+            <Card style={{ borderRadius: 10, backgroundColor: '#E1F3FF  ',right:'20%' }}>
               <Card.Body>
-                <Card.Img variant="top" style={{ width: 420, height: 300 , margin:'10px',borderRadius: 10,}} src={freelanceImages[id]} />
+                <Card.Img variant="top" style={{ width: '100%', height: '100%',borderRadius: 10,}} src={freelanceImages[id]} />
                 <br />
                 <br />
                 <br />
-                <h1 style={{ textAlign: 'center',fontSize:'70px' }}>{freelance.name}</h1>
-                <Card.Text>{freelance.description}</Card.Text>
-                <Card.Text><p><strong>companyName:&emsp;</strong> {freelance.companyName}</p></Card.Text>
+                <h1 style={{ textAlign: 'center',fontSize:'70px' ,color:'#0071BE'}}>{freelance.name}</h1>
+                <Card.Text><p style={{fontSize:'40px' }}>{freelance.description}</p></Card.Text>
+                <Card.Text><p style={{fontSize:'40px',}}><strong>companyName:&emsp;</strong> {freelance.companyName}</p></Card.Text>
 
               </Card.Body>
             </Card>
-            <Card style={{ marginTop:'200px'}}>
+            <Card style={{ marginTop:'300px',height:'80px'}} >
               <Card.Body>
                 <Row>
-                  <Col md={3}>
+                  <Col md={3}>  
                     <div className='container-profile'>
                       <Link to={`/profile/${freelance.account.accountid}`}><Card.Img src={image} alt="" className="user1" /></Link>
                     </div>
                   </Col>
-                  <Col md={3} style={{ marginTop: 50 }}>
-                  <Link to={`/profile/${freelance.account.accountid}`}><Card.Text><strong>Name:</strong> {freelance.account.accountname}</Card.Text></Link>
+                  <Col md={3} style={{ marginTop: 0 }}>
+                  <Link to={`/profile/${freelance.account.accountid}`}><Card.Text><p style={{fontSize:'30px',width:'200px',position:'absolute',marginLeft:'-100px',marginTop:'5px'}}>{freelance.account.accountname}</p></Card.Text></Link>
+                  <h1 style={{ marginLeft: 400,width:'200',position:'absolute',color:'#e9ecef',marginTop:'5px' }}>Poster</h1>
                   </Col>
                 </Row>
               
@@ -165,18 +168,18 @@ function ViewFreelance({ className }) {
             </Card>
           </Col>
           <Col md={6} >
-            <Card style={{ marginLeft: 250, width: "20rem", padding: 20 }}>
-              <Card.Text><p><strong>Price : &emsp;</strong> {freelance.price}&nbsp;&nbsp;Baht</p></Card.Text>
-              <Card.Text><p><strong>Type : &emsp;</strong>{freelance.type}</p></Card.Text>
-              <Card.Text><p><strong>Time : &emsp;</strong> {freelance.time}&nbsp;&nbsp;&nbsp;Days</p></Card.Text>
+            <Card style={{ marginLeft: 250, width: "20rem", padding: 20,backgroundColor:'#0196FC',color:'#FFF',fontSize:'30px' }}>
+              <Card.Text><p style={{fontSize:'30px'}}><strong>Price : &emsp;</strong> {freelance.price}&nbsp;&nbsp;Baht</p></Card.Text>
+              <Card.Text><p style={{fontSize:'30px'}}><strong>Type : &emsp;</strong>{freelance.type}</p></Card.Text>
+              <Card.Text><p style={{fontSize:'30px'}}><strong>Time : &emsp;</strong> {freelance.time}&nbsp;&nbsp;&nbsp;Days</p></Card.Text>
 
               {isChatButtonClicked ? (
                 <Link to="/ChatRoom">Chat</Link> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
               ) : (
                 isOwner ? (
-                  <Link to={`/editfreelance/${freelance.id}`} className="edit" style={{marginTop:'100px'}}> edit </Link>
+                  <Link to={`/editfreelance/${freelance.id}`} className="editbtn"> edit </Link>
                 ) : (
-                  <button onClick={handleConfirmButtonClick} className="edit">Accept</button>
+                  <button onClick={handleConfirmButtonClick} className="editbtn">Accept</button>
                 )
               )}
 
@@ -196,14 +199,28 @@ ViewFreelance.propTypes = {
 };
 
 export default styled(ViewFreelance)`
+.editbtn{
+  text-align:center;
+  color:#0196FC;
+  width:200px;
+  background: #FFF;
+  border: 1px solid #FFF;
+  border-radius:10px;
+  margin-left:40px;
+  margin-top:40px;
+  transition: all 0.2s; 
+}
+.editbtn:hover{
+  background: #e9ecef;
 
+}
 .container-profile {
-  margin: 15px 43px;
   position: relative;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   overflow: hidden;
+
 }
 
 .user1{
