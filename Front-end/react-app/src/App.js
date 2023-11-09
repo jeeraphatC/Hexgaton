@@ -33,10 +33,12 @@ import Status from './features/Status';
 import HomeChat from './features/chatRoom';
 import EditpictureProfile from './features/EditpictureProfile';
 import History from './features/History';
+import Forget from './features/Login-Register/Forget';
 function App() {
   const location = useLocation();
   const showNavbar = location.pathname !== '/login';
   const showNavbar1 = location.pathname !== '/register';
+  const forget = location.pathname !== '/forget';
   const username = getCookies('username');
 
   const isUserLoggedIn = username !== undefined;
@@ -45,7 +47,7 @@ function App() {
     <>
 
       <GlobalStyle />
-      {showNavbar1 && showNavbar && <BasicExample />}
+      {showNavbar1 && showNavbar && forget&&<BasicExample />}
       <Container>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -79,6 +81,7 @@ function App() {
           <Route path="/status" element={isUserLoggedIn ? <Status /> : <Navigate to="/login" />} />
           <Route path="/profilefree/:id" element={isUserLoggedIn ? <EditpictureProfile /> : <Navigate to="/login" />} />
           <Route path="/history" element={isUserLoggedIn ? < History/> : <Navigate to="/login" />} />
+          <Route path="/forget" element={isUserLoggedIn ? < Forget/> : <Navigate to="/login" />} />
         </Routes>
       </Container>
 
