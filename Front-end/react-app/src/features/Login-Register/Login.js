@@ -9,9 +9,13 @@ import mail from "../pic/mail.png";
 import padlock from "../pic/padlock.png";
 import SockJS from 'sockjs-client';
 import { useCookies } from 'react-cookie';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+
+
 
 function Login({ className }) {
-
+  const [err, setErr] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -31,7 +35,15 @@ function Login({ className }) {
       });
   
       const responseData = loginResponse.data;
-  
+      const userEmail = email;
+      const userPassword = password;
+
+      try {
+        await signInWithEmailAndPassword(auth, userEmail, userPassword);
+        // navigate("/")
+      } catch (err) {
+        setErr(true);
+      }
       if (responseData.message === "Email not exists") {
         alert("Email does not exist");
       } else if (responseData.message === "Login Success") {

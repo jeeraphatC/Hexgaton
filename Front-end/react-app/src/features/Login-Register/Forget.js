@@ -177,7 +177,7 @@ function Foreget({ className }) {
                                             class="btn btn-primary mt-4 btn-large"
                                             onClick={login}
                                         >
-                                            Login
+                                            Submit
                                         </buttonrge>
 
                                     </div>
