@@ -136,19 +136,20 @@ function ViewEnter({ className }) {
   return (
     <Container style={{ marginTop: 50, width: 800 }}>
       <div className={className}>
+      <div style={{marginBottom:'20px'}}>
         <Link to="/" style={{ fontSize: '30px', marginTop: '30px', color: '#0071BE' }}>Home</Link>
         <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
         <Link to="/optionfree" style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>freelance</Link>
         <img src={arrow} alt="" style={{ width: '30px', marginLeft: '10px', marginBottom: '10px' }} />
         <Link to="/findjob" state={{ type: enterprise.type }} style={{ fontSize: '30px', marginTop: '30px', marginLeft: '10px', color: '#808080' }}>{enterprise.type}</Link>
-
+</div>
         <Row>
           <Col md={6}>
-            <Card style={{ borderRadius: 10, backgroundColor: '#FFFBF5' }}>
+          <Card style={{ borderRadius: 10, backgroundColor: '#E1F3FF  ',right:'20%' }}>
               
               <Card.Body>
 
-              <Card.Img variant="top" style={{ width: 420, height: 300,marginLeft:70 }} src={enterpriseImages[id]} />
+              <Card.Img variant="top" style={{ width: '100%', height: '100%',borderRadius: 10,}} src={enterpriseImages[id]} />
                 <h1 style={{ textAlign: 'center' }}>{enterprise.name}</h1>
                 <Card.Subtitle>{enterprise.description}</Card.Subtitle>
                 <Card.Text><p><strong>ExampleJob:&emsp;</strong> {enterprise.examplejob}</p></Card.Text>
@@ -175,7 +176,7 @@ function ViewEnter({ className }) {
             </Card>
           </Col>
           <Col md={6} >
-            <Card style={{ marginLeft: 250, width: "20rem", padding: 20 }}>
+          <Card style={{ marginLeft: 250, width: "20rem", padding: 20,backgroundColor:'#0196FC',color:'#FFF',fontSize:'30px' }}>
               <Card.Text><p>{enterprise.price}&nbsp;&nbsp;Baht</p></Card.Text>
               <Card.Text><p><strong>Time:&emsp;</strong> {enterprise.time}&nbsp;&nbsp;&nbsp;Days</p></Card.Text>
               <Card.Text><p>{enterprise.type}({enterprise.subtype})</p></Card.Text>
@@ -184,9 +185,9 @@ function ViewEnter({ className }) {
                 <Link to="/ChatRoom" >Chat</Link>
               ) : (
                 isOwner ? (
-                  <Link to={`/edit/${enterprise.id}`} className="edit"> edit </Link>
+                  <Link to={`/edit/${enterprise.id}`} className="editbtn"> edit </Link>
                 ) : (
-                  <button onClick={handleConfirmButtonClick} className="edit">Accept</button>
+                  <button onClick={handleConfirmButtonClick} className="editbtn">Accept</button>
                 )
               )}
             </Card>
@@ -202,7 +203,21 @@ ViewEnter.propTypes = {
 };
 
 export default styled(ViewEnter)`
+.editbtn{
+  text-align:center;
+  color:#0196FC;
+  width:200px;
+  background: #FFF;
+  border: 1px solid #FFF;
+  border-radius:10px;
+  margin-left:40px;
+  margin-top:40px;
+  transition: all 0.2s; 
+}
+.editbtn:hover{
+  background: #e9ecef;
 
+}
 .container-profile {
   margin: 15px 43px;
   position: relative;

@@ -136,9 +136,9 @@ function ViewFreelance({ className }) {
       </div><div className={className}>
         <Row>
           <Col md={6}>
-            <Card style={{ borderRadius: 10, backgroundColor: '#e9ecef',right:'20%' }}>
+            <Card style={{ borderRadius: 10, backgroundColor: '#E1F3FF  ',right:'20%' }}>
               <Card.Body>
-                <Card.Img variant="top" style={{ width: 420, height: 300 , margin:'10px',borderRadius: 10,}} src={freelanceImages[id]} />
+                <Card.Img variant="top" style={{ width: '100%', height: '100%',borderRadius: 10,}} src={freelanceImages[id]} />
                 <br />
                 <br />
                 <br />
@@ -165,18 +165,18 @@ function ViewFreelance({ className }) {
             </Card>
           </Col>
           <Col md={6} >
-            <Card style={{ marginLeft: 250, width: "20rem", padding: 20 }}>
-              <Card.Text><p><strong>Price : &emsp;</strong> {freelance.price}&nbsp;&nbsp;Baht</p></Card.Text>
-              <Card.Text><p><strong>Type : &emsp;</strong>{freelance.type}</p></Card.Text>
-              <Card.Text><p><strong>Time : &emsp;</strong> {freelance.time}&nbsp;&nbsp;&nbsp;Days</p></Card.Text>
+            <Card style={{ marginLeft: 250, width: "20rem", padding: 20,backgroundColor:'#0196FC',color:'#FFF',fontSize:'30px' }}>
+              <Card.Text><p style={{fontSize:'30px'}}><strong>Price : &emsp;</strong> {freelance.price}&nbsp;&nbsp;Baht</p></Card.Text>
+              <Card.Text><p style={{fontSize:'30px'}}><strong>Type : &emsp;</strong>{freelance.type}</p></Card.Text>
+              <Card.Text><p style={{fontSize:'30px'}}><strong>Time : &emsp;</strong> {freelance.time}&nbsp;&nbsp;&nbsp;Days</p></Card.Text>
 
               {isChatButtonClicked ? (
                 <Link to="/ChatRoom">Chat</Link> // แสดงข้อความ Chat หรือนำไปยังหน้า ChatRoom ตามที่ต้องการ
               ) : (
                 isOwner ? (
-                  <Link to={`/editfreelance/${freelance.id}`} className="edit" style={{marginTop:'100px'}}> edit </Link>
+                  <Link to={`/editfreelance/${freelance.id}`} className="editbtn"> edit </Link>
                 ) : (
-                  <button onClick={handleConfirmButtonClick} className="edit">Accept</button>
+                  <button onClick={handleConfirmButtonClick} className="editbtn">Accept</button>
                 )
               )}
 
@@ -196,7 +196,21 @@ ViewFreelance.propTypes = {
 };
 
 export default styled(ViewFreelance)`
+.editbtn{
+  text-align:center;
+  color:#0196FC;
+  width:200px;
+  background: #FFF;
+  border: 1px solid #FFF;
+  border-radius:10px;
+  margin-left:40px;
+  margin-top:40px;
+  transition: all 0.2s; 
+}
+.editbtn:hover{
+  background: #e9ecef;
 
+}
 .container-profile {
   margin: 15px 43px;
   position: relative;

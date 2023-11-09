@@ -49,7 +49,6 @@ const PostJob = () => {
       formData.description === '' ||
       formData.type.trim() === '' ||
       formData.type.location === '' ||
-      formData.workprocess === '' ||
       formData.examplejob === '' ||
       formData.fixtime === '' ||
       !selectedImage
@@ -298,17 +297,7 @@ const PostJob = () => {
 
             />
           </div>
-          <div  style={{ marginTop: 20}}>
-            <label2>Workprocess</label2>
-            <textarea
-              name="workprocess"
-              value={formData.workprocess}
-              onChange={handleInputChange}
-              placeholder='การทำงานของงานนี้คร่าว'
-              style={{borderRadius:'5px'}}
-
-            />
-          </div>
+          
           <div  style={{ marginTop: 20}}>
             <label2>examplejob</label2>
             <textarea
