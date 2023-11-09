@@ -165,12 +165,12 @@ function FindFreelances({ className }) {
                 >
                   <Card.Img variant="top" style={{ width: 290, height: 180,border:'0px' }} src={freelancerImages[freelance.id]} />
                   <Card.Body>
-                    <Card.Title style={{ fontSize: '30px',border:'0px' }}>{freelance.name}</Card.Title>
+                    <Card.Title style={{ fontSize: '30px',border:'0px',color:'#0071BE'     }}>{freelance.name}</Card.Title>
                     <Card.Subtitle style={{ fontSize: '15px',color:'#808080',border:'0px' }} >{truncateText(freelance.description, 40)}</Card.Subtitle>
                     <Card.Text style={{ fontSize: '15px',color:'#808080',border:'0px' }}><strong>Time :</strong> {freelance.time} DAYS</Card.Text>
-                    <Card.Footer style={{ textAlign: "left",background:'#FFF',marginLeft:'-10px',fontSize: '20px',marginTop:'20px' }}>${freelance.price}
+                    <Card.Footer style={{ textAlign: "left",background:'#FFF',marginLeft:'-10px',fontSize: '30px',marginTop:'20px',color:'#0196FC',paddingTop:'10px' }}>${freelance.price}
                       <Link to={`/freelance/${freelance.id}`}>
-                        <img src={search4} alt="View Details" className='jobdetail' style={{ width: '45px', height: '45px',marginLeft:'160px',position:'absolute' }} />
+                        <img src={search4} alt="View Details" className='jobdetail' style={{ width: '45px', height: '45px',marginLeft:'140px',position:'absolute' ,marginTop:'0px'}} />
                       </Link>
                     </Card.Footer>
                   </Card.Body>
