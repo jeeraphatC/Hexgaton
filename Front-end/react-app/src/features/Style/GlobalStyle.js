@@ -56,23 +56,23 @@ a:active { text-decoration: none; }
        color:#0071BE;
     }
     .divpostjob2 {
-      background-color: #FFF;
+      background-color: #f8f9fa;
       padding: 50px;
       box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
       z-index: 100;
       width: 60%;
       
-    margin-top:320px;
+    margin-top:355px;
       position: absolute; /* You can use 'fixed' instead if you want it to stay fixed on the screen */
       top: 50%; /* Positions the top edge of the element at the vertical center */
       left: 50%; /* Positions the left edge of the element at the horizontal center */
       transform: translate(-50%, -50%); /* Moves the element back by half of its own size */
     }
     .divpostjob {
-      background-color: #FFF;
+      background-color: #f8f9fa;
       padding: 50px;
-      box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
       border-radius: 10px;
       z-index: 100;
       width: 60%;
@@ -83,7 +83,40 @@ a:active { text-decoration: none; }
       left: 50%; /* Positions the left edge of the element at the horizontal center */
       transform: translate(-50%, -50%); /* Moves the element back by half of its own size */
     }
-    
+    .textff2{
+      text-align: center;
+      margin-top:10px;
+      font-size:20px;
+      color:#FFF;
+
+    }
+    .textff1{
+      text-align: center;
+      margin-top:10px;
+      font-size:20px;
+      color:white;
+      color:#6c757d;
+
+    }
+    .postffdiv3 {
+      width: 130px;
+      height: 50px;
+      margin: 0px auto; /* This centers the element horizontally */
+      background-color: #0196FC;
+      border-radius:10px;
+      display: inline-block;
+      margin:10px;
+    }
+    .postffdiv2 {
+      width: 130px;
+      height: 50px;
+      margin: 0px auto; /* This centers the element horizontally */
+      background-color: #e9ecef;
+      border-radius:10px;
+      display: inline-block;
+      margin:10px;
+      cursor:pointer;
+    }
     .textjob2{
       text-align: center;
       margin-top:10px;
@@ -99,7 +132,9 @@ a:active { text-decoration: none; }
     .postjobdiv3:hover {
       background-color:#dee2e6;
     }
-
+.card2{
+  width:70%;  
+}
     .postjobdiv3 {
       width: 130px;
       height: 50px;
@@ -200,10 +235,18 @@ a:active { text-decoration: none; }
     justify-content: center;
     padding:20px;
   }
+  .card3{
+    width: 700px;
+    border:0px;
+    border-radius:10px;
+    height:850px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+    z-index:150;
+  }
   .card2{
     width: 700px;
     border:0px;
-    height:850px;
+    height:150px;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
     z-index:150;
   }

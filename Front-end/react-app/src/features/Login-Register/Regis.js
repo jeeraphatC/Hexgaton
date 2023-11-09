@@ -129,8 +129,6 @@ function Register({ className }) {
 
 
       alert("Account Registration Successful");
-      setEmail(' ');
-      setPassword(' ');
       navigate("/login");
     } catch (err) {
       if (err.response && err.response.status === 400) {
@@ -249,7 +247,7 @@ function Register({ className }) {
         </a>
       </div>
       <div class="containermt-4">
-        <div class="card2">
+        <div class="card3">
           <div className="biglogo-container">
             <img src={blogo} alt="โลโก้" className="big-logo" />
           </div>

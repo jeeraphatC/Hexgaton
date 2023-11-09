@@ -202,15 +202,20 @@ const PostFreelance = () => {
         </svg>
       </div>
       <div className='postjobdiv1'>
-      <div className='postjobdiv2'><p className='textjob1'>Post Job</p></div>
-      <Link to="/freelanceform">
-      <div className='postjobdiv3'><p className='textjob2'>Post Profile</p></div>
-        </Link>
+        <Link to="/postjob">
+      <div className='postffdiv2'><p className='textff1'>Post Job</p></div>
+      </Link>
+      <div className='postffdiv3'><p className='textff2'>Post Profile</p></div>
+        
       </div>
       <div className='divpostjob2'>
         <h1 style={{
-    fontSize: '40px', // Set the font size
-  }}>Post job</h1>
+    fontSize: '50px', // Set the font size
+  }}>Form enterprise</h1>
+  <h1 style={{
+    color:'#6c757d',
+    fontSize: '20px', // Set the font size
+  }}>ฟรีแลนช์การสามารถกรอกข้อมูลและรายละเอียดงานต่างๆเพื่อหาผู้ประกอบการจ้างงาน</h1>
         <form onSubmit={handleSubmit}>
           <div style={{ marginTop: 20}}>
             <label2>Name</label2>
@@ -259,7 +264,7 @@ const PostFreelance = () => {
               <option value=" ">Select Type</option>
               <option value="develop">Develop</option>
               <option value="graphic">Graphic</option>
-              <option value="music">Music</option>
+              <option value="music">Voice and Sound</option>
             </select>
           </div>
           {formData.type === 'develop' && (
@@ -269,11 +274,27 @@ const PostFreelance = () => {
                 name="subtype"
                 value={formData.subtype}
                 onChange={handleInputChange}
+                style={{
+                  width: '100%', // Set the width to 100% of its container
+                  padding: '10px', // Add some padding
+                  fontSize: '16px', // Set the font size
+                  borderRadius: '5px', // Add rounded corners
+                  border: '0px', // Add a border
+                  backgroundColor: '#0196FC',
+                  color: '#FFFFFF',
+                  marginTop:'10px'
+                  
+                }}
               >
                 <option value=" ">Select Type</option>
                 <option value="web">Web</option>
                 <option value="mobile">Mobile</option>
                 <option value="desktop">Desktop</option>
+                <option value="gamedeveloment">Game Development</option>
+                <option value="chatbot">Making Chatbot</option>
+                <option value="uxui">UX/UI Design</option>
+                <option value="testter">Software Tester</option>
+                <option value="architec">Solution Architect</option>
               </select>
             </>
           )}
@@ -284,6 +305,17 @@ const PostFreelance = () => {
                 name="subtype"
                 value={formData.subtype}
                 onChange={handleInputChange}
+                style={{
+                  width: '100%', // Set the width to 100% of its container
+                  padding: '10px', // Add some padding
+                  fontSize: '16px', // Set the font size
+                  borderRadius: '5px', // Add rounded corners
+                  border: '0px', // Add a border
+                  backgroundColor: '#0196FC',
+                  color: '#FFFFFF',
+                  marginTop:'10px'
+                  
+                }}
               >
                 <option value=" ">Select Type</option>
                 <option value="logos">Logo Design</option>
@@ -302,9 +334,22 @@ const PostFreelance = () => {
                 name="subtype"
                 value={formData.subtype}
                 onChange={handleInputChange}
+                style={{
+                  width: '100%', // Set the width to 100% of its container
+                  padding: '10px', // Add some padding
+                  fontSize: '16px', // Set the font size
+                  borderRadius: '5px', // Add rounded corners
+                  border: '0px', // Add a border
+                  backgroundColor: '#0196FC',
+                  color: '#FFFFFF',
+                  marginTop:'10px'
+                  
+                }}
               >
-                <option value=" ">Select Type</option>
+                <option value=" ">Select Voice and Sound</option>
                 <option value="beat">Beat</option>
+                <option value="soundengi">Sound Engineering</option>
+                <option value="voiceover">Voice Over </option>
               </select>
             </>
           )}
@@ -327,7 +372,7 @@ const PostFreelance = () => {
             />
           </div>
           <div style={{ marginTop: 20}}>
-            <label>Number of Day</label>
+            <label2>Number of Day</label2>
             <input
               type="number" min="1"
               name="time"
@@ -344,12 +389,19 @@ const PostFreelance = () => {
             />
           </div>
           <div style={{ marginTop: 20}}>
-            <label>companyName</label>
+            <label2>companyName</label2>
             <textarea
               name="companyName"
               value={formData.companyName}
               onChange={handleInputChange}
               placeholder='กรอกชื่อบริษัท หรือ สถานที่ทำงาน ex.ไทยจำกัด ถนน.XXX ต.XXX อ.XXX จ.XXX'
+              style={{
+                width: '100%', // Set the width to 100% of its container
+                padding: '10px', // Add some padding
+                fontSize: '16px', // Set the font size
+                borderRadius: '5px', // Add rounded corners
+                border: '1px solid #ccc', // Add a border
+              }} 
             />
           </div>
 

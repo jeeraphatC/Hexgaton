@@ -42,10 +42,10 @@ function Navbar({ className }) {
       </Link>
 
       <Link to="/optionfree">
-        <h4>Freelance</h4>
+        <h4>Entrepreneur</h4>
       </Link>
       <Link to="/optionenter">
-        <h4>Entrepreneur</h4>
+        <h4>Freelance</h4>
       </Link>
       <Link to="/options">
         <img src={ologo} alt="" className="ologo" />

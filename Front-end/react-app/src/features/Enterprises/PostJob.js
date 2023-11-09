@@ -49,7 +49,6 @@ const PostJob = () => {
       formData.description === '' ||
       formData.type.trim() === '' ||
       formData.type.location === '' ||
-      formData.workprocess === '' ||
       formData.examplejob === '' ||
       formData.fixtime === '' ||
       !selectedImage
@@ -239,8 +238,12 @@ const PostJob = () => {
       </div>
       <div className='divpostjob'>
         <h1 style={{
-    fontSize: '40px', // Set the font size
-  }}>Post job</h1>
+    fontSize: '50px', // Set the font size
+  }}>Form freelance</h1>
+  <h1 style={{
+      color:'#6c757d',
+      fontSize: '18px', // Set the font size
+  }}>ผู้ประกอบการสามารถกรอกข้อมูลและรายละเอียดงานต่างๆเพื่อหาฟรีแลนซ์สำหรับจ้างงาน</h1>
         <form onSubmit={handleSubmit}>
           <div style={{ marginTop: 20}}>
             <label2>Name</label2>
@@ -294,17 +297,7 @@ const PostJob = () => {
 
             />
           </div>
-          <div  style={{ marginTop: 20}}>
-            <label2>Workprocess</label2>
-            <textarea
-              name="workprocess"
-              value={formData.workprocess}
-              onChange={handleInputChange}
-              placeholder='การทำงานของงานนี้คร่าว'
-              style={{borderRadius:'5px'}}
-
-            />
-          </div>
+          
           <div  style={{ marginTop: 20}}>
             <label2>examplejob</label2>
             <textarea
@@ -345,10 +338,10 @@ const PostJob = () => {
       
     }}
 >
-  <option value=" ">Select Type</option>
-  <option value="develop">Develop</option>
-  <option value="graphic">Graphic</option>
-  <option value="music">Music</option>
+              <option value=" ">Select Type</option>
+              <option value="develop">Develop</option>
+              <option value="graphic">Graphic</option>
+              <option value="music">Voice and Sound</option>
 </select>
           </div>
           {formData.type === 'develop' && (
@@ -370,10 +363,15 @@ const PostJob = () => {
 
   }}
 >
-  <option value=" ">Select Type</option>
-  <option value="web">Web</option>
-  <option value="mobile">Mobile</option>
-  <option value="desktop">Desktop</option>
+                <option value=" ">Select Type</option>
+                <option value="web">Web</option>
+                <option value="mobile">Mobile</option>
+                <option value="desktop">Desktop</option>
+                <option value="gamedeveloment">Game Development</option>
+                <option value="chatbot">Making Chatbot</option>
+                <option value="uxui">UX/UI Design</option>
+                <option value="testter">Software Tester</option>
+                <option value="architec">Solution Architect</option>
 </select>
 
             </>
@@ -427,9 +425,11 @@ const PostJob = () => {
 
   }}
 >
-  <option value=" ">Select Type</option>
-  <option value="beat">Beat</option>
-</select>
+                <option value=" ">Select Voice and Sound</option>
+                <option value="beat">Beat</option>
+                <option value="soundengi">Sound Engineering</option>
+                <option value="voiceover">Voice Over </option>
+          </select>
 
             </>
           )}

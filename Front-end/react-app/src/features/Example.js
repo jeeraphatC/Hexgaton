@@ -29,8 +29,8 @@ function BasicExample() {
         <Navbar.Collapse className="justify-content-end" id="navbarScroll">
 
           <Nav className="me-auto" >
-            <Nav.Link style={{ marginRight: 50 , marginTop:10 }}><Link to="/optionfree" ><h4>Freelance</h4></Link></Nav.Link>
-            <Nav.Link style={{ marginRight: 50 , marginTop:10 }}><Link to="/optionenter"><h4>Entrepreneur</h4></Link></Nav.Link>
+            <Nav.Link style={{ marginRight: 50 , marginTop:10 }}><Link to="/optionfree" ><h4>Entrepreneur</h4></Link></Nav.Link>
+            <Nav.Link style={{ marginRight: 50 , marginTop:10 }}><Link to="/optionenter"><h4>Freelance</h4></Link></Nav.Link>
 
 
           </Nav>
