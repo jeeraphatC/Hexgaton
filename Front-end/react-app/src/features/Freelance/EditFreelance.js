@@ -90,6 +90,7 @@ function EditFreelance({ className }) {
 
   return (
     <div className={className}>
+      
       <Container style={{}}>
         <h1 className='EditFreelanceh1'>Edit Your Profile</h1>
         <h2 style={{ marginTop: 10, color: '#9C9C9C', fontSize: '30px' }}> เปลี่ยนแปลงโปรไฟลของเรา เพื่อให้Enterpriseเห็นโปรไฟลของเรา</h2>

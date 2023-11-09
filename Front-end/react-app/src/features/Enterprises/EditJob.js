@@ -108,6 +108,7 @@ function EditJob({ className }) {
 
   return (
     <div className={className}>
+      
       <Container>
         <div>
           <h1 className='EditFreelanceh1'>Edit Your job</h1>

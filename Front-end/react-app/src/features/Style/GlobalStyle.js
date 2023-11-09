@@ -63,7 +63,7 @@ a:active { text-decoration: none; }
       z-index: 100;
       width: 60%;
       
-    margin-top:320px;
+    margin-top:355px;
       position: absolute; /* You can use 'fixed' instead if you want it to stay fixed on the screen */
       top: 50%; /* Positions the top edge of the element at the vertical center */
       left: 50%; /* Positions the left edge of the element at the horizontal center */
@@ -83,7 +83,40 @@ a:active { text-decoration: none; }
       left: 50%; /* Positions the left edge of the element at the horizontal center */
       transform: translate(-50%, -50%); /* Moves the element back by half of its own size */
     }
-    
+    .textff2{
+      text-align: center;
+      margin-top:10px;
+      font-size:20px;
+      color:#FFF;
+
+    }
+    .textff1{
+      text-align: center;
+      margin-top:10px;
+      font-size:20px;
+      color:white;
+      color:#6c757d;
+
+    }
+    .postffdiv3 {
+      width: 130px;
+      height: 50px;
+      margin: 0px auto; /* This centers the element horizontally */
+      background-color: #0196FC;
+      border-radius:10px;
+      display: inline-block;
+      margin:10px;
+    }
+    .postffdiv2 {
+      width: 130px;
+      height: 50px;
+      margin: 0px auto; /* This centers the element horizontally */
+      background-color: #e9ecef;
+      border-radius:10px;
+      display: inline-block;
+      margin:10px;
+      cursor:pointer;
+    }
     .textjob2{
       text-align: center;
       margin-top:10px;
