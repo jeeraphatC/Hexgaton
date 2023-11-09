@@ -33,6 +33,7 @@ import Status from './features/Status';
 import HomeChat from './features/chatRoom';
 import EditpictureProfile from './features/EditpictureProfile';
 import History from './features/History';
+import Donate from './features/Donate';
 import Forget from './features/Login-Register/Forget';
 function App() {
   const location = useLocation();
@@ -81,7 +82,8 @@ function App() {
           <Route path="/status" element={isUserLoggedIn ? <Status /> : <Navigate to="/login" />} />
           <Route path="/profilefree/:id" element={isUserLoggedIn ? <EditpictureProfile /> : <Navigate to="/login" />} />
           <Route path="/history" element={isUserLoggedIn ? < History/> : <Navigate to="/login" />} />
-          <Route path="/forget" element={isUserLoggedIn ? < Forget/> : <Navigate to="/login" />} />
+          <Route path="/forget" element={< Forget/>} />
+          <Route path="/donate" element={isUserLoggedIn ? < Donate/> : <Navigate to="/login" />} />
         </Routes>
       </Container>
 

@@ -64,7 +64,40 @@ a:active { text-decoration: none; }
     
   }
 
+  .forgetpass2:hover{
+    color: #0071BE;
+    cursor: pointer;
+    font-size: 18px;
+  }
+ .forgetpass:hover{
+    color: #0071BE;
+    cursor: pointer;
+    font-size: 18px;
+  }
+  .forgetpass3{
+    font-size: 17px;
+    position: absolute;
+    margin-top:100px;
+    color: #CCC;
+    left:50%;
+  }
+  .forgetpass2{
+    font-size: 17px;
+    position: absolute;
+    margin-top:100px;
+    color: #CCC;
+    left:53%;
+    transition: all 0.2;
+  }
 
+.forgetpass{
+  font-size: 17px;
+  position: absolute;
+  margin-top:100px;
+  color: #CCC;
+  left:35%;
+  transition: all 0.2;
+}
 .mail-logo{
   max-width:35px;
     position: absolute;
@@ -80,15 +113,24 @@ a:active { text-decoration: none; }
     justify-content: center;
     padding:20px;
   }
+  .card2{
+    width: 700px;
+    border:0px;
+    height:850px;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
+    z-index:150;
+  }
   .card{
     width: 700px;
     border:0px;
+    height:550px;
     box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.2);
   }
   .big-logo {
     position: relative;
     width: 300px;
     margin-top:20px;
+    margin-bottom:20px;
   }
   .biglogo-container{
     display: flex;
@@ -103,16 +145,18 @@ a:active { text-decoration: none; }
   margin:20px;
   font-size:25px;
   color:#D9D9D9;
-  left:85%;
+  left:67%;
+  top:10%;
 }
 .regtext:hover{
   color: #0196FC;
 }
 .regtext{
   position:absolute;
-  margin:20px;
   font-size:25px;
   color:#0071BE;
+  top:10%;
+  margin:20px;
 }
 .logintext2:hover{
   color: #0196FC;
