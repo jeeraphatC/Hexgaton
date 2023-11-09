@@ -338,10 +338,10 @@ const PostJob = () => {
       
     }}
 >
-  <option value=" ">Select Type</option>
-  <option value="develop">Develop</option>
-  <option value="graphic">Graphic</option>
-  <option value="music">Music</option>
+              <option value=" ">Select Type</option>
+              <option value="develop">Develop</option>
+              <option value="graphic">Graphic</option>
+              <option value="music">Voice and Sound</option>
 </select>
           </div>
           {formData.type === 'develop' && (
@@ -363,10 +363,15 @@ const PostJob = () => {
 
   }}
 >
-  <option value=" ">Select Type</option>
-  <option value="web">Web</option>
-  <option value="mobile">Mobile</option>
-  <option value="desktop">Desktop</option>
+                <option value=" ">Select Type</option>
+                <option value="web">Web</option>
+                <option value="mobile">Mobile</option>
+                <option value="desktop">Desktop</option>
+                <option value="gamedeveloment">Game Development</option>
+                <option value="chatbot">Making Chatbot</option>
+                <option value="uxui">UX/UI Design</option>
+                <option value="testter">Software Tester</option>
+                <option value="architec">Solution Architect</option>
 </select>
 
             </>
@@ -420,9 +425,11 @@ const PostJob = () => {
 
   }}
 >
-  <option value=" ">Select Type</option>
-  <option value="beat">Beat</option>
-</select>
+                <option value=" ">Select Voice and Sound</option>
+                <option value="beat">Beat</option>
+                <option value="soundengi">Sound Engineering</option>
+                <option value="voiceover">Voice Over </option>
+          </select>
 
             </>
           )}
