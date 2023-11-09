@@ -9,9 +9,13 @@ import mail from "../pic/mail.png";
 import padlock from "../pic/padlock.png";
 import SockJS from 'sockjs-client';
 import { useCookies } from 'react-cookie';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+
+
 
 function Login({ className }) {
-
+  const [err, setErr] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -19,7 +23,6 @@ function Login({ className }) {
   
     /**cookies */
     const [cookies, setCookie, removeCookie] = useCookies();
-    
   async function login(event) {
 
 
@@ -32,7 +35,15 @@ function Login({ className }) {
       });
   
       const responseData = loginResponse.data;
-  
+      const userEmail = email;
+      const userPassword = password;
+
+      try {
+        await signInWithEmailAndPassword(auth, userEmail, userPassword);
+        // navigate("/")
+      } catch (err) {
+        setErr(true);
+      }
       if (responseData.message === "Email not exists") {
         alert("Email does not exist");
       } else if (responseData.message === "Login Success") {
@@ -50,7 +61,7 @@ function Login({ className }) {
           // let Sock = new SockJS('http://localhost:8080/ws');
           // setCookie('sock',Sock);
           setCookie("connectChat",true)
-          // navigate('/', { state: { email } });
+          navigate('/', { state: { email } });
         } else {
           alert("Account not found for the provided email");
         }
@@ -140,9 +151,9 @@ function Login({ className }) {
         </svg>
       </div>
       <div className="app-container">
-      <Link to="/">
+      <a href="/">
         <img src={mlogo} alt="" className="homelogo" />
-      </Link>
+      </a>
       </div>
       <div class="container">
         <div class="row">
@@ -152,8 +163,8 @@ function Login({ className }) {
               <div className="biglogo-container">
                 <img src={blogo} alt="โลโก้" className="big-logo" />
               </div>
-              <Link to="/register"  className="regtext2">Register</Link>
-          <Link to="/login" className="logintext2"style={{}}>Login</Link>
+              <a href="/register"  className="regtext2">Register</a>
+          <a href="/login" className="logintext2"style={{}}>Login</a>
               
               <div className="form-container">
                 <form>
