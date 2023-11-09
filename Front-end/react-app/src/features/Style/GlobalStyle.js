@@ -40,11 +40,98 @@ a:active { text-decoration: none; }
 
     * {
   box-sizing: border-box;
+  textarea {
+    width: 100%; /* Set the width to 100% of its container */
+    padding: 10px 400px 10px 10px; /* Add some padding */
+    font-size: 16px; /* Set the font size */
+    border-radius: 5px; /* Add rounded corners */
+    border: 1px solid #ccc; /* Add a border */
+    /* Add any other styles you want here */
+    
+  }
   
     }
+    label2 {
+       font-size:25px;
+       color:#0071BE;
+    }
+    .divpostjob2 {
+      background-color: #FFF;
+      padding: 50px;
+      box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      z-index: 100;
+      width: 60%;
+      
+    margin-top:320px;
+      position: absolute; /* You can use 'fixed' instead if you want it to stay fixed on the screen */
+      top: 50%; /* Positions the top edge of the element at the vertical center */
+      left: 50%; /* Positions the left edge of the element at the horizontal center */
+      transform: translate(-50%, -50%); /* Moves the element back by half of its own size */
+    }
+    .divpostjob {
+      background-color: #FFF;
+      padding: 50px;
+      box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+      border-radius: 10px;
+      z-index: 100;
+      width: 60%;
+      
+    margin-top:520px;
+      position: absolute; /* You can use 'fixed' instead if you want it to stay fixed on the screen */
+      top: 50%; /* Positions the top edge of the element at the vertical center */
+      left: 50%; /* Positions the left edge of the element at the horizontal center */
+      transform: translate(-50%, -50%); /* Moves the element back by half of its own size */
+    }
+    
+    .textjob2{
+      text-align: center;
+      margin-top:10px;
+      font-size:20px;
+      color:#6c757d;
+    }
+    .textjob1{
+      text-align: center;
+      margin-top:10px;
+      font-size:20px;
+      color:white;
+    }
+    .postjobdiv3:hover {
+      background-color:#dee2e6;
+    }
 
+    .postjobdiv3 {
+      width: 130px;
+      height: 50px;
+      margin: 0px auto; /* This centers the element horizontally */
+      background-color: #e9ecef;
+      border-radius:10px;
+      display: inline-block;
+      margin:10px;
+    }
+    .postjobdiv2 {
+      width: 130px;
+      height: 50px;
+      margin: 0px auto; /* This centers the element horizontally */
+      background-color: #0196FC;
+      border-radius:10px;
+      display: inline-block;
+      margin:10px;
+      cursor:pointer;
+    }
+    .postjobdiv1 {
+      width: 300px;
+      height: 70px;
+      margin: 0px auto; /* This centers the element horizontally */
+      background-color: FFF;
+      box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.1);
+      border-radius:10px;
 
+    }
 
+.con{
+  margin:50px;
+}
   form label {
     display: inline-block;
     margin-bottom: 0.5rem;

@@ -6,39 +6,9 @@ import styled from 'styled-components';
 import big_logo from "../pic/big_logo.png";
 import bg1 from "../pic/bg1.jpg";
 import {  useNavigate } from "react-router-dom";
-const PostFreelanceContainer = styled.div`
-  margin: 50px 400px 0px 400px;
-  .custom-button {
-    margin-top: 30px;
-  }
-  input[type="file"] {
-    font-size: 16px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-top: 20px;
-  }
-  select {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  label {
-    font-size: 20px;
-    margin-top: 20px;
-  }
-  textarea {
-    width: 100%;
-    height: 100px;
-    font-size: 16px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: none;
-  }
-`;
+import { Link } from "react-router-dom";
+
+
 
 const PostFreelance = () => {
   const [formData, setFormData] = useState({
@@ -174,23 +144,93 @@ const PostFreelance = () => {
   };
 
   return (
-    <div>
-      <PostJobContainer style={{marginLeft:'25%'}}>
-      <h2 className="h2postfreelance" style={{color: '#0071BE',fontSize:'80px'}}>From for enterprise</h2>
-        <h2 style={{ marginTop: 20,color: '#9C9C9C',fontSize:'30px' }}>Post a job to find freelancers to work for us.</h2>
+    <div className='con' >
+      <div class="svg-container">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="150"
+          height="150"
+          viewBox="0 0 156 150"
+          fill="none"
+          class="svg2"
+        >
+          <ellipse cx="78.0146" cy="75" rx="77.5444" ry="75" fill="#0196FC" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="150"
+          height="150"
+          viewBox="0 0 132 127"
+          fill="none"
+          class="svg3"
+        >
+          <ellipse
+            cx="65.6543"
+            cy="63.5"
+            rx="65.6543"
+            ry="63.5"
+            fill="#0196FC"
+          />
+        </svg>
+        
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="90"
+          height="104"
+          viewBox="0 0 90 104"
+          fill="none"
+          class="svg5"
+        >
+          <ellipse cx="54.2358" cy="52" rx="53.7641" ry="52" fill="#0196FC" />
+        </svg>
+        
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="132"
+          height="127"
+          viewBox="0 0 132 127"
+          fill="none"
+          class="svg7"
+        >
+          <ellipse
+            cx="65.6543"
+            cy="63.5"
+            rx="65.6543"
+            ry="63.5"
+            fill="#0196FC"
+          />
+        </svg>
+      </div>
+      <div className='postjobdiv1'>
+      <div className='postjobdiv2'><p className='textjob1'>Post Job</p></div>
+      <Link to="/freelanceform">
+      <div className='postjobdiv3'><p className='textjob2'>Post Profile</p></div>
+        </Link>
+      </div>
+      <div className='divpostjob2'>
+        <h1 style={{
+    fontSize: '40px', // Set the font size
+  }}>Post job</h1>
         <form onSubmit={handleSubmit}>
           <div style={{ marginTop: 20}}>
-            <label>Name</label>
+            <label2>Name</label2>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleInputChange}
               placeholder='ชื่อ'
+              style={{
+                width: '100%', // Set the width to 100% of its container
+                padding: '10px', // Add some padding
+                fontSize: '16px', // Set the font size
+                borderRadius: '5px', // Add rounded corners
+                border: '1px solid #ccc', // Add a border
+              }}  
             />
           </div>
           <div style={{ marginTop: 20}}>
-            <label>Description</label>
+            <label2>Description</label2>
             <textarea
               name="description"
               value={formData.description}
@@ -199,11 +239,22 @@ const PostFreelance = () => {
             />
           </div>
           <div style={{ marginTop: 10}}>
-            <label>Type</label>
+            <label2>Type</label2>
             <select
               name="type"
               value={formData.type}
               onChange={handleInputChange}
+              style={{
+                width: '100%', // Set the width to 100% of its container
+                padding: '10px', // Add some padding
+                fontSize: '16px', // Set the font size
+                borderRadius: '5px', // Add rounded corners
+                border: '0px', // Add a border
+                backgroundColor: '#0196FC',
+                color: '#FFFFFF',
+                marginTop:'10px'
+                
+              }}
             >
               <option value=" ">Select Type</option>
               <option value="develop">Develop</option>
@@ -213,7 +264,7 @@ const PostFreelance = () => {
           </div>
           {formData.type === 'develop' && (
             <>
-              <label>Subtype for develop:</label>
+              <label2>Subtype for develop:</label2>
               <select
                 name="subtype"
                 value={formData.subtype}
@@ -228,7 +279,7 @@ const PostFreelance = () => {
           )}
           {formData.type === 'graphic' && (
             <>
-              <label>Subtype for graphic:</label>
+              <label2>Subtype for graphic:</label2>
               <select
                 name="subtype"
                 value={formData.subtype}
@@ -246,7 +297,7 @@ const PostFreelance = () => {
           )}
           {formData.type === 'music' && (
             <>
-              <label>Subtype for music:</label>
+              <label2>Subtype for music:</label2>
               <select
                 name="subtype"
                 value={formData.subtype}
@@ -259,13 +310,20 @@ const PostFreelance = () => {
           )}
 
           <div style={{ marginTop: 20}}>
-            <label>Price</label>
+            <label2>Price</label2>
             <input
               type="number" min="500"
               name="price"
               value={formData.price}
               onChange={handleInputChange}
               placeholder='ราคางานที่ต้องการ'
+              style={{
+                width: '100%', // Set the width to 100% of its container
+                padding: '10px', // Add some padding
+                fontSize: '16px', // Set the font size
+                borderRadius: '5px', // Add rounded corners
+                border: '1px solid #ccc', // Add a border
+              }}  
             />
           </div>
           <div style={{ marginTop: 20}}>
@@ -276,7 +334,13 @@ const PostFreelance = () => {
               value={formData.time}
               onChange={handleInputChange}
               placeholder='จำนวนวันที่สามารถทำงานได้'
-              
+              style={{
+                width: '100%', // Set the width to 100% of its container
+                padding: '10px', // Add some padding
+                fontSize: '16px', // Set the font size
+                borderRadius: '5px', // Add rounded corners
+                border: '1px solid #ccc', // Add a border
+              }}  
             />
           </div>
           <div style={{ marginTop: 20}}>
@@ -296,7 +360,7 @@ const PostFreelance = () => {
             <Button variant="success" type="submit" className="custom-button" style={{ width: 150 }} >Submit</Button>
           </div>
         </form>
-      </PostJobContainer>
+        </div>
       <footer >
         <div class="footer-content" style={{ marginTop: '1800px' }}>
           <img src={big_logo} alt="" className="big_logofooter" />
@@ -311,54 +375,7 @@ const PostFreelance = () => {
     </div>
   );
 }
-const PostJobContainer = styled.div`
-margin:50px 400px 50px 400px;
-.custom-button {
-  margin-top: 30px;
-  margin-bottom: 100px;
-}
-input[type="file"] {
-  font-size: 16px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-top: 20px;
-}
 
-select {
-  width: 100%;
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-top: 10px;
-}
-  h2 {
-    margin-top: 60px;
-    color: #ccc;
-    font-size: 80px;
-  }
-
-  p {
-    color: #9C9C9C;
-    font-size: 40px;
-    
-  }
-  label{
-    font-size: 20px;
-    margin-top: 20px;
-    display: none;
-  }
-  textarea {
-    width: 100%;
-    height: 100px;
-    font-size: 16px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: none;
-  }
-`;
 export default styled(PostFreelance)`
 
 `;

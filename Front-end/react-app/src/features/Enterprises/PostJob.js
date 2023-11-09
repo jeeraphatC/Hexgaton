@@ -6,6 +6,10 @@ import getCookies from '../hook/getCookies';
 import styled from 'styled-components';
 import big_logo from "../pic/big_logo.png";
 import {  useNavigate } from "react-router-dom";
+
+
+import { Link } from "react-router-dom";
+
 const PostJob = () => {
 
 
@@ -170,163 +174,302 @@ const PostJob = () => {
     setSelectedImage(event.target.files[0]);
   };
   return (
-    <div >
-      <PostJobContainer>
-
-        <h2 style={{ marginTop: 60,color: '#0071BE' }}>From for freelance</h2>
-        <h2 style={{ marginTop: 20,color: '#9C9C9C',fontSize:'30px' }}>Post our profile So that Enterprise can see our profile</h2>
+    <div className='con' >
+      <div class="svg-container">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="150"
+          height="150"
+          viewBox="0 0 156 150"
+          fill="none"
+          class="svg2"
+        >
+          <ellipse cx="78.0146" cy="75" rx="77.5444" ry="75" fill="#0196FC" />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="150"
+          height="150"
+          viewBox="0 0 132 127"
+          fill="none"
+          class="svg3"
+        >
+          <ellipse
+            cx="65.6543"
+            cy="63.5"
+            rx="65.6543"
+            ry="63.5"
+            fill="#0196FC"
+          />
+        </svg>
+        
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="90"
+          height="104"
+          viewBox="0 0 90 104"
+          fill="none"
+          class="svg5"
+        >
+          <ellipse cx="54.2358" cy="52" rx="53.7641" ry="52" fill="#0196FC" />
+        </svg>
+        
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="132"
+          height="127"
+          viewBox="0 0 132 127"
+          fill="none"
+          class="svg7"
+        >
+          <ellipse
+            cx="65.6543"
+            cy="63.5"
+            rx="65.6543"
+            ry="63.5"
+            fill="#0196FC"
+          />
+        </svg>
+      </div>
+      <div className='postjobdiv1'>
+      <div className='postjobdiv2'><p className='textjob1'>Post Job</p></div>
+      <Link to="/freelanceform">
+      <div className='postjobdiv3'><p className='textjob2'>Post Profile</p></div>
+        </Link>
+      </div>
+      <div className='divpostjob'>
+        <h1 style={{
+    fontSize: '40px', // Set the font size
+  }}>Post job</h1>
         <form onSubmit={handleSubmit}>
           <div style={{ marginTop: 20}}>
-            <label>Name</label>
+            <label2>Name</label2>
             <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              placeholder='ชื่องาน'
-            />
+  type="text"
+  name="name"
+  value={formData.name}
+  onChange={handleInputChange}
+  placeholder='ชื่องาน'
+  style={{
+    width: '100%', // Set the width to 100% of its container
+    padding: '10px', // Add some padding
+    fontSize: '16px', // Set the font size
+    borderRadius: '5px', // Add rounded corners
+    border: '1px solid #ccc', // Add a border
+  }}
+/>
           </div>
           <div  style={{ marginTop: 20}}>
-            <label>Price</label>
+            <label2>Price</label2>
             <input
               type="number" min="500"
               name="price"
               value={formData.price}
               onChange={handleInputChange}
               placeholder='งบประมาณ'
+              style={{borderRadius:'5px'}}
+
             />
           </div>
           <div  style={{ marginTop: 20}}>
-            <label>Number of Day</label>
+            <label2>Number of Day</label2>
             <input
               type="number" min="1"
               name="time" 
               value={formData.time}
               onChange={handleInputChange}
               placeholder='จำนวนวันที่ต้องทำงาน'
+              style={{borderRadius:'5px'}}
+
             />
           </div>
           <div  style={{ marginTop: 20}}>
-            <label>Description</label>
+            <label2>Description</label2>
             <textarea
               name="description"
               value={formData.description}
               onChange={handleInputChange}
               placeholder='แนะนำตัวเอง ex: ประวัติการทำงาน'
+              style={{borderRadius:'5px'}}
+
             />
           </div>
           <div  style={{ marginTop: 20}}>
-            <label>Workprocess</label>
+            <label2>Workprocess</label2>
             <textarea
               name="workprocess"
               value={formData.workprocess}
               onChange={handleInputChange}
               placeholder='การทำงานของงานนี้คร่าว'
+              style={{borderRadius:'5px'}}
+
             />
           </div>
           <div  style={{ marginTop: 20}}>
-            <label>examplejob</label>
+            <label2>examplejob</label2>
             <textarea
               name="examplejob"
               value={formData.examplejob}
               onChange={handleInputChange}
               placeholder='ตัวอย่างงาน'
+              style={{borderRadius:'5px'}}
+
             />
           </div>
           <div  style={{ marginTop: 20}}>
-            <label>Fix time</label>
+            <label2>Fix time</label2>
             <input
               type="number" min="0" max="5"
               name="fixtime"
               value={formData.fixtime}
               onChange={handleInputChange}
               placeholder='จำนวนครั้งในการแก้ไขงาน'
+              style={{borderRadius:'5px'}}
             />
           </div >
           <div style={{ marginTop: 20}}>
-            <label>Type:</label>
+            <label2>Type:</label2>
             <select
-              name="type"
-              value={formData.type}
-              onChange={handleInputChange}
-            >
-              <option value=" ">Select Type</option>
-              <option value="develop">Develop</option>
-              <option value="graphic">Graphic</option>
-              <option value="music">Music</option>
-            </select>
+  name="type"
+  value={formData.type}
+  onChange={handleInputChange}
+    style={{
+      width: '100%', // Set the width to 100% of its container
+      padding: '10px', // Add some padding
+      fontSize: '16px', // Set the font size
+      borderRadius: '5px', // Add rounded corners
+      border: '0px', // Add a border
+      backgroundColor: '#0196FC',
+      color: '#FFFFFF',
+      marginTop:'10px'
+      
+    }}
+>
+  <option value=" ">Select Type</option>
+  <option value="develop">Develop</option>
+  <option value="graphic">Graphic</option>
+  <option value="music">Music</option>
+</select>
           </div>
           {formData.type === 'develop' && (
             <>
-              <label>Subtype for develop:</label>
+              <label2>Subtype for develop:</label2>
               <select
-                name="subtype"
-                value={formData.subtype}
-                onChange={handleInputChange}
-              >
-                <option value=" ">Select Type</option>
-                <option value="web">Web</option>
-                <option value="mobile">Mobile</option>
-                <option value="desktop">Desktop</option>
-              </select>
+  name="subtype"
+  value={formData.subtype}
+  onChange={handleInputChange}
+  style={{
+    width: '100%', // Set the width to 100% of its container
+    padding: '10px', // Add some padding
+    fontSize: '16px', // Set the font size
+    borderRadius: '5px', // Add rounded corners
+    border: '0px', // Add a border
+    backgroundColor: '#0196FC',
+    color: '#FFFFFF',
+    marginTop:'10px'
+
+  }}
+>
+  <option value=" ">Select Type</option>
+  <option value="web">Web</option>
+  <option value="mobile">Mobile</option>
+  <option value="desktop">Desktop</option>
+</select>
+
             </>
           )}
           {formData.type === 'graphic' && (
             <>
-              <label>Subtype for graphic:</label>
+              <label2>Subtype for graphic:</label2>
               <select
-                name="subtype"
-                value={formData.subtype}
-                onChange={handleInputChange}
-              >
-                <option value=" ">Select Type</option>
-                <option value="logos">Logo Design</option>
-                <option value="sticker">Sticker Design</option>
-                <option value="character">Character Design</option>
-                <option value="draw-cartoon">Draw cartoons</option>
-                <option value="3d-models">3D Models</option>
-                <option value="banner">Banner advertising design</option>
-              </select>
+  name="subtype"
+  value={formData.subtype}
+  onChange={handleInputChange}
+  style={{
+    width: '100%', // Set the width to 100% of its container
+    padding: '10px', // Add some padding
+    fontSize: '16px', // Set the font size
+    borderRadius: '5px', // Add rounded corners
+    border: '0px', // Add a border
+    backgroundColor: '#0196FC',
+    color: '#FFFFFF',
+    marginTop:'10px'
+
+  }}
+>
+  <option value=" ">Select Type</option>
+  <option value="logos">Logo Design</option>
+  <option value="sticker">Sticker Design</option>
+  <option value="character">Character Design</option>
+  <option value="draw-cartoon">Draw Cartoons</option>
+  <option value="3d-models">3D Models</option>
+  <option value="banner">Banner Advertising Design</option>
+</select>
+
             </>
           )}
           {formData.type === 'music' && (
             <>
-              <label>Subtype for music:</label>
+              <label2>Subtype for music:</label2>
               <select
-                name="subtype"
-                value={formData.subtype}
-                onChange={handleInputChange}
-              >
-                <option value=" ">Select Type</option>
-                <option value="beat">Beat</option>
-              </select>
+  name="subtype"
+  value={formData.subtype}
+  onChange={handleInputChange}
+  style={{
+    width: '100%', // Set the width to 100% of its container
+    padding: '10px', // Add some padding
+    fontSize: '16px', // Set the font size
+    borderRadius: '5px', // Add rounded corners
+    border: '0px', // Add a border
+    backgroundColor: '#0196FC',
+    color: '#FFFFFF',
+    marginTop:'10px'
+
+  }}
+>
+  <option value=" ">Select Type</option>
+  <option value="beat">Beat</option>
+</select>
+
             </>
           )}
 
           <div>
-            <label>Location:</label>
+            <label2>Location:</label2>
             <select
-              name="location"
-              value={formData.location}
-              onChange={handleInputChange}
-            >
-              <option value=" ">Select Location</option>
-              <option value="onsite">onsite</option>
-            <option value="online">online</option>
-            </select>
+  name="location"
+  value={formData.location}
+  onChange={handleInputChange}
+  style={{
+    width: '100%', // Set the width to 100% of its container
+    padding: '10px', // Add some padding
+    fontSize: '16px', // Set the font size
+    borderRadius: '5px', // Add rounded corners
+    border: '0px', // Add a border
+    backgroundColor: '#0196FC',
+    color: '#FFFFFF',
+    marginTop:'10px'
+    // Add any other styles you want here
+  }}
+>
+  <option value=" ">Select Location</option>
+  <option value="onsite">Onsite</option>
+  <option value="online">Online</option>
+</select>
+
           </div>
 
  
 
           <div >
-            <input type="file" onChange={handleImageChange} />
+            <input type="file" onChange={handleImageChange} style={{marginTop:'20px',borderRadius:'5px'}}/>
           </div>
           <div style={{ textAlign: "center" }}>
 
-            <Button variant="success" type="submit" className="custom-button" style={{ width: 150 }} >Submit</Button>
+            <Button variant="success" type="submit" className="custom-button" style={{ width: 150,marginTop:'20px' }} >Submit</Button>
           </div>
         </form>
-      </PostJobContainer>
+        </div>
       <footer>
         <div class="footer-content" style={{marginTop:'1800px'}}>
           <img src={big_logo} alt="" className="big_logofooter" />
@@ -334,57 +477,12 @@ const PostJob = () => {
         </div>
       </footer>
     </div >
+    
   );
 }
 
-const PostJobContainer = styled.div`
-margin:50px 400px 50px 400px;
-.custom-button {
-  margin-top: 30px;
-  margin-bottom: 100px;
-}
-input[type="file"] {
-  font-size: 16px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-top: 20px;
-}
 
-select {
-  width: 100%;
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  margin-top: 10px;
-}
-  h2 {
-    margin-top: 60px;
-    color: #ccc;
-    font-size: 80px;
-  }
 
-  p {
-    color: #9C9C9C;
-    font-size: 40px;
-    
-  }
-  label{
-    font-size: 20px;
-    margin-top: 20px;
-    display: none;
-  }
-  textarea {
-    width: 100%;
-    height: 100px;
-    font-size: 16px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: none;
-  }
+export default styled(PostJob)`
 
 `;
-
-export default styled(PostJob)``;
