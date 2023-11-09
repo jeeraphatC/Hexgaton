@@ -19,6 +19,7 @@ function Login({ className }) {
   
     /**cookies */
     const [cookies, setCookie, removeCookie] = useCookies();
+    
   async function login(event) {
 
 
@@ -49,7 +50,7 @@ function Login({ className }) {
           // let Sock = new SockJS('http://localhost:8080/ws');
           // setCookie('sock',Sock);
           setCookie("connectChat",true)
-          navigate('/', { state: { email } });
+          // navigate('/', { state: { email } });
         } else {
           alert("Account not found for the provided email");
         }
@@ -139,9 +140,9 @@ function Login({ className }) {
         </svg>
       </div>
       <div className="app-container">
-      <a href="/">
+      <Link to="/">
         <img src={mlogo} alt="" className="homelogo" />
-      </a>
+      </Link>
       </div>
       <div class="container">
         <div class="row">
@@ -151,8 +152,8 @@ function Login({ className }) {
               <div className="biglogo-container">
                 <img src={blogo} alt="โลโก้" className="big-logo" />
               </div>
-              <a href="/register"  className="regtext2">Register</a>
-          <a href="/login" className="logintext2"style={{}}>Login</a>
+              <Link to="/register"  className="regtext2">Register</Link>
+          <Link to="/login" className="logintext2"style={{}}>Login</Link>
               
               <div className="form-container">
                 <form>
