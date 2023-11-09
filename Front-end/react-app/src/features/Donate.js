@@ -9,6 +9,9 @@ function Donate({ className }) {
 
   const handleButtonClick = () => {
     setShowImage(true);
+    setTimeout(() => {
+      document.querySelector('.qrcode').classList.add('active');
+    }, 100); // Add a slight delay before adding the 'active' class
   };
 
 
@@ -20,7 +23,8 @@ function Donate({ className }) {
       <div className="divdoante1">
         <button onClick={handleButtonClick} className="qrcodebtn">Donate</button>
         <div>
-          {showImage && <img src={qrcode} alt="" className="qrcode" />}
+        {showImage && <img src={qrcode} alt="" className="qrcode" />}
+
         </div>
       <h3 >Let's go.</h3>
       <h1 >Help our website</h1>
@@ -99,11 +103,17 @@ h1{
     position:absolute;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.qrcode{
-    width:200px;
-    height:200px;
-    position:absolute;
-    top:40%;
-    left:80%;
+.qrcode {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 40%;
+  left: 80%;
+  opacity: 0; /* Start with the QR code hidden */
+  transition: opacity 0.5s ease-in-out; /* Add a transition for the opacity property */
 }
+
+.qrcode.active {
+  opacity: 1; /* When the 'active' class is added, the QR code will become visible */
+} 
 `;
