@@ -212,16 +212,7 @@ function Register({ className }) {
             fill="#0196FC"
           />
         </svg>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="156"
-          height="150"
-          viewBox="0 0 156 150"
-          fill="none"
-          class="svg4"
-        >
-          <ellipse cx="78.186" cy="75" rx="77.5444" ry="75" fill="#0196FC" />
-        </svg>
+        
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="90"
@@ -265,7 +256,7 @@ function Register({ className }) {
         </a>
       </div>
       <div class="containermt-4">
-        <div class="card">
+        <div class="card2">
           <div className="biglogo-container">
             <img src={blogo} alt="โลโก้" className="big-logo" />
           </div>
@@ -365,6 +356,7 @@ Register.propTypes = {
 };
 
 export default styled(Register)`
+
 @media (max-width: 600px) {
   .svg-container {
     display: none;

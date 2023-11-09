@@ -188,6 +188,13 @@ function Login({ className }) {
                     />
                   </div>
                   <div class="btnrge">
+                  <Link to="/forget">
+                    <h1 className='forgetpass'>Forget password</h1>
+                  </Link>
+                    <h1 className='forgetpass3'>|</h1>
+                    <Link to="/register">
+                    <h1 className='forgetpass2'>Register</h1>
+                    </Link>
                 <buttonrge
                   type="submit"
                   class="btn btn-primary mt-4 btn-large"
@@ -213,6 +220,7 @@ Login.propTypes = {
 };
 
 export default styled(Login)`
+
 @media (max-width: 600px) {
 
   margin-Top: 300px;
